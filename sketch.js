@@ -4,27 +4,21 @@
   The main file of the program. Runs everything.
 */
 
-// Declare a variable limited to block scope.
-let fps = 60;
-let font;
 let sceneManager;
-
-function preload() {
-  // Load font from resources before setup.
-  font = loadFont('assets/8bitoperator_jve.ttf');
-}
+let fpsCounter;
 
 function setup() {
   // Create and setup window.
   createCanvas(windowHeight, windowHeight);
   
   // Setup font and text origin.
-  textFont(font);
+  textFont("MuseoModerno");
   textAlign(CENTER, CENTER);
   
-  // Initialize the static constructors
+  // Initialize static constructors / load utility
   Scaler.constructor();
   Aligner.constructor();
+  fpsCounter = new FPSCounter();
   
   // Load scenes.
   SceneManager.constructor();
@@ -40,10 +34,7 @@ function draw() {
   SceneManager.Render();
   
   // FPS counter
-  fps = lerp(fps, frameRate(), 0.05);
-  Scaler.TextSize(5);
-  Aligner.AlignMode(enumPositions.BOTTOMRIGHT);
-  Aligner.Text(str(round(fps)), createVector(-50, -50));
+  fpsCounter.Render();
 }
 
 

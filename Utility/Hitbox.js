@@ -4,10 +4,6 @@
   Deals with the creation and testing of hitboxes.
 */
 class Hitbox {
-  constructor() {
-    
-  }
-  
   // Creates a hitbox based off text.
   static CreateTextHitbox(position, text) {
     // Assuming the text is centered by the center;
