@@ -9,7 +9,14 @@ let fpsCounter;
 
 function setup() {
   // Create and setup window.
-  createCanvas(windowHeight, windowHeight);
+  var canvas = createCanvas(windowHeight, windowHeight);
+  
+  let div = createDiv('').size(0, 0);
+  div.style('background-color', 'orange');
+  div.center();
+  
+  canvas.child(div);
+  canvas.center();
   
   // Setup font and text origin.
   textFont("MuseoModerno");
