@@ -81,6 +81,12 @@ class Aligner {
     this.lastTextInfo.scaledSize = Scaler.currentScaledSize;
   }
 
+  
+  // Sets the position of the last text.
+  static SetCurrentPosition(position) {
+    this.lastTextInfo.position = position;
+  }
+  
   // Get the position of the next aligned text
   static GetNextPosition(padding = 0) {
     let lastPosition = this.lastTextInfo.position;

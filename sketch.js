@@ -6,14 +6,15 @@
 
 let sceneManager;
 let fpsCounter;
+let canvas;
 
 function setup() {
   // Create and setup window.
-  var canvas = createCanvas(windowHeight, windowHeight);
-  canvas.center('horizontal');
+  canvas = createCanvas(windowHeight, windowHeight);
+  windowResized();
   
   // Setup font and text origin.
-  textFont("MuseoModerno");
+  textFont("IBM");
   textAlign(CENTER, CENTER);
   
   // Initialize static constructors / load utility
@@ -36,6 +37,10 @@ function draw() {
   
   // FPS counter
   fpsCounter.Render();
+}
+
+function windowResized() {
+  canvas.center('horizontal');
 }
 
 

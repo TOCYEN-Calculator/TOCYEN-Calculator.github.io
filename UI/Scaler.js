@@ -28,4 +28,10 @@ class Scaler {
     textSize(this.currentScaledSize);
   }
   
+  // Resets internal variables.
+  static Reset() {
+    this.lastScaledSize = 0;
+    this.currentScaledSize = 0;
+  }
+  
 }

@@ -16,6 +16,8 @@ class Button {
     this.listeners = [];
     this.hitbox = Hitbox.CreateTextHitbox(position, text);
     this.position = position;
+    
+    Aligner.SetCurrentPosition(position);
   }
   
   AddListener(listener) {
