@@ -1,0 +1,2 @@
+jsdoc -r .
+pause

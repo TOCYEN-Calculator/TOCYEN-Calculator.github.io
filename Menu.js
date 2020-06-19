@@ -8,7 +8,9 @@ class Menu {
   constructor() {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(50);
-    this.button = new Button("Placeholder", 0, 0);
+
+    this.calculate = new Button("Calculate", createVector(0, 0));
+    this.calculate.AddListener(() => SceneManager.ToScene(1));
   }
 
   Render() {
@@ -17,13 +19,13 @@ class Menu {
     Text('TOCYEN', 0, 100);
 
     textSize(30);
-    Text('The Only Calculator You\'ll Ever Need!', 0, 170);
+    TextV('The Only Calculator You\'ll Ever Need!');
 
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMRIGHT);
     textSize(30);
     Text('By Diego C', -100, -50);
 
-    this.button.Render();
+    this.calculate.Render();
   }
 
 };
