@@ -1,11 +1,11 @@
 /**
  * Aligns text by giving out relative positions.
- *
  * @class
  */
 class Aligner {
   /**
-   * Construct the Aligner.
+   * Construct the Aligner. This function should be called during
+   * startup before any functions are used.
    */
   static constructor() {
     this.REFERENCE = {
@@ -29,7 +29,10 @@ class Aligner {
   }
 
   /**
-   * Sets the information of the last text. Used by GetNextPosition().
+   * Sets the information of the last text. This function HAS to be called before
+   * using GetNextPosition(), as it'll provide the information of the width, height,
+   * and position of the last text. This function also takes into account the current
+   * textSize(), as it determines the height of it.
    * @param {string} strText - A string representing the text.
    * @param {number} x - x absolute position of the text.
    * @param {number} y - y absolute position of the text.
@@ -42,7 +45,8 @@ class Aligner {
   }
 
   /**
-   * Gets the absolute position of the text below the last text.
+   * Returns the absolute position of the text below the last text. This function takes into
+   * account the current textSize(), as it determines the height below the last text.
    * @return {Vector} A vector representing the absolute position of the next position.
    */
   static GetNextPosition() {
@@ -63,7 +67,8 @@ class Aligner {
   }
 
   /**
-   * Sets the information of the last text. Used by GetNextPosition().
+   * Sets the current reference point. This can be a vector or part of
+   * the REFERENCE enumeration.
    * @param {REFERENCE | Vector} position - A REFERENCE or Vector that represents a absolute position of the canvas.
    */
   static SetReference(position) {
@@ -72,7 +77,7 @@ class Aligner {
   }
 
   /**
-   * Converts a relative position based on currentReference into an absolute position.
+   * Converts a relative position into an absolute position based on currentReference.
    * @param {number} x - x relative position
    * @param {number} y - y relative position
    * @return {Vector} Vector representing a absolute position in the canvas.
@@ -85,7 +90,7 @@ class Aligner {
 
 
   /**
-   * Gets the offset of a relative point based on the currentReference.
+   * Gets the offset of currentReference.
    * @return {Vector} Vector representing a offset.
    */
   static GetOffset() {
@@ -102,7 +107,7 @@ class Aligner {
   }
 
   /**
-   * Gets the offset of a relative point based on the currentReference if it was an enumeration.
+   * Gets the offset of a relative point based on the currentReference (if it is an enumeration).
    * @return {Vector} Vector representing a offset.
    */
   static GetEnumOffset() {
