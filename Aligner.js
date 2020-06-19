@@ -7,7 +7,7 @@
 class Aligner {
 
   static constructor() {
-    this.POSITION = {
+    this.REFERENCE = {
       TOPLEFT : 0,
       TOP : 1,
       TOPRIGHT : 2,
@@ -18,7 +18,7 @@ class Aligner {
       BOTTOM : 7,
       BOTTOMRIGHT: 8
     };
-    this.currentReference = this.POSITION.CENTER;
+    this.currentReference = this.REFERENCE.CENTER;
   }
 
   static ReferenceIsObject() {
@@ -28,6 +28,12 @@ class Aligner {
   static SetReference(enumPosition) {
     // Can be a vector or enumeration.
     this.currentReference = enumPosition;
+  }
+
+  static GetAbsolutePosition(x, y) {
+    // Converts a relative point to an absolute point
+    var offset = this.GetOffset();
+    return createVector(x + offset.x, y + offset.y);
   }
 
   static GetOffset() {
@@ -41,7 +47,6 @@ class Aligner {
     }
 
     return offset;
-
   }
 
   static GetEnumOffset() {
@@ -55,35 +60,35 @@ class Aligner {
 
     else if(typeof this.currentReference === 'number') {
       switch(this.currentReference) {
-      case this.POSITION.TOP:
+      case this.REFERENCE.TOP:
         offset.y = 0;
         break;
 
-      case this.POSITION.TOPLEFT:
+      case this.REFERENCE.TOPLEFT:
         offset = createVector(0,0);
         break;
 
-      case this.POSITION.TOPRIGHT:
+      case this.REFERENCE.TOPRIGHT:
         offset = createVector(width, 0);
         break;
 
-      case this.POSITION.LEFT:
+      case this.REFERENCE.LEFT:
         offset.x = 0;
         break;
 
-      case this.POSITION.RIGHT:
+      case this.REFERENCE.RIGHT:
         offset.x = width;
         break;
 
-      case this.POSITION.BOTTOMLEFT:
+      case this.REFERENCE.BOTTOMLEFT:
         offset = createVector(0, height);
         break;
 
-      case this.POSITION.BOTTOM:
+      case this.REFERENCE.BOTTOM:
         offset.y = height;
         break;
 
-      case this.POSITION.BOTTOMRIGHT:
+      case this.REFERENCE.BOTTOMRIGHT:
         offset = createVector(width, height);
         break;
       }
