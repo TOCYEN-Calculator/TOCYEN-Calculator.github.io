@@ -29,7 +29,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav class="nav">
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a><ul class='methods'><li data-type='method'><a href="Aligner.html#.constructor">constructor</a></li><li data-type='method'><a href="Aligner.html#.GetAbsolutePosition">GetAbsolutePosition</a></li><li data-type='method'><a href="Aligner.html#.GetEnumOffset">GetEnumOffset</a></li><li data-type='method'><a href="Aligner.html#.GetNextPosition">GetNextPosition</a></li><li data-type='method'><a href="Aligner.html#.GetOffset">GetOffset</a></li><li data-type='method'><a href="Aligner.html#.ReferenceIsObject">ReferenceIsObject</a></li><li data-type='method'><a href="Aligner.html#.SetLastText">SetLastText</a></li><li data-type='method'><a href="Aligner.html#.SetReference">SetReference</a></li></ul></li><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#MouseIsHovering">MouseIsHovering</a></li><li data-type='method'><a href="Button.html#Render">Render</a></li></ul></li><li><a href="Event.html">Event</a><ul class='methods'><li data-type='method'><a href="Event.html#AddListener">AddListener</a></li><li data-type='method'><a href="Event.html#Call">Call</a></li></ul></li><li><a href="Input.html">Input</a></li><li><a href="InputHandler.html">InputHandler</a><ul class='methods'><li data-type='method'><a href="InputHandler.html#.constructor">constructor</a></li><li data-type='method'><a href="InputHandler.html#.KeyTyped">KeyTyped</a></li><li data-type='method'><a href="InputHandler.html#.SpecialKey">SpecialKey</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.constructor">constructor</a></li><li data-type='method'><a href="Mouse.html#.Update">Update</a></li></ul></li><li><a href="SceneManager.html">SceneManager</a><ul class='methods'><li data-type='method'><a href="SceneManager.html#.AddScene">AddScene</a></li><li data-type='method'><a href="SceneManager.html#.constructor">constructor</a></li><li data-type='method'><a href="SceneManager.html#.Render">Render</a></li><li data-type='method'><a href="SceneManager.html#.ToScene">ToScene</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a><ul class='methods'><li data-type='method'><a href="Aligner.html#.constructor">constructor</a></li><li data-type='method'><a href="Aligner.html#.GetAbsolutePosition">GetAbsolutePosition</a></li><li data-type='method'><a href="Aligner.html#.GetEnumOffset">GetEnumOffset</a></li><li data-type='method'><a href="Aligner.html#.GetNextPosition">GetNextPosition</a></li><li data-type='method'><a href="Aligner.html#.GetOffset">GetOffset</a></li><li data-type='method'><a href="Aligner.html#.ReferenceIsObject">ReferenceIsObject</a></li><li data-type='method'><a href="Aligner.html#.SetLastText">SetLastText</a></li><li data-type='method'><a href="Aligner.html#.SetReference">SetReference</a></li></ul></li><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#MouseIsHovering">MouseIsHovering</a></li><li data-type='method'><a href="Button.html#Render">Render</a></li></ul></li><li><a href="Event.html">Event</a><ul class='methods'><li data-type='method'><a href="Event.html#AddListener">AddListener</a></li><li data-type='method'><a href="Event.html#Call">Call</a></li></ul></li><li><a href="Input.html">Input</a><ul class='methods'><li data-type='method'><a href="Input.html#AddKey">AddKey</a></li><li data-type='method'><a href="Input.html#DeleteKey">DeleteKey</a></li><li data-type='method'><a href="Input.html#GetResult">GetResult</a></li><li data-type='method'><a href="Input.html#Render">Render</a></li><li data-type='method'><a href="Input.html#SetActive">SetActive</a></li><li data-type='method'><a href="Input.html#SetPrompt">SetPrompt</a></li></ul></li><li><a href="InputHandler.html">InputHandler</a><ul class='methods'><li data-type='method'><a href="InputHandler.html#.constructor">constructor</a></li><li data-type='method'><a href="InputHandler.html#.KeyTyped">KeyTyped</a></li><li data-type='method'><a href="InputHandler.html#.SpecialKey">SpecialKey</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.constructor">constructor</a></li><li data-type='method'><a href="Mouse.html#.Update">Update</a></li></ul></li><li><a href="SceneManager.html">SceneManager</a><ul class='methods'><li data-type='method'><a href="SceneManager.html#.AddScene">AddScene</a></li><li data-type='method'><a href="SceneManager.html#.constructor">constructor</a></li><li data-type='method'><a href="SceneManager.html#.Render">Render</a></li><li data-type='method'><a href="SceneManager.html#.ToScene">ToScene</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -47,44 +47,86 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * An input field comprised entirely of text; Guarentees the input of an integer.
+ * An input field comprised entirely of text. Used for obtaining an integer
+ * from the user.
  * @class
  */
 class Input {
-
+  /**
+   * Constructs a new input field.
+   * @param {string} prompt - The prompt of the input field.
+   */
   constructor(prompt) {
     this.prompt = prompt;
     this.active = false;
     this.text = "";
 
+    this.onReturn = new Event();
+
     InputHandler.keyEvent.AddListener(() => this.AddKey());
     InputHandler.specialEvent.AddListener(() => this.DeleteKey());
   }
 
+  /**
+   * Changes the prompt of the input field.
+   * @param {string} prompt - The prompt of the input field.
+   */
+  SetPrompt(prompt) {
+    this.prompt = prompt;
+  }
+
+  /**
+   * Changes whether or not the input field is accepting input.
+   * @param {bool} active - Boolean representing whether this should accept input.
+   */
   SetActive(active) {
     this.active = active;
   }
 
+  /**
+   * Gets the converted result of the input.
+   * @return {float} The text of the input field, converted as a float.
+   */
+  GetResult() {
+    return parseFloat(this.text);
+  }
+
+  /**
+   * A function that adds numbers to the input field when a input event is received.
+   */
   AddKey() {
-    print(keyCode);
-    // Check if ENTER was pressed
-    if(keyCode == ENTER) {
-      this.text = "";
-    }
-    else if ("0123456789.".includes(key)) {
-      this.text += key;
+    if(this.active) {
+      // Check if ENTER was pressed
+      if(keyCode == ENTER) {
+        this.onReturn.Call();
+      }
+      else if ("0123456789.".includes(key)) {
+        this.text += key;
+      }
     }
   }
 
+  /**
+   * A function that deletes characters when a special input event is received.
+   */
   DeleteKey() {
-    if(keyCode == BACKSPACE) {
-      this.text = this.text.substring(0, this.text.length - 1);
+    if(this.active) {
+      if(keyCode == BACKSPACE) {
+        this.text = this.text.substring(0, this.text.length - 1);
+      }
     }
   }
 
+  /**
+   * Renders the input field and it's prompt. Whether or not it accepts input
+   * is up to SetActive().
+   */
   Render() {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Text("> " + this.text + " &lt;", 0, 0);
+
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    Text(this.prompt, 0, 100);
   }
 
 
@@ -103,7 +145,7 @@ class Input {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sat Jun 20 2020 14:13:17 GMT-0700 (Pacific Daylight Time) using the LOKE theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sat Jun 20 2020 16:16:35 GMT-0700 (Pacific Daylight Time) using the LOKE theme.
 </footer>
 
 <script>prettyPrint();</script>

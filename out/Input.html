@@ -29,7 +29,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav class="nav">
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a><ul class='methods'><li data-type='method'><a href="Aligner.html#.constructor">constructor</a></li><li data-type='method'><a href="Aligner.html#.GetAbsolutePosition">GetAbsolutePosition</a></li><li data-type='method'><a href="Aligner.html#.GetEnumOffset">GetEnumOffset</a></li><li data-type='method'><a href="Aligner.html#.GetNextPosition">GetNextPosition</a></li><li data-type='method'><a href="Aligner.html#.GetOffset">GetOffset</a></li><li data-type='method'><a href="Aligner.html#.ReferenceIsObject">ReferenceIsObject</a></li><li data-type='method'><a href="Aligner.html#.SetLastText">SetLastText</a></li><li data-type='method'><a href="Aligner.html#.SetReference">SetReference</a></li></ul></li><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#MouseIsHovering">MouseIsHovering</a></li><li data-type='method'><a href="Button.html#Render">Render</a></li></ul></li><li><a href="Event.html">Event</a><ul class='methods'><li data-type='method'><a href="Event.html#AddListener">AddListener</a></li><li data-type='method'><a href="Event.html#Call">Call</a></li></ul></li><li><a href="Input.html">Input</a></li><li><a href="InputHandler.html">InputHandler</a><ul class='methods'><li data-type='method'><a href="InputHandler.html#.constructor">constructor</a></li><li data-type='method'><a href="InputHandler.html#.KeyTyped">KeyTyped</a></li><li data-type='method'><a href="InputHandler.html#.SpecialKey">SpecialKey</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.constructor">constructor</a></li><li data-type='method'><a href="Mouse.html#.Update">Update</a></li></ul></li><li><a href="SceneManager.html">SceneManager</a><ul class='methods'><li data-type='method'><a href="SceneManager.html#.AddScene">AddScene</a></li><li data-type='method'><a href="SceneManager.html#.constructor">constructor</a></li><li data-type='method'><a href="SceneManager.html#.Render">Render</a></li><li data-type='method'><a href="SceneManager.html#.ToScene">ToScene</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a><ul class='methods'><li data-type='method'><a href="Aligner.html#.constructor">constructor</a></li><li data-type='method'><a href="Aligner.html#.GetAbsolutePosition">GetAbsolutePosition</a></li><li data-type='method'><a href="Aligner.html#.GetEnumOffset">GetEnumOffset</a></li><li data-type='method'><a href="Aligner.html#.GetNextPosition">GetNextPosition</a></li><li data-type='method'><a href="Aligner.html#.GetOffset">GetOffset</a></li><li data-type='method'><a href="Aligner.html#.ReferenceIsObject">ReferenceIsObject</a></li><li data-type='method'><a href="Aligner.html#.SetLastText">SetLastText</a></li><li data-type='method'><a href="Aligner.html#.SetReference">SetReference</a></li></ul></li><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#MouseIsHovering">MouseIsHovering</a></li><li data-type='method'><a href="Button.html#Render">Render</a></li></ul></li><li><a href="Event.html">Event</a><ul class='methods'><li data-type='method'><a href="Event.html#AddListener">AddListener</a></li><li data-type='method'><a href="Event.html#Call">Call</a></li></ul></li><li><a href="Input.html">Input</a><ul class='methods'><li data-type='method'><a href="Input.html#AddKey">AddKey</a></li><li data-type='method'><a href="Input.html#DeleteKey">DeleteKey</a></li><li data-type='method'><a href="Input.html#GetResult">GetResult</a></li><li data-type='method'><a href="Input.html#Render">Render</a></li><li data-type='method'><a href="Input.html#SetActive">SetActive</a></li><li data-type='method'><a href="Input.html#SetPrompt">SetPrompt</a></li></ul></li><li><a href="InputHandler.html">InputHandler</a><ul class='methods'><li data-type='method'><a href="InputHandler.html#.constructor">constructor</a></li><li data-type='method'><a href="InputHandler.html#.KeyTyped">KeyTyped</a></li><li data-type='method'><a href="InputHandler.html#.SpecialKey">SpecialKey</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.constructor">constructor</a></li><li data-type='method'><a href="Mouse.html#.Update">Update</a></li></ul></li><li><a href="SceneManager.html">SceneManager</a><ul class='methods'><li data-type='method'><a href="SceneManager.html#.AddScene">AddScene</a></li><li data-type='method'><a href="SceneManager.html#.constructor">constructor</a></li><li data-type='method'><a href="SceneManager.html#.Render">Render</a></li><li data-type='method'><a href="SceneManager.html#.ToScene">ToScene</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -53,11 +53,28 @@
         Input
         </h2>
         
-            <div class="lead">An input field comprised entirely of text; Guarentees the input of an integer.</div>
+            <div class="lead">An input field comprised entirely of text. Used for obtaining an integerfrom the user.</div>
         
     
 
     
+      <div class="bs-callout bs-callout-default">
+        <h5>Members</h5>
+        <br />
+        <dl class="dl-horizontal methods-members">
+        <dt>Methods</dt><dd><ul>
+            <li><a href="#AddKey">AddKey</a></li>
+            
+            <li><a href="#DeleteKey">DeleteKey</a></li>
+            
+            <li><a href="#GetResult">GetResult</a></li>
+            
+            <li><a href="#Render">Render</a></li>
+            
+            <li><a href="#SetActive">SetActive</a></li>
+            
+            <li><a href="#SetPrompt">SetPrompt</a></li>
+            </ul></dd></dl></div>
 </header>
 
 <article>
@@ -81,14 +98,14 @@
 <div class="pull-right source-link-container">
   <code class="source-link" data-tmpl="method-tmpl(1)">
     <i class="fa fa-file-o"></i>
-    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line7">7</a>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line11">11</a>
   </code>
 </div>
 
     
 
     <h4 class="name" id="Input">
-      <a href="#params-Input"><span class="type-signature"></span>new Input</a><span class="signature">()</span><span class="type-signature"></span>
+      <a href="#params-Input"><span class="type-signature"></span>new Input</a><span class="signature">(prompt)</span><span class="type-signature"></span>
 
     </h4>
 
@@ -106,6 +123,10 @@
 
 
 
+<div class="description">
+    Constructs a new input field.
+</div>
+
 
 
 
@@ -114,6 +135,205 @@
 
 
 <div class="collapse_" id="methodCollapse-Input">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-Input" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>prompt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The prompt of the input field.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Constructs a new input field.\r\n   * @param {string} prompt - The prompt of the input field.\r\n   */","meta":{"range":[246,513],"filename":"Input.js","lineno":11,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240415","name":"Input","type":"MethodDefinition","paramnames":["prompt"]},"shortpath":"Input.js"},"name":"Input","longname":"Input","kind":"class","description":"Constructs a new input field.","scope":"global","classdesc":"An input field comprised entirely of text. Used for obtaining an integer\rfrom the user.","params":[{"type":{"names":["string"]},"description":"The prompt of the input field.","name":"prompt"}],"___id":"T000003R000005","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Input","signature":"<span class=\"signature\">(prompt)</span><span class=\"type-signature\"></span>","ancestors":[]}
+</pre>
+-->
+</div>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line49">49</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id="AddKey">
+      <a href="#params-AddKey"><span class="type-signature"></span>AddKey</a><span class="signature">()</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    A function that adds numbers to the input field when a input event is received.
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-AddKey">
 
   
 
@@ -184,26 +404,786 @@
 
 <!--
 <pre>
-{"comment":"","meta":{"range":[123,354],"filename":"Input.js","lineno":7,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240314","name":"Input","type":"MethodDefinition","paramnames":["prompt"]},"shortpath":"Input.js"},"name":"Input","longname":"Input","kind":"class","scope":"global","classdesc":"An input field comprised entirely of text; Guarentees the input of an integer.","___id":"T000003R000005","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Input","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":[]}
+{"comment":"/**\r\n   * A function that adds numbers to the input field when a input event is received.\r\n   */","meta":{"range":[1209,1444],"filename":"Input.js","lineno":49,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240501","name":"Input#AddKey","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Input.js"},"description":"A function that adds numbers to the input field when a input event is received.","name":"AddKey","longname":"Input#AddKey","kind":"function","memberof":"Input","scope":"instance","params":[],"___id":"T000002R021143","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"AddKey","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Input.html\">Input</a>#"]}
 </pre>
 -->
 </div>
 
-    
-    </div>
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line64">64</a>
+  </code>
+</div>
+
+
+
 
     
 
     
 
+    <h4 class="name" id="DeleteKey">
+      <a href="#params-DeleteKey"><span class="type-signature"></span>DeleteKey</a><span class="signature">()</span><span class="type-signature"></span>
+
+    </h4>
+
     
 
-     
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    A function that deletes characters when a special input event is received.
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-DeleteKey">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * A function that deletes characters when a special input event is received.\r\n   */","meta":{"range":[1545,1703],"filename":"Input.js","lineno":64,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240535","name":"Input#DeleteKey","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Input.js"},"description":"A function that deletes characters when a special input event is received.","name":"DeleteKey","longname":"Input#DeleteKey","kind":"function","memberof":"Input","scope":"instance","params":[],"___id":"T000002R021145","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"DeleteKey","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Input.html\">Input</a>#"]}
+</pre>
+-->
+</div>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line42">42</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id="GetResult">
+      <a href="#params-GetResult"><span class="type-signature"></span>GetResult</a><span class="signature">()</span><span class="type-signature"> &rarr; {float}</span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    Gets the converted result of the input.
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-GetResult">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="bs-callout bs-callout-success">
+    <h5>Returns </h5>
+
+        
+<div class="param-desc">
+    The text of the input field, converted as a float.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">float</span>
+
+
+    </dd>
+</dl>
+
+    
+</div>
+  
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Gets the converted result of the input.\r\n   * @return {float} The text of the input field, converted as a float.\r\n   */","meta":{"range":[1050,1103],"filename":"Input.js","lineno":42,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240491","name":"Input#GetResult","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Input.js"},"description":"Gets the converted result of the input.","returns":[{"type":{"names":["float"]},"description":"The text of the input field, converted as a float."}],"name":"GetResult","longname":"Input#GetResult","kind":"function","memberof":"Input","scope":"instance","params":[],"___id":"T000002R021142","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"GetResult","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"> &rarr; {float}</span>","ancestors":["<a href=\"Input.html\">Input</a>#"]}
+</pre>
+-->
+</div>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line76">76</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id="Render">
+      <a href="#params-Render"><span class="type-signature"></span>Render</a><span class="signature">()</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    Renders the input field and it's prompt. Whether or not it accepts inputis up to SetActive().
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-Render">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Renders the input field and it's prompt. Whether or not it accepts input\r\n   * is up to SetActive().\r\n   */","meta":{"range":[1830,2024],"filename":"Input.js","lineno":76,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240568","name":"Input#Render","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Input.js"},"description":"Renders the input field and it's prompt. Whether or not it accepts input\ris up to SetActive().","name":"Render","longname":"Input#Render","kind":"function","memberof":"Input","scope":"instance","params":[],"___id":"T000002R021147","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Render","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Input.html\">Input</a>#"]}
+</pre>
+-->
+</div>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line34">34</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id="SetActive">
+      <a href="#params-SetActive"><span class="type-signature"></span>SetActive</a><span class="signature">(active)</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    Changes whether or not the input field is accepting input.
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-SetActive">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-SetActive" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">bool</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Boolean representing whether this should accept input.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Changes whether or not the input field is accepting input.\r\n   * @param {bool} active - Boolean representing whether this should accept input.\r\n   */","meta":{"range":[860,911],"filename":"Input.js","lineno":34,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240480","name":"Input#SetActive","type":"MethodDefinition","paramnames":["active"]},"vars":{"":null},"shortpath":"Input.js"},"description":"Changes whether or not the input field is accepting input.","params":[{"type":{"names":["bool"]},"description":"Boolean representing whether this should accept input.","name":"active"}],"name":"SetActive","longname":"Input#SetActive","kind":"function","memberof":"Input","scope":"instance","___id":"T000002R021140","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"SetActive","signature":"<span class=\"signature\">(active)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Input.html\">Input</a>#"]}
+</pre>
+-->
+</div>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Input.js.html">Input.js</a>:<a href="Input.js.html#line26">26</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id="SetPrompt">
+      <a href="#params-SetPrompt"><span class="type-signature"></span>SetPrompt</a><span class="signature">(prompt)</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    Changes the prompt of the input field.
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-SetPrompt">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-SetPrompt" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>prompt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The prompt of the input field.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Changes the prompt of the input field.\r\n   * @param {string} prompt - The prompt of the input field.\r\n   */","meta":{"range":[640,691],"filename":"Input.js","lineno":26,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100240469","name":"Input#SetPrompt","type":"MethodDefinition","paramnames":["prompt"]},"vars":{"":null},"shortpath":"Input.js"},"description":"Changes the prompt of the input field.","params":[{"type":{"names":["string"]},"description":"The prompt of the input field.","name":"prompt"}],"name":"SetPrompt","longname":"Input#SetPrompt","kind":"function","memberof":"Input","scope":"instance","___id":"T000002R021138","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"SetPrompt","signature":"<span class=\"signature\">(prompt)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Input.html\">Input</a>#"]}
+</pre>
+-->
+</div>
+
+        
     
 
     
@@ -221,7 +1201,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sat Jun 20 2020 14:13:17 GMT-0700 (Pacific Daylight Time) using the LOKE theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Sat Jun 20 2020 16:16:35 GMT-0700 (Pacific Daylight Time) using the LOKE theme.
 </footer>
 
 <script>prettyPrint();</script>
