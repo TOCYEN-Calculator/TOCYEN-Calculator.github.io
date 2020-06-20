@@ -9,18 +9,34 @@ class PhysicsScene {
     textSize(50);
 
     this.buttons = [];
-    this.input = new Input("Sup");
+
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    var newton = new Button("Newtons Second Law", createVector(0,0));
+    newton.onClick.AddListener(() => {this.inputOption = true;});
+    this.buttons.push(newton);
+
+    this.inputOption = false;
+
+    this.input = new Input("Enter a value:");
+    this.input.onReturn.AddListener(() => {this.inputOption = false;});
+    this.input.onReturn.AddListener(() => print(this.input.GetResult()));
   }
 
   Render() {
-    Aligner.SetReference(Aligner.REFERENCE.TOP);
-    textSize(100);
-    Text('Select a option:', 0, 100);
+    this.input.SetActive(this.inputOption);
 
-    for(var i = 0; i < this.buttons.length; i++) {
-      this.buttons[i].Render();
+    if(!this.inputOption) {
+      Aligner.SetReference(Aligner.REFERENCE.TOP);
+      textSize(100);
+      Text('Select a option:', 0, 100);
+
+      for(var i = 0; i < this.buttons.length; i++) {
+        this.buttons[i].Render();
+      }
     }
-    this.input.Render();
+    else {
+      this.input.Render();
+    }
   }
 
 };
