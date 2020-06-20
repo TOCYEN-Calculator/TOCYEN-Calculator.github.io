@@ -33,7 +33,7 @@ class Button {
       h: this.textSize
     };
 
-    this.onClick = new ListenerSystem();
+    this.onClick = new Event();
   }
 
 

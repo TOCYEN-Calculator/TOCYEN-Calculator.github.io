@@ -3,7 +3,7 @@
  * @class
  */
 class Input {
-
+  
   constructor(prompt) {
     this.prompt = prompt;
     this.active = false;
