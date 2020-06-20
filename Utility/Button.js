@@ -57,7 +57,7 @@ class Button {
     if(this.MouseIsHovering()) {
          fill(200);
 
-         if(mouseIsPressed && !this.pressed) {
+         if(Mouse.clicked && !this.pressed) {
            fill(100);
            for(var i = 0; i < this.listeners.length; i++) {
              this.listeners[i]();

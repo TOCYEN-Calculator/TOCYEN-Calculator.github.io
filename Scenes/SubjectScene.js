@@ -10,7 +10,10 @@ class SubjectScene {
 
     this.buttons = [];
 
-    this.buttons.push(new Button("Physics", createVector(0,-30)));
+    var physics = new Button("Physics", createVector(0,-30));
+    physics.AddListener(() => SceneManager.ToScene(2));
+
+    this.buttons.push(physics);
     this.buttons.push(new Button("Chem"));
     this.buttons.push(new Button("Misc"));
   }
