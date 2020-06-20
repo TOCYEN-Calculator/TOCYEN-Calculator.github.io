@@ -1,2 +1,1 @@
-jsdoc -r .
-pause
+jsdoc -r . -t ..\jsdoc-theme-master

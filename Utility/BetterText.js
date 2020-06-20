@@ -7,8 +7,8 @@
 /**
  * Makes text with a relative position based on Aligner.js.
  * @param {string} strText - The text shown on the button.
- * @param {number} x - x position of the text.
- * @param {number} y - y position of the text.
+ * @param {number} x - x relative position of the text.
+ * @param {number} y - y relative position of the text.
  */
 function Text(strText, x, y) {
   var absPosition = Aligner.GetAbsolutePosition(x, y);
@@ -23,6 +23,7 @@ function Text(strText, x, y) {
  */
 function TextV(strText) {
   var nextPosition = Aligner.GetNextPosition();
+  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
 
   text(strText, nextPosition.x, nextPosition.y);
 }

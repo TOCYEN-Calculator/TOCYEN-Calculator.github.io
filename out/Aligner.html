@@ -2,73 +2,158 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Aligner</title>
+    <title>Aligner - Documentation</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-
 <body>
 
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="nav">
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a><ul class='methods'><li data-type='method'><a href="Aligner.html#.constructor">constructor</a></li><li data-type='method'><a href="Aligner.html#.GetAbsolutePosition">GetAbsolutePosition</a></li><li data-type='method'><a href="Aligner.html#.GetEnumOffset">GetEnumOffset</a></li><li data-type='method'><a href="Aligner.html#.GetNextPosition">GetNextPosition</a></li><li data-type='method'><a href="Aligner.html#.GetOffset">GetOffset</a></li><li data-type='method'><a href="Aligner.html#.ReferenceIsObject">ReferenceIsObject</a></li><li data-type='method'><a href="Aligner.html#.SetLastText">SetLastText</a></li><li data-type='method'><a href="Aligner.html#.SetReference">SetReference</a></li></ul></li><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#AddListener">AddListener</a></li><li data-type='method'><a href="Button.html#MouseIsHovering">MouseIsHovering</a></li><li data-type='method'><a href="Button.html#Render">Render</a></li></ul></li><li><a href="SceneManager.html">SceneManager</a><ul class='methods'><li data-type='method'><a href="SceneManager.html#.AddScene">AddScene</a></li><li data-type='method'><a href="SceneManager.html#.constructor">constructor</a></li><li data-type='method'><a href="SceneManager.html#.Render">Render</a></li><li data-type='method'><a href="SceneManager.html#.ToScene">ToScene</a></li></ul></li></ul>
+</nav>
+
 <div id="main">
-
-    <h1 class="page-title">Class: Aligner</h1>
-
     
+    <h1 class="page-title">Aligner</h1>
+    
+
+    <!--container.tmpl-->
+
 
 
 
 
 <section>
 
-<header>
+
+
+<header data-tmpl="container.tmpl">
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Aligner<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2>
+        Aligner
+        </h2>
         
-            <div class="class-description">Aligns text by giving out relative positions.</div>
+            <div class="lead">Helps align text by giving out relative positions.</div>
         
     
+
+    
+      <div class="bs-callout bs-callout-default">
+        <h5>Members</h5>
+        <br />
+        <dl class="dl-horizontal methods-members">
+        <dt>Fields &amp; Properties</dt><dd><ul>
+            <li><a href="#currentReference">currentReference</a></li>
+            
+            <li><a href="#REFERENCE">REFERENCE</a></li>
+            </ul></dd><dt>Methods</dt><dd><ul>
+            <li><a href="#constructor">constructor</a></li>
+            
+            <li><a href="#GetAbsolutePosition">GetAbsolutePosition</a></li>
+            
+            <li><a href="#GetEnumOffset">GetEnumOffset</a></li>
+            
+            <li><a href="#GetNextPosition">GetNextPosition</a></li>
+            
+            <li><a href="#GetOffset">GetOffset</a></li>
+            
+            <li><a href="#ReferenceIsObject">ReferenceIsObject</a></li>
+            
+            <li><a href="#SetLastText">SetLastText</a></li>
+            
+            <li><a href="#SetReference">SetReference</a></li>
+            </ul></dd></dl></div>
 </header>
 
 <article>
     <div class="container-overview">
     
-        
+        <!--method.tmpl-->
+<div class="method-details">
+
+
+
+
 
     
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="Aligner"><span class="type-signature"></span>new Aligner<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
+    <h3 class="constructor">Constructor</h3>
     
 
     
+      <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line5">5</a>
+  </code>
+</div>
+
+    
+
+    <h4 class="name" id="Aligner">
+      <a href="#params-Aligner"><span class="type-signature"></span>new Aligner</a><span class="signature">()</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-Aligner">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
 
     
 
@@ -86,15 +171,6 @@
 
     
 
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line5">line 5</a>
-    </li></ul></dd>
     
 
     
@@ -123,6 +199,21 @@
 
 
 
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n * Helps align text by giving out relative positions.\r\n * @class\r\n */","meta":{"range":[76,4731],"filename":"Aligner.js","lineno":5,"columnno":0,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239431","name":"Aligner","type":"ClassDeclaration","paramnames":[]},"shortpath":"Aligner.js"},"classdesc":"Helps align text by giving out relative positions.","kind":"class","name":"Aligner","longname":"Aligner","scope":"global","___id":"T000003R000002","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Aligner","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":[]}
+</pre>
+-->
+</div>
+
     
     </div>
 
@@ -132,27 +223,224 @@
 
     
 
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            <!--members.tmpl-->
+<div class="member-details">
+
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line32">32</a>
+  </code>
+</div>
+
+
+
+<h4 class="name" id="currentReference">
+  <span class="type-signature"></span>currentReference<span class="type-signature"></span>
+</h4>
+
+
+
+
+<div class="description">
+    The current reference point. Any relative position will be relative to this.This can be set using SetReference().
+</div>
+
+
+<div>
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
     
 
     
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+        
+            <!--members.tmpl-->
+<div class="member-details">
+
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line15">15</a>
+  </code>
+</div>
+
+
+
+<h4 class="name" id="REFERENCE">
+  <span class="type-signature"></span>REFERENCE<span class="type-signature"></span>
+</h4>
+
+
+
+
+<div class="description">
+    A set of enumerations that represent positions on the canvas.Only used in SetReference().
+</div>
+
+
+<div>
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+        
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line10">10</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".constructor"><span class="type-signature">(static) </span>constructor<span class="signature">()</span><span class="type-signature"></span></h4>
-    
+
+    <h4 class="name" id=".constructor">
+      <a href="#params-constructor"><span class="type-signature">(static) </span>constructor</a><span class="signature">()</span><span class="type-signature"></span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -167,24 +455,22 @@
 
 
 
+<div class="collapse_" id="methodCollapse-constructor">
+
+  
+
+  
+
+<!-- details.tmpl -->
 
 
 
 
 
-<dl class="details">
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
+<dl class="dl-horizontal">
 
     
 
@@ -199,10 +485,9 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line10">line 10</a>
-    </li></ul></dd>
+
+    
+
     
 
     
@@ -231,21 +516,65 @@
 
 
 
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Construct the Aligner. This function should be called during\r\n   * startup before any functions are used.\r\n   */","meta":{"range":[221,895],"filename":"Aligner.js","lineno":10,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239434","name":"Aligner.constructor","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Construct the Aligner. This function should be called during\rstartup before any functions are used.","name":"constructor","longname":"Aligner.constructor","kind":"function","memberof":"Aligner","scope":"static","params":[],"___id":"T000002R021049","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".constructor","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
+
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line94">94</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".GetAbsolutePosition"><span class="type-signature">(static) </span>GetAbsolutePosition<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {Vector}</span></h4>
-    
+
+    <h4 class="name" id=".GetAbsolutePosition">
+      <a href="#params-GetAbsolutePosition"><span class="type-signature">(static) </span>GetAbsolutePosition</a><span class="signature">(x, y)</span><span class="type-signature"> &rarr; {Vector}</span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div class="description">
-    Converts a relative position into an absolute position based on currentReference.
+    Converts a relative position into an absolute position based on the currentReference point.
 </div>
 
 
@@ -255,11 +584,61 @@
 
 
 
+<div class="collapse_" id="methodCollapse-GetAbsolutePosition">
 
-    <h5>Parameters:</h5>
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-GetAbsolutePosition" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
     <thead>
     <tr>
         
@@ -327,50 +706,7 @@
     </tbody>
 </table>
 
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line85">line 85</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
+  </div>
 
 
 
@@ -384,9 +720,8 @@
 
 
 
-
-
-<h5>Returns:</h5>
+  <div class="bs-callout bs-callout-success">
+    <h5>Returns </h5>
 
         
 <div class="param-desc">
@@ -395,7 +730,7 @@
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -408,26 +743,67 @@
 </dl>
 
     
+</div>
+  
 
 
 
 
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Converts a relative position into an absolute position based on the currentReference point.\r\n   * @param {number} x - x relative position\r\n   * @param {number} y - y relative position\r\n   * @return {Vector} Vector representing a absolute position in the canvas.\r\n   */","meta":{"range":[2843,3027],"filename":"Aligner.js","lineno":94,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239585","name":"Aligner.GetAbsolutePosition","type":"MethodDefinition","paramnames":["x","y"]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Converts a relative position into an absolute position based on the currentReference point.","params":[{"type":{"names":["number"]},"description":"x relative position","name":"x"},{"type":{"names":["number"]},"description":"y relative position","name":"y"}],"returns":[{"type":{"names":["Vector"]},"description":"Vector representing a absolute position in the canvas."}],"name":"GetAbsolutePosition","longname":"Aligner.GetAbsolutePosition","kind":"function","memberof":"Aligner","scope":"static","___id":"T000002R021076","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".GetAbsolutePosition","signature":"<span class=\"signature\">(x, y)</span><span class=\"type-signature\"> &rarr; {Vector}</span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
 
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line122">122</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".GetEnumOffset"><span class="type-signature">(static) </span>GetEnumOffset<span class="signature">()</span><span class="type-signature"> &rarr; {Vector}</span></h4>
-    
+
+    <h4 class="name" id=".GetEnumOffset">
+      <a href="#params-GetEnumOffset"><span class="type-signature">(static) </span>GetEnumOffset</a><span class="signature">()</span><span class="type-signature"> &rarr; {Vector}</span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div class="description">
-    Gets the offset of a relative point based on the currentReference (if it is an enumeration).
+    Internal function used to determine the offset if currentReference is part of REFERENCE.
 </div>
 
 
@@ -437,24 +813,22 @@
 
 
 
+<div class="collapse_" id="methodCollapse-GetEnumOffset">
+
+  
+
+  
+
+<!-- details.tmpl -->
 
 
 
 
 
-<dl class="details">
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
+<dl class="dl-horizontal">
 
     
 
@@ -469,10 +843,9 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line113">line 113</a>
-    </li></ul></dd>
+
+    
+
     
 
     
@@ -496,7 +869,13 @@
 
 
 
-<h5>Returns:</h5>
+
+
+
+
+
+  <div class="bs-callout bs-callout-success">
+    <h5>Returns </h5>
 
         
 <div class="param-desc">
@@ -505,7 +884,7 @@
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -518,26 +897,67 @@
 </dl>
 
     
+</div>
+  
 
 
 
 
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Internal function used to determine the offset if currentReference is part of REFERENCE.\r\n   * @return {Vector} Vector representing a offset.\r\n   */","meta":{"range":[3592,4726],"filename":"Aligner.js","lineno":122,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239644","name":"Aligner.GetEnumOffset","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Internal function used to determine the offset if currentReference is part of REFERENCE.","returns":[{"type":{"names":["Vector"]},"description":"Vector representing a offset."}],"name":"GetEnumOffset","longname":"Aligner.GetEnumOffset","kind":"function","memberof":"Aligner","scope":"static","params":[],"___id":"T000002R021082","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".GetEnumOffset","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"> &rarr; {Vector}</span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
 
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line61">61</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".GetNextPosition"><span class="type-signature">(static) </span>GetNextPosition<span class="signature">()</span><span class="type-signature"> &rarr; {Vector}</span></h4>
-    
+
+    <h4 class="name" id=".GetNextPosition">
+      <a href="#params-GetNextPosition"><span class="type-signature">(static) </span>GetNextPosition</a><span class="signature">()</span><span class="type-signature"> &rarr; {Vector}</span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div class="description">
-    Returns the absolute position of the text below the last text. This function takes intoaccount the current textSize(), as it determines the height below the last text.
+    Returns the absolute position of the text below the last text. The last text'scontent, size, and position can be set using SetLastText().
 </div>
 
 
@@ -547,24 +967,22 @@
 
 
 
+<div class="collapse_" id="methodCollapse-GetNextPosition">
+
+  
+
+  
+
+<!-- details.tmpl -->
 
 
 
 
 
-<dl class="details">
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
+<dl class="dl-horizontal">
 
     
 
@@ -579,10 +997,9 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line52">line 52</a>
-    </li></ul></dd>
+
+    
+
     
 
     
@@ -606,7 +1023,13 @@
 
 
 
-<h5>Returns:</h5>
+
+
+
+
+
+  <div class="bs-callout bs-callout-success">
+    <h5>Returns </h5>
 
         
 <div class="param-desc">
@@ -615,7 +1038,7 @@
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -628,26 +1051,67 @@
 </dl>
 
     
+</div>
+  
 
 
 
 
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Returns the absolute position of the text below the last text. The last text's\r\n   * content, size, and position can be set using SetLastText().\r\n   * @return {Vector} A vector representing the absolute position of the next position.\r\n   */","meta":{"range":[1692,1914],"filename":"Aligner.js","lineno":61,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239522","name":"Aligner.GetNextPosition","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Returns the absolute position of the text below the last text. The last text's\rcontent, size, and position can be set using SetLastText().","returns":[{"type":{"names":["Vector"]},"description":"A vector representing the absolute position of the next position."}],"name":"GetNextPosition","longname":"Aligner.GetNextPosition","kind":"function","memberof":"Aligner","scope":"static","params":[],"___id":"T000002R021069","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".GetNextPosition","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"> &rarr; {Vector}</span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
 
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line105">105</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".GetOffset"><span class="type-signature">(static) </span>GetOffset<span class="signature">()</span><span class="type-signature"> &rarr; {Vector}</span></h4>
-    
+
+    <h4 class="name" id=".GetOffset">
+      <a href="#params-GetOffset"><span class="type-signature">(static) </span>GetOffset</a><span class="signature">()</span><span class="type-signature"> &rarr; {Vector}</span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div class="description">
-    Gets the offset of currentReference.
+    Gets the offset of currentReference from the topleft of the screen.
 </div>
 
 
@@ -657,24 +1121,22 @@
 
 
 
+<div class="collapse_" id="methodCollapse-GetOffset">
+
+  
+
+  
+
+<!-- details.tmpl -->
 
 
 
 
 
-<dl class="details">
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
+<dl class="dl-horizontal">
 
     
 
@@ -689,10 +1151,9 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line96">line 96</a>
-    </li></ul></dd>
+
+    
+
     
 
     
@@ -716,7 +1177,13 @@
 
 
 
-<h5>Returns:</h5>
+
+
+
+
+
+  <div class="bs-callout bs-callout-success">
+    <h5>Returns </h5>
 
         
 <div class="param-desc">
@@ -725,7 +1192,7 @@
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
@@ -738,26 +1205,67 @@
 </dl>
 
     
+</div>
+  
 
 
 
 
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Gets the offset of currentReference from the topleft of the screen.\r\n   * @return {Vector} Vector representing a offset.\r\n   */","meta":{"range":[3176,3424],"filename":"Aligner.js","lineno":105,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239611","name":"Aligner.GetOffset","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Gets the offset of currentReference from the topleft of the screen.","returns":[{"type":{"names":["Vector"]},"description":"Vector representing a offset."}],"name":"GetOffset","longname":"Aligner.GetOffset","kind":"function","memberof":"Aligner","scope":"static","params":[],"___id":"T000002R021078","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".GetOffset","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"> &rarr; {Vector}</span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
 
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line74">74</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".ReferenceIsObject"><span class="type-signature">(static) </span>ReferenceIsObject<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
+
+    <h4 class="name" id=".ReferenceIsObject">
+      <a href="#params-ReferenceIsObject"><span class="type-signature">(static) </span>ReferenceIsObject</a><span class="signature">()</span><span class="type-signature"> &rarr; {bool}</span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div class="description">
-    Checks if currentReference is an enumeration or object.
+    Checks whether or not currentReference is an object or null.
 </div>
 
 
@@ -767,24 +1275,22 @@
 
 
 
+<div class="collapse_" id="methodCollapse-ReferenceIsObject">
+
+  
+
+  
+
+<!-- details.tmpl -->
 
 
 
 
 
-<dl class="details">
 
-    
 
-    
 
-    
-
-    
-
-    
-
-    
+<dl class="dl-horizontal">
 
     
 
@@ -799,10 +1305,9 @@
     
 
     
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line65">line 65</a>
-    </li></ul></dd>
+
+    
+
     
 
     
@@ -826,48 +1331,95 @@
 
 
 
-<h5>Returns:</h5>
+
+
+
+
+
+  <div class="bs-callout bs-callout-success">
+    <h5>Returns </h5>
 
         
 <div class="param-desc">
-    A vector representing the absolute position of the next position.
+    Whether or not currentReference is a object or null.
 </div>
 
 
 
-<dl>
+<dl class="param-type">
     <dt>
         Type
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">bool</span>
 
 
     </dd>
 </dl>
 
     
+</div>
+  
 
 
 
 
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Checks whether or not currentReference is an object or null.\r\n   * @return {bool} Whether or not currentReference is a object or null.\r\n   */","meta":{"range":[2075,2197],"filename":"Aligner.js","lineno":74,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239557","name":"Aligner.ReferenceIsObject","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Checks whether or not currentReference is an object or null.","returns":[{"type":{"names":["bool"]},"description":"Whether or not currentReference is a object or null."}],"name":"ReferenceIsObject","longname":"Aligner.ReferenceIsObject","kind":"function","memberof":"Aligner","scope":"static","params":[],"___id":"T000002R021073","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".ReferenceIsObject","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"> &rarr; {bool}</span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
 
         
-            
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line49">49</a>
+  </code>
+</div>
+
+
+
 
     
 
     
-    <h4 class="name" id=".SetLastText"><span class="type-signature">(static) </span>SetLastText<span class="signature">(strText, x, y)</span><span class="type-signature"></span></h4>
-    
+
+    <h4 class="name" id=".SetLastText">
+      <a href="#params-SetLastText"><span class="type-signature">(static) </span>SetLastText</a><span class="signature">(strText, x, y)</span><span class="type-signature"></span>
+
+    </h4>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div class="description">
-    Sets the information of the last text. This function HAS to be called beforeusing GetNextPosition(), as it'll provide the information of the width, height,and position of the last text. This function also takes into account the currenttextSize(), as it determines the height of it.
+    Sets the information of the last made text. This information will beused to determine GetNextPosition().
 </div>
 
 
@@ -877,11 +1429,61 @@
 
 
 
+<div class="collapse_" id="methodCollapse-SetLastText">
 
-    <h5>Parameters:</h5>
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
     
 
-<table class="params">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+  <div id="params-SetLastText" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
     <thead>
     <tr>
         
@@ -972,12 +1574,104 @@
     </tbody>
 </table>
 
+  </div>
 
 
 
 
 
-<dl class="details">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Sets the information of the last made text. This information will be\r\n   * used to determine GetNextPosition().\r\n   * @param {string} strText - A string representing the text.\r\n   * @param {number} x - x absolute position of the text.\r\n   * @param {number} y - y absolute position of the text.\r\n   */","meta":{"range":[1215,1432],"filename":"Aligner.js","lineno":49,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239487","name":"Aligner.SetLastText","type":"MethodDefinition","paramnames":["strText","x","y"]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Sets the information of the last made text. This information will be\rused to determine GetNextPosition().","params":[{"type":{"names":["string"]},"description":"A string representing the text.","name":"strText"},{"type":{"names":["number"]},"description":"x absolute position of the text.","name":"x"},{"type":{"names":["number"]},"description":"y absolute position of the text.","name":"y"}],"name":"SetLastText","longname":"Aligner.SetLastText","kind":"function","memberof":"Aligner","scope":"static","___id":"T000002R021065","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".SetLastText","signature":"<span class=\"signature\">(strText, x, y)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
+
+        
+            <!--method.tmpl-->
+<div class="method-details">
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Aligner.js.html">Aligner.js</a>:<a href="Aligner.js.html#line83">83</a>
+  </code>
+</div>
+
+
+
+
+    
+
+    
+
+    <h4 class="name" id=".SetReference">
+      <a href="#params-SetReference"><span class="type-signature">(static) </span>SetReference</a><span class="signature">(position)</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="description">
+    Sets the current reference point. This can be a vector or part ofthe REFERENCE enumeration.
+</div>
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-SetReference">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
 
     
 
@@ -995,19 +1689,6 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line40">line 40</a>
-    </li></ul></dd>
     
 
     
@@ -1024,47 +1705,12 @@
 
 
 
+  <div id="params-SetReference" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
 
 
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".SetReference"><span class="type-signature">(static) </span>SetReference<span class="signature">(position)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Sets the current reference point. This can be a vector or part ofthe REFERENCE enumeration.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
+<table class="table table-bordered">
     <thead>
     <tr>
         
@@ -1112,50 +1758,7 @@
     </tbody>
 </table>
 
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Aligner.js.html">Aligner.js</a>, <a href="Aligner.js.html#line74">line 74</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
+  </div>
 
 
 
@@ -1175,6 +1778,14 @@
 
 
 
+</div>
+
+<!--
+<pre>
+{"comment":"/**\r\n   * Sets the current reference point. This can be a vector or part of\r\n   * the REFERENCE enumeration.\r\n   * @param {REFERENCE | Vector} position - A REFERENCE or Vector that represents a absolute position of the canvas.\r\n   */","meta":{"range":[2440,2555],"filename":"Aligner.js","lineno":83,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100239574","name":"Aligner.SetReference","type":"MethodDefinition","paramnames":["position"]},"vars":{"":null},"shortpath":"Aligner.js"},"description":"Sets the current reference point. This can be a vector or part of\rthe REFERENCE enumeration.","params":[{"type":{"names":["REFERENCE","Vector"]},"description":"A REFERENCE or Vector that represents a absolute position of the canvas.","name":"position"}],"name":"SetReference","longname":"Aligner.SetReference","kind":"function","memberof":"Aligner","scope":"static","___id":"T000002R021074","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".SetReference","signature":"<span class=\"signature\">(position)</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Aligner.html\">Aligner</a>."]}
+</pre>
+-->
+</div>
 
         
     
@@ -1191,17 +1802,13 @@
 
 </div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a></li><li><a href="Button.html">Button</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Text">Text</a></li><li><a href="global.html#TextV">TextV</a></li></ul>
-</nav>
-
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Jun 19 2020 12:40:13 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Fri Jun 19 2020 22:09:04 GMT-0700 (Pacific Daylight Time) using the LOKE theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>

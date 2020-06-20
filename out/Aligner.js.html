@@ -2,32 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Aligner.js</title>
+    <title>Aligner.js - Documentation</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-
 <body>
 
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="nav">
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a><ul class='methods'><li data-type='method'><a href="Aligner.html#.constructor">constructor</a></li><li data-type='method'><a href="Aligner.html#.GetAbsolutePosition">GetAbsolutePosition</a></li><li data-type='method'><a href="Aligner.html#.GetEnumOffset">GetEnumOffset</a></li><li data-type='method'><a href="Aligner.html#.GetNextPosition">GetNextPosition</a></li><li data-type='method'><a href="Aligner.html#.GetOffset">GetOffset</a></li><li data-type='method'><a href="Aligner.html#.ReferenceIsObject">ReferenceIsObject</a></li><li data-type='method'><a href="Aligner.html#.SetLastText">SetLastText</a></li><li data-type='method'><a href="Aligner.html#.SetReference">SetReference</a></li></ul></li><li><a href="Button.html">Button</a><ul class='methods'><li data-type='method'><a href="Button.html#AddListener">AddListener</a></li><li data-type='method'><a href="Button.html#MouseIsHovering">MouseIsHovering</a></li><li data-type='method'><a href="Button.html#Render">Render</a></li></ul></li><li><a href="SceneManager.html">SceneManager</a><ul class='methods'><li data-type='method'><a href="SceneManager.html#.AddScene">AddScene</a></li><li data-type='method'><a href="SceneManager.html#.constructor">constructor</a></li><li data-type='method'><a href="SceneManager.html#.Render">Render</a></li><li data-type='method'><a href="SceneManager.html#.ToScene">ToScene</a></li></ul></li></ul>
+</nav>
+
 <div id="main">
-
-    <h1 class="page-title">Source: Aligner.js</h1>
-
+    
+    <h1 class="page-title">Aligner.js</h1>
     
 
+    <!--container.tmpl-->
 
 
-    
+
+
+    <!--source.tmpl-->
+
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Aligns text by giving out relative positions.
+ * Helps align text by giving out relative positions.
  * @class
  */
 class Aligner {
@@ -36,6 +56,10 @@ class Aligner {
    * startup before any functions are used.
    */
   static constructor() {
+    /**
+     * A set of enumerations that represent positions on the canvas.
+     * Only used in SetReference().
+     */
     this.REFERENCE = {
       TOPLEFT : 0,
       TOP : 1,
@@ -47,7 +71,14 @@ class Aligner {
       BOTTOM : 7,
       BOTTOMRIGHT: 8
     };
+
+
+    /**
+     * The current reference point. Any relative position will be relative to this.
+     * This can be set using SetReference().
+     */
     this.currentReference = this.REFERENCE.CENTER;
+
 
     this.lastText = {
       strText: "",
@@ -57,10 +88,8 @@ class Aligner {
   }
 
   /**
-   * Sets the information of the last text. This function HAS to be called before
-   * using GetNextPosition(), as it'll provide the information of the width, height,
-   * and position of the last text. This function also takes into account the current
-   * textSize(), as it determines the height of it.
+   * Sets the information of the last made text. This information will be
+   * used to determine GetNextPosition().
    * @param {string} strText - A string representing the text.
    * @param {number} x - x absolute position of the text.
    * @param {number} y - y absolute position of the text.
@@ -73,8 +102,8 @@ class Aligner {
   }
 
   /**
-   * Returns the absolute position of the text below the last text. This function takes into
-   * account the current textSize(), as it determines the height below the last text.
+   * Returns the absolute position of the text below the last text. The last text's
+   * content, size, and position can be set using SetLastText().
    * @return {Vector} A vector representing the absolute position of the next position.
    */
   static GetNextPosition() {
@@ -87,8 +116,8 @@ class Aligner {
   }
 
   /**
-   * Checks if currentReference is an enumeration or object.
-   * @return {boolean} A vector representing the absolute position of the next position.
+   * Checks whether or not currentReference is an object or null.
+   * @return {bool} Whether or not currentReference is a object or null.
    */
   static ReferenceIsObject() {
     return this.currentReference === null || typeof this.currentReference === 'object';
@@ -105,7 +134,7 @@ class Aligner {
   }
 
   /**
-   * Converts a relative position into an absolute position based on currentReference.
+   * Converts a relative position into an absolute position based on the currentReference point.
    * @param {number} x - x relative position
    * @param {number} y - y relative position
    * @return {Vector} Vector representing a absolute position in the canvas.
@@ -118,7 +147,7 @@ class Aligner {
 
 
   /**
-   * Gets the offset of currentReference.
+   * Gets the offset of currentReference from the topleft of the screen.
    * @return {Vector} Vector representing a offset.
    */
   static GetOffset() {
@@ -135,7 +164,7 @@ class Aligner {
   }
 
   /**
-   * Gets the offset of a relative point based on the currentReference (if it is an enumeration).
+   * Internal function used to determine the offset if currentReference is part of REFERENCE.
    * @return {Vector} Vector representing a offset.
    */
   static GetEnumOffset() {
@@ -194,19 +223,16 @@ class Aligner {
 
 
 
-</div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Aligner.html">Aligner</a></li><li><a href="Button.html">Button</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Text">Text</a></li><li><a href="global.html#TextV">TextV</a></li></ul>
-</nav>
+</div>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Jun 19 2020 12:40:13 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Fri Jun 19 2020 22:09:04 GMT-0700 (Pacific Daylight Time) using the LOKE theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Button.js - Documentation</title>
+    <title>SceneManager.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Button.js</h1>
+    <h1 class="page-title">SceneManager.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,88 +46,56 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-/**
- * A button comprised entirely of text.
+            <pre class="prettyprint source linenums"><code>/**
+ * A manager of scenes.
  * @class
  */
-class Button {
+
+class SceneManager {
   /**
-   * Create a button.
-   * @param {string} strText - The text shown on the button.
-   * @param {Vector} position - Vector representing the relative position of the button.
+   * Construct the SceneManager. This function should be called during
+   * startup before any functions are used.
    */
-  constructor(strText, position) {
-    this.text = strText;
+  static constructor() {
+    this.scenes = {};
+    this.currentScene = 0;
+    this.sceneID = 0;
+  }
 
-    // Save text settings
-    this.textSize = textSize();
-
-    if(arguments.length == 1) {
-      this.position = Aligner.GetNextPosition();
+  /**
+   * Adds a scene to the dictionary. Should be done on startup.
+   * @param {Scene} scene - The scene to be added. Scenes should only have a Render() function.
+   */
+  static AddScene(scene) {
+    if (typeof scene === 'object') {
+      this.scenes[this.sceneID++] = scene;
     }
     else {
-      this.position = Aligner.GetAbsolutePosition(position.x, position.y);
+      print("SceneManager.js: Can't add scene.")
     }
-
-    this.pressed = false;
-    Aligner.SetLastText(strText, this.position.x, this.position.y);
-
-    // Make a hitbox surrounding the text.
-    this.hitbox = {
-      x: this.position.x - (textWidth(strText) / 2),
-      y: this.position.y - (this.textSize / 2),
-      w: textWidth(strText),
-      h: this.textSize
-    };
-
-    // Array of listeners; Functions / Lambda Functions / Delegates
-    this.listeners = [];
   }
 
-
   /**
-   * Returns a bool representing if the mouse is hovering on the button.
-   * @return {bool} True if mouse if hovering over the button.
+   * Switches the current scene to another one.
+   * @param {number} sceneID - The ID of the scene. Increases incrementally for each AddScene().
    */
-  MouseIsHovering() {
-    return (mouseX >= this.hitbox.x &amp;&amp; mouseX &lt;= this.hitbox.x + this.hitbox.w &amp;&amp;
-       mouseY >= this.hitbox.y &amp;&amp; mouseY &lt;= this.hitbox.y + this.hitbox.h);
-  }
-
-
-  /**
-   * Renders / updates the button.
-   */
-  Render() {
-    textSize(this.textSize);
-
-    if(this.MouseIsHovering()) {
-         fill(200);
-
-         if(mouseIsPressed &amp;&amp; !this.pressed) {
-           fill(100);
-           for(var i = 0; i &lt; this.listeners.length; i++) {
-             this.listeners[i]();
-           }
-         }
+  static ToScene(sceneID) {
+    if(sceneID in this.scenes) {
+      this.currentScene = sceneID;
     }
-    this.pressed = mouseIsPressed;
-
-    text(this.text, this.position.x, this.position.y);
-    ResetFillColor();
+    else {
+      print("SceneManager.js: Scene does not exist.");
+    }
   }
 
   /**
-   * Adds a listener. Will be activated once if the button is pressed.
-   * @param {function} listener - Function that will be called when clicked.
+   * Renders the current scene.
    */
-  AddListener(listener) {
-    this.listeners.push(listener);
+  static Render() {
+    this.scenes[this.currentScene].Render();
   }
 
-
-}
+};
 </code></pre>
         </article>
     </section>

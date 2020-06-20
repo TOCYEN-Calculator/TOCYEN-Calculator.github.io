@@ -1,7 +1,6 @@
 
 /**
- * A custom text button.
- *
+ * A button comprised entirely of text.
  * @class
  */
 class Button {
@@ -40,8 +39,8 @@ class Button {
 
 
   /**
-   * Returns a boolean representing if the mouse is on the button.
-   * @return {boolean} True if mouse if hovering over the button.
+   * Returns a bool representing if the mouse is hovering on the button.
+   * @return {bool} True if mouse if hovering over the button.
    */
   MouseIsHovering() {
     return (mouseX >= this.hitbox.x && mouseX <= this.hitbox.x + this.hitbox.w &&
@@ -72,7 +71,7 @@ class Button {
   }
 
   /**
-   * Adds a listener.
+   * Adds a listener. Will be activated once if the button is pressed.
    * @param {function} listener - Function that will be called when clicked.
    */
   AddListener(listener) {
