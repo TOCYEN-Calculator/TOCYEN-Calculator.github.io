@@ -12,6 +12,7 @@ function setup() {
   Aligner.constructor();
   SceneManager.constructor();
   Mouse.constructor();
+  InputHandler.constructor();
 
   // Add scenes
   SceneManager.AddScene(new MenuScene());

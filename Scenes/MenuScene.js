@@ -10,7 +10,7 @@ class MenuScene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
 
     this.calculate = new Button("Calculate", createVector(0, 0));
-    this.calculate.AddListener(() => SceneManager.ToScene(1));
+    this.calculate.onClick.AddListener(() => SceneManager.ToScene(1));
   }
 
   Render() {

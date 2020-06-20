@@ -9,6 +9,7 @@ class PhysicsScene {
     textSize(50);
 
     this.buttons = [];
+    this.input = new Input("Sup");
   }
 
   Render() {
@@ -19,6 +20,7 @@ class PhysicsScene {
     for(var i = 0; i < this.buttons.length; i++) {
       this.buttons[i].Render();
     }
+    this.input.Render();
   }
 
 };

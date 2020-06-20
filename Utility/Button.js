@@ -33,8 +33,7 @@ class Button {
       h: this.textSize
     };
 
-    // Array of listeners; Functions / Lambda Functions / Delegates
-    this.listeners = [];
+    this.onClick = new ListenerSystem();
   }
 
 
@@ -59,23 +58,13 @@ class Button {
 
          if(Mouse.clicked && !this.pressed) {
            fill(100);
-           for(var i = 0; i < this.listeners.length; i++) {
-             this.listeners[i]();
-           }
+           this.onClick.Call();
          }
     }
     this.pressed = mouseIsPressed;
 
     text(this.text, this.position.x, this.position.y);
     ResetFillColor();
-  }
-
-  /**
-   * Adds a listener. Will be activated once if the button is pressed.
-   * @param {function} listener - Function that will be called when clicked.
-   */
-  AddListener(listener) {
-    this.listeners.push(listener);
   }
 
 
