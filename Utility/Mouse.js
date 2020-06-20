@@ -1,5 +1,6 @@
 /**
- * A wrapper of the p5.js mouse.
+ * A wrapper for the p5.js mouse. Mainly used to determine when the mouse
+ * clicks.
  * @class
  */
 class Mouse {

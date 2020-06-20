@@ -1,5 +1,5 @@
 /**
- * A manager of scenes.
+ * A manager of scenes. Updates, renders, and changes scenes.
  * @class
  */
 
@@ -9,8 +9,22 @@ class SceneManager {
    * startup before any functions are used.
    */
   static constructor() {
+    /**
+     * A dictionary of scenes. Uses sceneID as a key for each scene.
+     * New scenes should be added using AddScene().
+     */
     this.scenes = {};
+
+    /**
+     * SceneID of the current scene. Changing this with ToScene() changed what
+     * scene is rendered / updated.
+     */
     this.currentScene = 0;
+
+    /**
+     * An incremental integer that is used to identity scenes. Gets incremented by
+     * one each time AddScene is called.
+     */
     this.sceneID = 0;
   }
 

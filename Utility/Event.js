@@ -4,11 +4,11 @@
  */
 class Event {
   /**
-   * Make a new Event.
+   * Makes a new Event.
    */
   constructor() {
     /**
-     * Array of listeners. Listeners should be delegates / lambda functions / functions
+     * An array of listeners. Listeners should be delegates / lambda functions / functions.
      */
     this.listeners = [];
   }

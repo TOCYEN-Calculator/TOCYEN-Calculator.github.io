@@ -27,11 +27,13 @@ class Aligner {
 
     /**
      * The current reference point. Any relative position will be relative to this.
-     * This can be set using SetReference().
+     * This can be set safely using SetReference().
      */
     this.currentReference = this.REFERENCE.CENTER;
 
-
+    /**
+     * Information about the last text. Can only be set using SetLastText().
+     */
     this.lastText = {
       strText: "",
       textSize: 0,

@@ -1,5 +1,5 @@
 /**
- * A wrapper for p5.js keys.
+ * A wrapper for p5.js keys. Contains events called on key presses.
  * @class
  */
 class InputHandler {
@@ -12,6 +12,11 @@ class InputHandler {
      * Event called when a ASCII key is pressed.
      */
     this.keyEvent = new Event();
+
+    /**
+     * Event called when any key is pressed. Usually reserved for non-ASCII keys.
+     */
+    this.specialEvent = new Event();
   }
 
   /**
@@ -20,8 +25,19 @@ class InputHandler {
   static KeyTyped() {
     this.keyEvent.Call();
   }
+
+  /**
+   * Function called when a non-ASCII key is pressed.
+   */
+  static SpecialKey() {
+    this.specialEvent.Call();
+  }
 }
 
 function keyTyped() {
   InputHandler.KeyTyped();
+}
+
+function keyPressed() {
+  InputHandler.SpecialKey();
 }

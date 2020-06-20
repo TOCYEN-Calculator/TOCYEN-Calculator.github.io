@@ -1,15 +1,16 @@
 /**
- * An input field comprised entirely of text.
+ * An input field comprised entirely of text; Guarentees the input of an integer.
  * @class
  */
 class Input {
-  
+
   constructor(prompt) {
     this.prompt = prompt;
     this.active = false;
     this.text = "";
 
     InputHandler.keyEvent.AddListener(() => this.AddKey());
+    InputHandler.specialEvent.AddListener(() => this.DeleteKey());
   }
 
   SetActive(active) {
@@ -17,12 +18,19 @@ class Input {
   }
 
   AddKey() {
-    // Check if ENTER is pressed ("")
-    if(key == "") {
-
+    print(keyCode);
+    // Check if ENTER was pressed
+    if(keyCode == ENTER) {
+      this.text = "";
     }
-    else {
+    else if ("0123456789.".includes(key)) {
       this.text += key;
+    }
+  }
+
+  DeleteKey() {
+    if(keyCode == BACKSPACE) {
+      this.text = this.text.substring(0, this.text.length - 1);
     }
   }
 
