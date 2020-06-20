@@ -4,10 +4,10 @@
  * Handles the menu scene.
 */
 
-class Menu {
+class MenuScene {
   constructor() {
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(50);
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
 
     this.calculate = new Button("Calculate", createVector(0, 0));
     this.calculate.AddListener(() => SceneManager.ToScene(1));

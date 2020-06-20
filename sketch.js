@@ -13,8 +13,8 @@ function setup() {
   SceneManager.constructor();
 
   // Add scenes
-  SceneManager.AddScene(new Menu());
-  SceneManager.AddScene(new TestCalculate());
+  SceneManager.AddScene(new MenuScene());
+  SceneManager.AddScene(new SubjectScene());
 }
 
 function draw() {

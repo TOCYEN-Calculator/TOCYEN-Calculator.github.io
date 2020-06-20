@@ -5,9 +5,9 @@
  */
 class Button {
   /**
-   * Create a button.
+   * Create a button. Automatically saves the last textSize() and ALign.currentReference.
    * @param {string} strText - The text shown on the button.
-   * @param {Vector} position - Vector representing the relative position of the button.
+   * @param {Vector} position - Vector representing the relative position of the button. Can be omitted to automatically use Aligner.GetNextPosition().
    */
   constructor(strText, position) {
     this.text = strText;
