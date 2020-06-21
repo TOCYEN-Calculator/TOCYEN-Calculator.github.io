@@ -9,6 +9,9 @@ class Mouse {
    * startup before any functions are used.
    */
   static constructor() {
+    /**
+     *  A boolean that is true for a single frame whenever the mouse clicks.
+     */
     this.clicked = false;
     this.pressed = false;
   }

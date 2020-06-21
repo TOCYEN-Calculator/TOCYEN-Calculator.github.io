@@ -10,7 +10,6 @@
     *
     * @param  {functions} formula A function with any number of
     * integer parameters. Should return the result.
-    * @param  {number} previousScene SceneID of the previous scene.
     */
    constructor(formula) {
      /**

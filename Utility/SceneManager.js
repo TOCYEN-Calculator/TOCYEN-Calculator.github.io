@@ -16,21 +16,21 @@ class SceneManager {
     this.scenes = {};
 
     /**
-     * SceneID of the current scene. Changing this with ToScene() changed what
+     * SceneID of the current scene. Changing this with ToScene() changes what
      * scene is rendered / updated.
      */
     this.currentScene = 0;
 
     /**
      * An incremental integer that is used to identity scenes. Gets incremented by
-     * one each time AddScene is called.
+     * one each time AddScene() is called.
      */
     this.sceneID = 0;
   }
 
   /**
    * Adds a scene to the dictionary. Should be done on startup.
-   * @param {Scene} scene - The scene to be added. Scenes should only have a Render() function.
+   * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
    */
   static AddScene(scene) {
     if (typeof scene === 'object') {
