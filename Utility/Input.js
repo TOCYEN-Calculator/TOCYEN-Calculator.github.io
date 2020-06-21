@@ -5,13 +5,13 @@
  */
 class Input {
   /**
-   * Constructs a new input field.
-   * @param {string} prompt - The prompt of the input field.
+   * Constructs a new input field. Position and alignment will be saved.
+   * @param {Vector} position - The relative position of the input field.
    */
-  constructor(prompt) {
-    this.prompt = prompt;
+  constructor(position) {
     this.active = false;
     this.text = "";
+    this.position = Aligner.GetAbsolutePosition(position.x, position.y);
 
     this.onReturn = new Event();
 
@@ -25,18 +25,8 @@ class Input {
    * Listeners stay in tact.
    */
   Reset() {
-    this.prompt = "";
     this.active = false;
     this.text = "";
-  }
-
-
-  /**
-   * Changes the prompt of the input field.
-   * @param {string} prompt - The prompt of the input field.
-   */
-  SetPrompt(prompt) {
-    this.prompt = prompt;
   }
 
   /**
@@ -87,11 +77,8 @@ class Input {
    */
   Render() {
     textSize(50);
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Text("> " + this.text + " <", 0, 0);
-
-    Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Text(this.prompt, 0, 100);
+    Aligner.SetReference(Aligner.REFERENCE.TOPLEFT);
+    Text("> " + this.text + " <", this.position.x, this.position.y);
   }
 
 

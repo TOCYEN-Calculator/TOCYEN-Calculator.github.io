@@ -44,12 +44,13 @@
       */
      this.resultPrompt = "Result:";
 
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
      /**
       * Input() class. Deals with getting floats from the user.
       * Reset() with a new prompt everytime a new argument is given.
       */
-     this.input = new Input("This Should Not Appear");
-     this.input.onReturn.AddListener(() => this.ProcessResult());
+     this.input = new ArgumentScene();
+     this.input.AddResultListener(() => this.ProcessResult());
      this.input.SetActive(false);
 
      Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
@@ -94,8 +95,6 @@
        else {
          this.DisplayResult();
        }
-
-       this.backButton.Render();
 
      }
      else {
