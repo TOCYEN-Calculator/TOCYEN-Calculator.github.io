@@ -3,8 +3,9 @@
  * arguments are given.
  */
 class ArgumentScene {
-  constructor(argumentsNeeded) {
-    // Align the input to the center.
+  constructor(argumentsNeeded, previousScene) {
+    // Align the input to the center
+    textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     this.input = new Input(createVector(0,0));
     this.input.SetActive(false);
@@ -14,12 +15,11 @@ class ArgumentScene {
     this.currentPromptID = 0;
     this.prompts = [];
     this.arguments = [];
-    this.previousScene = 0;
 
     textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
     this.back = new Button("Back", createVector(100,-100));
-    this.back.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
+    this.back.onClick.AddListener(() => SceneManager.ToScene(previousScene));
   }
 
   Render() {

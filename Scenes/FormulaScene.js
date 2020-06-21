@@ -3,7 +3,7 @@
  * variables.
  * @class
  */
- class FormulaUI {
+ class FormulaScene {
 
    /**
     * Construct a new FormulaUI; Should be made for every formula in existence.
@@ -20,8 +20,10 @@
       */
      this.formula = formula;
 
-     this.argumentScene = new ArgumentScene(this.formula.length);
+     this.argumentScene = new ArgumentScene(this.formula.length, 0);
      this.argumentScene.input.SetActive(true);
+
+     this.resultScene = new ResultScene(0);
 
      // Used for result.
      Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
@@ -45,7 +47,7 @@
          this.argumentScene.Render();
        }
        else {
-         print("Arguments collected!");
+         this.resultScene.Render();
        }
      }
      else {

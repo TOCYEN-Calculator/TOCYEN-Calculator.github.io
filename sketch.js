@@ -22,6 +22,7 @@ function setup() {
   SceneManager.AddScene(new SubjectScene());
   SceneManager.AddScene(new PhysicsScene());
   SceneManager.AddScene(new ArgumentScene());
+  SceneManager.AddScene(PhysicsFormulas.newtonSecondF);
 }
 
 function draw() {

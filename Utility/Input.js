@@ -12,6 +12,7 @@ class Input {
     this.active = false;
     this.text = "";
     this.position = Aligner.GetAbsolutePosition(position.x, position.y);
+    this.textSize = textSize();
 
     this.onReturn = new Event();
 
@@ -76,7 +77,7 @@ class Input {
    * is up to SetActive().
    */
   Render() {
-    textSize(50);
+    textSize(this.textSize);
     Aligner.SetReference(Aligner.REFERENCE.TOPLEFT);
     Text("> " + this.text + " <", this.position.x, this.position.y);
   }
