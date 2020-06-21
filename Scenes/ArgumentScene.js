@@ -1,49 +1,69 @@
-
+/**
+ * Given a number of arguments, ask the user to input a float until all
+ * arguments are given.
+ */
 class ArgumentScene {
-  constructor() {
+  constructor(argumentsNeeded) {
+    // Align the input to the center.
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    /**
-     * Input() class. Deals with getting floats from the user.
-     * Reset() with a new prompt everytime a new argument is given.
-     */
     this.input = new Input(createVector(0,0));
-    this.input.SetActive(true);
+    this.input.SetActive(false);
+    this.input.onReturn.AddListener(() => this.ToNextPrompt());
 
-    this.prompt = "Yessir";
+    this.argumentsNeeded = argumentsNeeded;
+    this.currentPromptID = 0;
+    this.prompts = [];
+    this.arguments = [];
     this.previousScene = 0;
 
+    textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
     this.back = new Button("Back", createVector(100,-100));
     this.back.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
   }
 
   Render() {
-    textSize(50);
-    Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Text(this.prompt, 0, 100);
+    if(this.HasEnoughArguments()) {
+      if(!this.AllArgumentsCollected()) {
+        textSize(50);
+        Aligner.SetReference(Aligner.REFERENCE.TOP);
+        Text(this.prompts[this.currentPromptID], 0, 100);
 
-    this.input.Render();
-    this.back.Render();
+        this.input.Render();
+        this.back.Render();
+      }
+      else {
+        print("ArgumentScene.js: Arguments have been collected. This should go to the next scene.");
+      }
+    }
+    else {
+      print("ArgumentScene.js: THERE IS NOT ENOUGH ARGUMENTS!");
+    }
   }
 
-  SetPrompt(prompt) {
-    this.prompt = prompt;
-  }
+  ToNextPrompt() {
+    // Save user input.
+    this.arguments.push(parseFloat(this.input.GetResult()));
+    print(parseFloat(this.input.GetResult()));
 
-  Reset() {
     this.input.Reset();
-    this.prompt = "YesNope";
+    this.input.SetActive(true);
+    this.currentPromptID++;
   }
 
-  GetResult() {
-    return this.input.GetResult();
+  AddPrompt(prompt) {
+    this.prompts.push(prompt);
   }
 
-  SetActive(active) {
-    this.input.SetActive(active);
+  HasEnoughArguments() {
+    return this.prompts.length == this.argumentsNeeded;
   }
 
-  AddResultListener(listener) {
-    this.input.onReturn.AddListener(listener);
+  AllArgumentsCollected() {
+    return this.currentPromptID > this.prompts.length - 1;
+  }
+
+  GetArguments() {
+    return arguments;
   }
 }

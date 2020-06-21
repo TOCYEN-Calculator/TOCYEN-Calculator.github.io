@@ -21,6 +21,7 @@ function setup() {
   SceneManager.AddScene(new MenuScene());
   SceneManager.AddScene(new SubjectScene());
   SceneManager.AddScene(new PhysicsScene());
+  SceneManager.AddScene(new ArgumentScene());
 }
 
 function draw() {
