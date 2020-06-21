@@ -15,14 +15,14 @@ function setup() {
   InputHandler.constructor();
 
   // Load formulas
+  FormulaTemplate.constructor();
   PhysicsFormulas.constructor();
 
   // Add scenes
-  SceneManager.AddScene(new MenuScene());
-  SceneManager.AddScene(new SubjectScene());
-  SceneManager.AddScene(new PhysicsScene());
-  SceneManager.AddScene(new ArgumentScene());
-  SceneManager.AddScene(PhysicsFormulas.newtonSecondF);
+  SceneManager.AddScene(new MenuScene(), "MenuScene");
+  SceneManager.AddScene(new SubjectScene(), "SubjectScene");
+  SceneManager.AddScene(new PhysicsScene(), "PhysicsScene");
+  SceneManager.AddScene(new FormulaScene(), "FormulaScene");
 }
 
 function draw() {

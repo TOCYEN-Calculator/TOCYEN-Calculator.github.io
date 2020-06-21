@@ -4,43 +4,33 @@
  * @class
  */
  class FormulaScene {
+   constructor() {
+     this.formula = "";
 
-   /**
-    * Construct a new FormulaUI; Should be made for every formula in existence.
-    *
-    * @param  {functions} formula A function with any number of
-    * integer parameters. Should return the result.
-    */
-   constructor(formula) {
-     /**
-      * The function representing the formula. The number of parameters
-      * are automatically counted, and throw an error until the correct amount of
-      * arguments are added with AddArgument(). This function will be called once
-      * all arguments are collected from the user.
-      */
-     this.formula = formula;
-
-     this.argumentScene = new ArgumentScene(this.formula.length, 0);
+     this.argumentScene = new ArgumentScene();
      this.argumentScene.input.SetActive(true);
 
-     this.resultScene = new ResultScene(0);
+     this.resultScene = new ResultScene();
+     this.resultScene.backButton.onClick.AddListener(() => this.argumentScene.Reset());
 
-     // Used for result.
+     // Back button
      Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
      textSize(50);
      this.backButton = new Button("Back", createVector(100,-100));
      this.backButton.onClick.AddListener(() => {this.back = true;});
 
-     this.back = false;
+     this.LoadFormula(); // Temporary
+     FormulaTemplate.onLoad.AddListener(() => this.LoadFormula());
    }
 
-   AddArgument(prompt) {
-     this.argumentScene.AddPrompt(prompt);
+   LoadFormula() {
+     var currentTemplate = FormulaTemplate.currentTemplate;
+     this.formula = currentTemplate.formula;
+     this.resultScene.SetResultPrompt(currentTemplate.resultPrompt);
+     this.argumentScene.SetPrompts(currentTemplate.prompts);
+     this.argumentScene.SetArgumentsNeeded(this.formula.length);
    }
 
-   /**
-    * Renders the FormulaUI.
-    */
    Render() {
      if(this.argumentScene.HasEnoughArguments()) {
        if(!this.argumentScene.AllArgumentsCollected()) {

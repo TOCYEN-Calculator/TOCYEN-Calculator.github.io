@@ -10,7 +10,8 @@ class PhysicsScene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(50);
     var newton = new Button("Newtons Second Law", createVector(0,0));
-    newton.onClick.AddListener(() => SceneManager.ToScene(4));
+    newton.onClick.AddListener(() => FormulaTemplate.LoadTemplate(PhysicsFormulas.newtonSecondF));
+    newton.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
     this.buttons.push(newton);
   }
 

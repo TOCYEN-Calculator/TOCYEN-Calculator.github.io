@@ -11,7 +11,7 @@ class SubjectScene {
     this.buttons = [];
 
     var physics = new Button("Physics", createVector(0,-30));
-    physics.onClick.AddListener(() => SceneManager.ToScene(2));
+    physics.onClick.AddListener(() => SceneManager.ToScene("PhysicsScene"));
 
     this.buttons.push(physics);
     this.buttons.push(new Button("Chem"));

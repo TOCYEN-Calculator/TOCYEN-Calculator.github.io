@@ -10,31 +10,27 @@ class SceneManager {
    */
   static constructor() {
     /**
-     * A dictionary of scenes. Uses sceneID as a key for each scene.
+     * A dictionary of scenes. Uses the name of a scene as its key.
      * New scenes should be added using AddScene().
      */
     this.scenes = {};
 
     /**
-     * SceneID of the current scene. Changing this with ToScene() changes what
+     * Name of the current scene. Changing this with ToScene() changes what
      * scene is rendered / updated.
      */
-    this.currentScene = 0;
-
-    /**
-     * An incremental integer that is used to identity scenes. Gets incremented by
-     * one each time AddScene() is called.
-     */
-    this.sceneID = 0;
+    this.currentScene = "MenuScene";
   }
 
   /**
    * Adds a scene to the dictionary. Should be done on startup.
    * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
+   * @param {string} sceneName - The name of the scene to be added.
    */
-  static AddScene(scene) {
+  static AddScene(scene, sceneName) {
+    // Only add scenes that are objects.
     if (typeof scene === 'object') {
-      this.scenes[this.sceneID++] = scene;
+      this.scenes[sceneName] = scene;
     }
     else {
       print("SceneManager.js: Can't add scene.")
@@ -43,11 +39,11 @@ class SceneManager {
 
   /**
    * Switches the current scene to another one.
-   * @param {number} sceneID - The ID of the scene. Increases incrementally for each AddScene().
+   * @param {string} sceneName - The name of the scene.
    */
-  static ToScene(sceneID) {
-    if(sceneID in this.scenes) {
-      this.currentScene = sceneID;
+  static ToScene(sceneName) {
+    if(sceneName in this.scenes) {
+      this.currentScene = sceneName;
     }
     else {
       print("SceneManager.js: Scene does not exist.");

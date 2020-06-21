@@ -2,10 +2,10 @@
  * Given a float, display the number to the user.
  */
 class ResultScene {
-  constructor(previousScene) {
+  constructor() {
     this.result = 0;
-    this.resultPrompt = "Hello";
-    this.previousScene = previousScene;
+    this.resultPrompt = "Placeholder";
+    this.previousScene = "SubjectScene";
 
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
     textSize(50);
