@@ -10,6 +10,7 @@
     *
     * @param  {functions} formula A function with any number of
     * integer parameters. Should return the result.
+    * @param  {number} previousScene SceneID of the previous scene.
     */
    constructor(formula) {
      /**
@@ -51,6 +52,13 @@
      this.input = new Input("This Should Not Appear");
      this.input.onReturn.AddListener(() => this.ProcessResult());
      this.input.SetActive(false);
+
+     Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
+     this.backButton = new Button("Back", createVector(100,-100));
+     this.backButton.onClick.AddListener(() => {this.back = true;});
+
+
+     this.back = false;
    }
 
    /**
@@ -86,6 +94,8 @@
        else {
          this.DisplayResult();
        }
+
+       this.backButton.Render();
 
      }
      else {

@@ -64,7 +64,7 @@ class Input {
       if(keyCode == ENTER) {
         this.onReturn.Call();
       }
-      else if ("0123456789.".includes(key)) {
+      else if ("0123456789.-e".includes(key)) {
         this.text += key;
       }
     }

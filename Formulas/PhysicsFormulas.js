@@ -1,3 +1,5 @@
+var smh = [];
+
 /**
  * A static class meant to provide a bunch of physics formulas.
  * @class

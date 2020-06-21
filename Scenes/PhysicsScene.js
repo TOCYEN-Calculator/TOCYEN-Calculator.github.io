@@ -31,6 +31,7 @@ class PhysicsScene {
     }
     else {
       PhysicsFormulas.newtonSecondF.Render();
+      this.inputOption = !PhysicsFormulas.newtonSecondF.back;
     }
   }
 
