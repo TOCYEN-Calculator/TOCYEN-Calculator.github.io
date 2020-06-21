@@ -44,6 +44,12 @@
      this.currentPromptID = 0;
 
      /**
+      * The prompt that will show when the calculation is finished.
+      * Can be set using SetResultPrompt().
+      */
+     this.resultPrompt = "Result:"
+
+     /**
       * Input() class. Deals with getting floats from the user.
       * Reset() with a new prompt everytime a new argument is given.
       */
@@ -85,6 +91,13 @@
    }
 
    /**
+    * Sets the prompt shown at the result.
+    */
+   SetResultPrompt(prompt) {
+     this.resultPrompt = prompt;
+   }
+
+   /**
     * Returns whether or not there are enough arguments to match the formula
     * function's.
     *
@@ -93,6 +106,18 @@
     */
    HasEnoughArguments() {
      return this.prompts.length == this.requiredArguments;
+   }
+
+
+   /**
+    * Displays the result.
+    */
+   DisplayResult() {
+     Aligner.SetReference(Aligner.REFERENCE.TOP);
+     Text(this.resultPrompt, 0, 100);
+
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     Text(str(this.formula(...this.arguments)), 0, 0);
    }
 
    /**
@@ -104,8 +129,7 @@
          this.input.Render();
        }
        else {
-         Aligner.SetReference(Aligner.REFERENCE.CENTER);
-         Text(str(this.formula(...this.arguments)), 0, -50);
+         this.DisplayResult();
        }
      }
      else {

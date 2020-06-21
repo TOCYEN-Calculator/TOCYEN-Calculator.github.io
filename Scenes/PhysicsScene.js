@@ -14,10 +14,6 @@ class PhysicsScene {
     this.buttons.push(newton);
 
     this.inputOption = false;
-
-    this.formulaUI = new FormulaUI((x,y) => {return x - y;});
-    this.formulaUI.AddArgument("Enter X:");
-    this.formulaUI.AddArgument("Enter Y:");
   }
 
   Render() {
@@ -34,7 +30,7 @@ class PhysicsScene {
 
     }
     else {
-      this.formulaUI.Render();
+      PhysicsFormulas.newtonSecondF.Render();
     }
   }
 

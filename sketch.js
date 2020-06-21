@@ -14,6 +14,9 @@ function setup() {
   Mouse.constructor();
   InputHandler.constructor();
 
+  // Load formulas
+  PhysicsFormulas.constructor();
+
   // Add scenes
   SceneManager.AddScene(new MenuScene());
   SceneManager.AddScene(new SubjectScene());
