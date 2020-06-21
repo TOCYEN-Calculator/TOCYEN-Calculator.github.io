@@ -54,6 +54,7 @@
      this.input.SetActive(false);
 
      Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
+     textSize(50);
      this.backButton = new Button("Back", createVector(100,-100));
      this.backButton.onClick.AddListener(() => {this.back = true;});
 
@@ -151,6 +152,7 @@
     * Displays the result.
     */
    DisplayResult() {
+     textSize(50);
      Aligner.SetReference(Aligner.REFERENCE.TOP);
      Text(this.resultPrompt, 0, 100);
 

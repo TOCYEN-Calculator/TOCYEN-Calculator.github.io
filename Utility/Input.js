@@ -86,6 +86,7 @@ class Input {
    * is up to SetActive().
    */
   Render() {
+    textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Text("> " + this.text + " <", 0, 0);
 
