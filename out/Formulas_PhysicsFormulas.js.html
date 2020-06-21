@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>Formulas/PhysicsFormulas.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,25 +34,33 @@
 
 <div id="main">
     
+    <h1 class="page-title">Formulas/PhysicsFormulas.js</h1>
+    
 
     <!--container.tmpl-->
 
 
 
 
-    
+    <!--source.tmpl-->
 
-
-
-
-
-
-
-
-
-    
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A static class meant to provide a bunch of physics formulas.
+ * @class
+ */
+class PhysicsFormulas {
+  static constructor() {
+    this.newtonSecondF = new FormulaUI((m,a) => {return m * a;});
+    this.newtonSecondF.AddArgument("Enter the mass (kg):");
+    this.newtonSecondF.AddArgument("Enter the acceleration (m/s^2):");
+    this.newtonSecondF.SetResultPrompt("The resulting force (N) is:");
+  }
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

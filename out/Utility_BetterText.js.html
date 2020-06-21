@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>Utility/BetterText.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,25 +34,54 @@
 
 <div id="main">
     
+    <h1 class="page-title">Utility/BetterText.js</h1>
+    
 
     <!--container.tmpl-->
 
 
 
 
-    
+    <!--source.tmpl-->
 
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * BetterText.js
+ *
+ * Provides helper functions that make text creation easier.
+*/
 
+/**
+ * Makes text with a relative position based on Aligner.js.
+ * @param {string} strText - The text shown on the button.
+ * @param {number} x - x relative position of the text.
+ * @param {number} y - y relative position of the text.
+ */
+function Text(strText, x, y) {
+  var absPosition = Aligner.GetAbsolutePosition(x, y);
+  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
 
+  text(strText, absPosition.x, absPosition.y);
+}
 
+/**
+ * Makes text below the last one based on Aligner.js
+ * @param {string} strText - The text shown on the button.
+ */
+function TextV(strText) {
+  var nextPosition = Aligner.GetNextPosition();
+  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
 
+  text(strText, nextPosition.x, nextPosition.y);
+}
 
-
-
-
-    
-
-
+function ResetFillColor() {
+  fill(255);
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

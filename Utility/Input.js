@@ -21,11 +21,11 @@ class Input {
 
   /**
    * Completely resets the input field. Used to prevent accidental memory leaks.
-   * This clears the current text, sets active to false. Listeners stay in tact.
-   * @param {string} prompt - The prompt of the input field.
+   * This clears the current text, sets active to false, and clears prompt.
+   * Listeners stay in tact.
    */
-  Reset(prompt) {
-    this.prompt = prompt;
+  Reset() {
+    this.prompt = "";
     this.active = false;
     this.text = "";
   }

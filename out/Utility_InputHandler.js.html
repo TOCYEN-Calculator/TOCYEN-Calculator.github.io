@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>Utility/InputHandler.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,25 +34,64 @@
 
 <div id="main">
     
+    <h1 class="page-title">Utility/InputHandler.js</h1>
+    
 
     <!--container.tmpl-->
 
 
 
 
-    
+    <!--source.tmpl-->
 
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A wrapper for p5.js keys. Contains events called on key presses.
+ * @class
+ */
+class InputHandler {
+  /**
+   * Construct the InputHandler. This function should be called during
+   * startup before any functions are used.
+   */
+  static constructor() {
+    /**
+     * Event called when a ASCII key is pressed.
+     */
+    this.keyEvent = new Event();
 
+    /**
+     * Event called when any key is pressed. Usually reserved for non-ASCII keys.
+     */
+    this.specialEvent = new Event();
+  }
 
+  /**
+   * Function called when a ASCII key is pressed.
+   */
+  static KeyTyped() {
+    this.keyEvent.Call();
+  }
 
+  /**
+   * Function called when a non-ASCII key is pressed.
+   */
+  static SpecialKey() {
+    this.specialEvent.Call();
+  }
+}
 
+function keyTyped() {
+  InputHandler.KeyTyped();
+}
 
-
-
-
-    
-
-
+function keyPressed() {
+  InputHandler.SpecialKey();
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>Utility/Mouse.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,25 +34,49 @@
 
 <div id="main">
     
+    <h1 class="page-title">Utility/Mouse.js</h1>
+    
 
     <!--container.tmpl-->
 
 
 
 
-    
+    <!--source.tmpl-->
 
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A wrapper for the p5.js mouse. Mainly used to determine when the mouse
+ * clicks.
+ * @class
+ */
+class Mouse {
+  /**
+   * Construct the Mouse. This function should be called during
+   * startup before any functions are used.
+   */
+  static constructor() {
+    this.clicked = false;
+    this.pressed = false;
+  }
 
-
-
-
-
-
-
-
-    
-
-
+  /**
+   * Updates the mouse values. Should be called before update code.
+   */
+  static Update() {
+    if(mouseIsPressed &amp;&amp; this.pressed) {
+      this.clicked = false;
+    }
+    if(mouseIsPressed &amp;&amp; !this.pressed) {
+      this.clicked = true;
+    }
+    this.pressed = mouseIsPressed;
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
