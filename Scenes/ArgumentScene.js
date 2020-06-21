@@ -21,6 +21,8 @@ class ArgumentScene {
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
     this.back = new Button("Back", createVector(100,-100));
     this.back.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
+
+    this.onFinished = new Event();
   }
 
   Render() {
@@ -54,12 +56,15 @@ class ArgumentScene {
   ToNextPrompt() {
     // Save user input.
     this.arguments.push(parseFloat(this.input.GetResult()));
-    print(parseFloat(this.input.GetResult()));
 
     // Reset input.
     this.input.Reset();
     this.input.SetActive(true);
     this.currentPromptID++;
+
+    if(this.AllArgumentsCollected()) {
+      this.onFinished.Call();
+    }
   }
 
   SetPrompts(prompts) {
@@ -80,6 +85,6 @@ class ArgumentScene {
   }
 
   GetArguments() {
-    return arguments;
+    return this.arguments.slice();
   }
 }
