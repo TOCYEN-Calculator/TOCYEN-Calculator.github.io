@@ -22,6 +22,13 @@ class Event {
   }
 
   /**
+   * Unsubscribes all listeners.
+   */
+  RemoveListeners() {
+    this.listeners.splice(0, this.listeners.length);
+  }
+
+  /**
    * Calls all listeners.
    */
   Call() {
