@@ -9,8 +9,7 @@ class PhysicsScene {
     textSize(50);
 
     this.buttons = [
-      CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0)),
-      CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+      CreateSceneButton("Mechanics", "Mechanics", createVector(0,0)),
       CreateBackButton("SubjectScene")
     ];
   }
@@ -19,7 +18,7 @@ class PhysicsScene {
     // Draws buttons / menu when not inputing a field.
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     textSize(100);
-    Text('Select a option:', 0, 100);
+    Text('Select a category:', 0, 100);
 
     for(var i = 0; i < this.buttons.length; i++) {
       this.buttons[i].Render();
