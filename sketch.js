@@ -25,8 +25,15 @@ function setup() {
   SceneManager.AddScene(new FormulaScene(), "FormulaScene");
 }
 
+let fps = 0;
+
 function draw() {
   background(0);
   Mouse.Update();
   SceneManager.Render();
+
+  textSize(20);
+  Aligner.SetReference(Aligner.REFERENCE.TOPRIGHT);
+  fps = lerp(fps, frameRate(), 0.05);
+  Text(str(floor(fps)), -100, 100);
 }

@@ -74,8 +74,8 @@ class Input {
    */
   AddKey() {
     if(this.active) {
-      // Check if ENTER was pressed
-      if(keyCode == ENTER) {
+      // Check if ENTER was pressed && text exists.
+      if(keyCode == ENTER && this.text.length > 0) {
         this.onReturn.Call();
       }
       else if (this.filter.includes(key)) {
