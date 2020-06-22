@@ -5,26 +5,14 @@
 */
 class PhysicsScene {
   constructor() {
-    this.buttons = [];
-
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(50);
 
-    this.CreateButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0));
-    this.CreateButton("m = F / a", PhysicsFormulas.newtonSecondM);
-  }
-
-  CreateButton(label, template, position) {
-    var button = null;
-    if(arguments.length == 2) {
-      button = new Button(label);
-    }
-    else {
-      button = new Button(label, position);
-    }
-    button.onClick.AddListener(() => FormulaTemplate.LoadTemplate(template));
-    button.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
-    this.buttons.push(button);
+    this.buttons = [
+      CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0)),
+      CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+      CreateBackButton("SubjectScene")
+    ];
   }
 
   Render() {

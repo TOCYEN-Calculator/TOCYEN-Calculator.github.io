@@ -32,9 +32,15 @@ class Button {
     this.position = createVector(0,0);
 
     if(arguments.length == 1) {
+      // No padding
       this.position = Aligner.GetNextPosition();
     }
-    else {
+    else if (typeof position == 'number') {
+      // Some padding
+      this.position = Aligner.GetNextPosition(position);
+    }
+    else if (typeof position == 'object') {
+      // Defined relative position
       this.position = Aligner.GetAbsolutePosition(position.x, position.y);
     }
 

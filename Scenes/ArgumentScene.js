@@ -12,17 +12,13 @@ class ArgumentScene {
     this.input = new Input(createVector(0,0), "0123456789.-e");
     this.input.onReturn.AddListener(() => this.ToNextPrompt());
 
-    this.previousScene = "SubjectScene";
     this.argumentsNeeded = 0;
     this.currentPromptID = 0;
     this.prompts = [];
     this.arguments = [];
 
-    // Create back button
-    textSize(50);
-    Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
-    this.back = new Button("Back", createVector(100,-100));
-    this.back.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
+    this.backButton = CreateBackButton("SubjectScene");
+    this.backButton.onClick.AddListener(() => this.Reset());
 
     this.onFinished = new Event();
   }
@@ -37,7 +33,7 @@ class ArgumentScene {
 
         // Get user input.
         this.input.Render();
-        this.back.Render();
+        this.backButton.Render();
       }
       else {
         print("ArgumentScene.js: Arguments have been collected. This should go to the next scene.");

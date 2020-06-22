@@ -5,13 +5,8 @@
 class ResultScene {
   constructor() {
     this.result = 0;
-    this.resultPrompt = "Placeholder";
-    this.previousScene = "SubjectScene";
-
-    Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
-    textSize(50);
-    this.backButton = new Button("Back", createVector(100, -100));
-    this.backButton.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
+    this.resultPrompt = "YouShouldNotSeeThis";
+    this.backButton = CreateBackButton("SubjectScene");
   }
 
   SetResultPrompt(prompt) {

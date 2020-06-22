@@ -8,14 +8,12 @@ class SubjectScene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(50);
 
-    this.buttons = [];
-
-    var physics = new Button("Physics", createVector(0,-30));
-    physics.onClick.AddListener(() => SceneManager.ToScene("PhysicsScene"));
-
-    this.buttons.push(physics);
-    this.buttons.push(new Button("Chem"));
-    this.buttons.push(new Button("Misc"));
+    this.buttons = [
+      CreateSceneButton("Physics", "PhysicsScene", createVector(0,-30)),
+      CreateSceneButton("Chemistry", "PhysicsScene"),
+      CreateSceneButton("Misc", "PhysicsScene"),
+      CreateBackButton("MenuScene")
+    ];
   }
 
   Render() {
