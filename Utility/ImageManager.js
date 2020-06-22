@@ -14,7 +14,7 @@ class ImageManager {
 
   static Render() {
     for(var key in this.images) {
-      image(this.images[key], 0, 0);
+      //image(this.images[key], 0, 0);
     }
   }
 }
