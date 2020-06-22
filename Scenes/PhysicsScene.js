@@ -9,10 +9,22 @@ class PhysicsScene {
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(50);
-    var newton = new Button("Newtons Second Law", createVector(0,0));
-    newton.onClick.AddListener(() => FormulaTemplate.LoadTemplate(PhysicsFormulas.newtonSecondF));
-    newton.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
-    this.buttons.push(newton);
+
+    this.CreateButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0));
+    this.CreateButton("m = F / a", PhysicsFormulas.newtonSecondM);
+  }
+
+  CreateButton(label, template, position) {
+    var button = null;
+    if(arguments.length == 2) {
+      button = new Button(label);
+    }
+    else {
+      button = new Button(label, position);
+    }
+    button.onClick.AddListener(() => FormulaTemplate.LoadTemplate(template));
+    button.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
+    this.buttons.push(button);
   }
 
   Render() {

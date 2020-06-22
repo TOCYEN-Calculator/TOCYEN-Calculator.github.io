@@ -99,6 +99,18 @@ class Aligner {
     return createVector(x + offset.x, y + offset.y);
   }
 
+  /**
+   * Converts an absolute position into a relative position based on the currentReference point.
+   * @param {number} x - x absolute position
+   * @param {number} y - y absolute position
+   * @return {Vector} Vector representing a relative position in the canvas.
+   */
+  static GetRelativePosition(x, y) {
+    // Converts an absolute position into a relative position
+    var offset = this.GetOffset();
+    return createVector(x - offset.x, y - offset.y);
+  }
+
 
   /**
    * Gets the offset of currentReference from the topleft of the screen.
