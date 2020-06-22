@@ -1,19 +1,44 @@
 /**
- * An input field comprised entirely of text. Used for obtaining an integer
- * from the user.
+ * An input field comprised entirely of text.
  * @class
  */
 class Input {
   /**
    * Constructs a new input field. Position and alignment will be saved.
    * @param {Vector} position - The relative position of the input field.
+   * @param {string} filter - Only allows characters in this string to be inputted.
    */
-  constructor(position) {
+  constructor(position, filter) {
+    /**
+     * A string of characaters that are allows to be inputted in the input field.
+     */
+    this.filter = filter;
+
+    /**
+     * Whether or not the input field should receive input events. (default: false)
+     */
     this.active = false;
+
+    /**
+     * The current text inside the input field.
+     */
     this.text = "";
+
+    /**
+     * The absolute position of the center of the input field represented
+     * as a Vector.
+     */
     this.position = Aligner.GetAbsolutePosition(position.x, position.y);
+
+    /**
+     * The text size of the input field during creation.
+     */
     this.textSize = textSize();
 
+
+    /**
+     * A event that is called whenever the input field catches an ENTER key press.
+     */
     this.onReturn = new Event();
 
     InputHandler.keyEvent.AddListener(() => this.AddKey());
@@ -21,9 +46,7 @@ class Input {
   }
 
   /**
-   * Completely resets the input field. Used to prevent accidental memory leaks.
-   * This clears the current text, sets active to false, and clears prompt.
-   * Listeners stay in tact.
+   * Resets the text of the input field as well as set active to false.
    */
   Reset() {
     this.active = false;
@@ -39,7 +62,7 @@ class Input {
   }
 
   /**
-   * Gets the converted result of the input.
+   * Gets the result of the input, as a float.
    * @return {float} The text of the input field, converted as a float.
    */
   GetResult() {
@@ -47,7 +70,7 @@ class Input {
   }
 
   /**
-   * A function that adds numbers to the input field when a input event is received.
+   * A function that adds characters to the input field when a input event is received.
    */
   AddKey() {
     if(this.active) {
@@ -55,7 +78,7 @@ class Input {
       if(keyCode == ENTER) {
         this.onReturn.Call();
       }
-      else if ("0123456789.-e".includes(key)) {
+      else if (this.filter.includes(key)) {
         this.text += key;
       }
     }
@@ -81,7 +104,4 @@ class Input {
     Aligner.SetReference(Aligner.REFERENCE.TOPLEFT);
     Text("> " + this.text + " <", this.position.x, this.position.y);
   }
-
-
-
 }

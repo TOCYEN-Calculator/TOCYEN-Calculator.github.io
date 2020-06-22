@@ -1,9 +1,8 @@
-/*
- * Menu.js
- *
+/**
  * Handles the menu scene.
+ *
+ * @class
 */
-
 class MenuScene {
   constructor() {
     textSize(50);

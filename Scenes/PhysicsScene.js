@@ -1,7 +1,7 @@
-/*
- * PhysicsScene.js
+/**
+ * Scene for choosing physics equations.
  *
- * Scene for physics stuff.
+ * @class
 */
 class PhysicsScene {
   constructor() {

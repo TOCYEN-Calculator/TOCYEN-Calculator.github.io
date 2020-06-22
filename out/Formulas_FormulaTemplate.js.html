@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Formulas/PhysicsFormulas.js - Documentation</title>
+    <title>Formulas/FormulaTemplate.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Formulas/PhysicsFormulas.js</h1>
+    <h1 class="page-title">Formulas/FormulaTemplate.js</h1>
     
 
     <!--container.tmpl-->
@@ -47,18 +47,53 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A static class meant to provide a bunch of physics formulas.
+ * Static class meant to provide and load a "template" for formula information.
  * @class
  */
-class PhysicsFormulas {
+class FormulaTemplate {
+  /**
+   * Constructor for FormulaTemplate. Should be called
+   * before any functions of it are used.
+   */
   static constructor() {
-    this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
-    this.newtonSecondF.formula = (x, y) => {return  x * y;};
-    this.newtonSecondF.prompts.push("Enter the mass (kg):");
-    this.newtonSecondF.prompts.push("Enter the acceleration (m/s^2):");
-    this.newtonSecondF.resultPrompt = "The resulting force (N) is:";
+    /**
+     * The current template used. Used for commnicating
+     * formula information with FormulaScene.
+     */
+    this.currentTemplate = this.CreateBlankTemplate();
+
+    /**
+     * An event called whenever a new formula template is loaded.
+     */
+    this.onLoad = new Event();
   }
-};
+
+  /**
+   * Returns a blank formula template.
+   *
+   * @return {FormulaTemplate}  A dictionary with the following members:
+   * resultPrompt (string), prompts (array), and formula (function).
+   */
+  static CreateBlankTemplate() {
+    return {resultPrompt: "", prompts: [], formula: () => {return 0;}};
+  }
+
+
+  /**
+   * Sets a formula template as the current template used.
+   * Calls onLoad().
+   *
+   * @param  {FormulaTemplate} template description
+   */
+  static LoadTemplate(template) {
+    // Shallow-copy arrays.
+    this.currentTemplate = this.CreateBlankTemplate();
+    this.currentTemplate.resultPrompt = template.resultPrompt;
+    this.currentTemplate.prompts = template.prompts.slice();
+    this.currentTemplate.formula = template.formula;
+    this.onLoad.Call();
+  }
+}
 </code></pre>
         </article>
     </section>

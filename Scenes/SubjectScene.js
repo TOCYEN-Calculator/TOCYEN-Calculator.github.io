@@ -1,7 +1,7 @@
-/*
- * TestCalculate.js
+/**
+ * Deals with the choosing of a subject.
  *
- * A test for calcualting stuff.
+ * @class
 */
 class SubjectScene {
   constructor() {

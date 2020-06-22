@@ -13,6 +13,11 @@ class Mouse {
      *  A boolean that is true for a single frame whenever the mouse clicks.
      */
     this.clicked = false;
+
+    /**
+     *  A boolean that is true whenever the left mouse button is held down.
+     * This is used to determine when the mouse has clicked.
+     */
     this.pressed = false;
   }
 

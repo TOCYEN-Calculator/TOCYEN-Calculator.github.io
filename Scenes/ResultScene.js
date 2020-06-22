@@ -1,5 +1,6 @@
 /**
- * Given a float, display the number to the user.
+ * Given a float, display it to the user.
+ * @class
  */
 class ResultScene {
   constructor() {

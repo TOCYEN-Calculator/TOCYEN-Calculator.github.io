@@ -1,13 +1,15 @@
 /**
  * Given a number of arguments, ask the user to input a float until all
  * arguments are given.
+ *
+ * @class
  */
 class ArgumentScene {
   constructor() {
     // Align the input to the center
     textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    this.input = new Input(createVector(0,0));
+    this.input = new Input(createVector(0,0), "0123456789.-e");
     this.input.onReturn.AddListener(() => this.ToNextPrompt());
 
     this.previousScene = "SubjectScene";

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Formulas/PhysicsFormulas.js - Documentation</title>
+    <title>Scenes/ResultScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Formulas/PhysicsFormulas.js</h1>
+    <h1 class="page-title">Scenes/ResultScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -47,18 +47,41 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A static class meant to provide a bunch of physics formulas.
+ * Given a float, display it to the user.
  * @class
  */
-class PhysicsFormulas {
-  static constructor() {
-    this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
-    this.newtonSecondF.formula = (x, y) => {return  x * y;};
-    this.newtonSecondF.prompts.push("Enter the mass (kg):");
-    this.newtonSecondF.prompts.push("Enter the acceleration (m/s^2):");
-    this.newtonSecondF.resultPrompt = "The resulting force (N) is:";
+class ResultScene {
+  constructor() {
+    this.result = 0;
+    this.resultPrompt = "Placeholder";
+    this.previousScene = "SubjectScene";
+
+    Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
+    textSize(50);
+    this.backButton = new Button("Back", createVector(100, -100));
+    this.backButton.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
   }
-};
+
+  SetResultPrompt(prompt) {
+    this.resultPrompt = prompt;
+  }
+
+  SetResult(result) {
+    this.result = result;
+  }
+
+  Render() {
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    textSize(50);
+    Text(this.resultPrompt, 0, 100);
+
+
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    textSize(50);
+    Text(str(this.result), 0, 0);
+    this.backButton.Render();
+  }
+}
 </code></pre>
         </article>
     </section>

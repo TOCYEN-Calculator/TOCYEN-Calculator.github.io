@@ -10,20 +10,20 @@ class SceneManager {
    */
   static constructor() {
     /**
-     * A dictionary of scenes. Uses the name of a scene as its key.
+     * A dictionary of scenes that uses the name of a scene as its key.
      * New scenes should be added using AddScene().
      */
     this.scenes = {};
 
     /**
-     * Name of the current scene. Changing this with ToScene() changes what
+     * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
      * scene is rendered / updated.
      */
     this.currentScene = "MenuScene";
   }
 
   /**
-   * Adds a scene to the dictionary. Should be done on startup.
+   * Adds a scene to the dictionary.
    * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
    * @param {string} sceneName - The name of the scene to be added.
    */

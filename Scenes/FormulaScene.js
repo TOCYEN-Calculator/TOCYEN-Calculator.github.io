@@ -1,5 +1,5 @@
 /**
- * A UI meant for solving formulas by asking the user for its required
+ * A scene meant for solving formulas by asking the user for its required
  * variables.
  * @class
  */

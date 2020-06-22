@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Formulas/PhysicsFormulas.js - Documentation</title>
+    <title>Scenes/ArgumentScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Formulas/PhysicsFormulas.js</h1>
+    <h1 class="page-title">Scenes/ArgumentScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -47,18 +47,97 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A static class meant to provide a bunch of physics formulas.
+ * Given a number of arguments, ask the user to input a float until all
+ * arguments are given.
+ *
  * @class
  */
-class PhysicsFormulas {
-  static constructor() {
-    this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
-    this.newtonSecondF.formula = (x, y) => {return  x * y;};
-    this.newtonSecondF.prompts.push("Enter the mass (kg):");
-    this.newtonSecondF.prompts.push("Enter the acceleration (m/s^2):");
-    this.newtonSecondF.resultPrompt = "The resulting force (N) is:";
+class ArgumentScene {
+  constructor() {
+    // Align the input to the center
+    textSize(50);
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    this.input = new Input(createVector(0,0), "0123456789.-e");
+    this.input.onReturn.AddListener(() => this.ToNextPrompt());
+
+    this.previousScene = "SubjectScene";
+    this.argumentsNeeded = 0;
+    this.currentPromptID = 0;
+    this.prompts = [];
+    this.arguments = [];
+
+    // Create back button
+    textSize(50);
+    Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
+    this.back = new Button("Back", createVector(100,-100));
+    this.back.onClick.AddListener(() => SceneManager.ToScene(this.previousScene));
+
+    this.onFinished = new Event();
   }
-};
+
+  Render() {
+    if(this.HasEnoughArguments()) {
+      if(!this.AllArgumentsCollected()) {
+        // Render current prompt
+        textSize(50);
+        Aligner.SetReference(Aligner.REFERENCE.TOP);
+        Text(this.prompts[this.currentPromptID], 0, 100);
+
+        // Get user input.
+        this.input.Render();
+        this.back.Render();
+      }
+      else {
+        print("ArgumentScene.js: Arguments have been collected. This should go to the next scene.");
+      }
+    }
+    else {
+      print("ArgumentScene.js: THERE IS NOT ENOUGH ARGUMENTS!");
+    }
+  }
+
+  Reset() {
+    this.input.Reset();
+    this.arguments = [];
+    this.prompts = [];
+    this.currentPromptID = 0;
+  }
+
+  ToNextPrompt() {
+    // Save user input.
+    this.arguments.push(parseFloat(this.input.GetResult()));
+
+    // Reset input.
+    this.input.Reset();
+    this.input.SetActive(true);
+    this.currentPromptID++;
+
+    if(this.AllArgumentsCollected()) {
+      this.onFinished.Call();
+    }
+  }
+
+  SetPrompts(prompts) {
+    this.prompts.splice(0, this.prompts.length);
+    this.prompts = prompts;
+  }
+
+  SetArgumentsNeeded(argumentsNeeded) {
+    this.argumentsNeeded = argumentsNeeded;
+  }
+
+  HasEnoughArguments() {
+    return this.prompts.length == this.argumentsNeeded;
+  }
+
+  AllArgumentsCollected() {
+    return this.currentPromptID > this.prompts.length - 1;
+  }
+
+  GetArguments() {
+    return this.arguments.slice();
+  }
+}
 </code></pre>
         </article>
     </section>

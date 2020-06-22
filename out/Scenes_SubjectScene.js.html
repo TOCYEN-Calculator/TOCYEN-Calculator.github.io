@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Formulas/PhysicsFormulas.js - Documentation</title>
+    <title>Scenes/SubjectScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Formulas/PhysicsFormulas.js</h1>
+    <h1 class="page-title">Scenes/SubjectScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -47,17 +47,35 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A static class meant to provide a bunch of physics formulas.
+ * Deals with the choosing of a subject.
+ *
  * @class
- */
-class PhysicsFormulas {
-  static constructor() {
-    this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
-    this.newtonSecondF.formula = (x, y) => {return  x * y;};
-    this.newtonSecondF.prompts.push("Enter the mass (kg):");
-    this.newtonSecondF.prompts.push("Enter the acceleration (m/s^2):");
-    this.newtonSecondF.resultPrompt = "The resulting force (N) is:";
+*/
+class SubjectScene {
+  constructor() {
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    textSize(50);
+
+    this.buttons = [];
+
+    var physics = new Button("Physics", createVector(0,-30));
+    physics.onClick.AddListener(() => SceneManager.ToScene("PhysicsScene"));
+
+    this.buttons.push(physics);
+    this.buttons.push(new Button("Chem"));
+    this.buttons.push(new Button("Misc"));
   }
+
+  Render() {
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    textSize(100);
+    Text('Select a subject:', 0, 100);
+
+    for(var i = 0; i &lt; this.buttons.length; i++) {
+      this.buttons[i].Render();
+    }
+  }
+
 };
 </code></pre>
         </article>
