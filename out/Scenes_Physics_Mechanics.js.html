@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Scenes/PhysicsScene.js - Documentation</title>
+    <title>Scenes/Physics/Mechanics.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Scenes/PhysicsScene.js</h1>
+    <h1 class="page-title">Scenes/Physics/Mechanics.js</h1>
     
 
     <!--container.tmpl-->
@@ -47,33 +47,33 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Scene for choosing physics equations.
+ * Scene responsible for showing the user physics-mechanics related formulas.
  *
  * @class
-*/
-class PhysicsScene {
-  constructor() {
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    textSize(50);
+ */
+ class Mechanics {
+   constructor() {
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     textSize(50);
 
-    this.buttons = [
-      CreateSceneButton("Mechanics", "Mechanics", createVector(0,0)),
-      CreateBackButton("SubjectScene")
-    ];
-  }
+     this.buttons = [
+       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0)),
+       CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+       CreateBackButton("PhysicsScene")
+     ];
+   }
 
-  Render() {
-    // Draws buttons / menu when not inputing a field.
-    Aligner.SetReference(Aligner.REFERENCE.TOP);
-    textSize(100);
-    Text('Select a category:', 0, 100);
+   Render() {
+     // Draws buttons / menu when not inputing a field.
+     Aligner.SetReference(Aligner.REFERENCE.TOP);
+     textSize(100);
+     Text('Select a formula:', 0, 100);
 
-    for(var i = 0; i &lt; this.buttons.length; i++) {
-      this.buttons[i].Render();
-    }
-  }
-
-};
+     for(var i = 0; i &lt; this.buttons.length; i++) {
+       this.buttons[i].Render();
+     }
+   }
+ }
 </code></pre>
         </article>
     </section>

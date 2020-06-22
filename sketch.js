@@ -22,11 +22,13 @@ function setup() {
   // Load formulas
   FormulaTemplate.constructor();
   PhysicsFormulas.constructor();
+  ChemistryFormulas.constructor();
 
   // Add scenes
   SceneManager.AddScene(new MenuScene(), "MenuScene");
   SceneManager.AddScene(new SubjectScene(), "SubjectScene");
   SceneManager.AddScene(new PhysicsScene(), "PhysicsScene");
+  SceneManager.AddScene(new ChemistryScene(), "ChemistryScene");
   SceneManager.AddScene(new FormulaScene(), "FormulaScene");
   SceneManager.AddScene(new Mechanics(), "Mechanics");
 }

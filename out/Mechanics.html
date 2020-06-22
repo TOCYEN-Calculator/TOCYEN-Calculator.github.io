@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Scenes/PhysicsScene.js - Documentation</title>
+    <title>Mechanics - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Scenes/PhysicsScene.js</h1>
+    <h1 class="page-title">Mechanics</h1>
     
 
     <!--container.tmpl-->
@@ -42,42 +42,176 @@
 
 
 
-    <!--source.tmpl-->
 
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Scene for choosing physics equations.
- *
- * @class
-*/
-class PhysicsScene {
-  constructor() {
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    textSize(50);
+<section>
 
-    this.buttons = [
-      CreateSceneButton("Mechanics", "Mechanics", createVector(0,0)),
-      CreateBackButton("SubjectScene")
-    ];
-  }
 
-  Render() {
-    // Draws buttons / menu when not inputing a field.
-    Aligner.SetReference(Aligner.REFERENCE.TOP);
-    textSize(100);
-    Text('Select a category:', 0, 100);
 
-    for(var i = 0; i &lt; this.buttons.length; i++) {
-      this.buttons[i].Render();
-    }
-  }
+<header data-tmpl="container.tmpl">
+    
+        <h2>
+        Mechanics
+        </h2>
+        
+            <div class="lead">Scene responsible for showing the user physics-mechanics related formulas.</div>
+        
+    
 
-};
-</code></pre>
-        </article>
-    </section>
+    
+</header>
 
+<article>
+    <div class="container-overview">
+    
+        <!--method.tmpl-->
+<div class="method-details">
+
+
+
+
+
+    
+    <h3 class="constructor">Constructor</h3>
+    
+
+    
+      <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="Scenes_Physics_Mechanics.js.html">Mechanics.js</a>:<a href="Scenes_Physics_Mechanics.js.html#line7">7</a>
+  </code>
+</div>
+
+    
+
+    <h4 class="name" id="Mechanics">
+      <a href="#params-Mechanics"><span class="type-signature"></span>new Mechanics</a><span class="signature">()</span><span class="type-signature"></span>
+
+    </h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="collapse_" id="methodCollapse-Mechanics">
+
+  
+
+  
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+<pre>
+{"comment":"","meta":{"range":[127,462],"filename":"Mechanics.js","lineno":7,"columnno":3,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Scenes\\Physics","code":{"id":"astnode100240014","name":"Mechanics","type":"MethodDefinition","paramnames":[]},"shortpath":"Scenes/Physics/Mechanics.js"},"name":"Mechanics","longname":"Mechanics","kind":"class","scope":"global","classdesc":"Scene responsible for showing the user physics-mechanics related formulas.","___id":"T000003R000010","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Mechanics","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":[]}
+</pre>
+-->
+</div>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
