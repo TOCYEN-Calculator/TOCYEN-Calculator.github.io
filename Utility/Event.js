@@ -30,11 +30,11 @@ class Event {
   }
 
   /**
-   * Calls all listeners.
+   * Calls all listeners. Arguments passed will be passed to listeners.
    */
   Call() {
     for(var index in this.listeners) {
-      this.listeners[index]();
+      this.listeners[index](...arguments);
     }
   }
 }

@@ -7,6 +7,7 @@ function setup() {
   ResetFillColor();
   textFont('MuseoModerno');
   textAlign(CENTER, CENTER);
+  imageMode(CENTER);
 
   // Initialize utilities
   Aligner.constructor();
