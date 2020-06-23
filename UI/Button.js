@@ -5,56 +5,28 @@
  */
 class Button {
   /**
-   * Create a button. Automatically saves the last textSize() and Align.currentReference. This
-   * also automatically calls Aligner.SetLastText().
+   * Create a button. Uses TextElement() to save the current textSize and alignment.
    * @param {string} strText - The text shown on the button.
-   * @param {Vector} position - Vector representing the relative position of the button. Can be omitted to automatically use Aligner.GetNextPosition().
+   * @param {Vector} position - Vector representing the relative position of the button.
+   * @param {None}   position - Automatically Aligner.GetNextPosition().
+   * @param {Number} position - The padding of Aligner.GetNextPosition().
    */
   constructor(strText, position) {
 
     /**
-     * The text shown on the button, stored here as a string. Cannot be changed.
+     * TextElement(strText, position) of the button.
      */
-    this.text = strText;
-
-    /**
-     * The text size saved during the creation of the button.
-     * This information will be used to display the button correctly,
-     * even if textSize() externally changes.
-     */
-    this.textSize = textSize();
-
-    /**
-     * The absolute position of the center of button. This can be set using
-     * the "position" parameter, or be left not to automatically use
-     * Aligner.GetNextPosition().
-     */
-    this.position = createVector(0,0);
-
-    if(arguments.length == 1) {
-      // No padding
-      this.position = Aligner.GetNextPosition();
-    }
-    else if (typeof position == 'number') {
-      // Some padding
-      this.position = Aligner.GetNextPosition(position);
-    }
-    else if (typeof position == 'object') {
-      // Defined relative position
-      this.position = Aligner.GetAbsolutePosition(position.x, position.y);
-    }
-
-    Aligner.SetLastText(strText, this.position.x, this.position.y);
+    this.textElement = new TextElement(strText, position);
 
     /**
      * The hitbox of the text. Contains a absolute x, y, width, and height values
      * to be used fot hit detection.
      */
     this.hitbox = {
-      x: this.position.x - (textWidth(strText) / 2),
-      y: this.position.y - (this.textSize / 2),
+      x: this.textElement.position.x - (textWidth(strText) / 2),
+      y: this.textElement.position.y - (this.textElement.textSize / 2),
       w: textWidth(strText),
-      h: this.textSize
+      h: this.textElement.textSize
     };
 
     /**
@@ -79,8 +51,6 @@ class Button {
    * a slight change in color.
    */
   Render() {
-    textSize(this.textSize);
-
     if(this.MouseIsHovering()) {
          fill(200);
 
@@ -90,7 +60,7 @@ class Button {
          }
     }
 
-    text(this.text, this.position.x, this.position.y);
+    this.textElement.Render();
     ResetFillColor();
   }
 

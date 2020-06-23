@@ -14,11 +14,17 @@ class Event {
   }
 
   /**
-   * Adds a listener. Will be activated once if called.
-   * @param {function} listener - Function that will be called.
+   * Adds a listener that will be activated once if called.
+   * @param {function} listener - Function that will be called. Will print out
+   * an error if it isn't a function.
    */
   AddListener(listener) {
-    this.listeners.push(listener);
+    if(typeof listener == 'function') {
+      this.listeners.push(listener);
+    }
+    else {
+      print(`Event.js: Could not add \"${listener}\" using AddListener`);
+    }
   }
 
   /**
@@ -32,8 +38,8 @@ class Event {
    * Calls all listeners.
    */
   Call() {
-    for(var i = 0; i < this.listeners.length; i++) {
-      this.listeners[i]();
+    for(var index in this.listeners) {
+      this.listeners[index]();
     }
   }
 }

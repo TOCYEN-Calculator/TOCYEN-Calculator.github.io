@@ -4,12 +4,14 @@
  */
  class TextElement {
    /**
-    * Constructs a new TextElement().
+    * Constructs a new TextElement(). This sets Aligner's SetLastText().
     *
     * @param {string} text - The text shown.
-    * @param {type} position - The relative position of the text's center on the canvas.
+    * @param {Vector} position - The relative position of the text's center on the canvas.
+    * @param {None}   position - Automatically Aligner.GetNextPosition().
+    * @param {Number} position - The padding of Aligner.GetNextPosition().
     */
-   constructor(text, position) {
+   constructor(text, position = 0) {
      /**
       * The raw text of the element. Wrapped with
       * the text() setter and getter.
@@ -26,7 +28,21 @@
       * The raw position of the element. Wrapped with
       * the position() setter and getter.
       */
-     this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
+     this.rawPosition = createVector(0,0);
+
+     // Set the position of the text based on the arguments given.
+     if(typeof position == 'number') {
+       this.rawPosition = Aligner.GetNextPosition(position);
+     }
+     else if(typeof position == 'object') {
+       this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
+     }
+     else {
+       print("TextElement.js: Position could not be set.")
+     }
+
+     // Talk to Aligner about it.
+     Aligner.SetLastText(text, this.rawPosition.x, this.rawPosition.y);
    }
 
    /**
