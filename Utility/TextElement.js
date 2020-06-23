@@ -7,9 +7,10 @@
     * Constructs a new TextElement(). This sets Aligner's SetLastText().
     *
     * @param {string} text - The text shown.
-    * @param {Vector} position - The relative position of the text's center on the canvas.
-    * @param {None}   position - Automatically Aligner.GetNextPosition().
-    * @param {Number} position - The padding of Aligner.GetNextPosition().
+    * @param {Vector | None | Number} position -
+    * VECTOR: The relative position of the text's center on the canvas.
+    * NONE: Automatically Aligner.GetNextPosition().
+    * Number: The padding of Aligner.GetNextPosition().
     */
    constructor(text, position = 0) {
      /**

@@ -1,30 +1,26 @@
 /**
  * Handles the menu scene.
- *
- * @class
 */
-class MenuScene {
+class MenuScene extends Scene {
   constructor() {
+    super();
+
     textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    this.elements = [
+      CreateSceneButton("Calculate", "SubjectScene", createVector(0,0))
+    ];
 
-    this.calculate = new Button("Calculate", createVector(0, 0));
-    this.calculate.onClick.AddListener(() => SceneManager.ToScene("SubjectScene"));
-  }
-
-  Render() {
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     textSize(100);
-    Text('TOCYEN', 0, 100);
+    this.elements.push(new TextElement("TOCYEN", createVector(0, 100)));
 
     textSize(30);
-    TextV('The Only Calculator You\'ll Ever Need!');
+    this.elements.push(new TextElement("The Only Calculator You\'ll Ever Need!"));
 
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMRIGHT);
     textSize(30);
-    Text('By Diego C', -100, -50);
-
-    this.calculate.Render();
+    this.elements.push(new TextElement("By Diego C", createVector(-100, -50)));
   }
 
 };
