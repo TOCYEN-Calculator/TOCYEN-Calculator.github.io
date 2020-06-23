@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ArgumentScene - Documentation</title>
+    <title>UI/SceneManager.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ArgumentScene</h1>
+    <h1 class="page-title">UI/SceneManager.js</h1>
     
 
     <!--container.tmpl-->
@@ -42,176 +42,76 @@
 
 
 
+    <!--source.tmpl-->
+
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A manager of scenes. Updates, renders, and changes scenes.
+ * @class
+ */
+
+class SceneManager {
+  /**
+   * Construct the SceneManager. This function should be called during
+   * startup before any functions are used.
+   */
+  static constructor() {
+    /**
+     * A dictionary of scenes that uses the name of a scene as its key.
+     * New scenes should be added using AddScene().
+     */
+    this.scenes = {};
+
+    /**
+     * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
+     * scene is rendered / updated.
+     */
+    this.currentScene = "MenuScene";
+  }
+
+  /**
+   * Adds a scene to the dictionary. Scene's key is equal to its class name /
+   * constructor.name .
+   * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
+   */
+  static AddScene(scene) {
+    // Only add scenes that are objects.
+    if (typeof scene === 'object') {
+      this.scenes[scene.constructor.name] = scene;
+    }
+    else {
+      print(`SceneManager.js: Could not add \"${str(scene)}\" to the dictionary. Please make \
+sure that the parameter is a object with a Render() method with no constructor parameters.`)
+    }
+  }
+
+  /**
+   * Switches the current scene to another one.
+   * @param {string} sceneName - The name of the scene.
+   */
+  static ToScene(sceneName) {
+    // See if the name of scene exists as a key.
+    if(sceneName in this.scenes) {
+      this.currentScene = sceneName;
+    }
+    else {
+      print(`SceneManager.js: Scene name \"${sceneName}\" does not exist.`);
+    }
+  }
+
+  /**
+   * Renders the current scene.
+   */
+  static Render() {
+    this.scenes[this.currentScene].Render();
+  }
+
+};
+</code></pre>
+        </article>
+    </section>
 
-<section>
-
-
-
-<header data-tmpl="container.tmpl">
-    
-        <h2>
-        ArgumentScene
-        </h2>
-        
-            <div class="lead">Given a number of arguments, ask the user to input a float until allarguments are given.</div>
-        
-    
-
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        <!--method.tmpl-->
-<div class="method-details">
-
-
-
-
-
-    
-    <h3 class="constructor">Constructor</h3>
-    
-
-    
-      <!--source-link.tmpl-->
-
-
-<div class="pull-right source-link-container">
-  <code class="source-link" data-tmpl="method-tmpl(1)">
-    <i class="fa fa-file-o"></i>
-    <a href="Scenes_ArgumentScene.js.html">ArgumentScene.js</a>:<a href="Scenes_ArgumentScene.js.html#line8">8</a>
-  </code>
-</div>
-
-    
-
-    <h4 class="name" id="ArgumentScene">
-      <a href="#params-ArgumentScene"><span class="type-signature"></span>new ArgumentScene</a><span class="signature">()</span><span class="type-signature"></span>
-
-    </h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="collapse_" id="methodCollapse-ArgumentScene">
-
-  
-
-  
-
-<!-- details.tmpl -->
-
-
-
-
-
-
-
-
-<dl class="dl-horizontal">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-<!--
-<pre>
-{"comment":"","meta":{"range":[148,681],"filename":"ArgumentScene.js","lineno":8,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Scenes","code":{"id":"astnode100235627","name":"ArgumentScene","type":"MethodDefinition","paramnames":[]},"shortpath":"Scenes/ArgumentScene.js"},"name":"ArgumentScene","longname":"ArgumentScene","kind":"class","scope":"global","classdesc":"Given a number of arguments, ask the user to input a float until all\rarguments are given.","___id":"T000003R000003","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"ArgumentScene","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":[]}
-</pre>
--->
-</div>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
