@@ -1,32 +1,29 @@
 
 /**
- * A button comprised entirely of text.
+ * A button comprised entirely of text. Derives from TextElement.
  * @class
  */
-class ButtonElement {
+class ButtonElement extends TextElement {
   /**
-   * Create a button element. Uses TextElement() to save the current textSize and alignment.
-   * @param {string} strText - The text shown on the button.
-   * @param {Vector} position - Vector representing the relative position of the button.
-   * @param {None}   position - Automatically Aligner.GetNextPosition().
-   * @param {Number} position - The padding of Aligner.GetNextPosition().
+   * Create a button element.
+   * @param {string} text - The text shown.
+   * @param {Vector | None | Number} position -
+   * VECTOR: The relative position of the element's center on the canvas.
+   * NONE: Automatically Aligner.GetNextPosition().
+   * Number: The padding of Aligner.GetNextPosition().
    */
   constructor(strText, position) {
-
-    /**
-     * TextElement(strText, position) of the button.
-     */
-    this.textElement = new TextElement(strText, position);
+    super(strText, position);
 
     /**
      * The hitbox of the text. Contains a absolute x, y, width, and height values
      * to be used fot hit detection.
      */
     this.hitbox = {
-      x: this.textElement.position.x - (textWidth(strText) / 2),
-      y: this.textElement.position.y - (this.textElement.textSize / 2),
+      x: this.position.x - (textWidth(strText) / 2),
+      y: this.position.y - (this.textSize / 2),
       w: textWidth(strText),
-      h: this.textElement.textSize
+      h: this.textSize
     };
 
     /**
@@ -60,7 +57,7 @@ class ButtonElement {
          }
     }
 
-    this.textElement.Render();
+    this.RenderText();
     ResetFillColor();
   }
 

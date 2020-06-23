@@ -32,7 +32,6 @@ class ImageElement {
     if(this.originalDimensions) {
       this.width = this.image.width;
       this.height = this.image.height;
-      this.UpdateCenterPosition();
     }
   }
 

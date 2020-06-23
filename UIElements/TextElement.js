@@ -118,12 +118,18 @@
      }
    }
 
+   /**
+    * Renders the text element in its intended format and position.
+    */
+   RenderText() {
+     textSize(this.textSize);
+     text(this.text, this.position.x, this.position.y);
+   }
 
    /**
     * Renders the text element in its intended format and position.
     */
    Render() {
-     textSize(this.textSize);
-     text(this.text, this.position.x, this.position.y);
+     this.RenderText();
    }
  }

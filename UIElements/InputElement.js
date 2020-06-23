@@ -1,14 +1,18 @@
 /**
- * An input field comprised entirely of text.
+ * An input field comprised entirely of text. Derives from TextElement.
  * @class
  */
-class InputElement {
+class InputElement extends TextElement{
   /**
    * Constructs a new input field. Position and alignment will be saved.
-   * @param {Vector} position - The relative position of the input field.
+   * @param {Vector | None | Number} position -
+   * VECTOR: The relative position of the element's center on the canvas.
+   * NONE: Automatically Aligner.GetNextPosition().
+   * Number: The padding of Aligner.GetNextPosition().
    * @param {string} filter - Only allows characters in this string to be inputted.
    */
   constructor(position, filter) {
+    super("", position);
     /**
      * A string of characters that are allowed to be inputted.
      */
@@ -18,11 +22,6 @@ class InputElement {
      * Whether or not the input field should receive input events. (default: false)
      */
     this.active = false;
-
-    /**
-     * TextElement("", position) class.
-     */
-    this.textElement = new TextElement("", position);
 
     /**
      * A event that is called whenever the input field catches an ENTER key press.
@@ -38,7 +37,7 @@ class InputElement {
    */
   Reset() {
     this.active = false;
-    this.textElement.text = "";
+    this.text = "";
   }
 
   /**
@@ -54,7 +53,7 @@ class InputElement {
    * @return {float} The text of the input field, converted as a float.
    */
   GetResult() {
-    return parseFloat(this.textElement.text);
+    return parseFloat(this.text);
   }
 
   /**
@@ -63,11 +62,11 @@ class InputElement {
   AddKey() {
     if(this.active) {
       // Check if ENTER was pressed && text exists.
-      if(keyCode == ENTER && this.textElement.text.length > 0) {
+      if(keyCode == ENTER && this.text.length > 0) {
         this.onReturn.Call();
       }
       else if (this.filter.includes(key)) {
-        this.textElement.text += key;
+        this.text += key;
       }
     }
   }
@@ -78,15 +77,8 @@ class InputElement {
   DeleteKey() {
     if(this.active) {
       if(keyCode == BACKSPACE) {
-        this.textElement.text = this.textElement.text.substring(0, this.textElement.text.length - 1);
+        this.text = this.text.substring(0, this.text.length - 1);
       }
     }
-  }
-
-  /**
-   * Renders the input field's text.
-   */
-  Render() {
-    this.textElement.Render();
   }
 }
