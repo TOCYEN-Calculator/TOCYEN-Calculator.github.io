@@ -1,36 +1,27 @@
 /**
- * A wrapper for the p5.js mouse. Mainly used to determine when the mouse
- * clicks.
+ * A static class with high-level functions and variables about the mouse.
  * @class
  */
 class Mouse {
   /**
-   * Construct the Mouse. This function should be called during
-   * startup before any functions are used.
+   * Should be called on setup() before any functions or variables
+   * are accessed.
    */
   static constructor() {
     /**
-     *  A boolean that is true for a single frame whenever the mouse clicks.
+     *  A boolean used to signal when the mouse has been clicked. Will
+     * be true for one frame.
      */
     this.clicked = false;
 
-    /**
-     *  A boolean that is true whenever the left mouse button is held down.
-     * This is used to determine when the mouse has clicked.
-     */
+    // Interal variable used to determine when the mouse is pressed.
     this.pressed = false;
   }
 
-  /**
-   * Updates the mouse values. Should be called before update code.
-   */
   static Update() {
-    if(mouseIsPressed && this.pressed) {
-      this.clicked = false;
-    }
-    if(mouseIsPressed && !this.pressed) {
-      this.clicked = true;
-    }
+    // Determine when the mouse has been clicked.
+    // this.clicked should be true for only 1 frame.
+    this.clicked = mouseIsPressed && !this.pressed;
     this.pressed = mouseIsPressed;
   }
 }

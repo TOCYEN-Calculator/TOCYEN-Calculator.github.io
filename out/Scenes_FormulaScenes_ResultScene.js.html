@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Scenes/FormulaScenes/ResultScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Scenes/FormulaScenes/ResultScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,38 +46,36 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
- *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+            <pre class="prettyprint source linenums"><code>/**
+ * Given a float, display it to the user.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+class ResultScene {
+  constructor() {
+    this.result = 0;
+    this.resultPrompt = "YouShouldNotSeeThis";
+    this.backButton = CreateBackButton("SubjectScene");
+  }
 
-  text(strText, absPosition.x, absPosition.y);
-}
+  SetResultPrompt(prompt) {
+    this.resultPrompt = prompt;
+  }
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+  SetResult(result) {
+    this.result = result;
+  }
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
+  Render() {
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    textSize(50);
+    Text(this.resultPrompt, 0, 100);
 
-function ResetFillColor() {
-  fill(255);
+
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    textSize(50);
+    Text(str(this.result), 0, 0);
+    this.backButton.Render();
+  }
 }
 </code></pre>
         </article>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Scenes/FormulaScenes/ArgumentScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Scenes/FormulaScenes/ArgumentScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,38 +46,93 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
+            <pre class="prettyprint source linenums"><code>/**
+ * Given a number of arguments, ask the user to input a float until all
+ * arguments are given.
  *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+class ArgumentScene {
+  constructor() {
+    // Align the input to the center
+    textSize(50);
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    this.input = new InputElement(createVector(0,0), "0123456789.-e");
+    this.input.onReturn.AddListener(() => this.ToNextPrompt());
 
-  text(strText, absPosition.x, absPosition.y);
-}
+    this.argumentsNeeded = 0;
+    this.currentPromptID = 0;
+    this.prompts = [];
+    this.arguments = [];
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+    this.backButton = CreateBackButton("SubjectScene");
+    this.backButton.onClick.AddListener(() => this.Reset());
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
+    this.onFinished = new Event();
+  }
 
-function ResetFillColor() {
-  fill(255);
+  Render() {
+    if(this.HasEnoughArguments()) {
+      if(!this.AllArgumentsCollected()) {
+        // Render current prompt
+        textSize(50);
+        Aligner.SetReference(Aligner.REFERENCE.TOP);
+        Text(this.prompts[this.currentPromptID], 0, 100);
+
+        // Get user input.
+        this.input.Render();
+        this.backButton.Render();
+      }
+      else {
+        print("ArgumentScene.js: Arguments have been collected. This should go to the next scene.");
+      }
+    }
+    else {
+      print("ArgumentScene.js: THERE IS NOT ENOUGH ARGUMENTS!");
+    }
+  }
+
+  Reset() {
+    this.input.Reset();
+    this.arguments = [];
+    this.prompts = [];
+    this.currentPromptID = 0;
+  }
+
+  ToNextPrompt() {
+    // Save user input.
+    this.arguments.push(parseFloat(this.input.GetResult()));
+
+    // Reset input.
+    this.input.Reset();
+    this.input.SetActive(true);
+    this.currentPromptID++;
+
+    if(this.AllArgumentsCollected()) {
+      this.onFinished.Call();
+    }
+  }
+
+  SetPrompts(prompts) {
+    this.prompts.splice(0, this.prompts.length);
+    this.prompts = prompts;
+  }
+
+  SetArgumentsNeeded(argumentsNeeded) {
+    this.argumentsNeeded = argumentsNeeded;
+  }
+
+  HasEnoughArguments() {
+    return this.prompts.length == this.argumentsNeeded;
+  }
+
+  AllArgumentsCollected() {
+    return this.currentPromptID > this.prompts.length - 1;
+  }
+
+  GetArguments() {
+    return this.arguments.slice();
+  }
 }
 </code></pre>
         </article>

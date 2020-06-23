@@ -4,8 +4,7 @@
  */
 class Aligner {
   /**
-   * Construct the Aligner. This function should be called during
-   * startup before any functions are used.
+   * Should be called in setup() before any members or functions are accessed.
    */
   static constructor() {
     /**

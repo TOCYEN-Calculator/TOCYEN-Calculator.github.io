@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>UIElements/ButtonElement.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">UIElements/ButtonElement.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,38 +46,73 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
- *
- * Provides helper functions that make text creation easier.
-*/
-
+            <pre class="prettyprint source linenums"><code>
 /**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+ * A button comprised entirely of text.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+class ButtonElement {
+  /**
+   * Create a button element. Uses TextElement() to save the current textSize and alignment.
+   * @param {string} strText - The text shown on the button.
+   * @param {Vector} position - Vector representing the relative position of the button.
+   * @param {None}   position - Automatically Aligner.GetNextPosition().
+   * @param {Number} position - The padding of Aligner.GetNextPosition().
+   */
+  constructor(strText, position) {
 
-  text(strText, absPosition.x, absPosition.y);
-}
+    /**
+     * TextElement(strText, position) of the button.
+     */
+    this.textElement = new TextElement(strText, position);
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+    /**
+     * The hitbox of the text. Contains a absolute x, y, width, and height values
+     * to be used fot hit detection.
+     */
+    this.hitbox = {
+      x: this.textElement.position.x - (textWidth(strText) / 2),
+      y: this.textElement.position.y - (this.textElement.textSize / 2),
+      w: textWidth(strText),
+      h: this.textElement.textSize
+    };
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
+    /**
+     * An event called once if the button is pressed.
+     */
+    this.onClick = new Event();
+  }
 
-function ResetFillColor() {
-  fill(255);
+
+  /**
+   * Returns a bool representing if the mouse is hovering on the button's hitbox.
+   * @return {bool} True if mouse if hovering over the button.
+   */
+  MouseIsHovering() {
+    return (mouseX >= this.hitbox.x &amp;&amp; mouseX &lt;= this.hitbox.x + this.hitbox.w &amp;&amp;
+       mouseY >= this.hitbox.y &amp;&amp; mouseY &lt;= this.hitbox.y + this.hitbox.h);
+  }
+
+
+  /**
+   * Renders the text of the button, and updates it. Hovering over the button causes
+   * a slight change in color.
+   */
+  Render() {
+    if(this.MouseIsHovering()) {
+         fill(200);
+
+         if(Mouse.clicked) {
+           fill(100);
+           this.onClick.Call();
+         }
+    }
+
+    this.textElement.Render();
+    ResetFillColor();
+  }
+
+
 }
 </code></pre>
         </article>

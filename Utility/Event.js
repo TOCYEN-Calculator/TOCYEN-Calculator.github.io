@@ -1,22 +1,17 @@
 /**
- * A event with a listener / subcriber system.
+ * Provides a listener / caller system.
  * @class
  */
 class Event {
-  /**
-   * Makes a new Event.
-   */
   constructor() {
-    /**
-     * An array of listeners. Listeners should be delegates / lambda functions / functions.
-     */
+    // An array of listeners. Listeners should be functions.
     this.listeners = [];
   }
 
   /**
-   * Adds a listener that will be activated once if called.
-   * @param {function} listener - Function that will be called. Will print out
-   * an error if it isn't a function.
+   * Adds a listener that will be activated if called.
+   * @param {function} listener - A function. Any other type will
+   * rise an error.
    */
   AddListener(listener) {
     if(typeof listener == 'function') {
@@ -28,7 +23,7 @@ class Event {
   }
 
   /**
-   * Unsubscribes all listeners.
+   * Removes all listeners, no fuss.
    */
   RemoveListeners() {
     this.listeners.splice(0, this.listeners.length);

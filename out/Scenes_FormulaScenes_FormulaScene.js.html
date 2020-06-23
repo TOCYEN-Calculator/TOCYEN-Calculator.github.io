@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Scenes/FormulaScenes/FormulaScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Scenes/FormulaScenes/FormulaScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,39 +46,60 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
- *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+            <pre class="prettyprint source linenums"><code>/**
+ * A scene meant for solving formulas by asking the user for its required
+ * variables.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+ class FormulaScene {
+   constructor() {
+     this.argumentScene = new ArgumentScene();
+     this.resultScene = new ResultScene();
 
-  text(strText, absPosition.x, absPosition.y);
-}
+     // Reset is needed to clear out list of prompts.
+     this.resultScene.backButton.onClick.AddListener(() => this.argumentScene.Reset());
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+     // Listen to new FormulaTemplate loads.
+     FormulaTemplate.onLoad.AddListener(() => this.LoadFormula());
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
+     // Listen to when arguments are collected.
+     this.argumentScene.onFinished.AddListener(() => this.CalculateResult());
+   }
 
-function ResetFillColor() {
-  fill(255);
-}
+   CalculateResult() {
+     var args = this.argumentScene.GetArguments();
+
+     // Unpack Arguments
+     var result = FormulaTemplate.currentTemplate.formula(...args);
+
+     this.resultScene.SetResult(result);
+   }
+
+   LoadFormula() {
+     var currentTemplate = FormulaTemplate.currentTemplate;
+
+     this.resultScene.SetResultPrompt(currentTemplate.resultPrompt);
+     this.argumentScene.SetArgumentsNeeded(currentTemplate.formula.length);
+     this.argumentScene.SetPrompts(currentTemplate.prompts);
+   }
+
+   Render() {
+     if(this.argumentScene.HasEnoughArguments()) {
+       if(!this.argumentScene.AllArgumentsCollected()) {
+         this.argumentScene.input.SetActive(true);
+         this.argumentScene.Render();
+       }
+       else {
+         this.argumentScene.input.SetActive(false);
+         this.resultScene.Render();
+       }
+     }
+     else {
+       print("FormulaUI.js: THERE\'S NOT ENOUGH ARGUMENTS!");
+     }
+   }
+
+ }
 </code></pre>
         </article>
     </section>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Utility/Event.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Utility/Event.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,38 +46,45 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
- *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+            <pre class="prettyprint source linenums"><code>/**
+ * Provides a listener / caller system.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+class Event {
+  constructor() {
+    // An array of listeners. Listeners should be functions.
+    this.listeners = [];
+  }
 
-  text(strText, absPosition.x, absPosition.y);
-}
+  /**
+   * Adds a listener that will be activated if called.
+   * @param {function} listener - A function. Any other type will
+   * rise an error.
+   */
+  AddListener(listener) {
+    if(typeof listener == 'function') {
+      this.listeners.push(listener);
+    }
+    else {
+      print(`Event.js: Could not add \"${listener}\" using AddListener`);
+    }
+  }
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+  /**
+   * Removes all listeners, no fuss.
+   */
+  RemoveListeners() {
+    this.listeners.splice(0, this.listeners.length);
+  }
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
-
-function ResetFillColor() {
-  fill(255);
+  /**
+   * Calls all listeners.
+   */
+  Call() {
+    for(var index in this.listeners) {
+      this.listeners[index]();
+    }
+  }
 }
 </code></pre>
         </article>

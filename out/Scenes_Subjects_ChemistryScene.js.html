@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Scenes/Subjects/ChemistryScene.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Scenes/Subjects/ChemistryScene.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,39 +46,27 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
+            <pre class="prettyprint source linenums"><code>/**
+ * Scene for choosing physics equations.
  *
- * Provides helper functions that make text creation easier.
+ * @class
 */
+class ChemistryScene extends Scene {
+  constructor() {
+    super();
 
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
- */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    textSize(50);
+    this.elements = [
+      CreateFormulaButton("ElectronConfiguration", ChemistryFormulas.electronConfiguration, createVector(0,0)),
+      CreateBackButton("SubjectScene")
+    ];
 
-  text(strText, absPosition.x, absPosition.y);
-}
-
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
-
-  text(strText, nextPosition.x, nextPosition.y);
-}
-
-function ResetFillColor() {
-  fill(255);
-}
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    textSize(100);
+    this.elements.push(new TextElement('Select a category:', createVector(0, 100)));
+  }
+};
 </code></pre>
         </article>
     </section>

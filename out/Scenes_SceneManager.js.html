@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Scenes/SceneManager.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Scenes/SceneManager.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,39 +46,68 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
- *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+            <pre class="prettyprint source linenums"><code>/**
+ * A manager of scenes. Updates, renders, and changes scenes.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
 
-  text(strText, absPosition.x, absPosition.y);
-}
+class SceneManager {
+  /**
+   * Construct the SceneManager. This function should be called during
+   * startup before any functions are used.
+   */
+  static constructor() {
+    /**
+     * A dictionary of scenes that uses the name of a scene as its key.
+     * New scenes should be added using AddScene().
+     */
+    this.scenes = {};
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+    /**
+     * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
+     * scene is rendered / updated.
+     */
+    this.currentScene = "MenuScene";
+  }
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
+  /**
+   * Adds a scene to the dictionary. Scene's key is equal to its class name /
+   * constructor.name .
+   * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
+   */
+  static AddScene(scene) {
+    // Only add scenes that are objects.
+    if (typeof scene === 'object') {
+      this.scenes[scene.constructor.name] = scene;
+    }
+    else {
+      print(`SceneManager.js: Could not add \"${str(scene)}\" to the dictionary. Please make \
+sure that the parameter is a object with a Render() method with no constructor parameters.`)
+    }
+  }
 
-function ResetFillColor() {
-  fill(255);
-}
+  /**
+   * Switches the current scene to another one.
+   * @param {string} sceneName - The name of the scene.
+   */
+  static ToScene(sceneName) {
+    // See if the name of scene exists as a key.
+    if(sceneName in this.scenes) {
+      this.currentScene = sceneName;
+    }
+    else {
+      print(`SceneManager.js: Scene name \"${sceneName}\" does not exist.`);
+    }
+  }
+
+  /**
+   * Renders the current scene.
+   */
+  static Render() {
+    this.scenes[this.currentScene].Render();
+  }
+
+};
 </code></pre>
         </article>
     </section>

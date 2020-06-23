@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>UIElements/InputElement.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">UIElements/InputElement.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,38 +46,97 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
- *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+            <pre class="prettyprint source linenums"><code>/**
+ * An input field comprised entirely of text.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+class InputElement {
+  /**
+   * Constructs a new input field. Position and alignment will be saved.
+   * @param {Vector} position - The relative position of the input field.
+   * @param {string} filter - Only allows characters in this string to be inputted.
+   */
+  constructor(position, filter) {
+    /**
+     * A string of characters that are allowed to be inputted.
+     */
+    this.filter = filter;
 
-  text(strText, absPosition.x, absPosition.y);
-}
+    /**
+     * Whether or not the input field should receive input events. (default: false)
+     */
+    this.active = false;
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
+    /**
+     * TextElement("", position) class.
+     */
+    this.textElement = new TextElement("", position);
 
-  text(strText, nextPosition.x, nextPosition.y);
-}
+    /**
+     * A event that is called whenever the input field catches an ENTER key press.
+     */
+    this.onReturn = new Event();
 
-function ResetFillColor() {
-  fill(255);
+    InputHandler.keyEvent.AddListener(() => this.AddKey());
+    InputHandler.specialEvent.AddListener(() => this.DeleteKey());
+  }
+
+  /**
+   * Resets the text of the input field as well as set active to false.
+   */
+  Reset() {
+    this.active = false;
+    this.textElement.text = "";
+  }
+
+  /**
+   * Changes whether or not the input field is accepting input.
+   * @param {bool} active - Boolean representing whether this should accept input.
+   */
+  SetActive(active) {
+    this.active = active;
+  }
+
+  /**
+   * Gets the result of the input, as a float.
+   * @return {float} The text of the input field, converted as a float.
+   */
+  GetResult() {
+    return parseFloat(this.textElement.text);
+  }
+
+  /**
+   * A function that adds characters to the input field when a input event is received.
+   */
+  AddKey() {
+    if(this.active) {
+      // Check if ENTER was pressed &amp;&amp; text exists.
+      if(keyCode == ENTER &amp;&amp; this.textElement.text.length > 0) {
+        this.onReturn.Call();
+      }
+      else if (this.filter.includes(key)) {
+        this.textElement.text += key;
+      }
+    }
+  }
+
+  /**
+   * A function that deletes characters when a special input event is received.
+   */
+  DeleteKey() {
+    if(this.active) {
+      if(keyCode == BACKSPACE) {
+        this.textElement.text = this.textElement.text.substring(0, this.textElement.text.length - 1);
+      }
+    }
+  }
+
+  /**
+   * Renders the input field's text.
+   */
+  Render() {
+    this.textElement.Render();
+  }
 }
 </code></pre>
         </article>

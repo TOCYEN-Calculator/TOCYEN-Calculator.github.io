@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>UIElements/ImageElement.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">UIElements/ImageElement.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,38 +46,22 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
+            <pre class="prettyprint source linenums"><code>/**
+ * A element that deals with rendering and positioning images on screen.
  *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+class ImageElement {
+  constructor(path, position, width, height) {
+    this.image = loadImage(path);
+    this.position = Aligner.GetAbsolutePosition(position.x, position.y);
+    this.width = width;
+    this.height = height;
+  }
 
-  text(strText, absPosition.x, absPosition.y);
-}
-
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
-
-  text(strText, nextPosition.x, nextPosition.y);
-}
-
-function ResetFillColor() {
-  fill(255);
+  Render() {
+    image(this.image, this.position.x, this.position.y, this.width, this.height);
+  }
 }
 </code></pre>
         </article>

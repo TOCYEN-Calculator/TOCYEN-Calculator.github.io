@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Utility/BetterText.js - Documentation</title>
+    <title>Scenes/Subjects/PhysicsCategories/Mechanics.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Utility/BetterText.js</h1>
+    <h1 class="page-title">Scenes/Subjects/PhysicsCategories/Mechanics.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,39 +46,28 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * BetterText.js
+            <pre class="prettyprint source linenums"><code>/**
+ * Scene responsible for showing the user physics-mechanics related formulas.
  *
- * Provides helper functions that make text creation easier.
-*/
-
-/**
- * Makes text with a relative position based on Aligner.js.
- * @param {string} strText - The text shown on the button.
- * @param {number} x - x relative position of the text.
- * @param {number} y - y relative position of the text.
+ * @class
  */
-function Text(strText, x, y) {
-  var absPosition = Aligner.GetAbsolutePosition(x, y);
-  Aligner.SetLastText(strText, absPosition.x, absPosition.y);
+ class Mechanics extends Scene {
+   constructor() {
+     super();
 
-  text(strText, absPosition.x, absPosition.y);
-}
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     textSize(50);
+     this.elements = [
+       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0)),
+       CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+       CreateBackButton("PhysicsScene")
+     ];
 
-/**
- * Makes text below the last one based on Aligner.js
- * @param {string} strText - The text shown on the button.
- */
-function TextV(strText) {
-  var nextPosition = Aligner.GetNextPosition();
-  Aligner.SetLastText(strText, nextPosition.x, nextPosition.y);
-
-  text(strText, nextPosition.x, nextPosition.y);
-}
-
-function ResetFillColor() {
-  fill(255);
-}
+     Aligner.SetReference(Aligner.REFERENCE.TOP);
+     textSize(100);
+     this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
+   }
+ }
 </code></pre>
         </article>
     </section>
