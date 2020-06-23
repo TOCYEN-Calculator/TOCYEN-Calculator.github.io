@@ -21,6 +21,8 @@ class MenuScene extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.BOTTOMRIGHT);
     textSize(30);
     this.elements.push(new TextElement("By Diego C", createVector(-100, -50)));
+
+    //this.elements.push(new ImageElement("test.jpg"));
   }
 
 };

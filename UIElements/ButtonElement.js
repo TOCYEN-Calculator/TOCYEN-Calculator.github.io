@@ -3,9 +3,9 @@
  * A button comprised entirely of text.
  * @class
  */
-class Button {
+class ButtonElement {
   /**
-   * Create a button. Uses TextElement() to save the current textSize and alignment.
+   * Create a button element. Uses TextElement() to save the current textSize and alignment.
    * @param {string} strText - The text shown on the button.
    * @param {Vector} position - Vector representing the relative position of the button.
    * @param {None}   position - Automatically Aligner.GetNextPosition().

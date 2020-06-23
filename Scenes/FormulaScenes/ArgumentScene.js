@@ -9,7 +9,7 @@ class ArgumentScene {
     // Align the input to the center
     textSize(50);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    this.input = new Input(createVector(0,0), "0123456789.-e");
+    this.input = new InputElement(createVector(0,0), "0123456789.-e");
     this.input.onReturn.AddListener(() => this.ToNextPrompt());
 
     this.argumentsNeeded = 0;

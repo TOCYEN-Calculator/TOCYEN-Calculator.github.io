@@ -2,7 +2,7 @@
  * An input field comprised entirely of text.
  * @class
  */
-class Input {
+class InputElement {
   /**
    * Constructs a new input field. Position and alignment will be saved.
    * @param {Vector} position - The relative position of the input field.

@@ -1,8 +1,3 @@
-function preload() {
-  ImageManager.constructor();
-  //ImageManager.LoadImage('Test', 'Capture.PNG');
-}
-
 function setup() {
   // Align canvas to center.
   var canvas = createCanvas(windowHeight, windowHeight);
@@ -37,5 +32,4 @@ function draw() {
   background(0);
   Mouse.Update();
   SceneManager.Render();
-  ImageManager.Render();
 }

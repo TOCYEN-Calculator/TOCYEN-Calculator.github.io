@@ -17,10 +17,10 @@
 function CreateFormulaButton(label, template, position) {
   var button = null;
   if(arguments.length == 2) {
-    button = new Button(label, 20);
+    button = new ButtonElement(label, 20);
   }
   else {
-    button = new Button(label, position);
+    button = new ButtonElement(label, position);
   }
   button.onClick.AddListener(() => FormulaTemplate.LoadTemplate(template));
   button.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
@@ -38,7 +38,7 @@ function CreateFormulaButton(label, template, position) {
 function CreateBackButton(previousSceneName) {
   Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
   textSize(50);
-  var button = new Button("Back", createVector(100, -100));
+  var button = new ButtonElement("Back", createVector(100, -100));
   button.onClick.AddListener(() => SceneManager.ToScene(previousSceneName));
   return button;
 }
@@ -55,10 +55,10 @@ function CreateBackButton(previousSceneName) {
 function CreateSceneButton(label, sceneName, position) {
   var button = null;
   if(arguments.length == 2) {
-    button = new Button(label, 20);
+    button = new ButtonElement(label, 20);
   }
   else {
-    button = new Button(label, position);
+    button = new ButtonElement(label, position);
   }
   button.onClick.AddListener(() => SceneManager.ToScene(sceneName));
   return button;
