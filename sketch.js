@@ -1,6 +1,6 @@
 function preload() {
   ImageManager.constructor();
-  ImageManager.LoadImage('Test', 'Capture.PNG');
+  //ImageManager.LoadImage('Test', 'Capture.PNG');
 }
 
 function setup() {
@@ -25,12 +25,12 @@ function setup() {
   ChemistryFormulas.constructor();
 
   // Add scenes
-  SceneManager.AddScene(new MenuScene(), "MenuScene");
-  SceneManager.AddScene(new SubjectScene(), "SubjectScene");
-  SceneManager.AddScene(new PhysicsScene(), "PhysicsScene");
-  SceneManager.AddScene(new ChemistryScene(), "ChemistryScene");
-  SceneManager.AddScene(new FormulaScene(), "FormulaScene");
-  SceneManager.AddScene(new Mechanics(), "Mechanics");
+  SceneManager.AddScene(new MenuScene());
+  SceneManager.AddScene(new SubjectScene());
+  SceneManager.AddScene(new PhysicsScene());
+  SceneManager.AddScene(new ChemistryScene());
+  SceneManager.AddScene(new FormulaScene());
+  SceneManager.AddScene(new Mechanics());
 }
 
 function draw() {

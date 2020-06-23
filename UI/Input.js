@@ -10,7 +10,7 @@ class Input {
    */
   constructor(position, filter) {
     /**
-     * A string of characaters that are allows to be inputted in the input field.
+     * A string of characters that are allowed to be inputted.
      */
     this.filter = filter;
 
@@ -20,21 +20,9 @@ class Input {
     this.active = false;
 
     /**
-     * The current text inside the input field.
+     * TextElement("", position) class.
      */
-    this.text = "";
-
-    /**
-     * The absolute position of the center of the input field represented
-     * as a Vector.
-     */
-    this.position = Aligner.GetAbsolutePosition(position.x, position.y);
-
-    /**
-     * The text size of the input field during creation.
-     */
-    this.textSize = textSize();
-
+    this.textElement = new TextElement("", position);
 
     /**
      * A event that is called whenever the input field catches an ENTER key press.
@@ -50,7 +38,7 @@ class Input {
    */
   Reset() {
     this.active = false;
-    this.text = "";
+    this.textElement.text = "";
   }
 
   /**
@@ -66,7 +54,7 @@ class Input {
    * @return {float} The text of the input field, converted as a float.
    */
   GetResult() {
-    return parseFloat(this.text);
+    return parseFloat(this.textElement.text);
   }
 
   /**
@@ -75,11 +63,11 @@ class Input {
   AddKey() {
     if(this.active) {
       // Check if ENTER was pressed && text exists.
-      if(keyCode == ENTER && this.text.length > 0) {
+      if(keyCode == ENTER && this.textElement.text.length > 0) {
         this.onReturn.Call();
       }
       else if (this.filter.includes(key)) {
-        this.text += key;
+        this.textElement.text += key;
       }
     }
   }
@@ -90,18 +78,15 @@ class Input {
   DeleteKey() {
     if(this.active) {
       if(keyCode == BACKSPACE) {
-        this.text = this.text.substring(0, this.text.length - 1);
+        this.textElement.text = this.textElement.text.substring(0, this.textElement.text.length - 1);
       }
     }
   }
 
   /**
-   * Renders the input field and it's prompt. Whether or not it accepts input
-   * is up to SetActive().
+   * Renders the input field's text.
    */
   Render() {
-    textSize(this.textSize);
-    Aligner.SetReference(Aligner.REFERENCE.TOPLEFT);
-    Text("> " + this.text + " <", this.position.x, this.position.y);
+    this.textElement.Render();
   }
 }

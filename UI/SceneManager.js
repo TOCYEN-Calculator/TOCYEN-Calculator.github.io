@@ -23,17 +23,18 @@ class SceneManager {
   }
 
   /**
-   * Adds a scene to the dictionary.
+   * Adds a scene to the dictionary. Scene's key is equal to its class name /
+   * constructor.name .
    * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
-   * @param {string} sceneName - The name of the scene to be added.
    */
-  static AddScene(scene, sceneName) {
+  static AddScene(scene) {
     // Only add scenes that are objects.
     if (typeof scene === 'object') {
-      this.scenes[sceneName] = scene;
+      this.scenes[scene.constructor.name] = scene;
     }
     else {
-      print("SceneManager.js: Can't add scene.")
+      print(`SceneManager.js: Could not add \"${str(scene)}\" to the dictionary. Please make \
+sure that the parameter is a object with a Render() method with no constructor parameters.`)
     }
   }
 
@@ -42,11 +43,12 @@ class SceneManager {
    * @param {string} sceneName - The name of the scene.
    */
   static ToScene(sceneName) {
+    // See if the name of scene exists as a key.
     if(sceneName in this.scenes) {
       this.currentScene = sceneName;
     }
     else {
-      print("SceneManager.js: Scene does not exist.");
+      print(`SceneManager.js: Scene name \"${sceneName}\" does not exist.`);
     }
   }
 
