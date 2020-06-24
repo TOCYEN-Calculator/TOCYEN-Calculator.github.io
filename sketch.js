@@ -19,6 +19,10 @@ function setup() {
   FormulaTemplate.constructor();
   PhysicsFormulas.constructor();
   ChemistryFormulas.constructor();
+  FormulaImages.constructor();
+
+  // Load formula pictures
+  FormulaImages.LoadImage("Physics2.jpg");
 
   // Add scenes
   SceneManager.AddScene(new MenuScene());

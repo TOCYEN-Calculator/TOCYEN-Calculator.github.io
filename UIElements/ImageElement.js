@@ -8,7 +8,7 @@ class ImageElement extends Element {
   /**
    * Constructs an ImageElement. Image will not be loaded immediantly.
    *
-   * @param  {string} path     The path of the image. Image won't be loaded immediantly.
+   * @param {string | Image} path     The path of the image, or a p5.js image.
    * @param {Vector | None | Number} position -
    * VECTOR: The relative position of the text's center on the canvas.
    * NONE: Automatically Aligner.GetNextPosition().
@@ -21,9 +21,6 @@ class ImageElement extends Element {
   constructor(path, position, width, height) {
     super(position);
 
-    loadImage(path, (image) => this.CallbackSuccess(image), () => this.CallbackFail());
-
-    this.path = path;
     this.image = null;
 
     this.originalDimensions = arguments.length != 4;
@@ -32,6 +29,15 @@ class ImageElement extends Element {
     this.height = height;
 
     this.loaded = false;
+
+    this.path = "";
+    if(typeof path == 'string') {
+      loadImage(path, (image) => this.CallbackSuccess(image), () => this.CallbackFail());
+      this.path = path;
+    }
+    else {
+      this.CallbackSuccess(path);
+    }
   }
 
   /**

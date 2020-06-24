@@ -1,7 +1,6 @@
 /**
  * A scene meant for solving formulas by asking the user for its required
  * variables.
- * @class
  */
  class FormulaScene {
    constructor() {

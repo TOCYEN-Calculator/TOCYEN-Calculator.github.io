@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Scenes/SceneManager.js - Documentation</title>
+    <title>Formulas/FormulaImages.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Scenes/SceneManager.js</h1>
+    <h1 class="page-title">Formulas/FormulaImages.js</h1>
     
 
     <!--container.tmpl-->
@@ -47,67 +47,61 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A manager of scenes. Updates, renders, and changes scenes.
+ * A static class meant to load megatextures of
+ * formulas.
+ *
  * @class
  */
-
-class SceneManager {
-  /**
-   * Construct the SceneManager. This function should be called during
-   * startup before any functions are used.
-   */
+class FormulaImages {
   static constructor() {
-    /**
-     * A dictionary of scenes that uses the name of a scene as its key.
-     * New scenes should be added using AddScene().
-     */
-    this.scenes = {};
+    this.images = {};
+  }
 
-    /**
-     * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
-     * scene is rendered / updated.
-     */
-    this.currentScene = "MenuScene";
+  static CallbackSuccess(path, image) {
+    var imageInfo = this.images[path];
+    imageInfo.loaded = true;
+    imageInfo.image = image;
+    imageInfo.onLoad.Call(image);
   }
 
   /**
-   * Adds a scene to the dictionary. Scene's key is equal to its class name /
-   * constructor.name .
-   * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
+   * Given a string, load an image into the dictionary.
+   * Callbacks to this image are given in OnImage().
+   *
+   * @param {string} path Name of the file to be loaded.
    */
-  static AddScene(scene) {
-    // Only add scenes that are objects.
-    if (typeof scene === 'object') {
-      this.scenes[scene.constructor.name] = scene;
+  static LoadImage(path) {
+    this.images[path] = {
+      path: path,
+      loaded: false,
+      image: loadImage(path, (image) => this.CallbackSuccess(path, image)),
+      onLoad: new Event()
+    }
+  }
+
+
+  /**
+   * Adds a function to a callback until the image is loaded.
+   *
+   * @param  {string} imageName The name of the image. Will print out an error
+   * if it doesn't exist in the dictionary.
+   * @param  {function} func    A callback function with (image) as its parameters.
+   */
+  static OnImage(path, func) {
+    if(path in this.images) {
+      var imageInfo = this.images[path];
+      if(!imageInfo.loaded) {
+        imageInfo.onLoad.AddListener(func);
+      }
+      else {
+        func(imageInfo.image);
+      }
     }
     else {
-      print(`SceneManager.js: Could not add \"${str(scene)}\" to the dictionary. Please make \
-sure that the parameter is a object with a Render() method with no constructor parameters.`)
+      print(`FormulaImages.js: Could not find \"${path}\" in dictionary.`);
     }
   }
-
-  /**
-   * Switches the current scene to another one.
-   * @param {string} sceneName - The name of the scene.
-   */
-  static ToScene(sceneName) {
-    // See if the name of scene exists as a key.
-    if(sceneName in this.scenes) {
-      this.currentScene = sceneName;
-    }
-    else {
-      print(`SceneManager.js: Scene name \"${sceneName}\" does not exist.`);
-    }
-  }
-
-  /**
-   * Renders the current scene.
-   */
-  static Render() {
-    this.scenes[this.currentScene].Render();
-  }
-
-};
+}
 </code></pre>
         </article>
     </section>

@@ -22,8 +22,10 @@ class MenuScene extends Scene {
     textSize(30);
     this.elements.push(new TextElement("By Diego C", createVector(-100, -50)));
 
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    this.elements.push(new ImageElement("test.jpg", createVector(0,0)));
+    FormulaImages.OnImage("Physics2.jpg", (image) => {
+      Aligner.SetReference(Aligner.REFERENCE.CENTER);
+      this.elements.push(new ImageElement(image, createVector(0,0)));
+    });
   }
 
 };

@@ -1,7 +1,5 @@
 /**
  * Scene responsible for showing the user physics-mechanics related formulas.
- *
- * @class
  */
  class Mechanics extends Scene {
    constructor() {

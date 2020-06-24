@@ -1,8 +1,6 @@
 /**
  * Given a number of arguments, ask the user to input a float until all
  * arguments are given.
- *
- * @class
  */
 class ArgumentScene {
   constructor() {

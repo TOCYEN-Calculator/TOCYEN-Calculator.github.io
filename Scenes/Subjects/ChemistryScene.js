@@ -1,7 +1,5 @@
 /**
  * Scene for choosing physics equations.
- *
- * @class
 */
 class ChemistryScene extends Scene {
   constructor() {
