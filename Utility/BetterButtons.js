@@ -63,3 +63,17 @@ function CreateSceneButton(label, sceneName, position) {
   button.onClick.AddListener(() => SceneManager.ToScene(sceneName));
   return button;
 }
+
+function CreateLeftPageButton(func) {
+  Aligner.SetReference(Aligner.REFERENCE.LEFT);
+  var button = new ButtonElement("<", createVector(50,0));
+  button.onClick.AddListener(func);
+  return button;
+}
+
+function CreateRightPageButton(func) {
+  Aligner.SetReference(Aligner.REFERENCE.RIGHT);
+  var button = new ButtonElement(">", createVector(-50,0));
+  button.onClick.AddListener(func);
+  return button;
+}

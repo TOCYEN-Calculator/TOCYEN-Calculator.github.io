@@ -8,15 +8,10 @@
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      textSize(50);
      this.elements = [
-       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(200,-180)),
-       CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+       CreateSceneButton("Kinetic Energy", "KineticEnergyScene", createVector(200,-150)),
+       CreateRightPageButton(() => this.ToPage(1)),
        CreateBackButton("PhysicsScene")
      ];
-
-     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     var nextPage = new ButtonElement(">", createVector(100,100));
-     nextPage.onClick.AddListener(() => this.ToPage(1));
-     this.elements.push(nextPage);
 
      Aligner.SetReference(Aligner.REFERENCE.TOP);
      textSize(100);
@@ -30,8 +25,17 @@
        this.elements.push(imageElement);
      });
 
-     this.NewPage();
 
+
+
+
+
+
+
+
+
+
+     this.NewPage();
      Aligner.SetReference(Aligner.REFERENCE.TOP);
      textSize(100);
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
@@ -41,6 +45,7 @@
      this.elements = [
        CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(200,-180)),
        CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+       CreateLeftPageButton(() => this.ToPage(0)),
        CreateBackButton("PhysicsScene")
      ];
 

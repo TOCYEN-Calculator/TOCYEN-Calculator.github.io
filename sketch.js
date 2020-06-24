@@ -31,6 +31,7 @@ function setup() {
   SceneManager.AddScene(new ChemistryScene());
   SceneManager.AddScene(new FormulaScene());
   SceneManager.AddScene(new Mechanics());
+  SceneManager.AddScene(new KineticEnergyScene());
 }
 
 function draw() {
