@@ -23,8 +23,6 @@ class ImageElement extends Element {
 
     this.image = null;
 
-    this.originalDimensions = arguments.length != 4;
-
     this.width = width;
     this.height = height;
 
@@ -38,6 +36,25 @@ class ImageElement extends Element {
     else {
       this.CallbackSuccess(path);
     }
+
+    this.scrRect = null;
+  }
+
+
+  SetScrRect(x, y, w, h) {
+    this.scrRect = {
+      x: x,
+      y: y,
+      w: w,
+      h: h
+    };
+    this.width = w;
+    this.height = h;
+  }
+
+  Scale(scalar) {
+    this.width *= scalar;
+    this.height *= scalar;
   }
 
   /**
@@ -45,18 +62,19 @@ class ImageElement extends Element {
    */
   Render() {
     if(this.loaded) {
-      image(this.image, this.position.x, this.position.y, this.width, this.height);
+      // If there's a source rect, render it.
+      if(this.scrRect === null) {
+        image(this.image, this.position.x, this.position.y, this.width, this.height);
+      }
+      else {
+        image(this.image, this.position.x, this.position.y, this.width, this.height, this.scrRect.x, this.scrRect.y, this.scrRect.w, this.scrRect.h);
+      }
     }
   }
 
   CallbackSuccess(image) {
     this.image = image;
     this.loaded = true;
-
-    if(this.originalDimensions) {
-      this.width = this.image.width;
-      this.height = this.image.height;
-    }
   }
 
   CallbackFail() {

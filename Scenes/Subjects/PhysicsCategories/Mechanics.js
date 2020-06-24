@@ -8,13 +8,43 @@
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      textSize(50);
      this.elements = [
-       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(0,0)),
+       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(200,-180)),
        CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
        CreateBackButton("PhysicsScene")
      ];
 
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     var nextPage = new ButtonElement(">", createVector(100,100));
+     nextPage.onClick.AddListener(() => this.ToPage(1));
+     this.elements.push(nextPage);
+
      Aligner.SetReference(Aligner.REFERENCE.TOP);
      textSize(100);
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
+
+     FormulaImages.OnImage("Physics2.jpg", (image) => {
+       Aligner.SetReference(Aligner.REFERENCE.CENTER);
+       var imageElement = new ImageElement(image, createVector(-200,-150));
+       imageElement.SetScrRect(148,870,150,70);
+       imageElement.Scale(2);
+       this.elements.push(imageElement);
+     });
+
+     this.NewPage();
+
+     Aligner.SetReference(Aligner.REFERENCE.TOP);
+     textSize(100);
+     this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
+
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     textSize(50);
+     this.elements = [
+       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(200,-180)),
+       CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+       CreateBackButton("PhysicsScene")
+     ];
+
+     this.SavePage();
+     this.ToPage(0);
    }
  }
