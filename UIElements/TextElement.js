@@ -2,7 +2,7 @@
  * A class dedicated to the drawing, positioning, and formatting of a piece of text.
  * @class
  */
- class TextElement {
+ class TextElement extends Element {
    /**
     * Constructs a new TextElement(). This sets Aligner's SetLastText().
     *
@@ -13,6 +13,8 @@
     * Number: The padding of Aligner.GetNextPosition().
     */
    constructor(text, position = 0) {
+     super(position);
+     
      /**
       * The raw text of the element. Wrapped with
       * the text() setter and getter.
@@ -24,23 +26,6 @@
       * the textSize() setter and getter.
       */
      this.rawTextSize = textSize();
-
-     /**
-      * The raw position of the element. Wrapped with
-      * the position() setter and getter.
-      */
-     this.rawPosition = createVector(0,0);
-
-     // Set the position of the text based on the arguments given.
-     if(typeof position == 'number') {
-       this.rawPosition = Aligner.GetNextPosition(position);
-     }
-     else if(typeof position == 'object') {
-       this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
-     }
-     else {
-       print("TextElement.js: Position could not be set.")
-     }
 
      // Talk to Aligner about it.
      Aligner.SetLastText(text, this.rawPosition.x, this.rawPosition.y);
@@ -91,30 +76,6 @@
      }
      else {
        print(`TextElement.js: Could not set textSize as \"${val}\".`);
-     }
-   }
-
-   /**
-    * Getter for the element's absolute position.
-    *
-    * @return {Vector} The absolute position of the element, shown as vector.
-    */
-   get position() {
-     return this.rawPosition;
-   }
-
-   /**
-    * Setter for the text's relative position. Safely sets the value of the position and screen
-    * and shows debugging information.
-    *
-    * @param {Vector} val - The value trying to be set. Hopefully it's a Vector!
-    */
-   set position(val) {
-     if(typeof val == 'object') {
-       this.rawPosition = Aligner.GetAbsolutePosition(val.x, val.y);
-     }
-     else {
-       print(`TextElement.js: Could not set position as \"${val}\".`);
      }
    }
 

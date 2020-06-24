@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Scenes/Subjects/SubjectScene.js - Documentation</title>
+    <title>UIElements/Element.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Scenes/Subjects/SubjectScene.js</h1>
+    <h1 class="page-title">UIElements/Element.js</h1>
     
 
     <!--container.tmpl-->
@@ -46,28 +46,73 @@
 
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Deals with the choosing of a subject.
-*/
-class SubjectScene extends Scene {
-  constructor() {
-    super();
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Base class for UI elements.
+ *
+ * @class
+ */
+class Element {
 
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    textSize(50);
+  /**
+   * constructor - description
+   *
+   * @param {Vector | None | Number} position -
+   * VECTOR: The relative position of the element's center on the canvas.
+   * NONE: Automatically Aligner.GetNextPosition().
+   * Number: The padding of Aligner.GetNextPosition().
+   */
+  constructor(position) {
+    /**
+     * The raw position of the element. Wrapped with
+     * the position() setter and getter.
+     */
+    this.rawPosition = createVector(0,0);
 
-    this.elements = [
-      CreateSceneButton("Physics", "PhysicsScene", createVector(0,-30)),
-      CreateSceneButton("Chemistry", "ChemistryScene"),
-      CreateSceneButton("Misc", "PhysicsScene"),
-      CreateBackButton("MenuScene")
-    ];
-
-    Aligner.SetReference(Aligner.REFERENCE.TOP);
-    textSize(100);
-    this.elements.push(new TextElement("Select a subject:", createVector(0, 100)));
+    // Set the position of the text based on the arguments given.
+    if(typeof position == 'number') {
+      this.rawPosition = Aligner.GetNextPosition(position);
+    }
+    else if(typeof position == 'object') {
+      this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
+    }
+    else {
+      print("TextElement.js: Position could not be set.")
+    }
   }
-};
+
+
+  /**
+   * Renders the element. By default, renders nothing.
+   */
+  Render() {
+
+  }
+
+  /**
+   * Getter for the element's absolute position.
+   *
+   * @return {Vector} The absolute position of the element, shown as vector.
+   */
+  get position() {
+    return this.rawPosition;
+  }
+
+  /**
+   * Setter for the text's relative position. Safely sets the value of the position and screen
+   * and shows debugging information.
+   *
+   * @param {Vector} val - The value trying to be set. Hopefully it's a Vector!
+   */
+  set position(val) {
+    if(typeof val == 'object') {
+      this.rawPosition = Aligner.GetAbsolutePosition(val.x, val.y);
+    }
+    else {
+      print(`TextElement.js: Could not set position as \"${val}\".`);
+    }
+  }
+}
 </code></pre>
         </article>
     </section>

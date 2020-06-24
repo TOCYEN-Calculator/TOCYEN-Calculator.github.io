@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Mouse - Documentation</title>
+    <title>Element - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Mouse</h1>
+    <h1 class="page-title">Element</h1>
     
 
     <!--container.tmpl-->
@@ -50,10 +50,10 @@
 <header data-tmpl="container.tmpl">
     
         <h2>
-        Mouse
+        Element
         </h2>
         
-            <div class="lead">A static class with high-level functions and variables about the mouse.</div>
+            <div class="lead">Base class for UI elements.</div>
         
     
 
@@ -63,9 +63,13 @@
         <br />
         <dl class="dl-horizontal methods-members">
         <dt>Fields &amp; Properties</dt><dd><ul>
-            <li><a href="#clicked">clicked</a></li>
+            <li><a href="#position">position</a></li>
+            
+            <li><a href="#position">position</a></li>
+            
+            <li><a href="#rawPosition">rawPosition</a></li>
             </ul></dd><dt>Methods</dt><dd><ul>
-            <li><a href="#constructor">constructor</a></li>
+            <li><a href="#Render">Render</a></li>
             </ul></dd></dl></div>
 </header>
 
@@ -90,14 +94,14 @@
 <div class="pull-right source-link-container">
   <code class="source-link" data-tmpl="method-tmpl(1)">
     <i class="fa fa-file-o"></i>
-    <a href="Utility_Mouse.js.html">Mouse.js</a>:<a href="Utility_Mouse.js.html#line5">5</a>
+    <a href="UIElements_Element.js.html">Element.js</a>:<a href="UIElements_Element.js.html#line17">17</a>
   </code>
 </div>
 
     
 
-    <h4 class="name" id="Mouse">
-      <a href="#params-Mouse"><span class="type-signature"></span>new Mouse</a><span class="signature">()</span><span class="type-signature"></span>
+    <h4 class="name" id="Element">
+      <a href="#params-Element"><span class="type-signature"></span>new Element</a><span class="signature">(position)</span><span class="type-signature"></span>
 
     </h4>
 
@@ -115,6 +119,9 @@
 
 
 
+<div class="description">
+    constructor - description
+</div>
 
 
 
@@ -122,7 +129,8 @@
 
 
 
-<div class="collapse_" id="methodCollapse-Mouse">
+
+<div class="collapse_" id="methodCollapse-Element">
 
   
 
@@ -171,6 +179,64 @@
 
 
 
+  <div id="params-Element" class="bs-callout bs-callout-primary">
+    <h5>Parameters</h5>
+    <!--params.tmpl-->
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Vector</span>
+|
+
+<span class="param-type">None</span>
+|
+
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">VECTOR: The relative position of the element's center on the canvas.NONE: Automatically Aligner.GetNextPosition().Number: The padding of Aligner.GetNextPosition().</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+  </div>
+
 
 
 
@@ -193,7 +259,7 @@
 
 <!--
 <pre>
-{"comment":"/**\r\n * A static class with high-level functions and variables about the mouse.\r\n * @class\r\n */","meta":{"range":[97,715],"filename":"Mouse.js","lineno":5,"columnno":0,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100238479","name":"Mouse","type":"ClassDeclaration","paramnames":[]},"shortpath":"Utility/Mouse.js"},"classdesc":"A static class with high-level functions and variables about the mouse.","kind":"class","name":"Mouse","longname":"Mouse","scope":"global","___id":"T000003R000016","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Mouse","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":[]}
+{"comment":"/**\r\n   * constructor - description\r\n   *\r\n   * @param {Vector | None | Number} position -\r\n   * VECTOR: The relative position of the element's center on the canvas.\r\n   * NONE: Automatically Aligner.GetNextPosition().\r\n   * Number: The padding of Aligner.GetNextPosition().\r\n   */","meta":{"range":[365,934],"filename":"Element.js","lineno":17,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\UIElements","code":{"id":"astnode100237126","name":"Element","type":"MethodDefinition","paramnames":["position"]},"shortpath":"UIElements/Element.js"},"name":"Element","longname":"Element","kind":"class","description":"constructor - description","scope":"global","classdesc":"Base class for UI elements.","params":[{"type":{"names":["Vector","None","Number"]},"description":"VECTOR: The relative position of the element's center on the canvas.\rNONE: Automatically Aligner.GetNextPosition().\rNumber: The padding of Aligner.GetNextPosition().","name":"position"}],"___id":"T000003R000007","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Element","signature":"<span class=\"signature\">(position)</span><span class=\"type-signature\"></span>","ancestors":[]}
 </pre>
 -->
 </div>
@@ -227,21 +293,187 @@
 <div class="pull-right source-link-container">
   <code class="source-link" data-tmpl="method-tmpl(1)">
     <i class="fa fa-file-o"></i>
-    <a href="Utility_Mouse.js.html">Mouse.js</a>:<a href="Utility_Mouse.js.html#line15">15</a>
+    <a href="UIElements_Element.js.html">Element.js</a>:<a href="UIElements_Element.js.html#line49">49</a>
   </code>
 </div>
 
 
 
-<h4 class="name" id="clicked">
-  <span class="type-signature"></span>clicked<span class="type-signature"></span>
+<h4 class="name" id="position">
+  <span class="type-signature"></span>position<span class="type-signature"></span>
 </h4>
 
 
 
 
 <div class="description">
-    A boolean used to signal when the mouse has been clicked. Willbe true for one frame.
+    Getter for the element's absolute position.
+</div>
+
+
+<div>
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+        
+            <!--members.tmpl-->
+<div class="member-details">
+
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="UIElements_Element.js.html">Element.js</a>:<a href="UIElements_Element.js.html#line59">59</a>
+  </code>
+</div>
+
+
+
+<h4 class="name" id="position">
+  <span class="type-signature"></span>position<span class="type-signature"></span>
+</h4>
+
+
+
+
+<div class="description">
+    Setter for the text's relative position. Safely sets the value of the position and screenand shows debugging information.
+</div>
+
+
+<div>
+
+<!-- details.tmpl -->
+
+
+
+
+
+
+
+
+<dl class="dl-horizontal">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+        
+            <!--members.tmpl-->
+<div class="member-details">
+
+
+
+
+  <!--source-link.tmpl-->
+
+
+<div class="pull-right source-link-container">
+  <code class="source-link" data-tmpl="method-tmpl(1)">
+    <i class="fa fa-file-o"></i>
+    <a href="UIElements_Element.js.html">Element.js</a>:<a href="UIElements_Element.js.html#line22">22</a>
+  </code>
+</div>
+
+
+
+<h4 class="name" id="rawPosition">
+  <span class="type-signature"></span>rawPosition<span class="type-signature"></span>
+</h4>
+
+
+
+
+<div class="description">
+    The raw position of the element. Wrapped withthe position() setter and getter.
 </div>
 
 
@@ -315,7 +547,7 @@
 <div class="pull-right source-link-container">
   <code class="source-link" data-tmpl="method-tmpl(1)">
     <i class="fa fa-file-o"></i>
-    <a href="Utility_Mouse.js.html">Mouse.js</a>:<a href="Utility_Mouse.js.html#line10">10</a>
+    <a href="UIElements_Element.js.html">Element.js</a>:<a href="UIElements_Element.js.html#line40">40</a>
   </code>
 </div>
 
@@ -326,8 +558,8 @@
 
     
 
-    <h4 class="name" id=".constructor">
-      <a href="#params-constructor"><span class="type-signature">(static) </span>constructor</a><span class="signature">()</span><span class="type-signature"></span>
+    <h4 class="name" id="Render">
+      <a href="#params-Render"><span class="type-signature"></span>Render</a><span class="signature">()</span><span class="type-signature"></span>
 
     </h4>
 
@@ -346,7 +578,7 @@
 
 
 <div class="description">
-    Should be called on setup() before any functions or variablesare accessed.
+    Renders the element. By default, renders nothing.
 </div>
 
 
@@ -356,7 +588,7 @@
 
 
 
-<div class="collapse_" id="methodCollapse-constructor">
+<div class="collapse_" id="methodCollapse-Render">
 
   
 
@@ -427,7 +659,7 @@
 
 <!--
 <pre>
-{"comment":"/**\r\n   * Should be called on setup() before any functions or variables\r\n   * are accessed.\r\n   */","meta":{"range":[216,490],"filename":"Mouse.js","lineno":10,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\Utility","code":{"id":"astnode100238482","name":"Mouse.constructor","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"Utility/Mouse.js"},"description":"Should be called on setup() before any functions or variables\rare accessed.","name":"constructor","longname":"Mouse.constructor","kind":"function","memberof":"Mouse","scope":"static","params":[],"___id":"T000002R020919","___s":true,"attribs":"<span class=\"type-signature\">(static) </span>","id":".constructor","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Mouse.html\">Mouse</a>."]}
+{"comment":"/**\r\n   * Renders the element. By default, renders nothing.\r\n   */","meta":{"range":[1012,1029],"filename":"Element.js","lineno":40,"columnno":2,"path":"C:\\Users\\smart\\Desktop\\TOCYEN\\UIElements","code":{"id":"astnode100237182","name":"Element#Render","type":"MethodDefinition","paramnames":[]},"vars":{"":null},"shortpath":"UIElements/Element.js"},"description":"Renders the element. By default, renders nothing.","name":"Render","longname":"Element#Render","kind":"function","memberof":"Element","scope":"instance","params":[],"___id":"T000002R020792","___s":true,"attribs":"<span class=\"type-signature\"></span>","id":"Render","signature":"<span class=\"signature\">()</span><span class=\"type-signature\"></span>","ancestors":["<a href=\"Element.html\">Element</a>#"]}
 </pre>
 -->
 </div>
