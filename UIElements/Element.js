@@ -21,6 +21,8 @@ class Element {
      */
     this.rawPosition = createVector(0,0);
 
+    position = ScalePosition(position);
+
     // Set the position of the text based on the arguments given.
     if(typeof position == 'number') {
       this.rawPosition = Aligner.GetNextPosition(position);

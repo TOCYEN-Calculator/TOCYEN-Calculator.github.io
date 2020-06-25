@@ -52,6 +52,7 @@ class ImageElement extends Element {
   }
 
   Scale(scalar) {
+    scalar = ScaleByWidth(scalar);
     this.width *= scalar;
     this.height *= scalar;
   }

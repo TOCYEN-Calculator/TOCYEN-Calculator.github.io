@@ -6,7 +6,6 @@
  */
 
 function TextSize(size) {
-  print(height);
   textSize(ScaleByWidth(size));
 }
 
@@ -19,5 +18,10 @@ function ScaleByHeight(value) {
 }
 
 function ScalePosition(position) {
-  return createVector(ScaleByWidth(position.x), ScaleByWidth(position.y));
+  if(typeof position == 'object') {
+    return createVector(ScaleByWidth(position.x), ScaleByWidth(position.y));
+  }
+  else {
+    return position;
+  }
 }

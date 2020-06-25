@@ -15,6 +15,10 @@ class ArgumentFragment {
     this.prompts = [];
     this.arguments = [];
 
+    TextSize(50);
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    this.promptElement = new TextElement("", createVector(0, 100));
+
     this.backButton = CreateBackButton("SubjectScene");
 
     this.onFinished = new Event();
@@ -24,9 +28,8 @@ class ArgumentFragment {
     if(this.HasEnoughArguments()) {
       if(!this.AllArgumentsCollected()) {
         // Render current prompt
-        TextSize(50);
-        Aligner.SetReference(Aligner.REFERENCE.TOP);
-        Text(this.prompts[this.currentPromptID], 0, 100);
+        this.promptElement.text = this.prompts[this.currentPromptID];
+        this.promptElement.Render();
 
         // Get user input.
         this.input.Render();
@@ -46,6 +49,7 @@ class ArgumentFragment {
     this.arguments = [];
     this.prompts = [];
     this.currentPromptID = 0;
+    this.promptElement.text = "";
   }
 
   ToNextPrompt() {

@@ -62,7 +62,7 @@ class Aligner {
    */
   static GetNextPosition(padding = 0) {
     var currentSize = textSize();
-    var currentPosition = this.lastText.position;
+    var currentPosition = createVector(this.lastText.position.x, this.lastText.position.y);
 
     currentPosition.y += this.lastText.textSize / 2 + currentSize / 2 + padding;
 
@@ -98,19 +98,6 @@ class Aligner {
     var offset = this.GetOffset();
     return createVector(x + offset.x, y + offset.y);
   }
-
-  /**
-   * Converts an absolute position into a relative position based on the currentReference point.
-   * @param {number} x - x absolute position
-   * @param {number} y - y absolute position
-   * @return {Vector} Vector representing a relative position in the canvas.
-   */
-  static GetRelativePosition(x, y) {
-    // Converts an absolute position into a relative position
-    var offset = this.GetOffset();
-    return createVector(x - offset.x, y - offset.y);
-  }
-
 
   /**
    * Gets the offset of currentReference from the topleft of the screen.
