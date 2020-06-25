@@ -11,6 +11,7 @@ function setup() {
 
   // Initialize utilities
   Aligner.constructor();
+  Scaler.constructor();
   SceneManager.constructor();
   Mouse.constructor();
   InputHandler.constructor();

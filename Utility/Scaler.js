@@ -5,6 +5,21 @@
  * @class
  */
 class Scaler {
+
+  /**
+   * Constructs the class. Should be called on setup() before
+   * any functions are called.
+   */
+  static constructor() {
+    this.referenceWidth = 1920;
+    this.refrenceHeight = 966;
+  }
+
+  /**
+   * Scales text size based off reference size.
+   *
+   * @param {number} size The text size.
+   */
   static TextSize(size) {
     if(typeof size == 'number') {
       textSize(this.ScaleByWidth(size));
@@ -14,22 +29,40 @@ class Scaler {
     }
   }
 
+
+  /**
+   * Scales a number by the reference width.
+   *
+   * @param {number} value The number to be scaled.
+   */
   static ScaleByWidth(value) {
     if(typeof value != 'number') {
       print(`Scale.js: Could not scale \"${value}\" by the window\'s width.`)
       return 0;
     }
-    return value * (width / 1920);
+    return value * (width / this.referenceWidth);
   }
 
+  /**
+   * Scales a number by the reference height.
+   *
+   * @param {number} value The number to be scaled.
+   */
   static ScaleByHeight(value) {
     if(typeof value != 'number') {
       print(`Scale.js: Could not scale \"${value}\" by the window\'s height.`)
       return 0;
     }
-    return value * (height / 966);
+    return value * (height / this.referenceHeight);
   }
 
+  /**
+   * Scales a vector using ScaleByWidth or ScaleByHeight. Usually
+   * used for scaling positioning.
+   *
+   * @param  {Vector} position The vector; Usually a relative position.
+   * @return {Vector} A shallow copy of the scaled vector.
+   */
   static ScalePosition(position) {
     if(position === null) {
       print(`Scale.js: Could not scale \"${position}\" as a position.`);
@@ -39,6 +72,8 @@ class Scaler {
       return createVector(this.ScaleByWidth(position.x), this.ScaleByWidth(position.y));
     }
     else {
+      // If the position is a number. Crucial for Element.js, where
+      // the position can represent the spacing between elements.
       return position;
     }
   }
