@@ -24,7 +24,7 @@ function setup() {
   // Load formula pictures
   FormulaImages.LoadImage("Physics2.jpg");
 
-  // Add scenes
+  // Load scenes
   SceneManager.AddScene(new MenuScene());
   SceneManager.AddScene(new SubjectScene());
   SceneManager.AddScene(new PhysicsScene());

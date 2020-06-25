@@ -66,15 +66,21 @@ function CreateSceneButton(label, sceneName, position) {
 }
 
 function CreateLeftPageButton(func) {
+  var initialSize = textSize();
+  textSize(100);
   Aligner.SetReference(Aligner.REFERENCE.LEFT);
-  var button = new ButtonElement("<", createVector(50,0));
+  var button = new ButtonElement("<", createVector(200,0));
   button.onClick.AddListener(func);
+  textSize(initialSize);
   return button;
 }
 
 function CreateRightPageButton(func) {
+  var initialSize = textSize();
+  textSize(100);
   Aligner.SetReference(Aligner.REFERENCE.RIGHT);
-  var button = new ButtonElement(">", createVector(-50,0));
+  var button = new ButtonElement(">", createVector(-200,0));
   button.onClick.AddListener(func);
+  textSize(initialSize);
   return button;
 }
