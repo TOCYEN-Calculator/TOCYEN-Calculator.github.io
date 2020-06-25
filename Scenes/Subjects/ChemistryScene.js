@@ -6,14 +6,14 @@ class ChemistryScene extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    TextSize(50);
+    Scaler.TextSize(50);
     this.elements = [
       CreateFormulaButton("ElectronConfiguration", ChemistryFormulas.electronConfiguration, createVector(0,0)),
       CreateBackButton("SubjectScene")
     ];
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    TextSize(100);
+    Scaler.TextSize(100);
     this.elements.push(new TextElement('Select a category:', createVector(0, 100)));
   }
 };

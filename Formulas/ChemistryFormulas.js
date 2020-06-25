@@ -3,6 +3,10 @@
  * @class
  */
 class ChemistryFormulas {
+
+  /**
+   * Initialize physics formulas. Should be called on setup().
+   */
   static constructor() {
 
     this.orbitals = {

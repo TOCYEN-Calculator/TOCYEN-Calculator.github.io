@@ -39,7 +39,7 @@
    }
 
    Render() {
-     if(this.argumentFrag.HasEnoughArguments()) {
+     if(this.argumentFrag.HasEnoughPrompts()) {
        if(!this.argumentFrag.AllArgumentsCollected()) {
          this.argumentFrag.input.SetActive(true);
          this.argumentFrag.Render();

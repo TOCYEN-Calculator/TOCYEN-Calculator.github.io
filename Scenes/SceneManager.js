@@ -39,7 +39,7 @@ class SceneManager {
       this.scenes[scene.constructor.name] = scene;
     }
     else {
-      print(`SceneManager.js: Could not add \"${str(scene)}\" to the dictionary. Please make \
+      print(`SceneManager.js: Could not add \"${scene}\" to the dictionary. Please make \
 sure that the parameter is a object with a Render() method with no constructor parameters.`)
     }
   }

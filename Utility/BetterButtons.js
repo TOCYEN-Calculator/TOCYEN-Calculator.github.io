@@ -2,6 +2,7 @@
  * BetterButtons.js
  *
  * Provides helper functions that make button creation easier.
+ * Could be referred to as button prefabs.
 */
 
 
@@ -38,7 +39,7 @@ function CreateFormulaButton(label, template, position) {
  */
 function CreateBackButton(previousSceneName) {
   Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
-  TextSize(50);
+  Scaler.TextSize(50);
   var button = new ButtonElement("Back", createVector(100, -100));
   button.onClick.AddListener(() => SceneManager.ToScene(previousSceneName));
   return button;
@@ -67,7 +68,7 @@ function CreateSceneButton(label, sceneName, position) {
 
 function CreateLeftPageButton(func) {
   var initialSize = textSize();
-  TextSize(100);
+  Scaler.TextSize(100);
   Aligner.SetReference(Aligner.REFERENCE.LEFT);
   var button = new ButtonElement("<", createVector(200,0));
   button.onClick.AddListener(func);
@@ -77,10 +78,10 @@ function CreateLeftPageButton(func) {
 
 function CreateRightPageButton(func) {
   var initialSize = textSize();
-  TextSize(100);
+  Scaler.TextSize(100);
   Aligner.SetReference(Aligner.REFERENCE.RIGHT);
   var button = new ButtonElement(">", createVector(-200,0));
   button.onClick.AddListener(func);
-  TextSize(initialSize);
+  textSize(initialSize);
   return button;
 }

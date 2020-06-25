@@ -40,6 +40,16 @@ class ImageElement extends Element {
     this.scrRect = null;
   }
 
+
+  /**
+   * Given the dimensions of a rectangle,
+   * only render a tiny square of the image.
+   *
+   * @param  {number} x The x-position of the rect.
+   * @param  {number} y The y-position of the rect.
+   * @param  {number} w The width of the rect.
+   * @param  {number} h The height of the rect.
+   */
   SetScrRect(x, y, w, h) {
     this.scrRect = {
       x: x,
@@ -51,8 +61,16 @@ class ImageElement extends Element {
     this.height = h;
   }
 
+
+  /**
+   * Scale the image's width and height. If the screen size changes,
+   * automatically make sure the image is scaled by Scaler.ScaleByWidth().
+   *
+   * @param  {type} scalar description
+   * @return {type}        description
+   */
   Scale(scalar) {
-    scalar = ScaleByWidth(scalar);
+    scalar = Scaler.ScaleByWidth(scalar);
     this.width *= scalar;
     this.height *= scalar;
   }

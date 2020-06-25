@@ -18,7 +18,7 @@ class Event {
       this.listeners.push(listener);
     }
     else {
-      print(`Event.js: Could not add \"${listener}\" using AddListener`);
+      print(`Event.js: Could not add \"${listener}\" as a listener.`);
     }
   }
 
@@ -30,7 +30,7 @@ class Event {
   }
 
   /**
-   * Calls all listeners. Arguments passed will be passed to listeners.
+   * Calls all listeners. Any arguments passed will be passed to listeners.
    */
   Call() {
     for(var index in this.listeners) {

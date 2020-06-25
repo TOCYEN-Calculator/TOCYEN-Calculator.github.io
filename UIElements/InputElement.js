@@ -2,7 +2,7 @@
  * An input field comprised entirely of text. Derives from TextElement.
  * @class
  */
-class InputElement extends TextElement{
+class InputElement extends TextElement {
   /**
    * Constructs a new input field. Position and alignment will be saved.
    * @param {Vector | None | Number} position -

@@ -1,5 +1,5 @@
 /**
- * Base class for scenes.
+ * Base class for scenes. Should be derived from all scenes.
  *
  * @class
  */

@@ -3,6 +3,9 @@
  * @class
  */
 class PhysicsFormulas {
+  /**
+   * Initialize physics formulas. Should be called on setup().
+   */
   static constructor() {
     this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
     this.newtonSecondF.formula = (m, a) => {return  m * a;};

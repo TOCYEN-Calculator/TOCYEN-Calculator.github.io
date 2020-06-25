@@ -6,7 +6,7 @@
      super();
 
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     TextSize(50);
+     Scaler.TextSize(50);
      this.elements = [
        CreateSceneButton("Kinetic Energy", "KineticEnergyScene", createVector(200,-150)),
        CreateSceneButton("Newton\'s Second Law", "KineticEnergyScene", createVector(-250,70)),
@@ -15,7 +15,7 @@
      ];
 
      Aligner.SetReference(Aligner.REFERENCE.TOP);
-     TextSize(100);
+     Scaler.TextSize(100);
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
 
      FormulaImages.OnImage("Physics2.jpg", (image) => {
@@ -46,11 +46,11 @@
 
      this.NewPage();
      Aligner.SetReference(Aligner.REFERENCE.TOP);
-     TextSize(100);
+     Scaler.TextSize(100);
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
 
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     TextSize(50);
+     Scaler.TextSize(50);
      this.elements = [
        CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(200,-180)),
        CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),

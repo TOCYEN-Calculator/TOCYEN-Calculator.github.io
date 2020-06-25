@@ -57,14 +57,15 @@ class Aligner {
   /**
    * Returns the absolute position of the text below the last text. The last text's
    * content, size, and position can be set using SetLastText().
-   * @param {number} padding - The padding (in px) between the positions.
+   * @param {number} padding - The padding (in px) between the positions. Will be scaled
+   * accoring to Scaler.ScaleByWidth.
    * @return {Vector} A vector representing the absolute position of the next position.
    */
   static GetNextPosition(padding = 0) {
     var currentSize = textSize();
     var currentPosition = createVector(this.lastText.position.x, this.lastText.position.y);
 
-    currentPosition.y += this.lastText.textSize / 2 + currentSize / 2 + padding;
+    currentPosition.y += this.lastText.textSize / 2 + currentSize / 2 + Scaler.ScaleByWidth(padding);
 
     return currentPosition;
   }

@@ -7,12 +7,14 @@
 class Element {
 
   /**
-   * constructor - description
+   * Construct an element.
    *
    * @param {Vector | None | Number} position -
    * VECTOR: The relative position of the element's center on the canvas.
    * NONE: Automatically Aligner.GetNextPosition().
    * Number: The padding of Aligner.GetNextPosition().
+   * Any position set will be scaled to match the initial screen size via
+   * Scaler.ScalePosition.
    */
   constructor(position) {
     /**
@@ -21,7 +23,7 @@ class Element {
      */
     this.rawPosition = createVector(0,0);
 
-    position = ScalePosition(position);
+    position = Scaler.ScalePosition(position);
 
     // Set the position of the text based on the arguments given.
     if(typeof position == 'number') {

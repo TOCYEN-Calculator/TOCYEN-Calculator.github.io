@@ -33,7 +33,7 @@ class FormulaImages {
 
 
   /**
-   * Adds a function to a callback until the image is loaded.
+   * Adds a function that is called if it's image is loaded.
    *
    * @param  {string} imageName The name of the image. Will print out an error
    * if it doesn't exist in the dictionary.
