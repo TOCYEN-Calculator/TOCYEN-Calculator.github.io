@@ -1,6 +1,6 @@
 function setup() {
   // Align canvas to center.
-  var canvas = createCanvas(windowHeight, windowHeight);
+  var canvas = createCanvas(windowWidth, windowHeight);
   canvas.center('horizontal');
 
   // Setup text settings.
@@ -34,8 +34,15 @@ function setup() {
   SceneManager.AddScene(new KineticEnergyScene());
 }
 
+var fps = 0;
+
 function draw() {
   background(0);
   Mouse.Update();
   SceneManager.Render();
+
+  fps = lerp(fps, frameRate(), 0.05);
+  Aligner.SetReference(Aligner.REFERENCE.BOTTOMRIGHT);
+  textSize(100);
+  Text(str(floor(fps)), -100, -100);
 }
