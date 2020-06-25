@@ -1,4 +1,4 @@
-/**
+/*
  * Scene for choosing physics equations.
 */
 class ChemistryScene extends Scene {

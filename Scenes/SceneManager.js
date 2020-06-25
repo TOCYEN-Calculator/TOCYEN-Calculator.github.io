@@ -1,8 +1,7 @@
-/**
+/*
  * A manager of scenes. Updates, renders, and changes scenes.
  * @class
  */
-
 class SceneManager {
   /**
    * Construct the SceneManager. This function should be called during

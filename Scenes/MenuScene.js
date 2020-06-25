@@ -1,4 +1,4 @@
-/**
+/*
  * Handles the menu scene.
 */
 class MenuScene extends Scene {

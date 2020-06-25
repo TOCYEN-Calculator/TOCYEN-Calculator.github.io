@@ -1,4 +1,4 @@
-/**
+/*
  * Scene responsible for showing the user physics-mechanics related formulas.
  */
  class Mechanics extends Scene {

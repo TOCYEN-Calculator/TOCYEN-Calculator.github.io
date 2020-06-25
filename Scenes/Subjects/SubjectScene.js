@@ -1,4 +1,4 @@
-/**
+/*
  * Deals with the choosing of a subject.
 */
 class SubjectScene extends Scene {

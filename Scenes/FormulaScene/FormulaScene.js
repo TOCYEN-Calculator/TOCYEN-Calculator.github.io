@@ -1,4 +1,4 @@
-/**
+/*
  * A scene meant for solving and showing formulas by asking the user for its required
  * variables.
  */
