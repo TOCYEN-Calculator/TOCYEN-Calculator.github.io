@@ -20,6 +20,12 @@ class SceneManager {
      * scene is rendered / updated.
      */
     this.currentScene = "Mechanics";
+
+
+    /**
+     * Dynamic previous scene variable.  
+     */
+    this.previousScene = "MenuScene";
   }
 
   /**
@@ -45,6 +51,7 @@ sure that the parameter is a object with a Render() method with no constructor p
   static ToScene(sceneName) {
     // See if the name of scene exists as a key.
     if(sceneName in this.scenes) {
+      this.previousScene = this.currentScene;
       this.currentScene = sceneName;
     }
     else {

@@ -2,7 +2,7 @@
  * Given a number of arguments, ask the user to input a float until all
  * arguments are given.
  */
-class ArgumentScene {
+class ArgumentFragment {
   constructor() {
     // Align the input to the center
     textSize(50);
@@ -16,7 +16,6 @@ class ArgumentScene {
     this.arguments = [];
 
     this.backButton = CreateBackButton("SubjectScene");
-    this.backButton.onClick.AddListener(() => this.Reset());
 
     this.onFinished = new Event();
   }

@@ -22,7 +22,7 @@ class FormulaTemplate {
 
   /**
    * Returns a blank formula template.
-   *
+   * @param  {string} previousScene Name of the previousScene.
    * @return {FormulaTemplate}  A dictionary with the following members:
    * resultPrompt (string), prompts (array), and formula (function).
    */
@@ -43,6 +43,7 @@ class FormulaTemplate {
     this.currentTemplate.resultPrompt = template.resultPrompt;
     this.currentTemplate.prompts = template.prompts.slice();
     this.currentTemplate.formula = template.formula;
+    this.currentTemplate.previousScene = template.previousScene;
     this.onLoad.Call();
   }
 }
