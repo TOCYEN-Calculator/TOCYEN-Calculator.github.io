@@ -40,7 +40,6 @@ class ImageElement extends Element {
     this.scrRect = null;
   }
 
-
   SetScrRect(x, y, w, h) {
     this.scrRect = {
       x: x,
