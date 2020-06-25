@@ -38,7 +38,7 @@ function CreateFormulaButton(label, template, position) {
  */
 function CreateBackButton(previousSceneName) {
   Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
-  textSize(50);
+  TextSize(50);
   var button = new ButtonElement("Back", createVector(100, -100));
   button.onClick.AddListener(() => SceneManager.ToScene(previousSceneName));
   return button;
@@ -67,7 +67,7 @@ function CreateSceneButton(label, sceneName, position) {
 
 function CreateLeftPageButton(func) {
   var initialSize = textSize();
-  textSize(100);
+  TextSize(100);
   Aligner.SetReference(Aligner.REFERENCE.LEFT);
   var button = new ButtonElement("<", createVector(200,0));
   button.onClick.AddListener(func);
@@ -77,10 +77,10 @@ function CreateLeftPageButton(func) {
 
 function CreateRightPageButton(func) {
   var initialSize = textSize();
-  textSize(100);
+  TextSize(100);
   Aligner.SetReference(Aligner.REFERENCE.RIGHT);
   var button = new ButtonElement(">", createVector(-200,0));
   button.onClick.AddListener(func);
-  textSize(initialSize);
+  TextSize(initialSize);
   return button;
 }

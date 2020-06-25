@@ -5,7 +5,7 @@
 class ArgumentFragment {
   constructor() {
     // Align the input to the center
-    textSize(50);
+    TextSize(50);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     this.input = new InputElement(createVector(0,0), "0123456789.-e");
     this.input.onReturn.AddListener(() => this.ToNextPrompt());
@@ -24,7 +24,7 @@ class ArgumentFragment {
     if(this.HasEnoughArguments()) {
       if(!this.AllArgumentsCollected()) {
         // Render current prompt
-        textSize(50);
+        TextSize(50);
         Aligner.SetReference(Aligner.REFERENCE.TOP);
         Text(this.prompts[this.currentPromptID], 0, 100);
 

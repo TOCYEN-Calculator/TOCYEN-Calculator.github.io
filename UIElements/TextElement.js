@@ -14,7 +14,7 @@
     */
    constructor(text, position = 0) {
      super(position);
-     
+
      /**
       * The raw text of the element. Wrapped with
       * the text() setter and getter.

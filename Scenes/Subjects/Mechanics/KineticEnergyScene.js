@@ -6,7 +6,7 @@
      super();
 
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     textSize(50);
+     TextSize(50);
      this.elements = [
        CreateFormulaButton("K", PhysicsFormulas.kineticEnergyK, createVector(0,30)),
        CreateFormulaButton("m", PhysicsFormulas.kineticEnergyM),
@@ -17,7 +17,7 @@
      ];
 
      Aligner.SetReference(Aligner.REFERENCE.TOP);
-     textSize(50);
+     TextSize(50);
      this.elements.push(new TextElement('Select a variable to solve for:', createVector(0, 100)));
 
      FormulaImages.OnImage("Physics2.jpg", (image) => {

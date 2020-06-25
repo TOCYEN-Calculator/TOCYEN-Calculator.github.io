@@ -5,7 +5,7 @@ class ResultFragment extends Scene {
   constructor() {
     super();
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    textSize(50);
+    TextSize(50);
     this.result = new TextElement("", createVector(0,0));
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
