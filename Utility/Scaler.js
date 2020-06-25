@@ -11,7 +11,16 @@ class Scaler {
    * any functions are called.
    */
   static constructor() {
+    /**
+     * The reference width / The width of the window you're
+     * developing on.
+     */
     this.referenceWidth = 1920;
+
+    /**
+     * The reference height / The height of the window you're
+     * developing on.
+     */
     this.refrenceHeight = 966;
   }
 
