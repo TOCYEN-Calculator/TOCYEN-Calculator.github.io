@@ -18,7 +18,7 @@ class SceneManager {
      * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
      * scene is rendered / updated.
      */
-    this.currentScene = "MenuScene";
+    this.currentScene = "Mechanics";
 
 
     /**

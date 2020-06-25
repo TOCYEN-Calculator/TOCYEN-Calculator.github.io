@@ -7,25 +7,33 @@ class PhysicsFormulas {
    * Initialize physics formulas. Should be called on setup().
    */
   static constructor() {
+    // Prompts
+    var massPrompt = "Enter the mass (kg):";
+    var velocityPrompt = "Enter the velocity (m/s):";
+    var velocityIPrompt = "Enter the initial velocity (m/s):";
+    var velocityFPrompt = "Enter the final velocity (m/s):";
+    var accelerationPrompt = "Enter the acceleration (m/s^2):";
+    var forcePrompt = "Enter the force (N):";
+    var kineticPrompt = "Enter the kinetic energy (J):";
+
+
+    // Newton's Second Law
     this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
     this.newtonSecondF.formula = (m, a) => {return  m * a;};
-    this.newtonSecondF.prompts.push("Enter the mass (kg):");
-    this.newtonSecondF.prompts.push("Enter the acceleration (m/s^2):");
+    this.newtonSecondF.prompts = [massPrompt, accelerationPrompt];
     this.newtonSecondF.resultPrompt = "The resulting force (N) is:";
 
     this.newtonSecondM = FormulaTemplate.CreateBlankTemplate();
     this.newtonSecondM.formula = (f, a) => {return  f / a;};
-    this.newtonSecondM.prompts.push("Enter the force (N):");
-    this.newtonSecondM.prompts.push("Enter the acceleration (m/s^2):");
+    this.newtonSecondM.prompts = [forcePrompt, accelerationPrompt];
     this.newtonSecondM.resultPrompt = "The resulting mass (kg) is:";
 
-    // Kinetic Energy
-    var massPrompt = "Enter the mass (kg):";
-    var velocityPrompt = "Enter the velocity (m/s^2):";
-    var velocityIPrompt = "Enter the initial velocity (m/s^2):";
-    var velocityFPrompt = "Enter the final velocity (m/s^2):";
-    var kineticPrompt = "Enter the kinetic energy (J):";
+    this.newtonSecondA = FormulaTemplate.CreateBlankTemplate();
+    this.newtonSecondA.formula = (f, m) => {return  f / m;};
+    this.newtonSecondA.prompts = [forcePrompt, massPrompt];
+    this.newtonSecondA.resultPrompt = "The resulting acceleration (m/s^2) is:";
 
+    // Kinetic Energy
     this.kineticEnergyK = FormulaTemplate.CreateBlankTemplate();
     this.kineticEnergyK.formula = (m, v) => {return  0.5 * m * pow(v, 2);};
     this.kineticEnergyK.prompts = [massPrompt, velocityPrompt];

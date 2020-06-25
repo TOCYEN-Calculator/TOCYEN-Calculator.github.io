@@ -33,6 +33,7 @@ function setup() {
   SceneManager.AddScene(new FormulaScene());
   SceneManager.AddScene(new Mechanics());
   SceneManager.AddScene(new KineticEnergyScene());
+  SceneManager.AddScene(new NewtonSecondScene());
 }
 
 function draw() {

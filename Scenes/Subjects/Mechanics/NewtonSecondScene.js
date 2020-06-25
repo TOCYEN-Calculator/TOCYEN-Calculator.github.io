@@ -1,18 +1,16 @@
 /*
- * Scene responsible for showing the formulas for the kinetic energy formula.
+ * Scene responsible for showing the formulas for Newton's Second Law.
  */
- class KineticEnergyScene extends Scene {
+ class NewtonSecondScene extends Scene {
    constructor() {
      super();
 
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      Scaler.TextSize(50);
      this.elements = [
-       CreateFormulaButton("K", PhysicsFormulas.kineticEnergyK, createVector(0,30)),
-       CreateFormulaButton("m", PhysicsFormulas.kineticEnergyM),
-       CreateFormulaButton("v", PhysicsFormulas.kineticEnergyV),
-       CreateFormulaButton("v (initial)", PhysicsFormulas.kineticEnergyVI),
-       CreateFormulaButton("v (final)", PhysicsFormulas.kineticEnergyVF),
+       CreateFormulaButton("F", PhysicsFormulas.newtonSecondF, createVector(0,100)),
+       CreateFormulaButton("m", PhysicsFormulas.newtonSecondM),
+       CreateFormulaButton("a", PhysicsFormulas.newtonSecondA),
        CreateBackButton("Mechanics")
      ];
 
@@ -23,7 +21,7 @@
      FormulaImages.OnImage("Physics2.jpg", (image) => {
        Aligner.SetReference(Aligner.REFERENCE.CENTER);
        var imageElement = new ImageElement(image, createVector(0,-150));
-       imageElement.SetScrRect(148,870,150,70);
+       imageElement.SetScrRect(143,453,230,90);
        imageElement.Scale(3);
        this.elements.push(imageElement);
      });
