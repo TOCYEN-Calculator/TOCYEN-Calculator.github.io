@@ -8,7 +8,7 @@ class ChemistryScene extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
-      CreateFormulaButton("ElectronConfiguration", ChemistryFormulas.electronConfiguration, createVector(0,0)),
+      CreateSceneButton("Calorimetry", "Calorimetry", createVector(0,0)),
       CreateBackButton("SubjectScene")
     ];
 

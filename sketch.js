@@ -34,6 +34,8 @@ function setup() {
   SceneManager.AddScene(new Mechanics());
   SceneManager.AddScene(new KineticEnergyScene());
   SceneManager.AddScene(new NewtonSecondScene());
+  SceneManager.AddScene(new Calorimetry());
+  SceneManager.AddScene(new HeatChangeScene());
 }
 
 function draw() {

@@ -37,13 +37,12 @@ class ChemistryFormulas {
       let output = "";
       let sum = 0;
 
-      for(var key in this.orbitals) {
+      for (var key in this.orbitals) {
         var value = this.orbitals[key]
 
-        if(sum + value > n) {
+        if (sum + value > n) {
           break;
-        }
-        else {
+        } else {
           output += key + "^" + str(value) + " ";
           sum += value;
         }
@@ -53,5 +52,49 @@ class ChemistryFormulas {
     }
     this.electronConfiguration.prompts.push("Enter the number of electrons:");
     this.electronConfiguration.resultPrompt = "The likely electron configuration is:";
+
+
+
+
+
+    var massPrompt = "Enter the mass (g):";
+    var specificPrompt = "Enter the specific heat capacity (J / (g * celsius)):";
+    var tempaturePrompt = "Enter the change in tempature (celsius):";
+    var changePrompt = "Enter the change in heat capacity (J):";
+    var tempatureInitialPrompt = "Enter the initial tempature (celsius):";
+    var tempatureFinalPrompt = "Enter the final tempature (celsius):";
+
+
+    // Heat change
+    this.heatChangeQ = FormulaTemplate.CreateBlankTemplate();
+    this.heatChangeQ.formula = (m, c, t) => {return  m * c * t;};
+    this.heatChangeQ.prompts = [massPrompt, specificPrompt, tempaturePrompt];
+    this.heatChangeQ.resultPrompt = "The resulting heat capacity (J) is:";
+
+    this.heatChangeM = FormulaTemplate.CreateBlankTemplate();
+    this.heatChangeM.formula = (q, c, t) => {return  q / (c * t);};
+    this.heatChangeM.prompts = [changePrompt, specificPrompt, tempaturePrompt];
+    this.heatChangeM.resultPrompt = "The resulting mass (g) is:";
+
+    this.heatChangeC = FormulaTemplate.CreateBlankTemplate();
+    this.heatChangeC.formula = (q, m, t) => {return  q / (m * t);};
+    this.heatChangeC.prompts = [changePrompt, massPrompt, tempaturePrompt];
+    this.heatChangeC.resultPrompt = "The resulting specific heat (J / (g * celsius)) is:";
+
+    this.heatChangeT = FormulaTemplate.CreateBlankTemplate();
+    this.heatChangeT.formula = (q, m, c) => {return  q / (m * c);};
+    this.heatChangeT.prompts = [changePrompt, massPrompt, specificPrompt];
+    this.heatChangeT.resultPrompt = "The resulting tempature change (celsius) is:";
+
+    this.heatChangeTI = FormulaTemplate.CreateBlankTemplate();
+    this.heatChangeTI.formula = (q, m, c, tf) => {return  -(q / (m * c)) + tf;};
+    this.heatChangeTI.prompts = [changePrompt, massPrompt, specificPrompt, tempatureFinalPrompt];
+    this.heatChangeTI.resultPrompt = "The initial tempature (celsius) is:";
+
+    this.heatChangeTF = FormulaTemplate.CreateBlankTemplate();
+    this.heatChangeTF.formula = (q, m, c, ti) => {return  (q / (m * c)) + ti;};
+    this.heatChangeTF.prompts = [changePrompt, massPrompt, specificPrompt, tempatureInitialPrompt];
+    this.heatChangeTF.resultPrompt = "The final tempature (celsius) is:";
+
   }
 };
