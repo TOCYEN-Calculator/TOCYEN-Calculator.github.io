@@ -9,6 +9,7 @@ class ChemistryScene extends Scene {
     Scaler.TextSize(50);
     this.elements = [
       CreateSceneButton("Calorimetry", "Calorimetry", createVector(0,0)),
+      CreateSceneButton("Stoichiometry", "Stoichiometry"),
       CreateBackButton("SubjectScene")
     ];
 

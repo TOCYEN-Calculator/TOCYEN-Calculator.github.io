@@ -58,6 +58,9 @@ class ChemistryFormulas {
 
 
     var massPrompt = "Enter the mass (g):";
+    var amuPrompt = "Enter the molar mass (g / mol):";
+    var molePrompt = "Enter the moles (mol):";
+    var atomPrompt = "Enter the number of atoms:";
     var specificPrompt = "Enter the specific heat capacity (J / (g * celsius)):";
     var tempaturePrompt = "Enter the change in tempature (celsius):";
     var changePrompt = "Enter the change in heat capacity (J):";
@@ -95,6 +98,38 @@ class ChemistryFormulas {
     this.heatChangeTF.formula = (q, m, c, ti) => {return  (q / (m * c)) + ti;};
     this.heatChangeTF.prompts = [changePrompt, massPrompt, specificPrompt, tempatureInitialPrompt];
     this.heatChangeTF.resultPrompt = "The final tempature (celsius) is:";
+
+
+    // Mole Conversions
+    this.gramToMole = FormulaTemplate.CreateBlankTemplate();
+    this.gramToMole.formula = (g, amu) => {return  g / amu;};
+    this.gramToMole.prompts = [massPrompt, amuPrompt];
+    this.gramToMole.resultPrompt = "The resulting moles (mol) is:";
+
+    this.gramToAtoms = FormulaTemplate.CreateBlankTemplate();
+    this.gramToAtoms.formula = (g, amu) => {return  (g / amu) * 6.02 * pow(10, 23);};
+    this.gramToAtoms.prompts = [massPrompt, amuPrompt];
+    this.gramToAtoms.resultPrompt = "The resulting moles (mol) is:";
+
+    this.molarMass = FormulaTemplate.CreateBlankTemplate();
+    this.molarMass.formula = (mol, amu) => {return  mol * amu;};
+    this.molarMass.prompts = [molePrompt, amuPrompt];
+    this.molarMass.resultPrompt = "The resulting molar mass (g) is:";
+
+    this.moleToAtoms = FormulaTemplate.CreateBlankTemplate();
+    this.moleToAtoms.formula = (mol) => {return  mol * 6.02 * pow(10, 23);};
+    this.moleToAtoms.prompts = [molePrompt];
+    this.moleToAtoms.resultPrompt = "The resulting number of atoms is:";
+
+    this.atomsToMole = FormulaTemplate.CreateBlankTemplate();
+    this.atomsToMole.formula = (atoms) => {return  atoms / (6.02 * pow(10, 23));};
+    this.atomsToMole.prompts = [atomPrompt];
+    this.atomsToMole.resultPrompt = "The resulting moles (mol) is:";
+
+    this.atomsToGram = FormulaTemplate.CreateBlankTemplate();
+    this.atomsToGram.formula = (atoms, amu) => {return  (atoms / (6.02 * pow(10, 23))) * amu;};
+    this.atomsToGram.prompts = [atomPrompt, amuPrompt];
+    this.atomsToGram.resultPrompt = "The resulting molar mass (g) is:";
 
   }
 };
