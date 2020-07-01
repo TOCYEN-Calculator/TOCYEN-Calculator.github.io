@@ -1,7 +1,12 @@
+var windowDiv = null;
+
 function setup() {
   // Align canvas to center.
   var canvas = createCanvas(windowWidth, windowHeight);
   canvas.center('horizontal');
+
+  windowDiv = createDiv();
+  windowDiv.size(windowWidth, windowHeight);
 
   // Setup text settings.
   ResetFillColor();

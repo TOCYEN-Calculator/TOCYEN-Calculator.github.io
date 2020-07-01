@@ -28,16 +28,25 @@ class InputElement extends TextElement {
      */
     this.onReturn = new Event();
 
-    InputHandler.keyEvent.AddListener(() => this.AddKey());
-    InputHandler.specialEvent.AddListener(() => this.DeleteKey());
+    this.inputField = createInput('');
+    this.inputField.parent(windowDiv);
+    this.inputField.size(Scaler.ScaleByWidth(1500), Scaler.ScaleByWidth(500));
+    this.inputField.center();
+    this.inputField.id('input');
+    this.inputField.input((value) => this.AddKey(value));
+
+    InputHandler.specialEvent.AddListener(() => this.Return());
+
+    this.SetActive(false);
   }
 
   /**
    * Resets the text of the input field as well as set active to false.
    */
   Reset() {
-    this.active = false;
+    this.SetActive(false);
     this.text = "";
+    this.inputField.value("");
   }
 
   /**
@@ -46,6 +55,12 @@ class InputElement extends TextElement {
    */
   SetActive(active) {
     this.active = active;
+    if(active) {
+      this.inputField.show();
+    }
+    else {
+      this.inputField.hide();
+    }
   }
 
   /**
@@ -57,28 +72,32 @@ class InputElement extends TextElement {
   }
 
   /**
-   * A function that adds characters to the input field when a input event is received.
+   * A function that adds characters to the input field when an input event is received.
    */
-  AddKey() {
-    if(this.active) {
-      // Check if ENTER was pressed && text exists.
-      if(keyCode == ENTER && this.text.length > 0) {
-        this.onReturn.Call();
-      }
-      else if (this.filter.includes(key)) {
-        this.text += key;
-      }
+  AddKey(inputEvent) {
+    var character = inputEvent.data;
+
+    // Delete Event received.
+    if(character == null) {
+      this.text = this.text.substring(0, this.text.length - 1);
+    }
+    else if(this.filter.includes(character)) {
+      this.text += character;
+    }
+    this.inputField.value(this.text);
+  }
+
+  Return() {
+    if(keyCode == RETURN && this.active) {
+      this.onReturn.Call();
     }
   }
 
+
   /**
-   * A function that deletes characters when a special input event is received.
+   * Render absolutely nothing. The HTML input field renders itself!
    */
-  DeleteKey() {
-    if(this.active) {
-      if(keyCode == BACKSPACE) {
-        this.text = this.text.substring(0, this.text.length - 1);
-      }
-    }
+  Render() {
+
   }
 }
