@@ -8,6 +8,26 @@ class Stoichiometry extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
+      CreateSceneButton("Molar Conversions", "MolarConversionsScene", createVector(0,-30)),
+      CreateBackButton("ChemistryScene")
+    ];
+
+    Aligner.SetReference(Aligner.REFERENCE.TOP);
+    Scaler.TextSize(100);
+    this.elements.push(new TextElement('Select a subject:', createVector(0, 100)));
+  }
+}
+
+/*
+ * Scene responsible for showing molar conversions.
+ */
+class MolarConversionsScene extends Scene {
+  constructor() {
+    super();
+
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    Scaler.TextSize(50);
+    this.elements = [
       CreateFormulaButton("Grams to Mole", ChemistryFormulas.gramToMole, createVector(0, -150)),
       CreateFormulaButton("Grams to Atoms", ChemistryFormulas.gramToAtoms),
       CreateFormulaButton("Moles to Grams", ChemistryFormulas.molarMass),
@@ -19,6 +39,6 @@ class Stoichiometry extends Scene {
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     Scaler.TextSize(100);
-    this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
+    this.elements.push(new TextElement('Select a conversion:', createVector(0, 100)));
   }
 }

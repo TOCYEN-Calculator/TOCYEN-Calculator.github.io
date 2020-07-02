@@ -42,6 +42,7 @@ function setup() {
   SceneManager.AddScene(new Calorimetry());
   SceneManager.AddScene(new HeatChangeScene());
   SceneManager.AddScene(new Stoichiometry());
+  SceneManager.AddScene(new MolarConversionsScene());
 }
 
 function draw() {
