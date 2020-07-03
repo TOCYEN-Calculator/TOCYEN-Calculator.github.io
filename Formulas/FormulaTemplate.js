@@ -45,5 +45,11 @@ class FormulaTemplate {
     this.currentTemplate.formula = template.formula;
     this.currentTemplate.previousScene = template.previousScene;
     this.onLoad.Call();
+    print('Called!');
+  }
+
+
+  static LoadExperimentalTemplate(template) {
+    
   }
 }

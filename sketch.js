@@ -45,10 +45,11 @@ function setup() {
   SceneManager.AddScene(new MolarConversionsScene());
   SceneManager.AddScene(new Molarity());
 
-  var rightSide = algebra.parse("50 * 6"); // m * a
-  var leftSide = algebra.parse("x"); // F
+  var rightSide = algebra.parse("m * a").eval({m: 5, a: 6}); // m * a
+  var leftSide = algebra.parse("F"); // F
   var eq = new algebra.Equation(leftSide, rightSide);
-  var answer = eq.solveFor("x");
+  print(eq.toString());
+  var answer = eq.solveFor('F');
   print(answer.toString());
 }
 
