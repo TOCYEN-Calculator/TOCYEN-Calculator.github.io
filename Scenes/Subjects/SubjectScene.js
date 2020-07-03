@@ -9,7 +9,7 @@ class SubjectScene extends Scene {
     Scaler.TextSize(50);
 
     this.elements = [
-      CreateSceneButton("Physics (Work In Progress)", "PhysicsScene", createVector(0,-20)),
+      CreateSceneButton("AP Physics (Discontinued)", "PhysicsScene", createVector(0,-20)),
       CreateSceneButton("Chemistry", "ChemistryScene"),
       CreateBackButton("MenuScene")
     ];
