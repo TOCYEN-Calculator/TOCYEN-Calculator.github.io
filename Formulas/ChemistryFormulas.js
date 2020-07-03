@@ -131,5 +131,26 @@ class ChemistryFormulas {
     this.atomsToGram.prompts = [atomPrompt, amuPrompt];
     this.atomsToGram.resultPrompt = "The resulting molar mass (g) is:";
 
+
+    // Mass of a product
+    this.massOfPR = FormulaTemplate.CreateBlankTemplate();
+    this.massOfPR.formula = (mgiven, gpmgiven, fracgiven, fracdesired, gpmdesired) => {return  (mgiven * fracdesired * gpmdesired) / (gpmgiven * fracgiven);};
+    this.massOfPR.prompts = [
+    "Enter the mass (g) of the given:",
+    "Enter the grams per mole (g / mol) of the given",
+    "Enter the given part of the ratio:",
+    "Enter the desired part of the ratio:",
+    "Enter the grams per mole (g / mol) of the desired:"];
+    this.massOfPR.resultPrompt = "The resulting mass (g) of the desired is:";
+
+    this.moleofPR = FormulaTemplate.CreateBlankTemplate();
+    this.moleofPR.formula = (mgiven, gpmgiven, fracgiven, fracdesired) => {return  (mgiven * fracdesired) / (gpmgiven * fracgiven);};
+    this.moleofPR.prompts = [
+    "Enter the mass (g) of the given:",
+    "Enter the grams per mole (g / mol) of the given",
+    "Enter the given part of the ratio:",
+    "Enter the desired part of the ratio:"];
+    this.moleofPR.resultPrompt = "The resulting moles (mol) of the desired is:";
+
   }
 };
