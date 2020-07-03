@@ -61,6 +61,7 @@ class ChemistryFormulas {
     var amuPrompt = "Enter the molar mass (g / mol):";
     var molePrompt = "Enter the moles (mol):";
     var literPrompt = "Enter the amount of liters (l):";
+    var molarityPrompt = "Enter the molarity (mol / l):";
     var atomPrompt = "Enter the number of atoms:";
     var specificPrompt = "Enter the specific heat capacity (J / (g * celsius)):";
     var tempaturePrompt = "Enter the change in tempature (celsius):";
@@ -155,10 +156,40 @@ class ChemistryFormulas {
 
 
     // Molarity
-    this.molarityOfGram = FormulaTemplate.CreateBlankTemplate();
-    this.molarityOfGram.formula = (grams, gpm, liters) => {return  (grams / gpm) / liters;};
-    this.molarityOfGram.prompts = [massPrompt, amuPrompt, literPrompt];
-    this.molarityOfGram.resultPrompt = "The molarity (M) of the solution is:";
+    this.molarityOfGramM = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfGramM.formula = (grams, gpm, liters) => {return  (grams / gpm) / liters;};
+    this.molarityOfGramM.prompts = [massPrompt, amuPrompt, literPrompt];
+    this.molarityOfGramM.resultPrompt = "The molarity (mol / g) of the solution is:";
+
+    this.molarityOfGramL = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfGramL.formula = (grams, gpm, molarity) => {return  (grams / gpm) / molarity;};
+    this.molarityOfGramL.prompts = [massPrompt, amuPrompt, molarityPrompt];
+    this.molarityOfGramL.resultPrompt = "The liters (l) in this solution is:";
+
+    this.molarityOfGramG = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfGramG.formula = (liter, molarity, gpm) => {return  liter * molarity * gpm;};
+    this.molarityOfGramG.prompts = [literPrompt, molarityPrompt, amuPrompt];
+    this.molarityOfGramG.resultPrompt = "The mass (g) of the solute is:";
+
+    this.molarityOfGramMM = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfGramMM.formula = (liter, molarity, grams) => {return  1 / ((liter * molarity) / grams);};
+    this.molarityOfGramMM.prompts = [literPrompt, molarityPrompt, massPrompt];
+    this.molarityOfGramMM.resultPrompt = "The molar mass (g / mol) of the solute is:";
+
+    this.molarityOfMoleM = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfMoleM.formula = (mole, liters) => {return  mole / liters;};
+    this.molarityOfMoleM.prompts = [molePrompt, literPrompt];
+    this.molarityOfMoleM.resultPrompt = "The molarity (mol / g) of the solution is:";
+
+    this.molarityOfMoleL = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfMoleL.formula = (mole, molarity) => {return  mole / molarity;};
+    this.molarityOfMoleL.prompts = [molePrompt, molarityPrompt];
+    this.molarityOfMoleL.resultPrompt = "The liters (l) in this solution is:";
+
+    this.molarityOfMoleMol = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfMoleMol.formula = (molarity, liters) => {return  molarity * liters;};
+    this.molarityOfMoleMol.prompts = [molarityPrompt, literPrompt];
+    this.molarityOfMoleMol.resultPrompt = "The moles (mol) in this solution is:";
 
   }
 };

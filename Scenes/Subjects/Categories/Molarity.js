@@ -8,17 +8,26 @@ class Molarity extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
-      CreateFormulaButton("Molarity of a Gram", ChemistryFormulas.molarityOfGram, createVector(100, 0)),
+      new TextElement("Solve with grams:", createVector(-350, 30)),
+      CreateFormulaButton("M", ChemistryFormulas.molarityOfGramM),
+      CreateFormulaButton("L", ChemistryFormulas.molarityOfGramL),
+      CreateFormulaButton("g", ChemistryFormulas.molarityOfGramG),
+      CreateFormulaButton("molar mass", ChemistryFormulas.molarityOfGramMM),
+
+      new TextElement("Solve with moles:", createVector(350, 30)),
+      CreateFormulaButton("M", ChemistryFormulas.molarityOfMoleM),
+      CreateFormulaButton("L", ChemistryFormulas.molarityOfMoleL),
+      CreateFormulaButton("mol", ChemistryFormulas.molarityOfMoleMol),
       CreateBackButton("ChemistryScene")
     ];
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    var molarity = new ImageElement('Molarity.PNG', createVector(-100,0));
+    var molarity = new ImageElement('Molarity.PNG', createVector(0,-180));
     molarity.Scale(4);
     this.elements.push(molarity);
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     Scaler.TextSize(100);
-    this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
+    this.elements.push(new TextElement('Choose a variable to solve for:', createVector(0, 100)));
   }
 }
