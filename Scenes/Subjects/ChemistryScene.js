@@ -10,6 +10,7 @@ class ChemistryScene extends Scene {
     this.elements = [
       CreateSceneButton("Calorimetry", "Calorimetry", createVector(0,0)),
       CreateSceneButton("Stoichiometry", "Stoichiometry"),
+      CreateSceneButton("Molarity", "Molarity"),
       CreateBackButton("SubjectScene")
     ];
 

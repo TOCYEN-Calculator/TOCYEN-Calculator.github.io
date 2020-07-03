@@ -60,6 +60,7 @@ class ChemistryFormulas {
     var massPrompt = "Enter the mass (g):";
     var amuPrompt = "Enter the molar mass (g / mol):";
     var molePrompt = "Enter the moles (mol):";
+    var literPrompt = "Enter the amount of liters (l):";
     var atomPrompt = "Enter the number of atoms:";
     var specificPrompt = "Enter the specific heat capacity (J / (g * celsius)):";
     var tempaturePrompt = "Enter the change in tempature (celsius):";
@@ -151,6 +152,13 @@ class ChemistryFormulas {
     "Enter the given part of the ratio:",
     "Enter the desired part of the ratio:"];
     this.moleofPR.resultPrompt = "The resulting moles (mol) of the desired is:";
+
+
+    // Molarity
+    this.molarityOfGram = FormulaTemplate.CreateBlankTemplate();
+    this.molarityOfGram.formula = (grams, gpm, liters) => {return  (grams / gpm) / liters;};
+    this.molarityOfGram.prompts = [massPrompt, amuPrompt, literPrompt];
+    this.molarityOfGram.resultPrompt = "The molarity (M) of the solution is:";
 
   }
 };

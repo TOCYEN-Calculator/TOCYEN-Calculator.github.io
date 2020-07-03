@@ -25,8 +25,10 @@ class ImageElement extends Element {
 
     this.width = width;
     this.height = height;
+    this.scale = Scaler.ScaleByWidth(1);
 
     this.loaded = false;
+    this.scrRect = null;
 
     this.path = "";
     if(typeof path == 'string') {
@@ -37,7 +39,6 @@ class ImageElement extends Element {
       this.CallbackSuccess(path);
     }
 
-    this.scrRect = null;
   }
 
 
@@ -66,13 +67,10 @@ class ImageElement extends Element {
    * Scale the image's width and height. If the screen size changes,
    * automatically make sure the image is scaled by Scaler.ScaleByWidth().
    *
-   * @param  {type} scalar description
-   * @return {type}        description
+   * @param  {number} scalar A number representing the factor to scale by.
    */
   Scale(scalar) {
-    scalar = Scaler.ScaleByWidth(scalar);
-    this.width *= scalar;
-    this.height *= scalar;
+    this.scale = Scaler.ScaleByWidth(scalar);
   }
 
   /**
@@ -81,8 +79,8 @@ class ImageElement extends Element {
   Render() {
     if(this.loaded) {
       // If there's a source rect, render it.
-      if(this.scrRect === null) {
-        image(this.image, this.position.x, this.position.y, this.width, this.height);
+      if(this.scrRect == null) {
+        image(this.image, this.position.x, this.position.y, this.width * this.scale, this.height * this.scale);
       }
       else {
         image(this.image, this.position.x, this.position.y, this.width, this.height, this.scrRect.x, this.scrRect.y, this.scrRect.w, this.scrRect.h);
@@ -93,6 +91,10 @@ class ImageElement extends Element {
   CallbackSuccess(image) {
     this.image = image;
     this.loaded = true;
+    if(this.scrRect == null) {
+      this.width = image.width;
+      this.height = image.height;
+    }
   }
 
   CallbackFail() {

@@ -19,7 +19,6 @@ class Calorimetry extends Scene {
     // Heat Change
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     var imageElement = new ImageElement("HeatChange.jpg", createVector(-200, -150));
-    imageElement.Scale(2);
     this.elements.push(imageElement);
   }
 }
@@ -49,7 +48,7 @@ class HeatChangeScene extends Scene {
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     var imageElement = new ImageElement("HeatChange.jpg", createVector(0, -150));
-    imageElement.Scale(3);
+    imageElement.Scale(2);
     this.elements.push(imageElement);
   }
 }
