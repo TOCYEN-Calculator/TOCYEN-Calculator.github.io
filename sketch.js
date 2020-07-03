@@ -44,6 +44,12 @@ function setup() {
   SceneManager.AddScene(new Stoichiometry());
   SceneManager.AddScene(new MolarConversionsScene());
   SceneManager.AddScene(new Molarity());
+
+  var rightSide = algebra.parse("50 * 6"); // m * a
+  var leftSide = algebra.parse("x"); // F
+  var eq = new algebra.Equation(leftSide, rightSide);
+  var answer = eq.solveFor("x");
+  print(answer.toString());
 }
 
 function draw() {
