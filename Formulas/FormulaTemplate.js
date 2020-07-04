@@ -27,7 +27,7 @@ class FormulaTemplate {
    * resultPrompt (string), prompts (array), and formula (function).
    */
   static CreateBlankTemplate() {
-    return {resultPrompt: "", prompts: [], formula: () => {return 0;}};
+    return {resultPrompt: "", prompts: [], formula: 0};
   }
 
 
@@ -43,13 +43,6 @@ class FormulaTemplate {
     this.currentTemplate.resultPrompt = template.resultPrompt;
     this.currentTemplate.prompts = template.prompts.slice();
     this.currentTemplate.formula = template.formula;
-    this.currentTemplate.previousScene = template.previousScene;
     this.onLoad.Call();
-    print('Called!');
-  }
-
-
-  static LoadExperimentalTemplate(template) {
-    
   }
 }

@@ -10,6 +10,10 @@ class Formula {
     this.valuesSet = false;
   }
 
+  ArgumentsNeeded() {
+    return Object.keys(this.variables).length - 1;
+  }
+
   SetValues() {
     if(arguments.length == Object.keys(this.variables).length) {
       // Determine how the order of arguments get paired up with their variables.

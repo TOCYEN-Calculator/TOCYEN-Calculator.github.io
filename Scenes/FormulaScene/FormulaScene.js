@@ -11,6 +11,7 @@
      this.resultFrag.backButton.onClick.AddListener(() => this.argumentFrag.Reset());
 
      // Listen to new FormulaTemplate loads.
+     // FormulaTemplate.Load() is linked to formula buttons.
      FormulaTemplate.onLoad.AddListener(() => this.LoadFormula());
 
      // Listen to when arguments are collected.
@@ -20,8 +21,9 @@
    CalculateResult() {
      var args = this.argumentFrag.GetArguments();
 
-     // Unpack Arguments
-     var result = FormulaTemplate.currentTemplate.formula(...args);
+     // Unpack arguments for certain variables
+     FormulaTemplate.currentTemplate.formula.SetValues(null,...args);
+     var result = FormulaTemplate.currentTemplate.formula.SolveFor('F');
 
      this.resultFrag.SetResult(result);
    }
@@ -29,8 +31,9 @@
    LoadFormula() {
      var currentTemplate = FormulaTemplate.currentTemplate;
 
-     this.resultFrag.SetResultPrompt(currentTemplate.resultPrompt);
-     this.argumentFrag.SetArgumentsNeeded(currentTemplate.formula.length);
+     // Figure out what the resulting prompt is.
+     this.resultFrag.SetResultPrompt("(TEST) FORCE IS:");
+     this.argumentFrag.SetArgumentsNeeded(currentTemplate.formula.ArgumentsNeeded());
      this.argumentFrag.SetPrompts(currentTemplate.prompts);
 
      // Hardcode back button reset.

@@ -68,8 +68,8 @@
       Scaler.TextSize(50);
       this.elements = [
         CreateFormulaButton("F", PhysicsFormulas.newtonSecondF, createVector(0,100)),
-        CreateFormulaButton("m", PhysicsFormulas.newtonSecondM),
-        CreateFormulaButton("a", PhysicsFormulas.newtonSecondA),
+        CreateFormulaButton("m", PhysicsFormulas.newtonSecondF),
+        CreateFormulaButton("a", PhysicsFormulas.newtonSecondF),
         CreateBackButton("Mechanics")
       ];
 
@@ -98,11 +98,11 @@
        Aligner.SetReference(Aligner.REFERENCE.CENTER);
        Scaler.TextSize(50);
        this.elements = [
-         CreateFormulaButton("K", PhysicsFormulas.kineticEnergyK, createVector(0,30)),
-         CreateFormulaButton("m", PhysicsFormulas.kineticEnergyM),
-         CreateFormulaButton("v", PhysicsFormulas.kineticEnergyV),
-         CreateFormulaButton("v (initial)", PhysicsFormulas.kineticEnergyVI),
-         CreateFormulaButton("v (final)", PhysicsFormulas.kineticEnergyVF),
+         CreateFormulaButton("K", PhysicsFormulas.newtonSecondF, createVector(0,30)),
+         CreateFormulaButton("m", PhysicsFormulas.newtonSecondF),
+         CreateFormulaButton("v", PhysicsFormulas.newtonSecondF),
+         CreateFormulaButton("v (initial)", PhysicsFormulas.newtonSecondF),
+         CreateFormulaButton("v (final)", PhysicsFormulas.newtonSecondF),
          CreateBackButton("Mechanics")
        ];
 
