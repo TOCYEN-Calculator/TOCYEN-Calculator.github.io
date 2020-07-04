@@ -38,12 +38,12 @@ function setup() {
   SceneManager.AddScene(new FormulaScene());
   SceneManager.AddScene(new Mechanics());
   SceneManager.AddScene(new KineticEnergyScene());
-  SceneManager.AddScene(new NewtonSecondScene());
-  SceneManager.AddScene(new Calorimetry());
-  SceneManager.AddScene(new HeatChangeScene());
-  SceneManager.AddScene(new Stoichiometry());
-  SceneManager.AddScene(new MolarConversionsScene());
-  SceneManager.AddScene(new Molarity());
+  //SceneManager.AddScene(new NewtonSecondScene());
+  //SceneManager.AddScene(new Calorimetry());
+  //SceneManager.AddScene(new HeatChangeScene());
+  //SceneManager.AddScene(new Stoichiometry());
+  //SceneManager.AddScene(new MolarConversionsScene());
+  //SceneManager.AddScene(new Molarity());
 
 
   SceneManager.AddScene(new TestScene());

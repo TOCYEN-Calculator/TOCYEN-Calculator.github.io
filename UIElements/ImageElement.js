@@ -83,7 +83,7 @@ class ImageElement extends Element {
         image(this.image, this.position.x, this.position.y, this.width * this.scale, this.height * this.scale);
       }
       else {
-        image(this.image, this.position.x, this.position.y, this.width, this.height, this.scrRect.x, this.scrRect.y, this.scrRect.w, this.scrRect.h);
+        image(this.image, this.position.x, this.position.y, this.width * this.scale, this.height * this.scale, this.scrRect.x, this.scrRect.y, this.scrRect.w, this.scrRect.h);
       }
     }
   }
