@@ -22,8 +22,29 @@
      var args = this.argumentFrag.GetArguments();
 
      // Unpack arguments for certain variables
-     FormulaTemplate.currentTemplate.formula.SetValues(null,...args);             //asoufdyhwefoi
-     var result = FormulaTemplate.currentTemplate.formula.SolveFor('F');           //asdfoihjsdfiu
+     var filteredArgs = [];
+     var argsIndex = 0;
+     for(var index = 0; index < FormulaTemplate.currentTemplate.formula.ArgumentsNeeded() + 1; index++) {
+       if(index == FormulaTemplate.currentTemplate.formula.VariableInMap(FormulaTemplate.currentTemplate.variable)) {
+         filteredArgs.push(null);
+       }
+       else {
+         filteredArgs.push(args[argsIndex]);
+         argsIndex++;
+       }
+     }
+     print(filteredArgs);
+
+
+     FormulaTemplate.currentTemplate.formula.SetValues(...filteredArgs);
+
+
+
+
+
+
+
+     var result = FormulaTemplate.currentTemplate.formula.SolveFor(FormulaTemplate.currentTemplate.variable);
 
      this.resultFrag.SetResult(result);
    }
@@ -32,9 +53,24 @@
      var currentTemplate = FormulaTemplate.currentTemplate;
 
      // Figure out what the resulting prompt is.
-     this.resultFrag.SetResultPrompt("(TEST) FORCE IS:");                           ////saoifshadifuhjsadi
      this.argumentFrag.SetArgumentsNeeded(currentTemplate.formula.ArgumentsNeeded());
-     this.argumentFrag.SetPrompts(currentTemplate.prompts);                                 ////// IUHasfudjghassa
+
+     var filteredPrompts = [];
+     for(var index in currentTemplate.prompts) {
+       if(index != currentTemplate.formula.VariableInMap(currentTemplate.variable)) {
+         filteredPrompts.push(currentTemplate.prompts[index]);
+       }
+     }
+     this.argumentFrag.SetPrompts(filteredPrompts);
+
+     var filteredResult = "ERROR";
+     for(var index in currentTemplate.prompts) {
+       if(index == currentTemplate.formula.VariableInMap(currentTemplate.variable)) {
+         filteredResult = currentTemplate.resultPrompts[index];
+         break;
+       }
+     }
+     this.resultFrag.SetResultPrompt(filteredResult);                           ////saoifshadifuhjsadi
 
      // Hardcode back button reset.
      this.resultFrag.backButton.onClick.listeners[0] = () => SceneManager.ToScene(SceneManager.previousScene);

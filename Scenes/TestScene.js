@@ -10,11 +10,9 @@ class TestScene extends Scene {
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(100);
-    this.elements.push(CreateFormulaButton("TestCalcualtion", PhysicsFormulas.newtonSecondF, createVector(0,0)));
-
-    var newtonsSecondLaw = new Formula('F = m * a', {F: null, m: null, a: null});
-    newtonsSecondLaw.SetValues(5, null, 2);
-    print(newtonsSecondLaw.SolveFor('m'));
+    this.elements.push(CreateFormulaButton("F", PhysicsFormulas.newtonSecond, "F", createVector(0,0)));
+    this.elements.push(CreateFormulaButton("m", PhysicsFormulas.newtonSecond, "m"));
+    this.elements.push(CreateFormulaButton("a", PhysicsFormulas.newtonSecond, "a"));
 
 
     //var ht = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {

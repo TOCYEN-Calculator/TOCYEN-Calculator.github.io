@@ -37,12 +37,13 @@ class FormulaTemplate {
    *
    * @param  {FormulaTemplate} template description
    */
-  static LoadTemplate(template) {
+  static LoadTemplate(template, variable) {
     // Shallow-copy arrays.
     this.currentTemplate = this.CreateBlankTemplate();
-    this.currentTemplate.resultPrompt = template.resultPrompt;
+    this.currentTemplate.resultPrompts = template.resultPrompts.slice();
     this.currentTemplate.prompts = template.prompts.slice();
     this.currentTemplate.formula = template.formula;
+    this.currentTemplate.variable = variable;
     this.onLoad.Call();
   }
 }

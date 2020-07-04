@@ -18,9 +18,9 @@ class PhysicsFormulas {
 
 
     // Newton's Second Law
-    this.newtonSecondF = FormulaTemplate.CreateBlankTemplate();
-    this.newtonSecondF.formula = new Formula("F = m * a", {F: null, m: null, a: null});
-    this.newtonSecondF.prompts = [massPrompt, accelerationPrompt];
-    this.newtonSecondF.resultPrompt = "The resulting force (N) is:";
+    this.newtonSecond = FormulaTemplate.CreateBlankTemplate();
+    this.newtonSecond.formula = new Formula("F = m * a", {F: null, m: null, a: null});
+    this.newtonSecond.prompts = [forcePrompt, massPrompt, accelerationPrompt];
+    this.newtonSecond.resultPrompts = ["The resulting force (N) is:", "M) is:", "A) is:"];
   }
 };

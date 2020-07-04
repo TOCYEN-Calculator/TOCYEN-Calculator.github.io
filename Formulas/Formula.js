@@ -14,6 +14,15 @@ class Formula {
     return Object.keys(this.variables).length - 1;
   }
 
+  VariableInMap(variable) {
+    for(var index in this.map) {
+      if(this.map[index] == variable) {
+        return index;
+      }
+    }
+    return -1;
+  }
+
   SetValues() {
     if(arguments.length == Object.keys(this.variables).length) {
       // Determine how the order of arguments get paired up with their variables.
