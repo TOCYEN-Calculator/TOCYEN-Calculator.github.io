@@ -12,7 +12,7 @@
  *
  * @param  {string} label - The text on the button.
  * @param  {FormulaTemplate} template - The formula template that will get loaded on the button's click.
- * @param  {string} previousScene - Name of the previous scene.
+ * @param  {string} variable - The variable to be solved for.
  * @param  {Vector} position - The relative position of the button.
  * @return {Button} A Button.js button.
  */

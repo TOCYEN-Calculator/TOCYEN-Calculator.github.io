@@ -23,7 +23,6 @@
      var currentTemplate = FormulaTemplate.currentTemplate;
 
      // Unpack arguments
-     print(args);
      currentTemplate.formula.SetVariableValues(currentTemplate.variable, ...args);
      var result = currentTemplate.formula.Solve();
 
@@ -34,19 +33,20 @@
      var currentTemplate = FormulaTemplate.currentTemplate;
      var variableToSolveFor = FormulaTemplate.currentTemplate.variable;
 
-     // Figure out what the resulting prompt is.
      this.argumentFrag.SetArgumentsNeeded(currentTemplate.formula.ArgumentsNeeded());
 
+     // Select the prompts that are NOT related to the variable in question.
      var filteredPrompts = [];
-     for(var key in currentTemplate.prompts) {
+     for(var key in currentTemplate.formula.variables) {
        if(key != variableToSolveFor) {
          filteredPrompts.push(currentTemplate.prompts[key]);
        }
      }
      this.argumentFrag.SetPrompts(filteredPrompts);
 
+     // Select only one resulting prompt; The one with the variable as its key.
      var filteredResult = "Error";
-     for(var key in currentTemplate.resultPrompts) {
+     for(var key in currentTemplate.formula.variables) {
        if(key == variableToSolveFor) {
          filteredResult = currentTemplate.resultPrompts[key];
          break

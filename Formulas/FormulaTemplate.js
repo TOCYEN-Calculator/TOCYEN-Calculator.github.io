@@ -22,12 +22,11 @@ class FormulaTemplate {
 
   /**
    * Returns a blank formula template.
-   * @param  {string} previousScene Name of the previousScene.
    * @return {FormulaTemplate}  A dictionary with the following members:
-   * resultPrompt (string), prompts (array), and formula (function).
+   * resultPrompts (string), prompts (array), variable (string),and formula (Formula()).
    */
   static CreateBlankTemplate() {
-    return {resultPrompt: "", prompts: [], formula: 0, variable: ""};
+    return {resultPrompts: "", prompts: [], formula: 0, variable: ""};
   }
 
 
@@ -35,10 +34,10 @@ class FormulaTemplate {
    * Sets a formula template as the current template used.
    * Calls onLoad().
    *
-   * @param  {FormulaTemplate} template description
+   * @param  {FormulaTemplate} template The formula template to be loaded.
+   * @param  {string} variable The variable to be solved for.
    */
   static LoadTemplate(template, variable) {
-    // Shallow-copy arrays.
     this.currentTemplate = template;
     this.currentTemplate.variable = variable;
     this.onLoad.Call();
