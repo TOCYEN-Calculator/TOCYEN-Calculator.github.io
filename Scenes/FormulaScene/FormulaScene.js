@@ -22,8 +22,8 @@
      var args = this.argumentFrag.GetArguments();
 
      // Unpack arguments for certain variables
-     FormulaTemplate.currentTemplate.formula.SetValues(null,...args);
-     var result = FormulaTemplate.currentTemplate.formula.SolveFor('F');
+     FormulaTemplate.currentTemplate.formula.SetValues(null,...args);             //asoufdyhwefoi
+     var result = FormulaTemplate.currentTemplate.formula.SolveFor('F');           //asdfoihjsdfiu
 
      this.resultFrag.SetResult(result);
    }
@@ -32,9 +32,9 @@
      var currentTemplate = FormulaTemplate.currentTemplate;
 
      // Figure out what the resulting prompt is.
-     this.resultFrag.SetResultPrompt("(TEST) FORCE IS:");
+     this.resultFrag.SetResultPrompt("(TEST) FORCE IS:");                           ////saoifshadifuhjsadi
      this.argumentFrag.SetArgumentsNeeded(currentTemplate.formula.ArgumentsNeeded());
-     this.argumentFrag.SetPrompts(currentTemplate.prompts);
+     this.argumentFrag.SetPrompts(currentTemplate.prompts);                                 ////// IUHasfudjghassa
 
      // Hardcode back button reset.
      this.resultFrag.backButton.onClick.listeners[0] = () => SceneManager.ToScene(SceneManager.previousScene);
