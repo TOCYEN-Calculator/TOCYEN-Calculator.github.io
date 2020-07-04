@@ -3,15 +3,22 @@
  */
 class Formula {
   /**
-   * constructor - description
+   * Construct a formula.
    *
-   * @param  {type} formula   description
-   * @param  {type} variables description
-   * @return {type}           description
+   * @param  {string | nerdamer} formula   A string, or nerdamer object, that represents the formula.
+   * @param  {dict} variables A dictionary representing the order of variables of the formula.
    */
   constructor(formula, variables) {
     this.rawFormula = formula;
     this.currentFormula = formula;
+
+    if (typeof formula == 'object') {
+      // Assume it's a nerdamer object. Seriously.
+      this.rawFormula = formula.toString();
+      this.currentFormula = formula.toString();
+    }
+
+
     this.variable = "";
     this.variables = variables;
     this.map = [];
@@ -77,6 +84,12 @@ class Formula {
     }
     else if (!this.valuesSet) {
       print("Formula.js: Values have not been set! Stuff may look weird..");
+    }
+    
+    // Convert the fraction into a decimal! (if necessary)
+    var split = answer.split('/');
+    if(split.length > 1) {
+      answer = parseInt(split[0], 10) / parseInt(split[1], 10);
     }
 
     return answer;
