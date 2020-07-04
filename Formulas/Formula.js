@@ -1,6 +1,8 @@
 class Formula {
   constructor(formula, variables) {
-    this.formula = formula;
+    this.rawFormula = formula;
+    this.currentFormula = formula;
+    this.variable = "";
     this.variables = variables;
     this.map = [];
     for(var key in this.variables) {
@@ -14,44 +16,40 @@ class Formula {
     return Object.keys(this.variables).length - 1;
   }
 
-  VariableInMap(variable) {
-    for(var index in this.map) {
-      if(this.map[index] == variable) {
-        return index;
+  SetVariableValues(variable) {
+    var filteredValues = {};
+    var mapIndex = 0;
+    for(var index = 1; index < arguments.length; index++) {
+      var currentVariable = this.map[mapIndex];
+
+      // Don't set the value of the variable in question.
+      if(currentVariable == variable) {
+        currentVariable = this.map[++mapIndex];
+      }
+      mapIndex++;
+
+      var value = arguments[index];
+      if(value != null) {
+        filteredValues[currentVariable] = value;
       }
     }
-    return -1;
+    print(filteredValues);
+    this.valuesSet = true;
+    this.variable = variable;
+    this.currentFormula = nerdamer(this.rawFormula, filteredValues).text();
   }
 
-  SetValues() {
-    if(arguments.length == Object.keys(this.variables).length) {
-      // Determine how the order of arguments get paired up with their variables.
-      var filteredValues = {};
-
-      for(var index in arguments) {
-        var value = arguments[index];
-
-        if(value != null) {
-          filteredValues[this.map[index]] = value;
-        }
-      }
-
-      this.formula = nerdamer(this.formula, filteredValues).text();
-      this.valuesSet = true;
-    }
-    else {
-      print('Formula.js: THERE IS NOT ENOUGH ARGUMENTS.')
-    }
-  }
-
-  SolveFor(variable) {
-    var answer = nerdamer.solveEquations(this.formula, variable).toString();
+  Solve() {
+    var answer = nerdamer.solveEquations(this.currentFormula, this.variable).toString();
     if(answer == "") {
       print("Formula.js: Couldn\'t solve formula! Make sure the variable you\'re solving for is null!");
     }
     else if (!this.valuesSet) {
       print("Formula.js: Values have not been set! Stuff may look weird..");
     }
-    return nerdamer.solveEquations(this.formula, variable).toString();
+
+    answer = `${this.variable} = ${answer}`;
+
+    return answer;
   }
 }

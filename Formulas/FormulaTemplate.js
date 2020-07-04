@@ -27,7 +27,7 @@ class FormulaTemplate {
    * resultPrompt (string), prompts (array), and formula (function).
    */
   static CreateBlankTemplate() {
-    return {resultPrompt: "", prompts: [], formula: 0};
+    return {resultPrompt: "", prompts: [], formula: 0, variable: ""};
   }
 
 
@@ -39,10 +39,7 @@ class FormulaTemplate {
    */
   static LoadTemplate(template, variable) {
     // Shallow-copy arrays.
-    this.currentTemplate = this.CreateBlankTemplate();
-    this.currentTemplate.resultPrompts = template.resultPrompts.slice();
-    this.currentTemplate.prompts = template.prompts.slice();
-    this.currentTemplate.formula = template.formula;
+    this.currentTemplate = template;
     this.currentTemplate.variable = variable;
     this.onLoad.Call();
   }
