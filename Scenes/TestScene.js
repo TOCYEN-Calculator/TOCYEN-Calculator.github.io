@@ -8,6 +8,10 @@ class TestScene extends Scene {
     Scaler.TextSize(100);
     this.elements.push(new TextElement("TEST", createVector(0, 100)));
 
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    Scaler.TextSize(100);
+    this.elements.push(CreateFormulaButton("TestCalcualtion", PhysicsFormulas.newtonSecondF, createVector(0,0)));
+
     var newtonsSecondLaw = new Formula('F = m * a', {F: null, m: null, a: null});
     newtonsSecondLaw.SetValues(5, null, 2);
     print(newtonsSecondLaw.SolveFor('m'));
