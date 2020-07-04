@@ -3,21 +3,24 @@
  */
 class Formula {
   /**
-   * Construct a formula.
+   * Construct a string-based formula.
    *
-   * @param  {string | nerdamer} formula   A string, or nerdamer object, that represents the formula.
+   * @param  {string} formula   A string that represents the formula. Should be parsable by
+   * nerdamer.
    * @param  {dict} variables A dictionary representing the order of variables of the formula.
    */
   constructor(formula, variables) {
-    this.rawFormula = formula;
-    this.currentFormula = formula;
-
-    if (typeof formula == 'object') {
-      // Assume it's a nerdamer object. Seriously.
-      this.rawFormula = formula.toString();
-      this.currentFormula = formula.toString();
+    if(formula == null) {
+      print("Formula.js: A string formula was not entered.");
+      formula = "";
+    }
+    if(variables == null) {
+      print("Formula.js: No variables were assigned to the formula.");
+      variables = {}
     }
 
+    this.originalFormula = formula;
+    this.currentFormula = formula;
 
     this.variable = "";
     this.variables = variables;
@@ -50,25 +53,33 @@ class Formula {
    * of F = "5" and a = "6", as it ignores the variable "m".
    */
   SetVariableValues(variable) {
-    var filteredValues = {};
-    var mapIndex = 0;
-    for(var index = 1; index < arguments.length; index++) {
-      var currentVariable = this.map[mapIndex];
-
-      // Don't set the value of the variable in question.
-      if(currentVariable == variable) {
-        currentVariable = this.map[++mapIndex];
-      }
-      mapIndex++;
-
-      var value = arguments[index];
-      if(value != null) {
-        filteredValues[currentVariable] = value;
-      }
+    if(variable == null || typeof variable != 'string') {
+      print("Formula.js: You must enter a variable to set it!");
     }
-    this.valuesSet = true;
-    this.variable = variable;
-    this.currentFormula = nerdamer(this.rawFormula, filteredValues).text();
+    else if(arguments.length - 1 != this.ArgumentsNeeded()) {
+      print(`Formula.js: ${arguments.length - 1} argument(s) are not enough to be set. You need at least ${this.ArgumentsNeeded()}!`);
+    }
+    else {
+      var filteredValues = {};
+      var mapIndex = 0;
+      for(var index = 1; index < arguments.length; index++) {
+        var currentVariable = this.map[mapIndex];
+
+        // Don't set the value of the variable in question.
+        if(currentVariable == variable) {
+          currentVariable = this.map[++mapIndex];
+        }
+        mapIndex++;
+
+        var value = arguments[index];
+        if(value != null) {
+          filteredValues[currentVariable] = value;
+        }
+      }
+      this.valuesSet = true;
+      this.variable = variable;
+      this.currentFormula = nerdamer(this.originalFormula, filteredValues).text();
+    }
   }
 
 
@@ -78,14 +89,19 @@ class Formula {
    * @return {string}  The raw result of nerdamer's result.
    */
   Solve() {
-    var answer = nerdamer.solveEquations(this.currentFormula, this.variable).toString();
-    if(answer == "") {
-      print("Formula.js: Couldn\'t solve formula! Make sure the variable you\'re solving for is null!");
+    var answer = 0;
+    try {
+      answer = nerdamer.solveEquations(this.currentFormula, this.variable).toString();
     }
-    else if (!this.valuesSet) {
-      print("Formula.js: Values have not been set! Stuff may look weird..");
+    catch(err) {
+      if (!this.valuesSet) {
+        print("Formula.js: Values have not been set! Stuff may look weird..");
+      }
+      else {
+        print(`Formula.js: Couldn\'t solve formula! Error: ${err.message}`);
+      }
     }
-    
+
     // Convert the fraction into a decimal! (if necessary)
     var split = answer.split('/');
     if(split.length > 1) {
