@@ -22,5 +22,11 @@ class PhysicsFormulas {
     this.newtonSecond.formula = new Formula("F = m * a", {F: null, m: null, a: null});
     this.newtonSecond.prompts = [forcePrompt, massPrompt, accelerationPrompt];
     this.newtonSecond.resultPrompts = ["The resulting force (N) is:", "M) is:", "A) is:"];
+
+    // Newton's Second Law
+    this.kineticEnergy = FormulaTemplate.CreateBlankTemplate();
+    this.kineticEnergy.formula = new Formula("KE = 0.5 * m * v", {KE: null, m: null, v: null});
+    this.kineticEnergy.prompts = [kineticPrompt, massPrompt, velocityPrompt];
+    this.kineticEnergy.resultPrompts = ["The resulting force (KE) is:", "M) is:", "v) is:"];
   }
 };
