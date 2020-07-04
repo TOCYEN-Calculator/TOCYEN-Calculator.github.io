@@ -44,6 +44,9 @@ function setup() {
   SceneManager.AddScene(new Stoichiometry());
   SceneManager.AddScene(new MolarConversionsScene());
   SceneManager.AddScene(new Molarity());
+
+
+  SceneManager.AddScene(new TestScene());
 }
 
 function draw() {
