@@ -89,31 +89,41 @@ class Formula {
    * @return {string}  The raw result of nerdamer's result.
    */
   Solve() {
-    var answer = 0;
+    var solutions = [];
+    if (!this.valuesSet) {
+      print("Formula.js: Values have not been set! Stuff may look weird..");
+    }
     try {
-      // Array of possible solutions
+      // Array of possible solutions. This assumes that all other variables are defined.
       var arr = nerdamer.solveEquations(this.currentFormula, this.variable);
 
-      // Turn it into a fraction, no matter what.
-      // Could be a source of error if two or more variables
-      // are undefined.
-      answer = nerdamer(arr[arr.length - 1]).evaluate().toString();
+      // Evaluate each solution (i.e turn it into a fraction)
+      var values = arr.toString().split(',');
+      for(var index in values) {
+        solutions.push(nerdamer(values[index]).evaluate().toString());
+      }
     }
     catch(err) {
-      if (!this.valuesSet) {
-        print("Formula.js: Values have not been set! Stuff may look weird..");
+      print(`Formula.js: Couldn\'t solve formula! Error: ${err.message}`);
+    }
+
+    // Convert each fraction (if any) into a decimal.
+    var answer = "";
+    for(var index in solutions) {
+      if(index > 0) {
+        answer += ', ';
+      }
+
+      var split = solutions[index].split('/');
+      if(split.length > 1) {
+        answer += (parseInt(split[0], 10) / parseInt(split[1], 10)).toString();
       }
       else {
-        print(`Formula.js: Couldn\'t solve formula! Error: ${err.message}`);
+        answer += split[0];
       }
     }
 
-    // Convert the fraction into a decimal! (if necessary)
-    var split = answer.split('/');
-    if(split.length > 1) {
-      answer = parseInt(split[0], 10) / parseInt(split[1], 10);
-    }
-
+    print(answer);
     return answer;
   }
 }

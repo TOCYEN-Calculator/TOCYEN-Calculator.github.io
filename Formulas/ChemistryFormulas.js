@@ -71,67 +71,55 @@ class ChemistryFormulas {
 
 
     // Heat change
-    this.heatChangeQ = FormulaTemplate.CreateBlankTemplate();
-    this.heatChangeQ.formula = (m, c, t) => {return  m * c * t;};
-    this.heatChangeQ.prompts = [massPrompt, specificPrompt, tempaturePrompt];
-    this.heatChangeQ.resultPrompt = "The resulting heat capacity (J) is:";
+    this.heatChange = FormulaTemplate.CreateBlankTemplate();
+    this.heatChange.formula = new Formula("q = m * c * T", {q: null, m: null, c: null, T: null});
+    this.heatChange.prompts = {q: changePrompt, m: massPrompt, c: specificPrompt, T: tempaturePrompt};
+    this.heatChange.resultPrompts = {
+      q: "The resulting heat capacity (J) is:",
+      m: "The resulting mass (g) is:",
+      c: "The resulting specific heat (J / (g * celsius)) is:",
+      T: "The resulting tempature change (celsius) is:",
+    };
 
-    this.heatChangeM = FormulaTemplate.CreateBlankTemplate();
-    this.heatChangeM.formula = (q, c, t) => {return  q / (c * t);};
-    this.heatChangeM.prompts = [changePrompt, specificPrompt, tempaturePrompt];
-    this.heatChangeM.resultPrompt = "The resulting mass (g) is:";
-
-    this.heatChangeC = FormulaTemplate.CreateBlankTemplate();
-    this.heatChangeC.formula = (q, m, t) => {return  q / (m * t);};
-    this.heatChangeC.prompts = [changePrompt, massPrompt, tempaturePrompt];
-    this.heatChangeC.resultPrompt = "The resulting specific heat (J / (g * celsius)) is:";
-
-    this.heatChangeT = FormulaTemplate.CreateBlankTemplate();
-    this.heatChangeT.formula = (q, m, c) => {return  q / (m * c);};
-    this.heatChangeT.prompts = [changePrompt, massPrompt, specificPrompt];
-    this.heatChangeT.resultPrompt = "The resulting tempature change (celsius) is:";
-
-    this.heatChangeTI = FormulaTemplate.CreateBlankTemplate();
-    this.heatChangeTI.formula = (q, m, c, tf) => {return  -(q / (m * c)) + tf;};
-    this.heatChangeTI.prompts = [changePrompt, massPrompt, specificPrompt, tempatureFinalPrompt];
-    this.heatChangeTI.resultPrompt = "The initial tempature (celsius) is:";
-
-    this.heatChangeTF = FormulaTemplate.CreateBlankTemplate();
-    this.heatChangeTF.formula = (q, m, c, ti) => {return  (q / (m * c)) + ti;};
-    this.heatChangeTF.prompts = [changePrompt, massPrompt, specificPrompt, tempatureInitialPrompt];
-    this.heatChangeTF.resultPrompt = "The final tempature (celsius) is:";
+    this.heatChange2 = FormulaTemplate.CreateBlankTemplate();
+    this.heatChange2.formula = new Formula("q = m * c * (Tf - Ti)", {q: null, m: null, c: null, Tf: null, Ti: null});
+    this.heatChange2.prompts = {q: changePrompt, m: massPrompt, c: specificPrompt, Ti: tempatureInitialPrompt, Tf: tempatureFinalPrompt};
+    this.heatChange2.resultPrompts = {
+      q: "The resulting heat capacity (J) is:",
+      m: "The resulting mass (g) is:",
+      c: "The resulting specific heat (J / (g * celsius)) is:",
+      Ti: "The initial tempature (celsius) is:",
+      Tf: "The final tempature (celsius) is:"
+    };
 
 
-    // Mole Conversions
-    this.gramToMole = FormulaTemplate.CreateBlankTemplate();
-    this.gramToMole.formula = (g, amu) => {return  g / amu;};
-    this.gramToMole.prompts = [massPrompt, amuPrompt];
-    this.gramToMole.resultPrompt = "The resulting moles (mol) is:";
+    // Molar Conversions
+    this.molByGram = FormulaTemplate.CreateBlankTemplate();
+    this.molByGram.formula = new Formula("mol = g / molg", {g: null, mol: null, molg: null});
+    this.molByGram.prompts = {g: massPrompt, mol: molePrompt, molg: amuPrompt};
+    this.molByGram.resultPrompts = {
+      g: "The resulting mass (g) is:",
+      mol: "The resulting moles (mol) is:",
+      molg: "The resulting molar mass (mol / g) is:"
+    };
 
-    this.gramToAtoms = FormulaTemplate.CreateBlankTemplate();
-    this.gramToAtoms.formula = (g, amu) => {return  (g / amu) * 6.02 * pow(10, 23);};
-    this.gramToAtoms.prompts = [massPrompt, amuPrompt];
-    this.gramToAtoms.resultPrompt = "The resulting moles (mol) is:";
+    this.molByAtoms = FormulaTemplate.CreateBlankTemplate();
+    this.molByAtoms.formula = new Formula("mol = atoms / (6.02 * 10^23)", {atoms: null, mol: null});
+    this.molByAtoms.prompts = {atoms: atomPrompt, mol: molePrompt};
+    this.molByAtoms.resultPrompts = {
+      atoms: "The resulting number of atoms / molecules is:",
+      mol: "The resulting moles (mol) is:"
+    };
 
-    this.molarMass = FormulaTemplate.CreateBlankTemplate();
-    this.molarMass.formula = (mol, amu) => {return  mol * amu;};
-    this.molarMass.prompts = [molePrompt, amuPrompt];
-    this.molarMass.resultPrompt = "The resulting molar mass (g) is:";
+    this.molgByAtoms = FormulaTemplate.CreateBlankTemplate();
+    this.molgByAtoms.formula = new Formula("(g * molg) = atoms * (6.02 * 10^23)", {g: null, atoms: null, molg: null});
+    this.molgByAtoms.prompts = {g: massPrompt, atoms: atomPrompt, molg: amuPrompt};
+    this.molgByAtoms.resultPrompts = {
+      g: "The resulting mass (g) is:",
+      atoms: "The resulting number of atoms / molecules is:",
+      molg: "The resulting molar mass (mol / g) is:"
+    };
 
-    this.moleToAtoms = FormulaTemplate.CreateBlankTemplate();
-    this.moleToAtoms.formula = (mol) => {return  mol * 6.02 * pow(10, 23);};
-    this.moleToAtoms.prompts = [molePrompt];
-    this.moleToAtoms.resultPrompt = "The resulting number of atoms is:";
-
-    this.atomsToMole = FormulaTemplate.CreateBlankTemplate();
-    this.atomsToMole.formula = (atoms) => {return  atoms / (6.02 * pow(10, 23));};
-    this.atomsToMole.prompts = [atomPrompt];
-    this.atomsToMole.resultPrompt = "The resulting moles (mol) is:";
-
-    this.atomsToGram = FormulaTemplate.CreateBlankTemplate();
-    this.atomsToGram.formula = (atoms, amu) => {return  (atoms / (6.02 * pow(10, 23))) * amu;};
-    this.atomsToGram.prompts = [atomPrompt, amuPrompt];
-    this.atomsToGram.resultPrompt = "The resulting molar mass (g) is:";
 
 
     // Mass of a product

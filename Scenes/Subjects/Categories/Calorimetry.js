@@ -33,12 +33,12 @@ class HeatChangeScene extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
-      CreateFormulaButton("Q", ChemistryFormulas.heatChangeQ, createVector(0, 0)),
-      CreateFormulaButton("m", ChemistryFormulas.heatChangeM),
-      CreateFormulaButton("c", ChemistryFormulas.heatChangeC),
-      CreateFormulaButton("T", ChemistryFormulas.heatChangeT),
-      CreateFormulaButton("T (initial)", ChemistryFormulas.heatChangeTI),
-      CreateFormulaButton("T (final)", ChemistryFormulas.heatChangeTF),
+      CreateFormulaButton("Q", ChemistryFormulas.heatChange, "q", createVector(0, 0)),
+      CreateFormulaButton("m", ChemistryFormulas.heatChange, "m"),
+      CreateFormulaButton("c", ChemistryFormulas.heatChange, "c"),
+      CreateFormulaButton("T", ChemistryFormulas.heatChange, "T"),
+      CreateFormulaButton("T (initial)", ChemistryFormulas.heatChange2, "Ti"),
+      CreateFormulaButton("T (final)", ChemistryFormulas.heatChange2, "Tf"),
       CreateBackButton("Calorimetry")
     ];
 

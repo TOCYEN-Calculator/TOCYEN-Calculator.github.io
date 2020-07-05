@@ -31,12 +31,7 @@ class MolarConversionsScene extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
-      CreateFormulaButton("Grams to Mole", ChemistryFormulas.gramToMole, createVector(0, -150)),
-      CreateFormulaButton("Grams to Atoms", ChemistryFormulas.gramToAtoms),
-      CreateFormulaButton("Moles to Grams", ChemistryFormulas.molarMass),
-      CreateFormulaButton("Moles to Atoms", ChemistryFormulas.moleToAtoms),
-      CreateFormulaButton("Atoms to Moles", ChemistryFormulas.atomsToMole),
-      CreateFormulaButton("Atoms to Grams", ChemistryFormulas.atomsToGram),
+      CreateFormulaButton("Grams to Mole", ChemistryFormulas.molByGram, "mol", createVector(0, -150)),
       CreateBackButton("Stoichiometry")
     ];
 

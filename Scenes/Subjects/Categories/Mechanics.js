@@ -98,11 +98,9 @@
        Aligner.SetReference(Aligner.REFERENCE.CENTER);
        Scaler.TextSize(50);
        this.elements = [
-         CreateFormulaButton("K", PhysicsFormulas.kineticEnergy, "KE", createVector(0,30)),
-         CreateFormulaButton("m", PhysicsFormulas.kineticEnergy, "m"),
-         CreateFormulaButton("v", PhysicsFormulas.kineticEnergy, "v"),
-         CreateFormulaButton("v (initial)", PhysicsFormulas.newtonSecondF),
-         CreateFormulaButton("v (final)", PhysicsFormulas.newtonSecondF),
+         CreateFormulaButton("Kinetic Energy (K)", PhysicsFormulas.kineticEnergy, "KE", createVector(0,80)),
+         CreateFormulaButton("Mass (m)", PhysicsFormulas.kineticEnergy, "m", 30),
+         CreateFormulaButton("Velocity (v)", PhysicsFormulas.kineticEnergy, "v", 30),
          CreateBackButton("Mechanics")
        ];
 
