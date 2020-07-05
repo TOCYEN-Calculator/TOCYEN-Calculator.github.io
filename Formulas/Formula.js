@@ -91,7 +91,13 @@ class Formula {
   Solve() {
     var answer = 0;
     try {
-      answer = nerdamer.solveEquations(this.currentFormula, this.variable).toString();
+      // Array of possible solutions
+      var arr = nerdamer.solveEquations(this.currentFormula, this.variable);
+
+      // Turn it into a fraction, no matter what.
+      // Could be a source of error if two or more variables
+      // are undefined.
+      answer = nerdamer(arr[arr.length - 1]).evaluate().toString();
     }
     catch(err) {
       if (!this.valuesSet) {

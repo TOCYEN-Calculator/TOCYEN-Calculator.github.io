@@ -16,9 +16,9 @@ class TestScene extends Scene {
 
     // Stress test
 
-    var testFormula = new Formula("T = m * es/sdf", {T: null, m: null, e: null});
-    testFormula.SetVariableValues("T", null);
-    print(testFormula.Solve());
+    //var testFormula = new Formula("T = m * es/sdf", {T: null, m: null, e: null});
+    //testFormula.SetVariableValues("T", null);
+    //print(testFormula.Solve());
 
 
 
