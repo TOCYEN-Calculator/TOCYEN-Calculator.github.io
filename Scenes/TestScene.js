@@ -20,14 +20,12 @@ class TestScene extends Scene {
     testFormula.SetVariableValues("x", 9, 3.4);
     testFormula.Solve();
 
+    var formulaElement = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(0,0));
+    formulaElement.SetFontSize(1);
+    this.onLeave.AddListener(() => formulaElement.div.hide());
+    this.onEnter.AddListener(() => formulaElement.div.show());
 
-
-
-    //var ht = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
-    //throwOnError: false
-    //});
-    //var div = createDiv(ht);
-    //div.id('test');
+    print(PhysicsFormulas.kineticEnergy.formula.Katex());
   }
 
 };

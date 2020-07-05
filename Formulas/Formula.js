@@ -126,4 +126,8 @@ class Formula {
     print(answer);
     return answer;
   }
+
+  Katex() {
+    return nerdamer.convertToLaTeX(this.originalFormula).toString();
+  }
 }

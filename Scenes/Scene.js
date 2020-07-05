@@ -16,6 +16,16 @@ class Scene {
      * Array of pages. Each page is a list of elements.
      */
     this.pages = [];
+
+    /**
+     * An event called when the scene leaves the current scene.
+     */
+    this.onEnter = new Event();
+
+    /**
+     * An event called when the scene enters the current scene.
+     */
+    this.onLeave = new Event();
   }
 
 

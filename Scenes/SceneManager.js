@@ -18,7 +18,7 @@ class SceneManager {
      * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
      * scene is rendered / updated.
      */
-    this.currentScene = "MenuScene";
+    this.currentScene = "TestScene";
 
 
     /**
@@ -52,6 +52,9 @@ sure that the parameter is a object with a Render() method with no constructor p
     if(sceneName in this.scenes) {
       this.previousScene = this.currentScene;
       this.currentScene = sceneName;
+
+      this.scenes[this.previousScene].onLeave.Call();
+      this.scenes[this.currentScene].onEnter.Call();
     }
     else {
       print(`SceneManager.js: Scene name \"${sceneName}\" does not exist.`);

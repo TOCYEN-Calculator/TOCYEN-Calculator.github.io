@@ -38,15 +38,10 @@
 
 
      this.NewPage();
-     Aligner.SetReference(Aligner.REFERENCE.TOP);
-     Scaler.TextSize(100);
-     this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
-
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     Scaler.TextSize(50);
+     Scaler.TextSize(100);
      this.elements = [
-       CreateFormulaButton("F = m * a", PhysicsFormulas.newtonSecondF, createVector(200,-180)),
-       CreateFormulaButton("m = F / a", PhysicsFormulas.newtonSecondM),
+       new TextElement("This is the next page.", createVector(0,0)),
        CreateLeftPageButton(() => this.ToPage(0)),
        CreateBackButton("PhysicsScene")
      ];

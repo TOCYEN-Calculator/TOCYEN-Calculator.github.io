@@ -7,10 +7,9 @@
   border: none;
 }
 
-#test {
-  background-color:orange;
-  z-index:100;
-  width:80%;
-  height:800px;
-  position:absolute;
+.formulaElement {
+  font-size:3vw;
+  background-color:none;
+  color: white;
+  padding: 0.5vw;
 }

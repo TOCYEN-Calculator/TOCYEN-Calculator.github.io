@@ -2,8 +2,9 @@
  * A scene meant for solving and showing formulas by asking the user for its required
  * variables.
  */
- class FormulaScene {
+ class FormulaScene extends Scene {
    constructor() {
+     super();
      this.argumentFrag = new ArgumentFragment();
      this.resultFrag = new ResultFragment();
 
