@@ -81,7 +81,7 @@ class InputElement extends TextElement {
     if(character == null) {
       this.text = this.text.substring(0, this.text.length - 1);
     }
-    else if(this.filter.includes(character)) {
+    else if(this.filter.includes(character) && this.text.length != 8) {
       this.text += character;
     }
     this.inputField.value(this.text);
