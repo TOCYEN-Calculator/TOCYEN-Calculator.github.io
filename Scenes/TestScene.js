@@ -15,7 +15,7 @@ class TestScene extends Scene {
     this.elements.push(CreateFormulaButton("v", PhysicsFormulas.kineticEnergy, "v"));
 
     // Stress test
-
+    
 
     print(ChemistryFormulas.heatChange.formula.Katex());
   }

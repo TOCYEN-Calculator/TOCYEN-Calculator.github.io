@@ -26,7 +26,7 @@
 
      // Newton's Second Law
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     var newtonSecond = new FormulaElement("F = ma", createVector(-300,50));
+     var newtonSecond = new FormulaElement(String.raw`F = m \cdot a`, createVector(-300,50));
      newtonSecond.SetFontSize(3.5);
      this.onLeave.AddListener(() => newtonSecond.div.hide());
      this.onEnter.AddListener(() => newtonSecond.div.show());

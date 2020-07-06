@@ -18,8 +18,14 @@ class FormulaElement extends Element {
     this.div.class('formulaElement');
     this.div.position(0,0);
     this.div.position(this.position.x - this.div.elt.offsetWidth / 2, this.position.y - this.div.elt.offsetHeight / 2);
-    this.div.hide();
 
+    this.elements = [];
+    for(var index in this.div.elt.childNodes) {
+      this.ScanLeaves(this.div.elt.childNodes[index]);
+    }
+
+    this.div.hide();
+    print(this.elements);
   }
 
   SetFontSize(number) {
@@ -27,5 +33,17 @@ class FormulaElement extends Element {
     this.div.style('font-size', `${number}vw`);
     this.div.position(this.position.x - this.div.elt.offsetWidth / 2, this.position.y - this.div.elt.offsetHeight / 2);
     this.div.hide();
+  }
+
+  ScanLeaves(element) {
+
+    for(var index in element.childNodes) {
+      if(/^[A-Z]$/i.test(element.childNodes[index].data)) {
+        var data = element.childNodes[index].data;
+        var element = element.childNodes[index].parentElement;
+        this.elements.push([data, element]);
+      }
+      this.ScanLeaves(element.childNodes[index]);
+    }
   }
 }
