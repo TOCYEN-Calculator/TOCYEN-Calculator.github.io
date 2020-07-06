@@ -18,8 +18,10 @@ class Calorimetry extends Scene {
 
     // Heat Change
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    var imageElement = new ImageElement("HeatChange.jpg", createVector(-200, -150));
-    this.elements.push(imageElement);
+    var heatChange = new FormulaElement(String.raw`Q = mc \Delta T`, createVector(-300,-160));
+    heatChange.SetFontSize(3.5);
+    this.onLeave.AddListener(() => heatChange.div.hide());
+    this.onEnter.AddListener(() => heatChange.div.show());
   }
 }
 
@@ -33,10 +35,10 @@ class HeatChangeScene extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
-      CreateFormulaButton("Q", ChemistryFormulas.heatChange, "q", createVector(0, 0)),
-      CreateFormulaButton("m", ChemistryFormulas.heatChange, "m"),
-      CreateFormulaButton("c", ChemistryFormulas.heatChange, "c"),
-      CreateFormulaButton("T", ChemistryFormulas.heatChange, "T"),
+      CreateFormulaButton("Heat Capacity (Q)", ChemistryFormulas.heatChange, "q", createVector(0, 0)),
+      CreateFormulaButton("Mass (m)", ChemistryFormulas.heatChange, "m"),
+      CreateFormulaButton("Specific Heat Capacity (c)", ChemistryFormulas.heatChange, "c"),
+      CreateFormulaButton("Change In Tempature (T)", ChemistryFormulas.heatChange, "T"),
       CreateFormulaButton("T (initial)", ChemistryFormulas.heatChange2, "Ti"),
       CreateFormulaButton("T (final)", ChemistryFormulas.heatChange2, "Tf"),
       CreateBackButton("Calorimetry")
@@ -46,9 +48,11 @@ class HeatChangeScene extends Scene {
     Scaler.TextSize(50);
     this.elements.push(new TextElement('Select a variable to solve for:', createVector(0, 100)));
 
+    // Heat Change
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    var imageElement = new ImageElement("HeatChange.jpg", createVector(0, -150));
-    imageElement.Scale(2);
-    this.elements.push(imageElement);
+    var heatChange = new FormulaElement(String.raw`Q = mc \Delta T`, createVector(0,-150));
+    heatChange.SetFontSize(7);
+    this.onLeave.AddListener(() => heatChange.div.hide());
+    this.onEnter.AddListener(() => heatChange.div.show());
   }
 }

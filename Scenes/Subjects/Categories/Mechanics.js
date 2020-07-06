@@ -45,8 +45,8 @@
       Scaler.TextSize(50);
       this.elements = [
         CreateFormulaButton("Force (F)", PhysicsFormulas.newtonSecond, "F", createVector(0,80)),
-        CreateFormulaButton("Mass (m)", PhysicsFormulas.newtonSecond, "m", 30),
-        CreateFormulaButton("Acceleration (a)", PhysicsFormulas.newtonSecond, "a", 30),
+        CreateFormulaButton("Mass (m)", PhysicsFormulas.newtonSecond, "m"),
+        CreateFormulaButton("Acceleration (a)", PhysicsFormulas.newtonSecond, "a"),
         CreateBackButton("Mechanics")
       ];
 
@@ -75,8 +75,8 @@
        Scaler.TextSize(50);
        this.elements = [
          CreateFormulaButton("Kinetic Energy (K)", PhysicsFormulas.kineticEnergy, "KE", createVector(0,80)),
-         CreateFormulaButton("Mass (m)", PhysicsFormulas.kineticEnergy, "m", 30),
-         CreateFormulaButton("Velocity (v)", PhysicsFormulas.kineticEnergy, "v", 30),
+         CreateFormulaButton("Mass (m)", PhysicsFormulas.kineticEnergy, "m"),
+         CreateFormulaButton("Velocity (v)", PhysicsFormulas.kineticEnergy, "v"),
          CreateBackButton("Mechanics")
        ];
 

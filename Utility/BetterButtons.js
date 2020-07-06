@@ -18,8 +18,8 @@
  */
 function CreateFormulaButton(label, template, variable, position) {
   var button = null;
-  if(arguments.length == 2) {
-    button = new ButtonElement(label, 20);
+  if(arguments.length == 3) {
+    button = new ButtonElement(label, 30);
   }
   else {
     button = new ButtonElement(label, position);
@@ -57,7 +57,7 @@ function CreateBackButton(previousSceneName) {
 function CreateSceneButton(label, sceneName, position) {
   var button = null;
   if(arguments.length == 2) {
-    button = new ButtonElement(label, 20);
+    button = new ButtonElement(label, 30);
   }
   else {
     button = new ButtonElement(label, position);

@@ -17,7 +17,7 @@ class TestScene extends Scene {
     // Stress test
 
 
-    print(PhysicsFormulas.newtonSecond.formula.Katex());
+    print(ChemistryFormulas.heatChange.formula.Katex());
   }
 
 };

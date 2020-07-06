@@ -27,9 +27,6 @@ function setup() {
   ChemistryFormulas.constructor();
   FormulaImages.constructor();
 
-  // Load formula pictures
-  FormulaImages.LoadImage("Physics2.jpg");
-
   // Load scenes
   SceneManager.AddScene(new MenuScene());
   SceneManager.AddScene(new SubjectScene());
@@ -48,7 +45,7 @@ function setup() {
   SceneManager.AddScene(new TestScene());
 
   // Initial Scene.
-  SceneManager.ToScene("Mechanics");
+  SceneManager.ToScene("MenuScene");
 }
 
 function draw() {
