@@ -123,7 +123,6 @@ class Formula {
       }
     }
 
-    print(answer);
     return answer;
   }
 

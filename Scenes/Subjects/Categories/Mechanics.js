@@ -19,22 +19,18 @@
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
 
      // Kinetic Energy
-     FormulaImages.OnImage("Physics2.jpg", (image) => {
-       Aligner.SetReference(Aligner.REFERENCE.CENTER);
-       var imageElement = new ImageElement(image, createVector(-200,-150));
-       imageElement.SetScrRect(148,870,150,70);
-       imageElement.Scale(2);
-       this.elements.push(imageElement);
-     });
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     var kineticEnergy = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(-300,-160));
+     kineticEnergy.SetFontSize(3.5);
+     this.onLeave.AddListener(() => kineticEnergy.div.hide());
+     this.onEnter.AddListener(() => kineticEnergy.div.show());
 
      // Newton's Second Law
-     FormulaImages.OnImage("Physics2.jpg", (image) => {
-       Aligner.SetReference(Aligner.REFERENCE.CENTER);
-       var imageElement = new ImageElement(image, createVector(-280, 70));
-       imageElement.SetScrRect(143,453,230,90);
-       imageElement.Scale(2);
-       this.elements.push(imageElement);
-     });
+     Aligner.SetReference(Aligner.REFERENCE.CENTER);
+     var newtonSecond = new FormulaElement("F = ma", createVector(-300,50));
+     newtonSecond.SetFontSize(3.5);
+     this.onLeave.AddListener(() => newtonSecond.div.hide());
+     this.onEnter.AddListener(() => newtonSecond.div.show());
 
 
      this.NewPage();
@@ -62,9 +58,9 @@
       Aligner.SetReference(Aligner.REFERENCE.CENTER);
       Scaler.TextSize(50);
       this.elements = [
-        CreateFormulaButton("F", PhysicsFormulas.newtonSecond, "F", createVector(0,100)),
-        CreateFormulaButton("m", PhysicsFormulas.newtonSecond, "m"),
-        CreateFormulaButton("a", PhysicsFormulas.newtonSecond, "a"),
+        CreateFormulaButton("Force (F)", PhysicsFormulas.newtonSecond, "F", createVector(0,80)),
+        CreateFormulaButton("Mass (m)", PhysicsFormulas.newtonSecond, "m", 30),
+        CreateFormulaButton("Acceleration (a)", PhysicsFormulas.newtonSecond, "a", 30),
         CreateBackButton("Mechanics")
       ];
 
@@ -72,13 +68,12 @@
       Scaler.TextSize(50);
       this.elements.push(new TextElement('Select a variable to solve for:', createVector(0, 100)));
 
-      FormulaImages.OnImage("Physics2.jpg", (image) => {
-        Aligner.SetReference(Aligner.REFERENCE.CENTER);
-        var imageElement = new ImageElement(image, createVector(0,-150));
-        imageElement.SetScrRect(143,453,230,90);
-        imageElement.Scale(3);
-        this.elements.push(imageElement);
-      });
+      // Newton's Second Law
+      Aligner.SetReference(Aligner.REFERENCE.CENTER);
+      var newtonSecond = new FormulaElement("F = ma", createVector(0,-150));
+      newtonSecond.SetFontSize(7);
+      this.onLeave.AddListener(() => newtonSecond.div.hide());
+      this.onEnter.AddListener(() => newtonSecond.div.show());
     }
   }
 
@@ -103,12 +98,11 @@
        Scaler.TextSize(50);
        this.elements.push(new TextElement('Select a variable to solve for:', createVector(0, 100)));
 
-       FormulaImages.OnImage("Physics2.jpg", (image) => {
-         Aligner.SetReference(Aligner.REFERENCE.CENTER);
-         var imageElement = new ImageElement(image, createVector(0,-150));
-         imageElement.SetScrRect(148,870,150,70);
-         imageElement.Scale(3);
-         this.elements.push(imageElement);
-       });
+       // Kinetic Energy
+       Aligner.SetReference(Aligner.REFERENCE.CENTER);
+       var kineticEnergy = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(0,-150));
+       kineticEnergy.SetFontSize(7);
+       this.onLeave.AddListener(() => kineticEnergy.div.hide());
+       this.onEnter.AddListener(() => kineticEnergy.div.show());
      }
    }

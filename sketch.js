@@ -48,7 +48,7 @@ function setup() {
   SceneManager.AddScene(new TestScene());
 
   // Initial Scene.
-  SceneManager.ToScene("TestScene");
+  SceneManager.ToScene("Mechanics");
 }
 
 function draw() {
