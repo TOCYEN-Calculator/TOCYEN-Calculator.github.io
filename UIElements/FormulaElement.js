@@ -36,12 +36,14 @@ class FormulaElement extends Element {
   }
 
   ScanLeaves(element) {
-
     for(var index in element.childNodes) {
       if(/^[A-Z]$/i.test(element.childNodes[index].data)) {
         var data = element.childNodes[index].data;
         var element = element.childNodes[index].parentElement;
-        this.elements.push([data, element]);
+        element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
+        if(element.localName != "mi") {
+          this.elements.push([data, element]);
+        }
       }
       this.ScanLeaves(element.childNodes[index]);
     }
