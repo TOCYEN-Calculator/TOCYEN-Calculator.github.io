@@ -20,7 +20,7 @@ class TestScene extends Scene {
     testFormula.SetVariableValues("x", 9, 3.4);
     testFormula.Solve();
 
-    var formulaElement = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(0,0));
+    var formulaElement = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(100,100));
     formulaElement.SetFontSize(1);
     this.onLeave.AddListener(() => formulaElement.div.hide());
     this.onEnter.AddListener(() => formulaElement.div.show());

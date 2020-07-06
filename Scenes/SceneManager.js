@@ -18,13 +18,13 @@ class SceneManager {
      * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
      * scene is rendered / updated.
      */
-    this.currentScene = "TestScene";
+    this.currentScene = "";
 
 
     /**
      * Dynamic previous scene variable.
      */
-    this.previousScene = "MenuScene";
+    this.previousScene = "";
   }
 
   /**
@@ -52,6 +52,11 @@ sure that the parameter is a object with a Render() method with no constructor p
     if(sceneName in this.scenes) {
       this.previousScene = this.currentScene;
       this.currentScene = sceneName;
+
+      // If a previous scene hasn't been set.
+      if(this.previousScene == "") {
+        this.previousScene = sceneName;
+      }
 
       this.scenes[this.previousScene].onLeave.Call();
       this.scenes[this.currentScene].onEnter.Call();

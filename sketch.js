@@ -45,8 +45,10 @@ function setup() {
   SceneManager.AddScene(new MolarConversionsScene());
   SceneManager.AddScene(new Molarity());
 
-
   SceneManager.AddScene(new TestScene());
+
+  // Initial Scene.
+  SceneManager.ToScene("TestScene");
 }
 
 function draw() {

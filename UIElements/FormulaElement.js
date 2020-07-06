@@ -1,12 +1,13 @@
-class FormulaElement {
+class FormulaElement extends Element {
 
   /**
    * Constructs a formula element.
    *
    * @param  {string} formula  A raw string parsible by LaTeX.
-   * @param  {Vector} position The absolute position of the topright of the formula element.
+   * @param  {Vector} position The relative position of the topright of the formula element.
    */
   constructor(formula, position) {
+    super(position);
     this.formula = formula;
 
     var formulaHTML = katex.renderToString(formula, {
@@ -14,9 +15,9 @@ class FormulaElement {
     });
 
     this.div = createDiv(formulaHTML);
-    this.div.position(position.x, position.y);
+    this.div.position(this.position.x, this.position.y);
     this.div.class('formulaElement');
-    //this.div.hide();
+    this.div.hide();
   }
 
   SetFontSize(number) {
