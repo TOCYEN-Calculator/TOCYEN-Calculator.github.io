@@ -10,7 +10,6 @@
      this.elements = [
        CreateSceneButton("Kinetic Energy", "KineticEnergyScene", createVector(200,-150)),
        CreateSceneButton("Newton\'s Second Law", "NewtonSecondScene", createVector(300,70)),
-       CreateRightPageButton(() => this.ToPage(1)),
        CreateBackButton("PhysicsScene")
      ];
 
@@ -31,19 +30,6 @@
      newtonSecond.SetFontSize(3.5);
      this.onLeave.AddListener(() => newtonSecond.div.hide());
      this.onEnter.AddListener(() => newtonSecond.div.show());
-
-
-     this.NewPage();
-     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     Scaler.TextSize(100);
-     this.elements = [
-       new TextElement("This is the next page.", createVector(0,0)),
-       CreateLeftPageButton(() => this.ToPage(0)),
-       CreateBackButton("PhysicsScene")
-     ];
-
-     this.SavePage();
-     this.ToPage(0);
    }
  }
 

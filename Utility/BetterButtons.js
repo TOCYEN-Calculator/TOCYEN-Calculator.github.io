@@ -65,23 +65,3 @@ function CreateSceneButton(label, sceneName, position) {
   button.onClick.AddListener(() => SceneManager.ToScene(sceneName));
   return button;
 }
-
-function CreateLeftPageButton(func) {
-  var initialSize = textSize();
-  Scaler.TextSize(100);
-  Aligner.SetReference(Aligner.REFERENCE.LEFT);
-  var button = new ButtonElement("<", createVector(200,0));
-  button.onClick.AddListener(func);
-  textSize(initialSize);
-  return button;
-}
-
-function CreateRightPageButton(func) {
-  var initialSize = textSize();
-  Scaler.TextSize(100);
-  Aligner.SetReference(Aligner.REFERENCE.RIGHT);
-  var button = new ButtonElement(">", createVector(-200,0));
-  button.onClick.AddListener(func);
-  textSize(initialSize);
-  return button;
-}
