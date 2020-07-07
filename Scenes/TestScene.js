@@ -12,9 +12,6 @@ class TestScene extends Scene {
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(4);
-    this.elements.push(CreateFormulaButton("KE", PhysicsFormulas.kineticEnergy, "KE", createVector(0,0)));
-    this.elements.push(CreateFormulaButton("m", PhysicsFormulas.kineticEnergy, "m"));
-    this.elements.push(CreateFormulaButton("v", PhysicsFormulas.kineticEnergy, "v"));
   }
 
 };

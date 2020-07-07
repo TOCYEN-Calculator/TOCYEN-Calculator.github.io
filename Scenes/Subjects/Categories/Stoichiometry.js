@@ -9,8 +9,6 @@ class Stoichiometry extends Scene {
     Scaler.TextSize(2);
     this.elements = [
       CreateSceneButton("Molar Conversions", "MolarConversionsScene", createVector(0,-150)),
-      CreateFormulaButton("Mass of a Product / Reactant", ChemistryFormulas.massOfPR, createVector(400,20)),
-      CreateFormulaButton("Moles of a Product / Reactant", ChemistryFormulas.moleofPR),
       CreateBackButton("ChemistryScene")
     ];
 

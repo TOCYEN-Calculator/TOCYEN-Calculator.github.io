@@ -5,25 +5,6 @@
  * Could be referred to as button prefabs.
 */
 
-
-/**
- * Makes the creation of a formula button really easy!
- * Takes into account textSize() and alignment.
- *
- * @param  {string} label - The text on the button.
- * @param  {FormulaTemplate} template - The formula template that will get loaded on the button's click.
- * @param  {string} variable - The variable to be solved for.
- * @param  {Vector} position - The relative position of the button.
- * @return {Button} A Button.js button.
- */
-function CreateFormulaButton(label, template, variable, position = 0) {
-  var button = new ButtonElement(label, position);
-  button.onClick.AddListener(() => FormulaTemplate.LoadTemplate(template, variable));
-  button.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
-  return button;
-}
-
-
 /**
  * Creates a standardized back button. textSize() = 50px && Aligner.SetReference =
  * Aligner.REFERENCE.BOTTOMLEFT.

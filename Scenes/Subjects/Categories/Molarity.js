@@ -9,15 +9,10 @@ class Molarity extends Scene {
     Scaler.TextSize(2);
     this.elements = [
       new TextElement("Solve with grams:", createVector(-350, 30)),
-      CreateFormulaButton("M", ChemistryFormulas.molarityOfGramM),
-      CreateFormulaButton("L", ChemistryFormulas.molarityOfGramL),
-      CreateFormulaButton("g", ChemistryFormulas.molarityOfGramG),
-      CreateFormulaButton("molar mass", ChemistryFormulas.molarityOfGramMM),
+
 
       new TextElement("Solve with moles:", createVector(350, 30)),
-      CreateFormulaButton("M", ChemistryFormulas.molarityOfMoleM),
-      CreateFormulaButton("L", ChemistryFormulas.molarityOfMoleL),
-      CreateFormulaButton("mol", ChemistryFormulas.molarityOfMoleMol),
+
       CreateBackButton("ChemistryScene")
     ];
 

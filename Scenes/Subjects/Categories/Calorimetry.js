@@ -23,9 +23,9 @@ class Calorimetry extends Scene {
     var heatChange = new FormulaElement(String.raw`Q = mc \Delta T`, createVector(-300,-160));
     this.elements.push(heatChange);
 
-    heatChange.AssignToFormula(0, ChemistryFormulas.heatChange, "q")
-    heatChange.AssignToFormula(1, ChemistryFormulas.heatChange, "m")
-    heatChange.AssignToFormula(2, ChemistryFormulas.heatChange, "c")
+    heatChange.AssignToFormula(0, ChemistryFormulas.heatChange, "q");
+    heatChange.AssignToFormula(1, ChemistryFormulas.heatChange, "m");
+    heatChange.AssignToFormula(2, ChemistryFormulas.heatChange, "c");
     heatChange.AssignToFormula(3, ChemistryFormulas.heatChange, "T");
 
     // Heat Change 2
@@ -34,9 +34,9 @@ class Calorimetry extends Scene {
     var heatChange = new FormulaElement(String.raw`Q = mc(T_i - T_f)`, createVector(-300,160));
     this.elements.push(heatChange);
 
-    heatChange.AssignToFormula(0, ChemistryFormulas.heatChange2, "q")
-    heatChange.AssignToFormula(1, ChemistryFormulas.heatChange2, "m")
-    heatChange.AssignToFormula(2, ChemistryFormulas.heatChange2, "c")
+    heatChange.AssignToFormula(0, ChemistryFormulas.heatChange2, "q");
+    heatChange.AssignToFormula(1, ChemistryFormulas.heatChange2, "m");
+    heatChange.AssignToFormula(2, ChemistryFormulas.heatChange2, "c");
     heatChange.AssignToFormula(3, ChemistryFormulas.heatChange2, "Ti", true);
     heatChange.AssignToFormula(5, ChemistryFormulas.heatChange2, "Tf", true);
 

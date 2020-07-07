@@ -23,8 +23,6 @@ class FormulaElement extends Element {
     for(var index in this.pElement.elt.childNodes) {
       this.ScanLeaves(this.pElement.elt.childNodes[index]);
     }
-
-    this.Hide();
   }
 
 
@@ -41,9 +39,10 @@ class FormulaElement extends Element {
 
     if(toParent) {
       // Make the parent one big button
-      var element = element.parentElement;
-      element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
+      element = element.parentElement;
+
     }
+    element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
 
     element.onclick = () => {
       FormulaTemplate.LoadTemplate(formula, variable);
@@ -57,8 +56,6 @@ class FormulaElement extends Element {
         var data = element.childNodes[index].data;
         var element = element.childNodes[index].parentElement;
         if(element.localName != "mi") {
-
-          element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
           element.style["pointer-events"] = "auto";
 
           this.elements.push(element);
