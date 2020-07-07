@@ -38,7 +38,6 @@ function setup() {
 }
 
 function draw() {
-  background(0);
   Mouse.Update();
   SceneManager.Render();
 }

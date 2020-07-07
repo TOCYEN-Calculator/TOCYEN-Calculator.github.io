@@ -1,27 +1,33 @@
-#input {
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
   background-color: black;
   color: white;
   font-family: 'MuseoModerno';
-  font-size: 3vw;
+  font-size: 2vw;
+}
+
+#input {
+  color: white;
+  background-color: Transparent;
   text-align: center;
   border: none;
+  font-size: 5vw;
 }
 
 .text {
-  background-color: none;
-  color: white;
-  font-family: 'MuseoModerno';
-  font-size: 2vw;
+  background-color: Transparent;
 }
 
 .button {
-  border-width: 0px;
+  border-width: 0;
   padding: 0;
   margin: 0;
-  background-color: black;
+  background-color: Transparent;
   color: white;
-  font-family: 'MuseoModerno';
-  font-size: 2vw;
 }
 
 .button:hover {
@@ -30,15 +36,13 @@
 
 .formulaElement {
   text-align: center;
-  font-size:3vw;
-  background-color:none;
-  color: white;
+  background-color: Transparent;
   padding: 0.5vw;
   white-space: nowrap;
   overflow: ellipsis;
 }
 
 .formulaElementVariable:hover {
-  color:gray;
+  color: gray;
   cursor: default;
 }
