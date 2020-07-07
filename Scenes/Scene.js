@@ -21,12 +21,20 @@ class Scene {
      * An event called when the scene enters the current scene.
      */
     this.onLeave = new Event();
-  }
 
-  LinkElements() {
-    for(var index in this.elements) {
-      this.elements[index].Show();
-    }
+    // Show each element on entrance.
+    this.onEnter.AddListener(() => {
+      for(var index in this.elements) {
+        this.elements[index].Show();
+      }
+    });
+
+    // Hide each element on leave.
+    this.onLeave.AddListener(() => {
+      for(var index in this.elements) {
+        this.elements[index].Hide();
+      }
+    });
   }
 
   /**

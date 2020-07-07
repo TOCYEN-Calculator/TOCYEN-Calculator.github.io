@@ -26,7 +26,7 @@ function setup() {
   SceneManager.AddScene(new SubjectScene());
   SceneManager.AddScene(new PhysicsScene());
   SceneManager.AddScene(new ChemistryScene());*/
-  //SceneManager.AddScene(new FormulaScene());
+  SceneManager.AddScene(new FormulaScene());
   /*SceneManager.AddScene(new Mechanics());
   SceneManager.AddScene(new Calorimetry());
   SceneManager.AddScene(new Stoichiometry());

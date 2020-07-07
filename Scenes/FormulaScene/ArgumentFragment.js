@@ -41,13 +41,11 @@ class ArgumentFragment {
   Render() {
     if(this.HasEnoughPrompts()) {
       if(!this.AllArgumentsCollected()) {
-        // Render current prompt
+        // Change current prompt's text
         this.promptElement.text = this.prompts[this.currentPromptID];
-        this.promptElement.Render();
 
         // Get user input.
         this.input.Render();
-        this.backButton.Render();
       }
       else {
         print("ArgumentScene.js: Arguments have been collected. This should go to the next scene.");
