@@ -18,11 +18,11 @@
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
 
      // Kinetic Energy
+     textSize(3.5);
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      var kineticEnergy = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(-300,-160));
-     kineticEnergy.SetFontSize(3.5);
 
-     // KE\
+     // KE
      var KEelement = kineticEnergy.elements[0].parentElement;
      KEelement.setAttribute('class', KEelement.getAttribute('class') + ' formulaElementVariable');
      KEelement.onclick = () => {
@@ -30,19 +30,14 @@
        SceneManager.ToScene("FormulaScene")
      };
 
-     //TODO MAKE HOVER INTO CSS
-     // o;laiewjhrfpoiewauhrtpwieurthweapitfuwerhtfepiurtfyheprtgiurehytieruthgeritugherip;ght
 
-
-     print(kineticEnergy.elements);
-     this.onLeave.AddListener(() => kineticEnergy.div.hide());
-     this.onEnter.AddListener(() => kineticEnergy.div.show());
+     this.elements.push(kineticEnergy);
 
      // Newton's Second Law
+     textSize(3.5);
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      var newtonSecond = new FormulaElement(String.raw`F = m \cdot a`, createVector(-300,50));
-     newtonSecond.SetFontSize(3.5);
-     this.onLeave.AddListener(() => newtonSecond.div.hide());
-     this.onEnter.AddListener(() => newtonSecond.div.show());
+
+     this.elements.push(newtonSecond);
    }
  }
