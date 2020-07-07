@@ -5,29 +5,29 @@ body {
 
 html {
   background-color: black;
+}
+
+.text, .button, .formulaElement, #input {
   color: white;
   font-family: 'MuseoModerno';
   font-size: 2vw;
+  background-color: Transparent;
 }
 
 #input {
-  color: white;
-  background-color: Transparent;
   text-align: center;
   border: none;
   font-size: 5vw;
 }
 
 .text {
-  background-color: Transparent;
+
 }
 
 .button {
   border-width: 0;
   padding: 0;
   margin: 0;
-  background-color: Transparent;
-  color: white;
 }
 
 .button:hover {
@@ -36,7 +36,6 @@ html {
 
 .formulaElement {
   text-align: center;
-  background-color: Transparent;
   padding: 0.5vw;
   white-space: nowrap;
   overflow: ellipsis;

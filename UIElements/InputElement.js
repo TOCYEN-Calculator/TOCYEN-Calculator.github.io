@@ -52,7 +52,7 @@ class InputElement extends Element {
   AddKey(inputEvent) {
     var character = inputEvent.data;
     // Delete Event received.
-    if(!this.filter.includes(character) || this.text.length > 8) {
+    if(!this.filter.includes(character)) {
       this.text = this.text.substring(0, this.text.length - 1);
     }
   }

@@ -95,7 +95,14 @@ class Formula {
     }
     try {
       // Array of possible solutions. This assumes that all other variables are defined.
-      var arr = nerdamer.solveEquations(this.currentFormula, this.variable);
+      var arr = [];
+      try {
+        arr = nerdamer(this.currentFormula).solveFor(this.variable);
+      }
+      catch(error) {
+        print(error.message);
+      }
+      print('Opps');
 
       // Evaluate each solution (i.e turn it into a fraction)
       var values = arr.toString().split(',');
