@@ -40,8 +40,9 @@ class Aligner {
     this.lastElement = element;
   }
 
-  static GetNextPosition(padding = 0, element) {
+  static GetNextPosition(element, padding = 0) {
     var currentPosition = createVector(this.lastElement.rawPosition.x, this.lastElement.rawPosition.y);
+
 
     currentPosition.y += this.lastElement.height / 2 + element.height / 2 + Scaler.ScaleByWidth(padding);
 
@@ -62,7 +63,6 @@ class Aligner {
    * @param {REFERENCE | Vector} position - A REFERENCE or Vector that represents a absolute position of the canvas.
    */
   static SetReference(position) {
-    // Can be a vector or enumeration.
     this.currentReference = position;
   }
 
@@ -83,23 +83,6 @@ class Aligner {
    * @return {Vector} Vector representing a offset.
    */
   static GetOffset() {
-    // Gets the offset.
-    var offset = createVector(0,0);
-    if(this.ReferenceIsObject()) {
-      offset = this.currentReference;
-    }
-    else {
-      offset = this.GetEnumOffset();
-    }
-
-    return offset;
-  }
-
-  /**
-   * Internal function used to determine the offset if currentReference is part of REFERENCE.
-   * @return {Vector} Vector representing a offset.
-   */
-  static GetEnumOffset() {
     // Set offset to the center of the screen.
     var offset = createVector(width / 2, height / 2);
 

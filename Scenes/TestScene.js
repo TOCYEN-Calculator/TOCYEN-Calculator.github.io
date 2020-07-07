@@ -8,7 +8,7 @@ class TestScene extends Scene {
     Scaler.TextSize(4);
     this.elements.push(new TextElement("TEST", createVector(0, 100)));
     this.elements.push(new TextElement("TEST2"));
-    
+
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(4);
