@@ -17,8 +17,7 @@
  * @return {Button} A Button.js button.
  */
 function CreateFormulaButton(label, template, variable, position = 0) {
-  var button = null;
-  button = new ButtonElement(label, position);
+  var button = new ButtonElement(label, position);
   button.onClick.AddListener(() => FormulaTemplate.LoadTemplate(template, variable));
   button.onClick.AddListener(() => SceneManager.ToScene("FormulaScene"));
   return button;
@@ -49,14 +48,8 @@ function CreateBackButton(previousSceneName) {
  * @param  {Vector} position - The relative position of the button.
  * @return {Button} A Button.js button.
  */
-function CreateSceneButton(label, sceneName, position) {
-  var button = null;
-  if(arguments.length == 2) {
-    button = new ButtonElement(label, 30);
-  }
-  else {
-    button = new ButtonElement(label, position);
-  }
+function CreateSceneButton(label, sceneName, position = 0) {
+  var button = new ButtonElement(label, position);
   button.onClick.AddListener(() => SceneManager.ToScene(sceneName));
   return button;
 }
