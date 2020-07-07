@@ -7,7 +7,7 @@ class FormulaElement extends Element {
    * @param  {Vector} position The relative position of the center of the formula element.
    */
   constructor(formula, position) {
-    super(position);
+    super(createDiv(''), position);
     this.formula = formula;
 
     var formulaHTML = katex.renderToString(formula, {

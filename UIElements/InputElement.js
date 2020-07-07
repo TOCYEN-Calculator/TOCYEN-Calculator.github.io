@@ -3,24 +3,12 @@
  * @class
  */
 class InputElement extends Element {
-  /**
-   * Constructs a new input field. Position and alignment will be saved.
-   * @param {Vector | None | Number} position -
-   * VECTOR: The relative position of the element's center on the canvas.
-   * NONE: Automatically Aligner.GetNextPosition().
-   * Number: The padding of Aligner.GetNextPosition().
-   * @param {string} filter - Only allows characters in this string to be inputted.
-   */
   constructor(position, filter) {
     super(createInput(''), position);
-    /**
-     * A string of characters that are allowed to be inputted.
-     */
+
     this.filter = filter;
 
-    /**
-     * A event that is called whenever the input field catches an ENTER key press.
-     */
+
     this.onReturn = new Event();
 
     this.pElement.size(Scaler.ScaleByWidth(1500), Scaler.ScaleByWidth(500));
@@ -55,17 +43,12 @@ class InputElement extends Element {
     }
   }
 
-  /**
-   * Gets the result of the input, as a float.
-   * @return {float} The text of the input field, converted as a float.
-   */
+
   GetResult() {
     return parseFloat(this.text);
   }
 
-  /**
-   * A function that adds characters to the input field when an input event is received.
-   */
+
   AddKey(inputEvent) {
     var character = inputEvent.data;
     print(character);
