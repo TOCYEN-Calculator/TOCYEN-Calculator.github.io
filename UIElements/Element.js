@@ -16,7 +16,7 @@ class Element {
    * Any position set will be scaled to match the initial screen size via
    * Scaler.ScalePosition.
    */
-  constructor(pElement, position) {
+  constructor(pElement, position = createVector(0,0)) {
     /**
      * The raw position of the element. Wrapped with
      * the position() setter and getter.
@@ -24,6 +24,8 @@ class Element {
     this.rawPosition = createVector(0,0);
     this.pElement = pElement;
     this.hidden = false;
+    this.height = 0;
+    this.width = 0;
 
     position = Scaler.ScalePosition(position);
 
@@ -52,6 +54,9 @@ class Element {
     if(this.hidden) {
       this.Hide();
     }
+
+    this.width = this.pElement.width;
+    this.height = this.pElement.height;
   }
 
   Show() {

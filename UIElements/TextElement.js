@@ -12,8 +12,13 @@
      this.pElement.style('font-size', `${textSize()}vw`);
      this.RefreshElement();
 
+     if(position == null) {
+       print("ouch");
+     }
+
+
      // Talk to Aligner about it.
-     Aligner.SetLastText(text, this.rawPosition.x, this.rawPosition.y);
+     //Aligner.SetLastElement(this.pElement);
    }
 
    get text() {

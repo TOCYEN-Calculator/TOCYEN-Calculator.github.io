@@ -32,42 +32,18 @@ class Aligner {
      */
     this.currentReference = this.REFERENCE.CENTER;
 
-    /**
-     * Information about the last text. Can only be set using SetLastText().
-     */
-    this.lastText = {
-      strText: "",
-      textSize: 0,
-      position: createVector(0,0)
-    };
+    this.lastElement = null;
   }
 
-  /**
-   * Sets the information of the last made text. This information will be
-   * used to determine GetNextPosition().
-   * @param {string} strText - A string representing the text.
-   * @param {number} x - x absolute position of the text.
-   * @param {number} y - y absolute position of the text.
-   */
-  static SetLastText(strText, x, y) {
-    // Set the information for the last text.
-    this.lastText.strText = strText;
-    this.lastText.textSize = textSize();
-    this.lastText.position = createVector(x, y);
+  static SetLastElement(element) {
+    // Set the information for the last element.
+    this.lastElement = element;
   }
 
-  /**
-   * Returns the absolute position of the text below the last text. The last text's
-   * content, size, and position can be set using SetLastText().
-   * @param {number} padding - The padding (in px) between the positions. Will be scaled
-   * accoring to Scaler.ScaleByWidth.
-   * @return {Vector} A vector representing the absolute position of the next position.
-   */
-  static GetNextPosition(padding = 0) {
-    var currentSize = textSize();
-    var currentPosition = createVector(this.lastText.position.x, this.lastText.position.y);
+  static GetNextPosition(padding = 0, element) {
+    var currentPosition = createVector(this.lastElement.rawPosition.x, this.lastElement.rawPosition.y);
 
-    currentPosition.y += this.lastText.textSize / 2 + currentSize / 2 + Scaler.ScaleByWidth(padding);
+    currentPosition.y += this.lastElement.height / 2 + element.height / 2 + Scaler.ScaleByWidth(padding);
 
     return currentPosition;
   }
