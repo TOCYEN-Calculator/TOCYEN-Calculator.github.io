@@ -8,7 +8,8 @@
     * and cannot be changed after.
     *
     * @param  {string} text   The text you want to display.
-    * @param  {Vector | null | number} position A p5 Vector representing the relative position of the text element.
+    * @param  {Vector | null | number} position A p5 Vector representing the relative position of the text element. Can be a
+    * number or null (0px) to represent the space, in pixels, between them.
     */
    constructor(text, position = 0) {
      super(createDiv(text), position);

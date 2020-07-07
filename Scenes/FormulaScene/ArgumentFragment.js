@@ -30,6 +30,7 @@ class ArgumentFragment extends Scene {
 
     this.backButton = CreateBackButton("SubjectScene");
     this.backButton.onClick.AddListener(() => this.Reset());
+    this.backButton.onClick.AddListener(() => this.onLeave.Call());
 
     this.onFinished = new Event();
 
