@@ -6,7 +6,7 @@
 class Element {
 
   /**
-   * Construct an element.
+   * Construct an element. The element will be automatically hid until shown by Show().
    *
    * @param {p5.Element} pElement - The p5 element representing the HTML element.
    * @param {Vector}     position - The relative position of the element's center on the canvas.
@@ -17,9 +17,27 @@ class Element {
      * the position() setter and getter.
      */
     this.rawPosition = createVector(0,0);
+
+    /**
+     * The p5.Element of the class. Feel free to use this in a derived class to set
+     * custom attributes.
+     */
     this.pElement = pElement;
+
+    /**
+     * Whether or not the HTML element is in view. Changes with Hide() and Show().
+     */
     this.hidden = false;
+
+    /**
+     * Height of the element. Takes into account padding, margin, and more.
+     */
     this.height = 0;
+
+
+    /**
+     * Width of the element. Takes into account padding, margin, and more.
+     */
     this.width = 0;
 
     if(position == null) {
@@ -54,16 +72,30 @@ class Element {
     }
   }
 
+  /**
+   * Shows the element.
+   */
   Show() {
     this.hidden = false;
     this.pElement.show();
   }
 
+
+  /**
+   * Hides the element.
+   */
   Hide() {
     this.hidden = true;
     this.pElement.hide();
   }
 
+
+  /**
+   * Aligns this element's y value to be beneath the Aligner's last element.
+   *
+   * @param {Number} padding - The space between the elements. Can be negative
+   * to bring them closer together.
+   */
   AlignWithLast(padding = 0) {
     this.rawPosition = Aligner.GetNextPosition(this, padding);
     this.RefreshElement();
