@@ -31,7 +31,7 @@ class Scaler {
    */
   static TextSize(size) {
     if(typeof size == 'number') {
-      textSize(this.ScaleByWidth(size));
+      textSize(size);
     }
     else {
       print(`Scale.js: Could not set \"${size}\" as a scaled text size.`)

@@ -21,6 +21,7 @@
       */
      this.rawText = text;
      this.pElement.class('text');
+     this.pElement.style('font-size', `${textSize()}vw`);
      this.RefreshElement();
 
      // Talk to Aligner about it.
