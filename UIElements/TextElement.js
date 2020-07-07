@@ -4,13 +4,13 @@
  */
  class TextElement extends Element {
    /**
-    * Constructs a text element. Text size can be set using textSize(vw),
-    * and cannot be changed upon creation.
+    * Constructs a text element. Text size can be set using textSize(vw) before creation,
+    * and cannot be changed after.
     *
     * @param  {string} text   The text you want to display.
-    * @param  {Vector | null | Number} position A p5 Vector representing the relative position of the text element.
+    * @param  {Vector | null | number} position A p5 Vector representing the relative position of the text element.
     */
-   constructor(text, position) {
+   constructor(text, position = 0) {
      super(createDiv(text), position);
 
      /**
@@ -22,12 +22,11 @@
      this.pElement.style('font-size', `${textSize()}vw`);
      this.RefreshElement();
 
-     if(position == null) {
-       this.AlignWithLast();
+     if(typeof position == 'number') {
+       this.AlignWithLast(position);
      }
 
-
-     // Talk to Aligner about it.
+     // Tell Aligner this was the last constructed element.
      Aligner.SetLastElement(this);
    }
 

@@ -40,17 +40,12 @@ class Element {
      */
     this.width = 0;
 
-    if(position == null) {
+    if(typeof position != 'object') {
       position = createVector(0,0);
     }
     position = Scaler.ScalePosition(position);
+    this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
 
-    if(typeof position == 'object') {
-      this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
-    }
-    else {
-      print("Element.js: Position could not be set.")
-    }
     this.RefreshElement();
     this.Hide();
   }
@@ -64,7 +59,6 @@ class Element {
     this.pElement.show();
     this.width = this.pElement.elt.offsetWidth;
     this.height = this.pElement.elt.offsetHeight;
-    this.pElement.position(0, 0);
     this.pElement.position(this.position.x - this.width / 2, this.position.y - this.height / 2);
 
     if(this.hidden) {

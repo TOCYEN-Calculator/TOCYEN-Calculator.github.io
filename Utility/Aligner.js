@@ -1,17 +1,18 @@
 /**
- * Helps align text by giving out relative positions.
+ * Helps align elements by giving out relative positions.
+ *
  * @class
  */
 class Aligner {
   /**
-   * Should be called in setup() before any members or functions are accessed.
+   * Constructs the ALigner. Should be called in setup() before any members or functions are accessed.
    *
    * @static
    */
   static constructor() {
     /**
      * A set of enumerations that represent positions on the canvas.
-     * Only used in SetReference().
+     * Used in SetReference().
      */
     this.REFERENCE = {
       TOPLEFT : 0,
@@ -25,36 +26,45 @@ class Aligner {
       BOTTOMRIGHT: 8
     };
 
-
     /**
      * The current reference point. Any relative position will be relative to this.
      * This can be set safely using SetReference().
      */
     this.currentReference = this.REFERENCE.CENTER;
 
+
+    /**
+     * The element other elements can align with. Set using SetLastElement().
+     */
     this.lastElement = null;
   }
 
+
+  /**
+   * Sets the last constructed element. Used when aligning other elements.
+   *
+   * @param {Element} element A class derived from Element.js.
+   */
   static SetLastElement(element) {
     // Set the information for the last element.
     this.lastElement = element;
   }
 
+
+  /**
+   * Given an element, return a position that aligns it's center to be at
+   * the last known element.
+   *
+   * @param  {Element} element  A class derived from Element.js.
+   * @param  {number}  padding The space between the elements. Can be negative to bring them close.
+   * @return {Vector}  A p5 vector representing the absolute position of the aligned position.
+   */
   static GetNextPosition(element, padding = 0) {
     var currentPosition = createVector(this.lastElement.rawPosition.x, this.lastElement.rawPosition.y);
-
 
     currentPosition.y += this.lastElement.height / 2 + element.height / 2 + Scaler.ScaleByWidth(padding);
 
     return currentPosition;
-  }
-
-  /**
-   * Checks whether or not currentReference is an object or null.
-   * @return {bool} Whether or not currentReference is a object or null.
-   */
-  static ReferenceIsObject() {
-    return this.currentReference === null || typeof this.currentReference === 'object';
   }
 
   /**
@@ -86,12 +96,7 @@ class Aligner {
     // Set offset to the center of the screen.
     var offset = createVector(width / 2, height / 2);
 
-    // Check if current reference is an enumeration.
-    if(this.ReferenceIsObject()) {
-      print("Aligner.js: Relative position isn't a enumeration.");
-    }
-
-    else if(typeof this.currentReference === 'number') {
+    if(typeof this.currentReference === 'number') {
       switch(this.currentReference) {
       case this.REFERENCE.TOP:
         offset.y = 0;
@@ -125,6 +130,10 @@ class Aligner {
         offset = createVector(width, height);
         break;
       }
+    }
+
+    else {
+      print(`Aligner.js: Current reference is not a enumeration (number). Cannot get offset.`);
     }
 
     return offset;
