@@ -41,9 +41,7 @@ class FormulaElement extends Element {
         var element = element.childNodes[index].parentElement;
         if(element.localName != "mi") {
           element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
-          element.addEventListener('mouseenter', () => {element.style["color"] = "gray"});
           element.style["pointer-events"] = "auto";
-          element.onmouseleave = () => {element.style["color"] = "white"};
           this.elements.push(element);
         }
       }

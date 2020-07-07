@@ -17,6 +17,7 @@
   overflow: ellipsis;
 }
 
-.formulaElementVariable {
+.formulaElementVariable:hover {
+  color:gray;
   cursor: default;
 }

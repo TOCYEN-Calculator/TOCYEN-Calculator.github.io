@@ -30,6 +30,9 @@
        SceneManager.ToScene("FormulaScene")
      };
 
+     //TODO MAKE HOVER INTO CSS
+     // o;laiewjhrfpoiewauhrtpwieurthweapitfuwerhtfepiurtfyheprtgiurehytieruthgeritugherip;ght
+
 
      print(kineticEnergy.elements);
      this.onLeave.AddListener(() => kineticEnergy.div.hide());
