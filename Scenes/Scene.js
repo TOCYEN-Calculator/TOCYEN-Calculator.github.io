@@ -23,13 +23,16 @@ class Scene {
     this.onLeave = new Event();
   }
 
+  LinkElements() {
+    for(var index in this.elements) {
+      this.elements[index].Show();
+    }
+  }
 
   /**
    * Renders all elements.
    */
   Render() {
-    for(var i = 0; i < this.elements.length; i++) {
-      this.elements[i].Render();
-    }
+
   }
 }

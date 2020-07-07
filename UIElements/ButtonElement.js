@@ -16,7 +16,7 @@ class ButtonElement extends Element {
     super(createButton(strText), position);
 
     /**
-     * An event called once if the button is pressed.
+     * An event called if the button is pressed.
      */
     this.onClick = new Event();
 

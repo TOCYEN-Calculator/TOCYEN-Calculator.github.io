@@ -23,6 +23,7 @@ class Element {
      */
     this.rawPosition = createVector(0,0);
     this.pElement = pElement;
+    this.hidden = false;
 
     position = Scaler.ScalePosition(position);
 
@@ -37,22 +38,32 @@ class Element {
       print("TextElement.js: Position could not be set.")
     }
     this.RefreshElement();
+
+    this.Hide();
   }
 
   RefreshElement() {
+    this.pElement.show();
     var width = this.pElement.elt.offsetWidth;
     var height = this.pElement.elt.offsetHeight;
     this.pElement.position(0, 0);
     this.pElement.position(this.position.x - width / 2, this.position.y - height / 2);
+
+    if(this.hidden) {
+      this.Hide();
+    }
   }
 
-
-  /**
-   * Renders the element. By default, renders nothing.
-   */
-  Render() {
-
+  Show() {
+    this.hidden = false;
+    this.pElement.show();
   }
+
+  Hide() {
+    this.hidden = true;
+    this.pElement.hide();
+  }
+
 
   /**
    * Getter for the element's absolute position.
