@@ -13,22 +13,15 @@ class ButtonElement extends Element {
    * Number: The padding of Aligner.GetNextPosition().
    */
   constructor(strText, position) {
-    super(position);
+    super(createButton(strText), position);
 
     /**
      * An event called once if the button is pressed.
      */
     this.onClick = new Event();
 
-    this.pElement = createButton(strText);
     this.pElement.class('button');
-    this.pElement.position(this.position.x - this.pElement.elt.offsetWidth / 2, this.position.y - this.pElement.elt.offsetHeight / 2);
     this.pElement.elt.onclick = () => this.onClick.Call();
+    this.RefreshElement();
   }
-
-  Render() {
-
-  }
-
-
 }

@@ -16,12 +16,13 @@ class Element {
    * Any position set will be scaled to match the initial screen size via
    * Scaler.ScalePosition.
    */
-  constructor(position) {
+  constructor(pElement, position) {
     /**
      * The raw position of the element. Wrapped with
      * the position() setter and getter.
      */
     this.rawPosition = createVector(0,0);
+    this.pElement = pElement;
 
     position = Scaler.ScalePosition(position);
 
@@ -35,6 +36,14 @@ class Element {
     else {
       print("TextElement.js: Position could not be set.")
     }
+    this.RefreshElement();
+  }
+
+  RefreshElement() {
+    var width = this.pElement.elt.offsetWidth;
+    var height = this.pElement.elt.offsetHeight;
+    this.pElement.position(0, 0);
+    this.pElement.position(this.position.x - width / 2, this.position.y - height / 2);
   }
 
 

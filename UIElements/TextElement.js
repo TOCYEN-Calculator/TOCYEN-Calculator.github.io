@@ -13,7 +13,7 @@
     * Number: The padding of Aligner.GetNextPosition().
     */
    constructor(text, position = 0) {
-     super(position);
+     super(createDiv(''), position);
 
      /**
       * The raw text of the element. Wrapped with
