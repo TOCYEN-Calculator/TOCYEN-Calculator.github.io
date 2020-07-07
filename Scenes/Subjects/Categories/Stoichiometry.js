@@ -8,7 +8,6 @@ class Stoichiometry extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     Scaler.TextSize(50);
     this.elements = [
-      new ImageElement("AdvancedStoichiometric.PNG", createVector(-400,50)),
       CreateSceneButton("Molar Conversions", "MolarConversionsScene", createVector(0,-150)),
       CreateFormulaButton("Mass of a Product / Reactant", ChemistryFormulas.massOfPR, createVector(400,20)),
       CreateFormulaButton("Moles of a Product / Reactant", ChemistryFormulas.moleofPR),

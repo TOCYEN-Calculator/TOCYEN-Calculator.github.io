@@ -21,11 +21,6 @@ class Molarity extends Scene {
       CreateBackButton("ChemistryScene")
     ];
 
-    Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    var molarity = new ImageElement('Molarity.PNG', createVector(0,-180));
-    molarity.Scale(4);
-    this.elements.push(molarity);
-
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     Scaler.TextSize(100);
     this.elements.push(new TextElement('Choose a variable to solve for:', createVector(0, 100)));
