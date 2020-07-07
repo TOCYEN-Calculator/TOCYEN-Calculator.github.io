@@ -7,7 +7,7 @@
 class Scaler {
 
   /**
-   * Constructs the class. Should be called on setup() before
+   * Static constructor. Should be called on setup() before
    * any functions are called.
    */
   static constructor() {

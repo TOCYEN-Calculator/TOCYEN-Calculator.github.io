@@ -7,6 +7,20 @@
   border: none;
 }
 
+.button {
+  border-width: 0px;
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: 'MuseoModerno';
+  font-size: 2vw;
+}
+
+.button:hover {
+  color: gray;
+}
+
 .formulaElement {
   text-align: center;
   font-size:3vw;
