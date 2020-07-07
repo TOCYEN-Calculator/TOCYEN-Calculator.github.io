@@ -5,6 +5,8 @@
 class Aligner {
   /**
    * Should be called in setup() before any members or functions are accessed.
+   *
+   * @static
    */
   static constructor() {
     /**

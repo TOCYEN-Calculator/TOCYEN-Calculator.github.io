@@ -12,8 +12,8 @@ function setup() {
   // Initialize utilities
   Aligner.constructor();
   Scaler.constructor();
-  SceneManager.constructor();
   Mouse.constructor();
+  SceneManager.constructor();
   InputHandler.constructor();
 
   // Load formulas
@@ -31,7 +31,6 @@ function setup() {
   SceneManager.AddScene(new Calorimetry());
   SceneManager.AddScene(new Stoichiometry());
   SceneManager.AddScene(new Molarity());
-
   SceneManager.AddScene(new TestScene());
 
   // Initial Scene.
