@@ -20,7 +20,6 @@ function setup() {
   FormulaTemplate.constructor();
   PhysicsFormulas.constructor();
   ChemistryFormulas.constructor();
-  FormulaImages.constructor();
 
   // Load scenes
   SceneManager.AddScene(new MenuScene());
