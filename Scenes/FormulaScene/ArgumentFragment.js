@@ -4,15 +4,17 @@
  *
  * @class
  */
-class ArgumentFragment {
+class ArgumentFragment extends Scene {
 
   /**
    * Construct the fragment. Call SetArgumentsNeeded() to set the
    * number of arguments.
    */
   constructor() {
+    super();
+
     // Align the input to the center
-    Scaler.TextSize(50);
+    Scaler.TextSize(2);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     this.input = new InputElement(createVector(0,0), "0123456789.-e");
     this.input.onReturn.AddListener(() => this.ToNextPrompt());
@@ -22,7 +24,7 @@ class ArgumentFragment {
     this.prompts = [];
     this.arguments = [];
 
-    Scaler.TextSize(50);
+    Scaler.TextSize(2);
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     this.promptElement = new TextElement("", createVector(0, 100));
 
@@ -30,6 +32,10 @@ class ArgumentFragment {
     this.backButton.onClick.AddListener(() => this.Reset());
 
     this.onFinished = new Event();
+
+    this.elements.push(this.backButton);
+    this.elements.push(this.input);
+    this.elements.push(this.promptElement);
   }
 
 
@@ -43,9 +49,6 @@ class ArgumentFragment {
       if(!this.AllArgumentsCollected()) {
         // Change current prompt's text
         this.promptElement.text = this.prompts[this.currentPromptID];
-
-        // Get user input.
-        this.input.Render();
       }
       else {
         print("ArgumentScene.js: Arguments have been collected. This should go to the next scene.");

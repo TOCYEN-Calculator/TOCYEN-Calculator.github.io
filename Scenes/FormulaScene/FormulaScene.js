@@ -17,11 +17,17 @@
 
      // Listen to when arguments are collected.
      this.argumentFrag.onFinished.AddListener(() => this.CalculateResult());
+
+     this.onEnter.AddListener(() => this.argumentFrag.onEnter.Call());
+     this.onLeave.AddListener(() => this.resultFrag.onLeave.Call());
    }
 
    CalculateResult() {
      var args = this.argumentFrag.GetArguments();
      var currentTemplate = FormulaTemplate.currentTemplate;
+
+     this.argumentFrag.onLeave.Call();
+     this.resultFrag.onEnter.Call();
 
      // Unpack arguments
      currentTemplate.formula.SetVariableValues(currentTemplate.variable, ...args);

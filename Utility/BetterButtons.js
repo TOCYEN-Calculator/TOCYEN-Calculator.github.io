@@ -39,7 +39,7 @@ function CreateFormulaButton(label, template, variable, position) {
  */
 function CreateBackButton(previousSceneName) {
   Aligner.SetReference(Aligner.REFERENCE.BOTTOMLEFT);
-  Scaler.TextSize(50);
+  Scaler.TextSize(2);
   var button = new ButtonElement("Back", createVector(100, -100));
   button.onClick.AddListener(() => SceneManager.ToScene(previousSceneName));
   return button;
