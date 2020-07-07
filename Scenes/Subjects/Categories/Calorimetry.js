@@ -6,21 +6,40 @@ class Calorimetry extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(50);
+    textSize(2);
     this.elements = [
       CreateSceneButton("Heat Change", "HeatChangeScene", createVector(200, -150)),
+      CreateSceneButton("Heat Change", "HeatChangeScene", createVector(200, 150)),
       CreateBackButton("ChemistryScene")
     ];
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Scaler.TextSize(100);
+    textSize(4);
     this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
 
     // Heat Change
+    textSize(3.5);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     var heatChange = new FormulaElement(String.raw`Q = mc \Delta T`, createVector(-300,-160));
-    heatChange.SetFontSize(3.5);
-    this.onLeave.AddListener(() => heatChange.div.hide());
-    this.onEnter.AddListener(() => heatChange.div.show());
+    this.elements.push(heatChange);
+
+    heatChange.AssignToFormula(0, ChemistryFormulas.heatChange, "q")
+    heatChange.AssignToFormula(1, ChemistryFormulas.heatChange, "m")
+    heatChange.AssignToFormula(2, ChemistryFormulas.heatChange, "c")
+    heatChange.AssignToFormula(3, ChemistryFormulas.heatChange, "T");
+
+    // Heat Change 2
+    textSize(3.5);
+    Aligner.SetReference(Aligner.REFERENCE.CENTER);
+    var heatChange = new FormulaElement(String.raw`Q = mc(T_i - T_f)`, createVector(-300,160));
+    this.elements.push(heatChange);
+
+    heatChange.AssignToFormula(0, ChemistryFormulas.heatChange2, "q")
+    heatChange.AssignToFormula(1, ChemistryFormulas.heatChange2, "m")
+    heatChange.AssignToFormula(2, ChemistryFormulas.heatChange2, "c")
+    heatChange.AssignToFormula(3, ChemistryFormulas.heatChange2, "Ti", true);
+    heatChange.AssignToFormula(5, ChemistryFormulas.heatChange2, "Tf", true);
+
+    print(heatChange.elements);
   }
 }

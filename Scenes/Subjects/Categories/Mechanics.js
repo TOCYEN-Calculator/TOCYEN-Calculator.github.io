@@ -21,23 +21,22 @@
      textSize(3.5);
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      var kineticEnergy = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(-300,-160));
-
-     // KE
-     var KEelement = kineticEnergy.elements[0].parentElement;
-     KEelement.setAttribute('class', KEelement.getAttribute('class') + ' formulaElementVariable');
-     KEelement.onclick = () => {
-       FormulaTemplate.LoadTemplate(PhysicsFormulas.kineticEnergy, "KE");
-       SceneManager.ToScene("FormulaScene")
-     };
-
-
      this.elements.push(kineticEnergy);
+
+     kineticEnergy.AssignToFormula(0, PhysicsFormulas.kineticEnergy, "KE", true);
+     kineticEnergy.AssignToFormula(2, PhysicsFormulas.kineticEnergy, "m");
+     kineticEnergy.AssignToFormula(3, PhysicsFormulas.kineticEnergy, "v");
+
 
      // Newton's Second Law
      textSize(3.5);
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      var newtonSecond = new FormulaElement(String.raw`F = m \cdot a`, createVector(-300,50));
-
      this.elements.push(newtonSecond);
+
+     newtonSecond.AssignToFormula(0, PhysicsFormulas.newtonSecond, "F");
+     newtonSecond.AssignToFormula(1, PhysicsFormulas.newtonSecond, "m");
+     newtonSecond.AssignToFormula(2, PhysicsFormulas.newtonSecond, "a");
+
    }
  }

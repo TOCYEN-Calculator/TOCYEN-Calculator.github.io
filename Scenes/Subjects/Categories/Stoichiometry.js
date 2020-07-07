@@ -6,7 +6,7 @@ class Stoichiometry extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(50);
+    Scaler.TextSize(2);
     this.elements = [
       CreateSceneButton("Molar Conversions", "MolarConversionsScene", createVector(0,-150)),
       CreateFormulaButton("Mass of a Product / Reactant", ChemistryFormulas.massOfPR, createVector(400,20)),
@@ -15,7 +15,7 @@ class Stoichiometry extends Scene {
     ];
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Scaler.TextSize(100);
+    Scaler.TextSize(4);
     this.elements.push(new TextElement('Select a subject:', createVector(0, 100)));
   }
 }

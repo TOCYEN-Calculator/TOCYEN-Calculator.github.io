@@ -27,14 +27,40 @@ class FormulaElement extends Element {
     this.Hide();
   }
 
+
+  /**
+   * Assign a variable to a formula template.
+   *
+   * @param  {type} index    description
+   * @param  {type} toParent description
+   * @param  {type} formula  description
+   * @return {type}          description
+   */
+  AssignToFormula(index, formula, variable, toParent = false) {
+    var element = this.elements[index];
+
+    if(toParent) {
+      // Make the parent one big button
+      var element = element.parentElement;
+      element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
+    }
+
+    element.onclick = () => {
+      FormulaTemplate.LoadTemplate(formula, variable);
+      SceneManager.ToScene("FormulaScene");
+    };
+  }
+
   ScanLeaves(element) {
     for(var index in element.childNodes) {
       if(/^[A-Z]$/i.test(element.childNodes[index].data)) {
         var data = element.childNodes[index].data;
         var element = element.childNodes[index].parentElement;
         if(element.localName != "mi") {
+
           element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
           element.style["pointer-events"] = "auto";
+
           this.elements.push(element);
         }
       }
