@@ -29,7 +29,6 @@ class InputElement extends TextElement {
     this.onReturn = new Event();
 
     this.inputField = createInput('');
-    this.inputField.parent(windowDiv);
     this.inputField.size(Scaler.ScaleByWidth(1500), Scaler.ScaleByWidth(500));
     this.inputField.center();
     this.inputField.id('input');
