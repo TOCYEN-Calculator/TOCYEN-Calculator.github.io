@@ -25,7 +25,6 @@ class FormulaElement extends Element {
     }
 
     this.div.hide();
-    print(this.elements);
   }
 
   SetFontSize(number) {
@@ -40,10 +39,17 @@ class FormulaElement extends Element {
       if(/^[A-Z]$/i.test(element.childNodes[index].data)) {
         var data = element.childNodes[index].data;
         var element = element.childNodes[index].parentElement;
-        element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
         if(element.localName != "mi") {
-          this.elements.push([data, element]);
+          element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
+          element.addEventListener('mouseenter', () => {element.style["color"] = "gray"});
+          element.style["pointer-events"] = "auto";
+          element.onmouseleave = () => {element.style["color"] = "white"};
+          this.elements.push(element);
         }
+      }
+      else if (element.childNodes[index].nodeName == "SPAN") {
+        element.childNodes[index].style["pointer-events"] = "none";
+        print(element.childNodes[index]);
       }
       this.ScanLeaves(element.childNodes[index]);
     }

@@ -21,6 +21,17 @@
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
      var kineticEnergy = new FormulaElement(String.raw`KE = \frac{1}{2} m {v}^{2}`, createVector(-300,-160));
      kineticEnergy.SetFontSize(3.5);
+
+     // KE\
+     var KEelement = kineticEnergy.elements[0].parentElement;
+     KEelement.setAttribute('class', KEelement.getAttribute('class') + ' formulaElementVariable');
+     KEelement.onclick = () => {
+       FormulaTemplate.LoadTemplate(PhysicsFormulas.kineticEnergy, "KE");
+       SceneManager.ToScene("FormulaScene")
+     };
+
+
+     print(kineticEnergy.elements);
      this.onLeave.AddListener(() => kineticEnergy.div.hide());
      this.onEnter.AddListener(() => kineticEnergy.div.show());
 
