@@ -4,7 +4,6 @@ function setup() {
   canvas.center('horizontal');
 
   // Setup text settings.
-  ResetFillColor();
   textFont('MuseoModerno');
   textAlign(CENTER, CENTER);
   imageMode(CENTER);
