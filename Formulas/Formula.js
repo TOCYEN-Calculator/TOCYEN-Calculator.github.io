@@ -10,19 +10,27 @@ class Formula {
    * @param  {dict} variables A dictionary representing the order of variables of the formula.
    */
   constructor(formula, variables) {
-    if(formula == null) {
-      print("Formula.js: A string formula was not entered.");
-      formula = "";
-    }
-    if(variables == null) {
-      print("Formula.js: No variables were assigned to the formula.");
-      variables = {}
-    }
 
+    /**
+     * The original formula. Not a single variable is defined here!
+     */
     this.originalFormula = formula;
+
+    /**
+     * The current formula. Only has 1 undefined variable.
+     */
     this.currentFormula = formula;
 
+
+    /**
+     * The current variable to solve for.
+     */
     this.variable = "";
+
+
+    /**
+     * A dictionary representing the variables in the formula.
+     */
     this.variables = variables;
     this.map = [];
     for(var key in this.variables) {
@@ -102,7 +110,6 @@ class Formula {
       catch(error) {
         print(error.message);
       }
-      print('Opps');
 
       // Evaluate each solution (i.e turn it into a fraction)
       var values = arr.toString().split(',');

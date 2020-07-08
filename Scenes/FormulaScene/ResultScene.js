@@ -1,0 +1,4 @@
+
+class ResultScene extends Scene {
+
+}
