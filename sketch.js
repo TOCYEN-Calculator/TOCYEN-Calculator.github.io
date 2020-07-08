@@ -12,7 +12,6 @@ function setup() {
   // Initialize utilities
   Aligner.constructor();
   Scaler.constructor();
-  Mouse.constructor();
   SceneManager.constructor();
   InputHandler.constructor();
 
@@ -38,6 +37,5 @@ function setup() {
 }
 
 function draw() {
-  Mouse.Update();
   SceneManager.Render();
 }
