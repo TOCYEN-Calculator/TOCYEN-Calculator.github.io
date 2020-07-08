@@ -34,7 +34,7 @@ function setup() {
   SceneManager.AddScene(new TestScene());
 
   // Initial Scene.
-  SceneManager.ToScene("MenuScene");
+  SceneManager.ToScene("Stoichiometry");
 }
 
 function draw() {

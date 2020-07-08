@@ -39,7 +39,5 @@ class Calorimetry extends Scene {
     heatChange.AssignToFormula(2, ChemistryFormulas.heatChange2, "c");
     heatChange.AssignToFormula(3, ChemistryFormulas.heatChange2, "Ti", true);
     heatChange.AssignToFormula(5, ChemistryFormulas.heatChange2, "Tf", true);
-
-    print(heatChange.elements);
   }
 }

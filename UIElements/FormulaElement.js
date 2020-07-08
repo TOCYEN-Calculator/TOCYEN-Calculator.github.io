@@ -34,13 +34,11 @@ class FormulaElement extends Element {
    * @param  {type} formula  description
    * @return {type}          description
    */
-  AssignToFormula(index, formula, variable, toParent = false) {
+  AssignToFormula(index, formula, variable, parent = 0) {
     var element = this.elements[index];
 
-    if(toParent) {
-      // Make the parent one big button
+    for(var i = 0; i < parent; i++) {
       element = element.parentElement;
-
     }
     element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
 
