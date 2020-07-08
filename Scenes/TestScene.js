@@ -10,7 +10,11 @@ class TestScene extends Scene {
     this.elements.push(new TextElement("TEST2"));
 
     this.test = new Formula("F = a * b * c", {F: null, a: null, b:null, c:null});
-    this.test.SetVariableValues("F", 5,6,3);
+    this.test.SetValues("F", {a:5,b:234.3});
+    print(this.test.Solve());
+    this.test.SetValues("F", {a:5,b:4, c:234.2343});
+    print(this.test.Solve());
+    this.test.SetValues("ad");
     print(this.test.Solve());
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);

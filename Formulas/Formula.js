@@ -52,94 +52,104 @@ class Formula {
 
 
   /**
-   * Sets the values of the formula.
+   * Sets the values of the formula, as well as the variable you want to solve for.
    *
-   * @param  {string} variable The variable to solve for.
-   * @param  {number} args The arguments. Sets the values of this formula based on the order
-   * of this.variables while ignoring the variable to be solved for.
-   * Ex: formula = "F = m * a" SetVariableValues("m", 5, 6) will set the values
-   * of F = "5" and a = "6", as it ignores the variable "m".
+   * @param  {string} variable The variable you want to solve for. If it doesn't
+   * exist, it will print an error.
+   * @param  {dict}   values Dictionary of the values of variables.
+   * If it contains a variable not present in the variables listed
+   * in the constructor, it will print out a warning.
    */
-  SetVariableValues(variable) {
+  SetValues(variable, values = {}) {
     if(variable == null || typeof variable != 'string') {
       print("Formula.js: You must enter a variable to set it!");
     }
-    else if(arguments.length - 1 != this.ArgumentsNeeded()) {
-      print(`Formula.js: ${arguments.length - 1} argument(s) are not enough to be set. You need at least ${this.ArgumentsNeeded()}!`);
+    else if(typeof values != 'object') {
+      print(`Formula.js: ${values} is not a dictionary.`);
+    }
+    else if(!(variable in this.variables)) {
+      print(`Formula.js: ${variable} is not a valid variable in ${this.originalFormula}.`);
     }
     else {
-      var filteredValues = {};
-      var mapIndex = 0;
-      for(var index = 1; index < arguments.length; index++) {
-        var currentVariable = this.map[mapIndex];
-
-        // Don't set the value of the variable in question.
-        if(currentVariable == variable) {
-          currentVariable = this.map[++mapIndex];
-        }
-        mapIndex++;
-
-        var value = arguments[index];
-        if(value != null) {
-          filteredValues[currentVariable] = value;
+      // Print debug information for undefined variables.
+      for(var key in values) {
+        if(!(key in this.variables)) {
+          print(`Formula.js: Warning: \"${key}\" is not a valid variable in ${this.originalFormula}!`);
         }
       }
+
       this.valuesSet = true;
       this.variable = variable;
-      this.currentFormula = nerdamer(this.originalFormula, filteredValues).text();
+      this.currentFormula = nerdamer(this.originalFormula, values).text();
     }
   }
 
 
   /**
-   * Tries to solve the formula with the variable to be solved for set by SetVariableValues().
+   * Tries to solve the formula for a variable with defined values. Both of
+   * these can be set using SetValues().
    *
-   * @return {string}  The raw result of nerdamer's result.
+   * @return {string}  A string representing the solution. Fractions are
+   * only calculated when no variables are present in the formula.
    */
   Solve() {
-    var solutions = [];
+    var answer = "";
     if (!this.valuesSet) {
       print("Formula.js: Values have not been set! Stuff may look weird..");
     }
-    try {
-      // Array of possible solutions. This assumes that all other variables are defined.
-      var arr = [];
-      try {
-        arr = nerdamer(this.currentFormula).solveFor(this.variable);
-      }
-      catch(error) {
-        print(error.message);
-      }
 
-      // Evaluate each solution (i.e turn it into a fraction)
-      var values = arr.toString().split(',');
-      for(var index in values) {
-        solutions.push(nerdamer(values[index]).evaluate().toString());
-      }
-    }
-    catch(err) {
-      print(`Formula.js: Couldn\'t solve formula! Error: ${err.message}`);
-    }
+    // An array representing the simplified version of the solution(s)
+    var solutions = nerdamer(this.currentFormula).solveFor(this.variable);
+    solutions = solutions.toString().split(',');
 
-    // Convert each fraction (if any) into a decimal.
-    var answer = "";
+    // Evaluate each simplified solution if it doesn't have variables.
     for(var index in solutions) {
       if(index > 0) {
-        answer += ', ';
+        answer += ", ";
       }
 
-      var split = solutions[index].split('/');
-      if(split.length > 1) {
-        answer += (parseInt(split[0], 10) / parseInt(split[1], 10)).toString();
+      var strFrac = nerdamer(solutions[index]).evaluate().toString();
+      var hasVariables = /[A-Z]/i.test(strFrac);
+
+      if(!hasVariables) {
+        answer += this.ToDecimal(strFrac);
       }
       else {
-        answer += split[0];
+        answer += strFrac;
       }
     }
-
     return answer;
   }
 
+
+  /**
+   * Given a fraction as a string (e.g. "5/10"), turn it into
+   * a decimal (e.g. 0.5).
+   *
+   * @param  {string} fraction A string representing a fraction. To spaces between
+   * the number and the forward slash ("/").
+   * @return {number} A float that's approximately equivalent to the fraction.
+   */
+  ToDecimal(fraction) {
+    var answer = "";
+    var radix = 10; // Standard Base 10
+    var split = fraction.split('/');
+
+    answer = parseInt(split[0], radix);
+
+    if(split.length > 1) {
+      answer /= parseInt(split[1], radix);
+    }
+
+    return answer.toString();
+  }
+
+
+  /**
+   * Returns the KaTeX representation of the formula.
+   *
+   * @return {string} KaTeX representation of the formula.
+   */
   Katex() {
     return nerdamer.convertToLaTeX(this.originalFormula).toString();
   }
