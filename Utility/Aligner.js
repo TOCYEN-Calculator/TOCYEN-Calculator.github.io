@@ -5,33 +5,33 @@
  */
 class Aligner {
   /**
-   * Constructs the ALigner. Should be called in setup() before any members or functions are accessed.
+   * Constructs the Aligner. Should be called in setup() before any members or functions are accessed.
    *
    * @static
    */
   static constructor() {
     /**
-     * A set of enumerations that represent positions on the canvas.
-     * Used in SetReference().
+     * A dictionary of enumerations that represent vector positions on the canvas.
+     * Used in SetReference(). With the exception of CENTER, enumerations
+     * are listed in the following fashion: {TOP | BOTTOM}{LEFT | RIGHT}.
      */
     this.REFERENCE = {
-      TOPLEFT : 0,
-      TOP : 1,
-      TOPRIGHT : 2,
-      LEFT : 3,
-      CENTER : 4,
-      RIGHT : 5,
-      BOTTOMLEFT : 6,
-      BOTTOM : 7,
-      BOTTOMRIGHT: 8
+      TOPLEFT :     createVector(0,                       0),
+      TOP :         createVector(window.innerWidth / 2,   0),
+      TOPRIGHT :    createVector(window.innerWidth,       0),
+      LEFT :        createVector(0,                       window.innerHeight / 2),
+      CENTER :      createVector(window.innerWidth / 2,   window.innerHeight / 2),
+      RIGHT :       createVector(window.innerWidth,       window.innerHeight / 2),
+      BOTTOMLEFT :  createVector(0,                       window.innerHeight),
+      BOTTOM :      createVector(window.innerWidth / 2,   window.innerHeight),
+      BOTTOMRIGHT:  createVector(window.innerWidth,       window.innerHeight)
     };
 
     /**
-     * The current reference point. Any relative position will be relative to this.
+     * The current reference point, represented as a vector. Any relative position will be relative to this.
      * This can be set safely using SetReference().
      */
     this.currentReference = this.REFERENCE.CENTER;
-
 
     /**
      * The element other elements can align with. Set using SetLastElement().
@@ -68,75 +68,28 @@ class Aligner {
   }
 
   /**
-   * Sets the current reference point. This can be a vector or part of
-   * the REFERENCE enumeration.
-   * @param {REFERENCE | Vector} position - A REFERENCE or Vector that represents a absolute position of the canvas.
+   * Sets the current reference point. This has to be a vector. Predefined screen positions
+   * are in the REFERENCE dictionary.
+   * @param {Vector} position - A vector that represents a absolute position of the canvas.
    */
   static SetReference(position) {
-    this.currentReference = position;
+    if(position == null || typeof position != 'object') {
+      print(`Aligner.js: Could not set ${position} as the reference point as it\'s not a vector.`);
+    }
+    else {
+      this.currentReference = position;
+    }
   }
 
   /**
    * Converts a relative position into an absolute position based on the currentReference point.
-   * @param {number} x - x relative position
-   * @param {number} y - y relative position
-   * @return {Vector} Vector representing a absolute position in the canvas.
+   * @param {Vector}  position - Vector representing a relative position.
+   * @return {Vector} Vector representing an absolute position in the canvas.
    */
-  static GetAbsolutePosition(x, y) {
+  static GetAbsolutePosition(position) {
     // Converts a relative point to an absolute point
-    var offset = this.GetOffset();
-    return createVector(x + offset.x, y + offset.y);
-  }
-
-  /**
-   * Gets the offset of currentReference from the topleft of the screen.
-   * @return {Vector} Vector representing a offset.
-   */
-  static GetOffset() {
-    // Set offset to the center of the screen.
-    var offset = createVector(window.innerWidth / 2, window.innerHeight / 2);
-
-    if(typeof this.currentReference === 'number') {
-      switch(this.currentReference) {
-      case this.REFERENCE.TOP:
-        offset.y = 0;
-        break;
-
-      case this.REFERENCE.TOPLEFT:
-        offset = createVector(0,0);
-        break;
-
-      case this.REFERENCE.TOPRIGHT:
-        offset = createVector(window.innerWidth, 0);
-        break;
-
-      case this.REFERENCE.LEFT:
-        offset.x = 0;
-        break;
-
-      case this.REFERENCE.RIGHT:
-        offset.x = window.innerWidth;
-        break;
-
-      case this.REFERENCE.BOTTOMLEFT:
-        offset = createVector(0, window.innerHeight);
-        break;
-
-      case this.REFERENCE.BOTTOM:
-        offset.y = window.innerHeight;
-        break;
-
-      case this.REFERENCE.BOTTOMRIGHT:
-        offset = createVector(window.innerWidth, window.innerHeight);
-        break;
-      }
-    }
-
-    else {
-      print(`Aligner.js: Current reference is not a enumeration (number). Cannot get offset.`);
-    }
-
-    return offset;
+    var offset = this.currentReference;
+    return p5.Vector.add(position, offset);
   }
 
 };

@@ -44,7 +44,7 @@ class Element {
       position = createVector(0,0);
     }
     position = Scaler.ScalePosition(position);
-    this.rawPosition = Aligner.GetAbsolutePosition(position.x, position.y);
+    this.rawPosition = Aligner.GetAbsolutePosition(position);
 
     this.RefreshElement();
     this.Hide();
@@ -113,7 +113,7 @@ class Element {
    */
   set position(val) {
     if(typeof val == 'object') {
-      this.rawPosition = Aligner.GetAbsolutePosition(val.x, val.y);
+      this.rawPosition = Aligner.GetAbsolutePosition(val);
       this.RefreshElement();
     }
     else {
