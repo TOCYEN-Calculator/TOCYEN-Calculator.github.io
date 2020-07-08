@@ -1,73 +1,115 @@
+/**
+ * Class dedicated to positing and formatting a KaTeX HTML element.
+ * Derives from Element.
+ *
+ * @class
+ */
 class FormulaElement extends Element {
 
   /**
-   * Constructs a formula element. Automatically hide() .div until needed.
+   * Constructs a formula element. Takes into account current alignment and textSize().
    *
    * @param  {string} formula  A raw string parsible by LaTeX.
-   * @param  {Vector} position The relative position of the center of the formula element.
+   * @param  {Vector} position The relative position of the center of the formula element. It has to
+   * be a vector.
    */
   constructor(formula, position) {
     super(createDiv(''), position);
+
+    /**
+     * The raw KaTeX formula string.
+     */
     this.formula = formula;
 
-    var formulaHTML = katex.renderToString(formula, {
+    // Render katex formula onto html
+    katex.render(formula, this.pElement.elt, {
       throwOnError: false
     });
 
-    this.pElement.html(formulaHTML);
     this.pElement.class('formulaElement');
     this.pElement.style('font-size', `${textSize()}vw`);
     this.RefreshElement();
 
+
+    /**
+     * An array of elements holding each element that represents
+     * a variable (ASCII character).
+     */
     this.elements = [];
+
+    // Scan each child of the formula element for variables.
     for(var index in this.pElement.elt.childNodes) {
-      this.ScanLeaves(this.pElement.elt.childNodes[index]);
+      this.ScanForVariables(this.pElement.elt.childNodes[index]);
     }
   }
 
 
   /**
-   * Assign a variable to a formula template.
+   * Turns a element from the elements array into a clickable text (not Button.js!).
+   * The text will load up a formula.
    *
-   * @param  {type} index    description
-   * @param  {type} toParent description
-   * @param  {type} formula  description
-   * @return {type}          description
+   * @param  {number}         index      The index of the element in the elements array.
+   * @param  {Formula}        formula    A Formula.js object.
+   * @param  {string}         variable   The variable you want to solve for.
+   * @param  {number | bool}  parent     Sometimes, you want a group of variables (like a fraction)
+   * to be treated as a whole. This number tells the function to treat the (x)th parent of the element
+   * to be turned into a clickable. Can be set to true to represent 1.
    */
   AssignToFormula(index, formula, variable, parent = 0) {
     var element = this.elements[index];
 
-    // Hard check if the parent is a true boolean.
     if(parent === true) {
       parent = 1;
     }
 
+    // Travel back to the right amount of "ancestors".
     for(var i = 0; i < parent; i++) {
       element = element.parentElement;
     }
-    element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
 
+    // Turn this element into a clickable.
+    element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
     element.onclick = () => {
       FormulaTemplate.LoadTemplate(formula, variable);
       SceneManager.ToScene("FormulaScene");
     };
   }
 
-  ScanLeaves(element) {
-    for(var index in element.childNodes) {
-      if(/^[A-Z]$/i.test(element.childNodes[index].data)) {
-        var data = element.childNodes[index].data;
-        var element = element.childNodes[index].parentElement;
-        if(element.localName != "mi") {
-          element.style["pointer-events"] = "auto";
 
-          this.elements.push(element);
+  /**
+   * Recursively scan the raw pElement for variable elements;
+   * An internal function. Automatically adds any variable elements
+   * to the elements array.
+   *
+   * @param  {HTML_Node} elements A HTML node.
+   */
+  ScanForVariables(elements) {
+    for(var index in elements.childNodes) {
+      var text = elements.childNodes[index];
+      var isVariable = /^[A-Z]$/i.test(text.data);
+
+      if(isVariable) {
+        // Get the element that holds the HTML text element.
+        // Needed as the HTML text element only holds data about text, duh.
+        var parent = text.parentElement;
+
+        // KaTeX produces a <mi> and <span> of each variable. Only get the <span>.
+        if(parent.localName == "mi") {
+          continue;
         }
+
+        // Make the leaf node clickable.
+        parent.style["pointer-events"] = "auto";
+        this.elements.push(parent);
       }
-      else if (element.childNodes[index].nodeName == "SPAN") {
-        element.childNodes[index].style["pointer-events"] = "none";
+
+      // Ignore nested SPANS by making them click-through.
+      else if (text.nodeName == "SPAN") {
+        text.style["pointer-events"] = "none";
       }
-      this.ScanLeaves(element.childNodes[index]);
+
+      // Recurse until you reach a HTML text node. Test nodes don't have childNodes.
+      this.ScanForVariables(text);
     }
   }
 }
