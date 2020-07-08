@@ -1,7 +1,6 @@
 function setup() {
   // Align canvas to center.
-  var canvas = createCanvas(windowWidth, windowHeight);
-  canvas.center('horizontal');
+  noCanvas();
 
   // Setup text settings.
   textFont('MuseoModerno');

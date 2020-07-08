@@ -34,7 +34,7 @@ class Scaler {
       print(`Scale.js: Could not scale \"${value}\" by the window\'s width.`)
       return 0;
     }
-    return value * (width / this.referenceWidth);
+    return value * (window.innerWidth / this.referenceWidth);
   }
 
   /**
@@ -47,7 +47,7 @@ class Scaler {
       print(`Scale.js: Could not scale \"${value}\" by the window\'s height.`)
       return 0;
     }
-    return value * (height / this.referenceHeight);
+    return value * (window.innerHeight / this.referenceHeight);
   }
 
   /**

@@ -94,7 +94,7 @@ class Aligner {
    */
   static GetOffset() {
     // Set offset to the center of the screen.
-    var offset = createVector(width / 2, height / 2);
+    var offset = createVector(window.innerWidth / 2, window.innerHeight / 2);
 
     if(typeof this.currentReference === 'number') {
       switch(this.currentReference) {
@@ -107,7 +107,7 @@ class Aligner {
         break;
 
       case this.REFERENCE.TOPRIGHT:
-        offset = createVector(width, 0);
+        offset = createVector(window.innerWidth, 0);
         break;
 
       case this.REFERENCE.LEFT:
@@ -115,19 +115,19 @@ class Aligner {
         break;
 
       case this.REFERENCE.RIGHT:
-        offset.x = width;
+        offset.x = window.innerWidth;
         break;
 
       case this.REFERENCE.BOTTOMLEFT:
-        offset = createVector(0, height);
+        offset = createVector(0, window.innerHeight);
         break;
 
       case this.REFERENCE.BOTTOM:
-        offset.y = height;
+        offset.y = window.innerHeight;
         break;
 
       case this.REFERENCE.BOTTOMRIGHT:
-        offset = createVector(width, height);
+        offset = createVector(window.innerWidth, window.innerHeight);
         break;
       }
     }
