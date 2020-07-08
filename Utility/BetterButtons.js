@@ -1,15 +1,15 @@
 /*
  * BetterButtons.js
  *
- * Provides helper functions that make button creation easier.
+ * Provides functions that make button creation easier.
  * Could be referred to as button prefabs.
 */
 
 /**
- * Creates a standardized back button. textSize() = 50px && Aligner.SetReference =
- * Aligner.REFERENCE.BOTTOMLEFT.
+ * Creates a standardized back button for the sake of consistency. Will override current
+ * textSize() and alignment.
  *
- * @param {string} previousSceneName - The name of the scene that the back button will lead to.
+ * @param  {string} previousSceneName - The name of the scene that the back button will lead to.
  * @return {Button} A Button.js button.
  */
 function CreateBackButton(previousSceneName) {

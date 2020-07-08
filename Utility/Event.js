@@ -4,21 +4,23 @@
  */
 class Event {
   constructor() {
-    // An array of listeners. Listeners should be functions.
+    /**
+     * An array of callback functions.
+     */
     this.listeners = [];
   }
 
   /**
    * Adds a listener that will be activated if called.
    * @param {function} listener - A function. Any other type will
-   * rise an error.
+   * print an error.
    */
   AddListener(listener) {
     if(typeof listener == 'function') {
       this.listeners.push(listener);
     }
     else {
-      print(`Event.js: Could not add \"${listener}\" as a listener.`);
+      print(`Event.js: Could not add \"${listener}\" as a listener, as it\'s not a function.`);
     }
   }
 
