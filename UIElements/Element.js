@@ -83,6 +83,7 @@ class Element {
 
   /**
    * Aligns this element's y value to be beneath the Aligner's last element.
+   * This automatically refreshes the element.
    *
    * @param {Number} padding - The space between the elements. Can be negative
    * to bring them closer together.
@@ -104,7 +105,7 @@ class Element {
 
   /**
    * Setter for the text's relative position. Safely sets the value of the position and screen
-   * and shows debugging information.
+   * and shows debugging information. This automatically refreshes the element.
    *
    * @param {Vector} val - The value trying to be set. Hopefully it's a Vector!
    */
