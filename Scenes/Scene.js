@@ -25,14 +25,14 @@ class Scene {
     // Show each element on entrance.
     this.onEnter.AddListener(() => {
       for(var index in this.elements) {
-        this.elements[index].Show();
+        this.elements[index].SetActive(true);
       }
     });
 
     // Hide each element on leave.
     this.onLeave.AddListener(() => {
       for(var index in this.elements) {
-        this.elements[index].Hide();
+        this.elements[index].SetActive(false);
       }
     });
   }

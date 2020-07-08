@@ -1,5 +1,6 @@
 /**
- * A class dedicated to the positioning and formatting of a piece of text.
+ * A wrapper dedicated to wrapping a html div element. Derives from Element.js.
+ * 
  * @class
  */
  class TextElement extends Element {

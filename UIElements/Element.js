@@ -25,9 +25,9 @@ class Element {
     this.pElement = pElement;
 
     /**
-     * Whether or not the HTML element is in view. Changes with Hide() and Show().
+     * Whether or not the HTML element is in view. Changes with SetActive().
      */
-    this.hidden = false;
+    this.active = false;
 
     /**
      * Height of the element. Takes into account padding, margin, and more.
@@ -47,7 +47,7 @@ class Element {
     this.rawPosition = Aligner.GetAbsolutePosition(position);
 
     this.RefreshElement();
-    this.Hide();
+    this.SetActive(false);
   }
 
 
@@ -61,26 +61,23 @@ class Element {
     this.height = this.pElement.elt.offsetHeight;
     this.pElement.position(this.position.x - this.width / 2, this.position.y - this.height / 2);
 
-    if(this.hidden) {
-      this.Hide();
+    this.SetActive(this.active);
+  }
+
+
+  /**
+   * Changes whether or not the element is in view.
+   *
+   * @param {bool} active Whether or not the element is active / in view.
+   */
+  SetActive(active) {
+    this.active = active;
+    if(active) {
+      this.pElement.show();
     }
-  }
-
-  /**
-   * Shows the element.
-   */
-  Show() {
-    this.hidden = false;
-    this.pElement.show();
-  }
-
-
-  /**
-   * Hides the element.
-   */
-  Hide() {
-    this.hidden = true;
-    this.pElement.hide();
+    else {
+      this.pElement.hide();
+    }
   }
 
 
