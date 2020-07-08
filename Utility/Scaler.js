@@ -1,6 +1,6 @@
 
 /**
- * Class meant to scale values based on screen width or height.
+ * Scales values dependant on the window's width or height.
  *
  * @class
  */
@@ -12,16 +12,14 @@ class Scaler {
    */
   static constructor() {
     /**
-     * The reference width / The width of the window you're
-     * developing on.
+     * The reference width of the scaling.
      */
     this.referenceWidth = 1920;
 
     /**
-     * The reference height / The height of the window you're
-     * developing on.
+     * The reference height of the scaling.
      */
-    this.refrenceHeight = 966;
+    this.referenceHeight = 966;
   }
 
   /**
@@ -31,7 +29,7 @@ class Scaler {
    */
   static ScaleByWidth(value) {
     if(typeof value != 'number') {
-      print(`Scale.js: Could not scale \"${value}\" by the window\'s width.`)
+      print(`Scale.js: Could not scale \"${value}\" by the window\'s width, as it\'s not a number!`)
       return 0;
     }
     return value * (window.innerWidth / this.referenceWidth);
@@ -44,31 +42,25 @@ class Scaler {
    */
   static ScaleByHeight(value) {
     if(typeof value != 'number') {
-      print(`Scale.js: Could not scale \"${value}\" by the window\'s height.`)
+      print(`Scale.js: Could not scale \"${value}\" by the window\'s height, as it\'s not a number!`)
       return 0;
     }
     return value * (window.innerHeight / this.referenceHeight);
   }
 
   /**
-   * Scales a vector using ScaleByWidth or ScaleByHeight. Usually
-   * used for scaling positioning.
+   * Scales a position vector using ScaleByWidth.
    *
-   * @param  {Vector} position The vector; Usually a relative position.
-   * @return {Vector} A shallow copy of the scaled vector.
+   * @param  {Vector} position The relative position of the vector.
+   * @return {Vector} A copy of the scaled vector.
    */
   static ScalePosition(position) {
-    if(position === null) {
-      print(`Scale.js: Could not scale \"${position}\" as a position.`);
+    if(position === null || typeof position != 'object') {
+      print(`Scale.js: Could not scale \"${position}\", as it\'s not a vector!.`);
       return createVector(0, 0);
     }
-    else if(typeof position == 'object') {
-      return createVector(this.ScaleByWidth(position.x), this.ScaleByWidth(position.y));
-    }
     else {
-      // If the position is a number. Crucial for Element.js, where
-      // the position can represent the spacing between elements.
-      return position;
+      return createVector(this.ScaleByWidth(position.x), this.ScaleByWidth(position.y));
     }
   }
 }

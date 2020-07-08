@@ -1,5 +1,4 @@
 function setup() {
-  // Align canvas to center.
   noCanvas();
 
   // Setup text settings.
