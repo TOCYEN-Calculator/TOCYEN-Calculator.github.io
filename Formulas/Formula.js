@@ -17,7 +17,7 @@ class Formula {
     this.originalFormula = formula;
 
     /**
-     * The current formula. Only has 1 undefined variable.
+     * The current formula with defined variables.
      */
     this.currentFormula = formula;
 
@@ -32,11 +32,6 @@ class Formula {
      * A dictionary representing the variables in the formula.
      */
     this.variables = variables;
-    this.map = [];
-    for(var key in this.variables) {
-      this.map.push(key);
-    }
-
     this.valuesSet = false;
   }
 
