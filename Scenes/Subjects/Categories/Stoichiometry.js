@@ -6,7 +6,7 @@ class Stoichiometry extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(2);
+    textSize(2);
     this.elements = [
       new TextElement("Mol By Gram", createVector(250,-190)),
       new TextElement("Mol By Atoms", createVector(250,0)),
@@ -15,7 +15,7 @@ class Stoichiometry extends Scene {
 
     // Mol By Atoms
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(4);
+    textSize(4);
     var molByGramElement = new FormulaElement(String.raw`mol = \frac{g}{molg}`, createVector(-250,-200));
     this.elements.push(molByGramElement);
 
@@ -25,7 +25,7 @@ class Stoichiometry extends Scene {
 
     // Mol By Atoms
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(4);
+    textSize(4);
     var molByAtomsElement = new FormulaElement(String.raw`\mathit{mol} = \frac{\# atoms}{6.02 \cdot 10^{23}}`, createVector(-250,0));
     this.elements.push(molByAtomsElement);
 
@@ -33,7 +33,7 @@ class Stoichiometry extends Scene {
     molByAtomsElement.AssignToFormula(3, ChemistryFormulas.molByAtoms, "atoms", true);
 
     // Molg by atoms
-    Scaler.TextSize(4);
+    textSize(4);
     var molgByAtomsElement = new FormulaElement(String.raw`(g \cdot \mathit{\frac{mol}{g}}) = \frac{\# atoms}{6.02 \cdot 10^{23}}`, createVector(-250,200));
     this.elements.push(molgByAtomsElement);
 
@@ -42,7 +42,7 @@ class Stoichiometry extends Scene {
 
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Scaler.TextSize(4);
+    textSize(4);
     this.elements.push(new TextElement('Select a variable:', createVector(0, 100)));
   }
 }

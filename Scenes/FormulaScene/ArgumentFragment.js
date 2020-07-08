@@ -14,7 +14,7 @@ class ArgumentFragment extends Scene {
     super();
 
     // Align the input to the center
-    Scaler.TextSize(2);
+    textSize(2);
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     this.input = new InputElement(createVector(0,0), "0123456789.-e");
     this.input.onReturn.AddListener(() => this.ToNextPrompt());
@@ -24,7 +24,7 @@ class ArgumentFragment extends Scene {
     this.prompts = [];
     this.arguments = [];
 
-    Scaler.TextSize(2);
+    textSize(2);
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     this.promptElement = new TextElement("", createVector(0, 100));
 

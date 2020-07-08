@@ -6,7 +6,7 @@ class ChemistryScene extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(2);
+    textSize(2);
     this.elements = [
       CreateSceneButton("Calorimetry", "Calorimetry", createVector(0,0)),
       CreateSceneButton("Stoichiometry", "Stoichiometry"),
@@ -15,7 +15,7 @@ class ChemistryScene extends Scene {
     ];
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Scaler.TextSize(4);
+    textSize(4);
     this.elements.push(new TextElement('Select a category:', createVector(0, 100)));
   }
 };

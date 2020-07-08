@@ -6,7 +6,7 @@ class SubjectScene extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(3);
+    textSize(3);
 
     this.elements = [
       CreateSceneButton("AP Physics (Discontinued)", "PhysicsScene", createVector(0,-20)),
@@ -15,7 +15,7 @@ class SubjectScene extends Scene {
     ];
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Scaler.TextSize(4);
+    textSize(4);
     this.elements.push(new TextElement("Select a subject:", createVector(0, 100)));
   }
 };

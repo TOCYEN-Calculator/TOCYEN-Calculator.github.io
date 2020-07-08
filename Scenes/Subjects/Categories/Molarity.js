@@ -6,7 +6,7 @@ class Molarity extends Scene {
     super();
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(2);
+    textSize(2);
     this.elements = [
       new TextElement("Molarity With Grams", createVector(250, -200)),
       new TextElement("Molarity With Mol", createVector(250, 0)),
@@ -18,7 +18,7 @@ class Molarity extends Scene {
 
     // Molarity By Gram
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(4);
+    textSize(4);
     var molarityByGramElement = new FormulaElement(String.raw`M = \frac{\frac{g}{molg}}{l}`, createVector(-250,-200));
     this.elements.push(molarityByGramElement);
 
@@ -29,7 +29,7 @@ class Molarity extends Scene {
 
     // Molarity by Mol
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(4);
+    textSize(4);
     var molarityByMolElement = new FormulaElement(String.raw`M = \frac{mol}{l}`, createVector(-250,0));
     this.elements.push(molarityByMolElement);
 
@@ -40,7 +40,7 @@ class Molarity extends Scene {
 
     // Equal Molarity
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    Scaler.TextSize(4);
+    textSize(4);
     var molarityEqual = new FormulaElement(String.raw`M_i \cdot V_i = M_f \cdot V_f`, createVector(-350, 200));
     this.elements.push(molarityEqual);
 
@@ -50,7 +50,7 @@ class Molarity extends Scene {
     molarityEqual.AssignToFormula(6, ChemistryFormulas.molarityEqual, "Vf", true);
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
-    Scaler.TextSize(4);
+    textSize(4);
     this.elements.push(new TextElement('Choose a variable to solve for:', createVector(0, 100)));
 
 

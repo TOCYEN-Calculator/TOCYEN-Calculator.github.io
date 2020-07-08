@@ -6,7 +6,7 @@
      super();
 
      Aligner.SetReference(Aligner.REFERENCE.CENTER);
-     Scaler.TextSize(2);
+     textSize(2);
      this.elements = [
        CreateSceneButton("Kinetic Energy", "KineticEnergyScene", createVector(200,-150)),
        CreateSceneButton("Newton\'s Second Law", "NewtonSecondScene", createVector(300,70)),
@@ -14,7 +14,7 @@
      ];
 
      Aligner.SetReference(Aligner.REFERENCE.TOP);
-     Scaler.TextSize(4);
+     textSize(4);
      this.elements.push(new TextElement('Select a formula:', createVector(0, 100)));
 
      // Kinetic Energy

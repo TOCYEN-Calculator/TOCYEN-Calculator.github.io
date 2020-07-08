@@ -25,21 +25,6 @@ class Scaler {
   }
 
   /**
-   * Scales text size based off reference size.
-   *
-   * @param {number} size The text size.
-   */
-  static TextSize(size) {
-    if(typeof size == 'number') {
-      textSize(size);
-    }
-    else {
-      print(`Scale.js: Could not set \"${size}\" as a scaled text size.`)
-    }
-  }
-
-
-  /**
    * Scales a number by the reference width.
    *
    * @param {number} value The number to be scaled.
