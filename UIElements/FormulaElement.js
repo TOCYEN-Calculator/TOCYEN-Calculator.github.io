@@ -37,6 +37,11 @@ class FormulaElement extends Element {
   AssignToFormula(index, formula, variable, parent = 0) {
     var element = this.elements[index];
 
+    // Hard check if the parent is a true boolean.
+    if(parent === true) {
+      parent = 1;
+    }
+
     for(var i = 0; i < parent; i++) {
       element = element.parentElement;
     }

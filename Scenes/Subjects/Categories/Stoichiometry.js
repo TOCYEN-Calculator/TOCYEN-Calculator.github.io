@@ -19,8 +19,8 @@ class Stoichiometry extends Scene {
     var molByGramElement = new FormulaElement(String.raw`mol = \frac{g}{molg}`, createVector(-250,-200));
     this.elements.push(molByGramElement);
 
-    molByGramElement.AssignToFormula(0, ChemistryFormulas.molByGram, "mol", 1);
-    molByGramElement.AssignToFormula(3, ChemistryFormulas.molByGram, "molg", 1);
+    molByGramElement.AssignToFormula(0, ChemistryFormulas.molByGram, "mol", true);
+    molByGramElement.AssignToFormula(3, ChemistryFormulas.molByGram, "molg", true);
     molByGramElement.AssignToFormula(7, ChemistryFormulas.molByGram, "g");
 
     // Mol By Atoms
@@ -29,8 +29,8 @@ class Stoichiometry extends Scene {
     var molByAtomsElement = new FormulaElement(String.raw`\mathit{mol} = \frac{\# atoms}{6.02 \cdot 10^{23}}`, createVector(-250,0));
     this.elements.push(molByAtomsElement);
 
-    molByAtomsElement.AssignToFormula(0, ChemistryFormulas.molByAtoms, "mol", 1);
-    molByAtomsElement.AssignToFormula(3, ChemistryFormulas.molByAtoms, "atoms", 1);
+    molByAtomsElement.AssignToFormula(0, ChemistryFormulas.molByAtoms, "mol", true);
+    molByAtomsElement.AssignToFormula(3, ChemistryFormulas.molByAtoms, "atoms", true);
 
     // Molg by atoms
     Scaler.TextSize(4);
