@@ -36,11 +36,4 @@ class Scene {
       }
     });
   }
-
-  /**
-   * Renders all elements.
-   */
-  Render() {
-
-  }
 }

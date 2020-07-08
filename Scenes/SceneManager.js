@@ -15,8 +15,7 @@ class SceneManager {
     this.scenes = {};
 
     /**
-     * Name of the current scene (default: "MenuScene"). Changing this with ToScene() changes what
-     * scene is rendered / updated.
+     * Name of the current scene (default: "MenuScene"). Changed with ToScene() 
      */
     this.currentScene = "";
 
@@ -30,7 +29,7 @@ class SceneManager {
   /**
    * Adds a scene to the dictionary. Scene's key is equal to its class name /
    * constructor.name .
-   * @param {Scene} scene - The scene to be added. Scenes should have a Render() function.
+   * @param {Scene} scene - The scene to be added. Scenes should derive from Scene.js
    */
   static AddScene(scene) {
     // Only add scenes that are objects.
@@ -65,12 +64,4 @@ sure that the parameter is a object with a Render() method with no constructor p
       print(`SceneManager.js: Scene name \"${sceneName}\" does not exist.`);
     }
   }
-
-  /**
-   * Renders the current scene.
-   */
-  static Render() {
-    this.scenes[this.currentScene].Render();
-  }
-
 };

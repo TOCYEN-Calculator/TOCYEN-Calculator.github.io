@@ -34,7 +34,3 @@ function setup() {
   // Initial Scene.
   SceneManager.ToScene("TestScene");
 }
-
-function draw() {
-  SceneManager.Render();
-}
