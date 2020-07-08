@@ -1,12 +1,15 @@
-
 /**
- * A button comprised entirely of text. Derives from TextElement.
+ * A wrapper for a HTML button. Derives from Element.js.
+ *
  * @class
  */
 class ButtonElement extends Element {
   constructor(strText, position = 0) {
     super(createButton(strText), position);
 
+    /**
+     * An element called whenever the buttons is pressed.
+     */
     this.onClick = new Event();
 
     this.pElement.class('button');

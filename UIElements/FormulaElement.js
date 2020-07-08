@@ -1,6 +1,6 @@
 /**
  * Class dedicated to positing and formatting a KaTeX HTML element.
- * Derives from Element.
+ * Derives from Element.js.
  *
  * @class
  */
