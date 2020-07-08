@@ -8,8 +8,9 @@
     * and cannot be changed after.
     *
     * @param  {string} text   The text you want to display.
-    * @param  {Vector | null | number} position A p5 Vector representing the relative position of the text element. Can be a
-    * number or null (0px) to represent the space, in pixels, between them.
+    * @param  {Vector | number} position A p5 Vector representing the relative position of the text element. Can be a
+    * number or left blank (0px) to represent the space, in pixels, between them. Doing so will align them using
+    * Aligner.GetNextPosition().
     */
    constructor(text, position = 0) {
      super(createDiv(text), position);
