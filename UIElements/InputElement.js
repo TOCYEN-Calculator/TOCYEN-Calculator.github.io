@@ -5,7 +5,7 @@
  */
 class InputElement extends Element {
   /**
-   * Construct an input element.
+   * Construct an input element. Takes into account current alignment and textSize().
    *
    * @param  {Vector} position A vector representing the relative position of the element.
    * No, you can't leave it blank!
@@ -25,8 +25,8 @@ class InputElement extends Element {
      */
     this.onReturn = new Event();
 
-    this.pElement.center();
     this.pElement.id('input');
+    this.pElement.style('font-size', `${textSize()}vw`);
     this.pElement.input((value) => this.AddKey(value));
     this.RefreshElement();
 
@@ -45,7 +45,6 @@ class InputElement extends Element {
   }
 
   Reset() {
-    this.SetActive(false);
     this.text = "";
   }
 
