@@ -6,7 +6,10 @@
    constructor() {
      super();
 
-     SceneManager.ToScene("ResultScene");
+     this.onEnter.AddListener( () => {
+       SceneManager.ToScene("ArgumentScene");
+     });
+
    }
 
  }
