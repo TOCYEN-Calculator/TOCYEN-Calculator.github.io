@@ -7,7 +7,12 @@
      super();
 
      this.onEnter.AddListener( () => {
-       SceneManager.ToScene("ArgumentScene");
+       if(SceneManager.previousScene != "ArgumentScene") {
+         SceneManager.ToScene("ArgumentScene");
+       }
+       else {
+         SceneManager.ToScene("ResultScene");
+       }
      });
 
    }

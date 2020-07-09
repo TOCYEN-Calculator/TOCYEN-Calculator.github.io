@@ -5,13 +5,13 @@ class ArgumentScene extends Scene {
 
 
     /**
-     * An integer representing the "index" of the current prompt.
+     * A key representing the variable of the current prompt.
      */
-    this.currentPrompt = 0;
+    this.currentPrompt = "";
 
     Aligner.SetReference(Aligner.REFERENCE.TOP);
     textSize(3);
-    this.prompt = new TextElement("Prompt goes here", createVector(0, 100));
+    this.prompt = new TextElement("", createVector(0, 100));
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     this.input = new InputElement("12345689", createVector(0,0));
@@ -22,29 +22,73 @@ class ArgumentScene extends Scene {
     this.elements.push(this.input);
     this.elements.push(this.backButton);
 
-    this.onEnter.AddListener(() => {this.ShowCurrentPrompt();});
-    this.input.onReturn.AddListener(() => { this.ShowCurrentPrompt(); });
-    this.backButton.onClick.AddListener(() => { this.Reset(); });
     this.onEnter.AddListener(() => print("ArgumentScene loaded"));
+    this.onEnter.AddListener(() => {
+      this.GetNextPrompt();
+      this.ShowCurrentPrompt();
+    });
+    this.input.onReturn.AddListener(() => {
+      if(!this.IsFinished()) {
+        this.CollectArgument();
+      }
+
+      // After collecting the argument, the scene might be done.
+      if(!this.IsFinished()) {
+        this.GetNextPrompt();
+        this.ShowCurrentPrompt();
+      }
+      else {
+        print('ArgumentScene.js: Done!');
+        // When it's done, write changes, and go back to formula scene.
+
+        this.Reset();
+        SceneManager.ToScene("FormulaScene");
+      }
+    });
+    this.backButton.onClick.AddListener(() => { this.Reset(); });
+  }
+
+  IsFinished() {
+    var argumentsNeeded = FormulaTemplate.currentTemplate.formula.ArgumentsNeeded();
+    var args = FormulaTemplate.args;
+    return Object.keys(args).length >= argumentsNeeded;
+  }
+
+  CollectArgument() {
+    var args = FormulaTemplate.args;
+    args[this.currentPrompt] = this.input.text;
+    this.input.text = "";
+  }
+
+  GetNextPrompt() {
+    var variableToSolve = FormulaTemplate.currentTemplate.variable;
+    var prompts = FormulaTemplate.currentTemplate.prompts;
+    var args = FormulaTemplate.args;
+
+    for(var key in prompts) {
+      var alreadyCollected = key in args;
+
+      if(key != variableToSolve && !alreadyCollected) {
+        this.currentPrompt = key;
+        break;
+      }
+    }
   }
 
   ShowCurrentPrompt() {
     var prompts = FormulaTemplate.currentTemplate.prompts;
-    var variable = FormulaTemplate.currentTemplate.variable;
 
-    var index = 0;
-    for(var key in prompts) {
-      if(key != variable && this.currentPrompt == index) {
-        this.prompt.text = FormulaTemplate.currentTemplate.prompts[key];
-        break;
-      }
-
-      index++;
+    if(this.currentPrompt in prompts) {
+      this.prompt.text = prompts[this.currentPrompt];
     }
-
+    else {
+      this.prompt.text = "Prompt Goes Here";
+    }
   }
 
   Reset() {
     this.input.text = "";
+    this.currentPrompt = "";
+    FormulaTemplate.args = {};
   }
 }

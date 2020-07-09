@@ -18,6 +18,8 @@ class FormulaTemplate {
      * An event called whenever a new formula template is loaded.
      */
     this.onLoad = new Event();
+
+    this.args = {};
   }
 
   /**
