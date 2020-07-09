@@ -14,7 +14,7 @@ class ArgumentScene extends Scene {
     this.prompt = new TextElement("", createVector(0, 100));
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    this.input = new InputElement("12345689", createVector(0,0));
+    this.input = new InputElement("123456890-e", createVector(0,0));
 
     this.backButton = CreateBackButton("TestScene");
 
@@ -24,6 +24,7 @@ class ArgumentScene extends Scene {
 
     this.onEnter.AddListener(() => print("ArgumentScene loaded"));
     this.onEnter.AddListener(() => {
+      FormulaTemplate.args = {};
       this.GetNextPrompt();
       this.ShowCurrentPrompt();
     });
@@ -89,6 +90,5 @@ class ArgumentScene extends Scene {
   Reset() {
     this.input.text = "";
     this.currentPrompt = "";
-    FormulaTemplate.args = {};
   }
 }

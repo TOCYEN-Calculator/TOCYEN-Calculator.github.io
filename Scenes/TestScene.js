@@ -20,7 +20,7 @@ class TestScene extends Scene {
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
     textSize(8);
     var testShow = new FormulaElement(String.raw`F = a \cdot b \cdot c`, createVector(0,0));
-    testShow.AssignToFormula(0, PhysicsFormulas.newtonSecond, "F");
+    testShow.AssignToFormula(0, PhysicsFormulas.newtonSecond, "m");
 
     this.elements.push(testShow);
   }

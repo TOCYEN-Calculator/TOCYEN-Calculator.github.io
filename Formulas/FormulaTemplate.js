@@ -28,7 +28,7 @@ class FormulaTemplate {
    * resultPrompts (string), prompts (array), variable (string),and formula (Formula()).
    */
   static CreateBlankTemplate() {
-    return {resultPrompts: "", prompts: [], formula: 0, variable: ""};
+    return {resultPrompts: {}, prompts: {}, formula: 0, variable: ""};
   }
 
 
