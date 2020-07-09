@@ -7,11 +7,11 @@ class InputElement extends Element {
   /**
    * Construct an input element. Takes into account current alignment and textSize().
    *
+   * @param  {string} filter   A string representing the characters that are allowed to be inputted.
    * @param  {Vector} position A vector representing the relative position of the element.
    * No, you can't leave it blank!
-   * @param  {string} filter   A string representing the characters that are allowed to be inputted.
    */
-  constructor(position, filter) {
+  constructor(filter, position) {
     super(createInput(''), position);
 
     /**
