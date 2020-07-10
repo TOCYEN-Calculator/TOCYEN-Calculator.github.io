@@ -12,7 +12,7 @@ class FormulaLoader {
      * The current template used. Used for commnicating
      * formula information with FormulaScene.
      */
-    this.currentTemplate = this.CreateBlankTemplate();
+    this.currentTemplate = new FormulaInfo();
 
     /**
      * An event called whenever a new formula template is loaded.
@@ -22,25 +22,8 @@ class FormulaLoader {
     this.args = {};
   }
 
-  /**
-   * Returns a blank formula template.
-   * @return {FormulaTemplate}  A dictionary with the following members:
-   * resultPrompts (string), prompts (array), variable (string),and formula (Formula()).
-   */
-  static CreateBlankTemplate() {
-    return {resultPrompts: {}, prompts: {}, formula: 0, variable: ""};
-  }
-
-
-  /**
-   * Sets a formula template as the current template used.
-   * Calls onLoad().
-   *
-   * @param  {FormulaTemplate} template The formula template to be loaded.
-   * @param  {string} variable The variable to be solved for.
-   */
-  static LoadTemplate(template, variable) {
-    this.currentTemplate = template;
+  static LoadFormula(formulaInfo, variable) {
+    this.currentTemplate = formulaInfo;
     this.currentTemplate.variable = variable;
     this.onLoad.Call();
   }
