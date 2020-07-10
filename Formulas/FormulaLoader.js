@@ -21,8 +21,16 @@ class FormulaLoader {
   }
 
   static LoadFormula(formulaInfo, variable) {
-    this.currentFormula = formulaInfo;
-    this.currentFormula.variable = variable;
-    this.onLoad.Call();
+    if(typeof formulaInfo != 'object') {
+      print(`FormulaLoader.js: \"${formulaInfo}\" was not a FormulaInfo.js class. Will not be loaded.`);
+    }
+    else if (typeof variable != 'string') {
+      print(`FormulaLoader.js: Variable \"${variable}\" was not a string. Will not be loaded.`);
+    }
+    else {
+      this.currentFormula = formulaInfo;
+      this.currentFormula.variable = variable;
+      this.onLoad.Call();
+    }
   }
 }
