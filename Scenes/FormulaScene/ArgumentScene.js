@@ -23,6 +23,9 @@ class ArgumentScene extends Scene {
     this.elements.push(this.backButton);
 
     this.onEnter.AddListener(() => {
+      this.backButton.onClick.listeners[0] = () => {SceneManager.ToScene(SceneManager.previousScene);};
+      FormulaLoader.currentFormula.previousScene = SceneManager.previousScene;
+
       // Whenever entered, reset data.
       this.Reset();
       this.GetNextPrompt();

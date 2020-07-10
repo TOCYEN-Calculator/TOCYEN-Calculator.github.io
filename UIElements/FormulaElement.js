@@ -71,7 +71,7 @@ class FormulaElement extends Element {
     element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
     element.onclick = () => {
       FormulaLoader.LoadFormula(formula, variable);
-      SceneManager.ToScene("FormulaScene");
+      SceneManager.ToScene("ArgumentScene");
     };
   }
 

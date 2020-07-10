@@ -24,7 +24,6 @@ function setup() {
   SceneManager.AddScene(new ChemistryScene());
   SceneManager.AddScene(new ArgumentScene());
   SceneManager.AddScene(new ResultScene());
-  SceneManager.AddScene(new FormulaScene());
   SceneManager.AddScene(new Mechanics());
   SceneManager.AddScene(new Calorimetry());
   SceneManager.AddScene(new Stoichiometry());
@@ -32,5 +31,5 @@ function setup() {
   SceneManager.AddScene(new TestScene());
 
   // Initial Scene.
-  SceneManager.ToScene("TestScene");
+  SceneManager.ToScene("MenuScene");
 }

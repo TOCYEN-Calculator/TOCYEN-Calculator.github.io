@@ -11,6 +11,7 @@ class FormulaInfo {
     this.resultPrompts = {};
     this.args = {};
     this.variable = "";
+    this.previousScene = "";
   }
 
   RefreshArgs() {
