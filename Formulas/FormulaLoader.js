@@ -9,13 +9,12 @@ class FormulaLoader {
    */
   static constructor() {
     /**
-     * The current template used. Used for commnicating
-     * formula information with FormulaScene.
+     * The current FormulaInfo.js used.
      */
     this.currentFormula = new FormulaInfo();
 
     /**
-     * An event called whenever a new formula template is loaded.
+     * An event called whenever a new FormulaInfo.js is loaded.
      */
     this.onLoad = new Event();
   }

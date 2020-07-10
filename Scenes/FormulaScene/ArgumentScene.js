@@ -22,9 +22,9 @@ class ArgumentScene extends Scene {
     this.elements.push(this.input);
     this.elements.push(this.backButton);
 
-    this.onEnter.AddListener(() => print("ArgumentScene loaded"));
     this.onEnter.AddListener(() => {
-      FormulaLoader.currentFormula.args = {};
+      // Whenever entered, reset data.
+      this.Reset();
       this.GetNextPrompt();
       this.ShowCurrentPrompt();
     });
@@ -39,11 +39,7 @@ class ArgumentScene extends Scene {
         this.ShowCurrentPrompt();
       }
       else {
-        print('ArgumentScene.js: Done!');
-        // When it's done, write changes, and go back to formula scene.
-
-        this.Reset();
-        SceneManager.ToScene("FormulaScene");
+        SceneManager.ToScene("ResultScene");
       }
     });
     this.backButton.onClick.AddListener(() => { this.Reset(); });
@@ -90,5 +86,6 @@ class ArgumentScene extends Scene {
   Reset() {
     this.input.text = "";
     this.currentPrompt = "";
+    FormulaLoader.currentFormula.args = {};
   }
 }
