@@ -1,6 +1,6 @@
 /**
- * Deals with the information regarding the UI portion of
- * solving formulas.
+ * An information class that deals with sharing formula data between scenes.
+ * Used in FormulaLoader.js and in the formula classes.
  *
  * @class
  */
@@ -13,8 +13,14 @@ class FormulaInfo {
     this.variable = "";
   }
 
-  SetValues(variable, values = {}) {
-    this.formula.SetValues(variable, values);
+  RefreshArgs() {
+    if(Object.keys(this.args).length == 0) {
+      print(`FormulaInfo.js: Warning: No arguments have been set.`);
+    }
+    if(this.variable == "") {
+      print(`FormulaInfo.js: Warning: The variable to solve for has not been set.`);
+    }
+    this.formula.SetValues(this.variable, this.args);
   }
 
   Solve() {
