@@ -17,9 +17,9 @@ class ResultScene extends Scene {
     this.elements.push(backButton);
 
     this.onEnter.AddListener(() => {
-      FormulaLoader.currentTemplate.formula.SetValues(FormulaLoader.currentTemplate.variable, FormulaLoader.args);
-      result.text = FormulaLoader.currentTemplate.formula.Solve();
-      prompt.text = FormulaLoader.currentTemplate.resultPrompts[FormulaLoader.currentTemplate.variable];
+      FormulaLoader.currentFormula.SetValues(FormulaLoader.currentFormula.variable, FormulaLoader.currentFormula.args);
+      result.text = FormulaLoader.currentFormula.Solve();
+      prompt.text = FormulaLoader.currentFormula.resultPrompts[FormulaLoader.currentFormula.variable];
     });
   }
 }

@@ -24,7 +24,7 @@ class ArgumentScene extends Scene {
 
     this.onEnter.AddListener(() => print("ArgumentScene loaded"));
     this.onEnter.AddListener(() => {
-      FormulaLoader.args = {};
+      FormulaLoader.currentFormula.args = {};
       this.GetNextPrompt();
       this.ShowCurrentPrompt();
     });
@@ -50,21 +50,21 @@ class ArgumentScene extends Scene {
   }
 
   IsFinished() {
-    var argumentsNeeded = FormulaLoader.currentTemplate.formula.ArgumentsNeeded();
-    var args = FormulaLoader.args;
+    var argumentsNeeded = FormulaLoader.currentFormula.formula.ArgumentsNeeded();
+    var args = FormulaLoader.currentFormula.args;
     return Object.keys(args).length >= argumentsNeeded;
   }
 
   CollectArgument() {
-    var args = FormulaLoader.args;
+    var args = FormulaLoader.currentFormula.args;
     args[this.currentPrompt] = this.input.text;
     this.input.text = "";
   }
 
   GetNextPrompt() {
-    var variableToSolve = FormulaLoader.currentTemplate.variable;
-    var prompts = FormulaLoader.currentTemplate.prompts;
-    var args = FormulaLoader.args;
+    var variableToSolve = FormulaLoader.currentFormula.variable;
+    var prompts = FormulaLoader.currentFormula.prompts;
+    var args = FormulaLoader.currentFormula.args;
 
     for(var key in prompts) {
       var alreadyCollected = key in args;
@@ -77,7 +77,7 @@ class ArgumentScene extends Scene {
   }
 
   ShowCurrentPrompt() {
-    var prompts = FormulaLoader.currentTemplate.prompts;
+    var prompts = FormulaLoader.currentFormula.prompts;
 
     if(this.currentPrompt in prompts) {
       this.prompt.text = prompts[this.currentPrompt];

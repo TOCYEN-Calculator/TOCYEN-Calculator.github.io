@@ -1,5 +1,6 @@
 /**
- * Holds information about a formula!
+ * Deals with the information regarding the UI portion of
+ * solving formulas.
  *
  * @class
  */
@@ -8,6 +9,15 @@ class FormulaInfo {
     this.formula = null;
     this.prompts = {};
     this.resultPrompts = {};
+    this.args = {};
     this.variable = "";
+  }
+
+  SetValues(variable, values = {}) {
+    this.formula.SetValues(variable, values);
+  }
+
+  Solve() {
+    return this.formula.Solve();
   }
 }
