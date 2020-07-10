@@ -13,7 +13,7 @@ function setup() {
   InputHandler.constructor();
 
   // Load formulas
-  FormulaTemplate.constructor();
+  FormulaLoader.constructor();
   PhysicsFormulas.constructor();
   ChemistryFormulas.constructor();
 

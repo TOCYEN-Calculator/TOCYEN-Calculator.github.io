@@ -22,7 +22,7 @@ class ChemistryFormulas {
 
 
     // Heat change
-    this.heatChange = FormulaTemplate.CreateBlankTemplate();
+    this.heatChange = FormulaLoader.CreateBlankTemplate();
     this.heatChange.formula = new Formula("q = m * c * T", {q: null, m: null, c: null, T: null});
     this.heatChange.prompts = {q: changePrompt, m: massPrompt, c: specificPrompt, T: tempaturePrompt};
     this.heatChange.resultPrompts = {
@@ -32,7 +32,7 @@ class ChemistryFormulas {
       T: "The resulting tempature change (celsius) is:",
     };
 
-    this.heatChange2 = FormulaTemplate.CreateBlankTemplate();
+    this.heatChange2 = FormulaLoader.CreateBlankTemplate();
     this.heatChange2.formula = new Formula("q = m * c * (Tf - Ti)", {q: null, m: null, c: null, Tf: null, Ti: null});
     this.heatChange2.prompts = {q: changePrompt, m: massPrompt, c: specificPrompt, Ti: tempatureInitialPrompt, Tf: tempatureFinalPrompt};
     this.heatChange2.resultPrompts = {
@@ -45,7 +45,7 @@ class ChemistryFormulas {
 
 
     // Molar Conversions
-    this.molByGram = FormulaTemplate.CreateBlankTemplate();
+    this.molByGram = FormulaLoader.CreateBlankTemplate();
     this.molByGram.formula = new Formula("mol = g / molg", {g: null, mol: null, molg: null});
     this.molByGram.prompts = {g: massPrompt, mol: molePrompt, molg: amuPrompt};
     this.molByGram.resultPrompts = {
@@ -54,7 +54,7 @@ class ChemistryFormulas {
       molg: "The resulting molar mass (mol / g) is:"
     };
 
-    this.molByAtoms = FormulaTemplate.CreateBlankTemplate();
+    this.molByAtoms = FormulaLoader.CreateBlankTemplate();
     this.molByAtoms.formula = new Formula("mol = atoms / (6.02 * 10^23)", {atoms: null, mol: null});
     this.molByAtoms.prompts = {atoms: atomPrompt, mol: molePrompt};
     this.molByAtoms.resultPrompts = {
@@ -62,7 +62,7 @@ class ChemistryFormulas {
       mol: "The resulting moles (mol) is:"
     };
 
-    this.molgByAtoms = FormulaTemplate.CreateBlankTemplate();
+    this.molgByAtoms = FormulaLoader.CreateBlankTemplate();
     this.molgByAtoms.formula = new Formula("(g * molg) = atoms * (6.02 * 10^23)", {g: null, atoms: null, molg: null});
     this.molgByAtoms.prompts = {g: massPrompt, atoms: atomPrompt, molg: amuPrompt};
     this.molgByAtoms.resultPrompts = {
@@ -74,7 +74,7 @@ class ChemistryFormulas {
 
 
     // Mass of a product
-    this.massOfPR = FormulaTemplate.CreateBlankTemplate();
+    this.massOfPR = FormulaLoader.CreateBlankTemplate();
     this.massOfPR.formula = (mgiven, gpmgiven, fracgiven, fracdesired, gpmdesired) => {return  (mgiven * fracdesired * gpmdesired) / (gpmgiven * fracgiven);};
     this.massOfPR.prompts = [
     "Enter the mass (g) of the given:",
@@ -84,7 +84,7 @@ class ChemistryFormulas {
     "Enter the grams per mole (g / mol) of the desired:"];
     this.massOfPR.resultPrompt = "The resulting mass (g) of the desired is:";
 
-    this.moleofPR = FormulaTemplate.CreateBlankTemplate();
+    this.moleofPR = FormulaLoader.CreateBlankTemplate();
     this.moleofPR.formula = (mgiven, gpmgiven, fracgiven, fracdesired) => {return  (mgiven * fracdesired) / (gpmgiven * fracgiven);};
     this.moleofPR.prompts = [
     "Enter the mass (g) of the given:",
@@ -94,7 +94,7 @@ class ChemistryFormulas {
     this.moleofPR.resultPrompt = "The resulting moles (mol) of the desired is:";
 
 
-    this.molarityByGram = FormulaTemplate.CreateBlankTemplate();
+    this.molarityByGram = FormulaLoader.CreateBlankTemplate();
     this.molarityByGram.formula = new Formula("molarity = (g / molg) / l", {molarity: null, g: null, molg: null, l: null});
     this.molarityByGram.prompts = {molarity: molarityPrompt, g: massPrompt, molg: amuPrompt, l: literPrompt};
     this.molarityByGram.resultPrompts = {
@@ -104,7 +104,7 @@ class ChemistryFormulas {
       l: "The liters (l) in this solution is:"
     };
 
-    this.molarityByMol = FormulaTemplate.CreateBlankTemplate();
+    this.molarityByMol = FormulaLoader.CreateBlankTemplate();
     this.molarityByMol.formula = new Formula("molarity = mol / l", {molarity: null, mol: null, l: null});
     this.molarityByMol.prompts = {molarity: molarityPrompt, mol: molePrompt, l: literPrompt};
     this.molarityByMol.resultPrompts = {
@@ -114,7 +114,7 @@ class ChemistryFormulas {
     };
 
 
-    this.molarityEqual = FormulaTemplate.CreateBlankTemplate();
+    this.molarityEqual = FormulaLoader.CreateBlankTemplate();
     this.molarityEqual.formula = new Formula("Mi * Vi = Mf * Vf", {Mi: null, Vi: null, Mf: null, Vf: null,});
     this.molarityEqual.prompts = {Mi: "Enter the initial molarity (mol / L)", Vi: "Enter the initial volume (mL):", Mf: "Enter the final molarity (mol / L)", Vf: "Enter the final volume (mL):"};
     this.molarityEqual.resultPrompts = {

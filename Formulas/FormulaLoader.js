@@ -2,7 +2,7 @@
  * Static class meant to provide and load a "template" for formula information.
  * @class
  */
-class FormulaTemplate {
+class FormulaLoader {
   /**
    * Constructor for FormulaTemplate. Should be called
    * before any functions of it are used.

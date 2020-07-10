@@ -70,7 +70,7 @@ class FormulaElement extends Element {
     // Turn this element into a clickable.
     element.setAttribute('class', element.getAttribute('class') + ' formulaElementVariable');
     element.onclick = () => {
-      FormulaTemplate.LoadTemplate(formula, variable);
+      FormulaLoader.LoadTemplate(formula, variable);
       SceneManager.ToScene("FormulaScene");
     };
   }
