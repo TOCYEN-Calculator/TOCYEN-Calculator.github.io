@@ -14,7 +14,7 @@ class ArgumentScene extends Scene {
     this.prompt = new TextElement("", createVector(0, 100));
 
     Aligner.SetReference(Aligner.REFERENCE.CENTER);
-    this.input = new InputElement("1234567890-e", createVector(0,0));
+    this.input = new InputElement("1234567890-e.", createVector(0,0));
 
     this.backButton = CreateBackButton("TestScene");
 
